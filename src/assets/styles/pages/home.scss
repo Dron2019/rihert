@@ -56,12 +56,12 @@ h1 {
   transform-origin: bottom right;
 
   & > * {
-    min-width: 60vw;
+    min-width: 100vw;
     padding: 0 5vw;
   }
 }
 .screen5 {
-   transform-origin: top left;
+   transform-origin: top right;
 }
 // img {
 //   height: 80vh;

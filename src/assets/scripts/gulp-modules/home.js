@@ -9,8 +9,9 @@ const screen1 = document.querySelector('.screen1');
 screen1.transformed = false;
 window.addEventListener('click',function(evt){
     screen1.transformed = !screen1.transformed;
+    screen1.transformed === true ? enableScroll() : disableScroll();
     gsap.to('.screen1', {
-        scale: () => screen1.transformed ? 1 : 2.5,
+        scale: () => screen1.transformed ? 5 : 1,
         ease: 'power4.out',
         duration: 2.5
     })
@@ -47,15 +48,56 @@ window.addEventListener('click',function(evt){
     
 // })
 
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; } 
+  }));
+} catch(e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+function disableScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+// call this to Enable
+function enableScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+disableScroll();
 const pageContainer = document.querySelector(".page__inner");
 
 /* SMOOTH SCROLL */
 const scroller = new LocomotiveScroll({
   el: pageContainer,
-  smooth: true
+  smooth: true,
+  smoothMobile: false,
+  // inertia: 1.1,
+  lerp: 0.05,
 });
-
+window.scroller = scroller;
 scroller.on("scroll", ScrollTrigger.update);
 
 ScrollTrigger.scrollerProxy(document.body, {
@@ -72,7 +114,7 @@ ScrollTrigger.scrollerProxy(document.body, {
       height: window.innerHeight
     };
   },
-  pinType: pageContainer.style.transform ? "transform" : "fixed"
+  pinType: document.body.style.transform ? "transform" : "fixed"
 });
 
 ////////////////////////////////////
@@ -98,27 +140,39 @@ ScrollTrigger.scrollerProxy(document.body, {
             console.log('ddd');
         },
         onEnterBack: () => {
-            gsap.to('.pin-wrap', { scale: 1 })
+            // gsap.to('.pin-wrap', { scale: 1 })
         },
         onLeave: () => {
-            gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
-            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')
+            /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
+            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         }
     },
     x: -horizontalScrollLength,
     ease: "none"
   });
-//   ScrollTrigger.create({
-//     trigger: '.screen5',
-//     onEnter: () => {
+  // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+  gsap.timeline({
+    scrollTrigger: {
+      scroller: pageContainer, //locomotive-scroll
+      scrub: true,
+      start: `top top`,
+      trigger: "#sectionPin",
+      end: pinWrapWidth + 500,
+    }
+  })
+  .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
 
-//       console.log('ffff');
-        
-//     }
-// })
+gsap.timeline({
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen5',
+    scrub: true,
+    onUpdate: ({progress}) => console.log(progress)
+  }
+}).fromTo('.pin-wrap', { scale: 1 }, { scale: 0 })
   ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
-
   ScrollTrigger.refresh();
+
 
 
 
