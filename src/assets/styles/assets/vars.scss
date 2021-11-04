@@ -1,0 +1,117 @@
+$default-font: "HelveticaNeueCyr", sans-serif;
+$default-font2: "HelveticaNeueCyr", sans-serif;
+
+$mc2: #ff554c;
+$mc3: #e5df06;
+$mc4: #4f90b6;
+$gray: rgb(135, 135, 151);
+$text: #22223e;
+$wc: #fff;
+$bc: #000;
+$bc2: #000;
+
+$mc: #1a2941;
+$bg: #fafafa;
+$light: #fcfcfc;
+$dark: #1a2941;
+$gold: #cfa46e;
+:root {
+  --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
+  --header-h: 144px;
+  --logo-w: 160px;
+  --sliceFigure: 239px;
+  --sliceFigure-big: 541px;
+
+  --color-red: #ff3300;
+  --color-white: #ffffff;
+  --color-gray: #656e75;
+  --color-black: #000000;
+
+  --h1-size: 96px;
+  --h2-size: 48px;
+  --h3-size: 36px;
+  --h4-size: 24px;
+  --h5-size: 18px;
+  --h6-size: 14px;
+
+  --page-side-fields: 100px;
+
+  --margin-l: 250px;
+}
+@media (max-width: 1920px) {
+  :root {
+    --header-h: 124px;
+    --h1-size: 96px;
+    --h2-size: 48px;
+    --h3-size: 36px;
+    --h4-size: 24px;
+    --h5-size: 18px;
+    --h6-size: 14px;
+  }
+}
+@media (max-width: 1600px) {
+  :root {
+    --h1-size: 64px;
+    --h2-size: 36px;
+    --h3-size: 24px;
+    --h4-size: 18px;
+    --h5-size: 16px;
+    --h6-size: 12px;
+
+    --page-side-fields: 75px;
+
+    --header-h: 100px;
+    --logo-w: 60px;
+    --sliceFigure-big: 362px;
+  }
+}
+@media (max-width: 1200px) {
+  :root {
+    --h1-size: 61px;
+    --h2-size: 33px;
+    --h3-size: 22px;
+    // --h4-size: 18px;
+    // --h5-size: 16px;
+  }
+}
+@media (max-width: 992px) {
+  :root {
+    --h1-size: 58px;
+    --h2-size: 30px;
+    --h3-size: 20px;
+    --h4-size: 18px;
+    --h5-size: 14px;
+    --h6-size: 10px;
+
+    --page-side-fields: 50px;
+
+    --sliceFigure-big: 44px;
+  }
+}
+@media (max-width: 576px) {
+  :root {
+    // --h1-size: 30px;
+    --h2-size: 24px;
+    --h3-size: 18px;
+    --h4-size: 16px;
+    --h5-size: 14px;
+    --h5-size: 10px;
+    --h6-size: 8px;
+
+    --page-side-fields: 20px;
+
+    --header-h: 56px;
+    --sliceFigure: 100px;
+    --sliceFigure-big: 100px;
+  }
+}
+@media (max-width: 576px) {
+  :root {
+    --h1-size: 38px;
+  }
+}
+@media (max-width: 420px) {
+  :root {
+    --h1-size: 30px;
+  }
+}

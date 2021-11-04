@@ -1,0 +1,30 @@
+extends ../layout/main
+block variable
+block meta
+  title= 'Главная'
+  meta(name='description' content='')
+block head
+  link(rel='stylesheet' href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/home.bundle.js')
+block content
+  .screen1
+    h1 Новий квартал 1895 року
+    +img('screen1-bottom.jpg')
+  .screen2 
+    h1 Новий відкритий житловий комплекс і громадський простір, що будується на Подолі
+    +img('screen2.jpg')
+  #sectionPin 
+    .pin-wrap
+      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+      <img src="https://images.pexels.com/photos/5207262/pexels-photo-5207262.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900" alt="">
+      <img src="https://images.pexels.com/photos/3371358/pexels-photo-3371358.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900" alt="">
+      <img src="https://images.pexels.com/photos/3618545/pexels-photo-3618545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900" alt="">
+  .screen5 
+    h1 Новий відкритий житловий комплекс і громадський простір, що будується на Подолі
+    +img('screen2.jpg')
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

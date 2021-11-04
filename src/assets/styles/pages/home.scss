@@ -1,0 +1,70 @@
+.screen1 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transform-origin: bottom right;
+  background-color: #B87B74;
+  img {
+    width: 20vw;
+    height: auto;
+    object-fit: cover;
+    margin-left: auto;
+    margin-top: auto;
+  }
+}
+h1 {
+  font-size: 5rem;
+  line-height: 100%;
+}
+
+.screen4-horizontal-wrapper {
+  // height: 300vh;
+  position: relative;
+  .screen4-horizontal {
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    // position: absolute;
+    left: 0;
+    top: 0;
+    // width: 100vw;
+    // overflow: scroll;
+  }
+  .screen4-horizontal__part {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+  }
+}
+
+
+#sectionPin {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  left: 0;
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+.pin-wrap {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 10vw;
+  transform-origin: bottom right;
+
+  & > * {
+    min-width: 60vw;
+    padding: 0 5vw;
+  }
+}
+.screen5 {
+   transform-origin: top left;
+}
+// img {
+//   height: 80vh;
+//   width: auto;
+//   object-fit: cover;
+// }
