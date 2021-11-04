@@ -101,8 +101,8 @@ ScrollTrigger.scrollerProxy(document.body, {
             gsap.to('.pin-wrap', { scale: 1 })
         },
         onLeave: () => {
-            gsap.to('.pin-wrap', { scale: 0.5 });
-            gsap.from('.screen5', { scale: 2.5 })
+            gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
+            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')
         }
     },
     x: -horizontalScrollLength,
