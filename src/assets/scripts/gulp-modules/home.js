@@ -246,14 +246,15 @@ gsap.timeline({
     // onUpdate: ({progress}) => console.log(progress)
     onEnterBack: () => {
       console.log('enterBackTo6');
-      gsap.timeline()
-        .add(stopCustomScroll)
-        // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
-        .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
-        .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
-        .fromTo('.screen7__inner', { yPercent: 0, xPercent: 0 }, { yPercent: 100, xPercent: 100, duration: 2.5 }, '<')
-        .set('.screen6', { minHeight: 'auto' })
-        .add(startCustomScroll)
+      params[6]();
+      // gsap.timeline()
+      //   .add(stopCustomScroll)
+      //   // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+      //   .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
+      //   .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
+      //   .fromTo('.screen7__inner', { yPercent: 0, xPercent: 0 }, { yPercent: 100, xPercent: 100, duration: 2.5 }, '<')
+      //   .set('.screen6', { minHeight: 'auto' })
+      //   .add(startCustomScroll)
     }
   }
 })/*.fromTo('.screen7__inner', { xPercent: 50, yPercent: 50 }, { xPercent: 0, yPercent: 0 }, '<')*/
@@ -266,14 +267,15 @@ gsap.timeline({
     scrub: true,
     // onUpdate: ({progress}) => console.log(progress)
     onEnter: () => {
-      gsap.timeline()
-        .add(stopCustomScroll)
-        // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
-        .set('.screen6', { minHeight: 'auto' })
-        .fromTo('.screen6', { height: '100vh' }, { height: '50vh', duration: 2.5 }, '<')
-        .fromTo('.screen6__inner', { scale: 1 }, { scale: 0.5, duration: 2.5 }, '<')
-        .fromTo('.screen7__inner', { yPercent: 100, xPercent: 100 }, { yPercent: 0, xPercent: 0, duration: 2.5 }, '<')
-        .add(startCustomScroll)
+      params[7]()
+      // gsap.timeline()
+      //   .add(stopCustomScroll)
+      //   // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+      //   .set('.screen6', { minHeight: 'auto' })
+      //   .fromTo('.screen6', { height: '100vh' }, { height: '50vh', duration: 2.5 }, '<')
+      //   .fromTo('.screen6__inner', { scale: 1 }, { scale: 0.5, duration: 2.5 }, '<')
+      //   .fromTo('.screen7__inner', { yPercent: 100, xPercent: 100 }, { yPercent: 0, xPercent: 0, duration: 2.5 }, '<')
+      //   .add(startCustomScroll)
     }
 
   }
@@ -304,7 +306,7 @@ stopCustomScroll();
  * изменения номер текущего экрана в самой функции, вне нее идет только ее вызов с параметром номера экрана
  */
 const params = {
-  excludeScreenOnScrollChange: [2,3,5],
+  excludeScreenOnScrollChange: [2,3,5, 6,7],
   currentScreen: '1',
   isAnimating: false,
   2: () => {
@@ -363,10 +365,45 @@ const params = {
       })
   },
   6: () => {
-    
+    const screen6Height = document.querySelector('.screen6').getBoundingClientRect().height;
+    console.log('ee');
+    gsap.timeline()
+        .add(() => {
+          stopCustomScroll();
+          params.isAnimating = true;
+        })
+        .fromTo('.screen6', { height: screen6Height }, { height: screen6Height * 2, duration: 2.5 }, '<')
+        // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+        // .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
+        .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
+        // .fromTo('.screen7__inner', { yPercent: 0, xPercent: 0 }, { yPercent: 100, xPercent: 100, duration: 2.5 }, '<')
+        // .set('.screen6', { minHeight: 'auto' })
+        .add(() => {
+          startCustomScroll();
+          scroller.update();
+          params.currentScreen = 6;
+          params.isAnimating = false;
+        })
   },
   7: () => {
-    
+    const screen6Height = document.querySelector('.screen6').getBoundingClientRect().height;
+    gsap.timeline()
+        .add(() => {
+          stopCustomScroll();
+          params.isAnimating = true;
+        })
+        .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+        
+        // .set('.screen6', { minHeight: 'auto' })
+        .fromTo('.screen6', { height: screen6Height }, { height: screen6Height / 2, duration: 2.5 }, '<')
+        .fromTo('.screen6__inner', { scale: 1 }, { scale: 0.5, duration: 2.5 }, '<')
+        .fromTo('.screen7__inner', { yPercent: 100, xPercent: 100 }, { yPercent: 0, xPercent: 0, duration: 2.5 }, '<')
+        .add(() => {
+          startCustomScroll();
+          scroller.update();
+          params.currentScreen = 7;
+          params.isAnimating = false;
+        })
   },
   8: () => {
     
