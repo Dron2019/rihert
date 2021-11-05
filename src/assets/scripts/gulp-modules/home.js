@@ -2,7 +2,7 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 
-
+global.gsap = gsap;
 gsap.registerPlugin(ScrollTrigger);
 
 const screen1 = document.querySelector('.screen1');
@@ -87,7 +87,7 @@ function enableScroll() {
 }
 
 disableScroll();
-const pageContainer = document.querySelector(".page__inner");
+const pageContainer = document.querySelector(".scroller-container");
 
 /* SMOOTH SCROLL */
 const scroller = new LocomotiveScroll({
@@ -100,7 +100,7 @@ const scroller = new LocomotiveScroll({
 window.scroller = scroller;
 scroller.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy(document.body, {
+ScrollTrigger.scrollerProxy(pageContainer, {
   scrollTop(value) {
     return arguments.length
       ? scroller.scrollTo(value, 0, 0)
@@ -114,7 +114,7 @@ ScrollTrigger.scrollerProxy(document.body, {
       height: window.innerHeight
     };
   },
-  pinType: document.body.style.transform ? "transform" : "fixed"
+  pinType: pageContainer.style.transform ? "transform" : "fixed"
 });
 
 ////////////////////////////////////
@@ -157,7 +157,7 @@ ScrollTrigger.scrollerProxy(document.body, {
       scrub: true,
       start: `top top`,
       trigger: "#sectionPin",
-      end: pinWrapWidth + 500,
+      end: pinWrapWidth + 1000,
     }
   })
   .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
@@ -170,8 +170,39 @@ gsap.timeline({
     onUpdate: ({progress}) => console.log(progress)
   }
 }).fromTo('.pin-wrap', { scale: 1 }, { scale: 0 })
-  ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
-  ScrollTrigger.refresh();
+gsap.timeline({
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen6',
+    scrub: true,
+    onUpdate: ({progress}) => console.log(progress)
+  }
+}).fromTo('.screen7__inner', { xPercent: 50, yPercent: 50 }, { xPercent: 0, yPercent: 0 }, '<')
+
+
+gsap.timeline({
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen7',
+    scrub: true,
+    onUpdate: ({progress}) => console.log(progress)
+  }
+}).fromTo('.screen6', { scale: 1 }, { scale: 0.5 })
+
+
+const screen9 = document.querySelector('.screen9');
+// 0.28
+gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
+const tl9 = gsap.timeline().fromTo(screen9, { scale: 1 }, { scale: 3.4 });
+screen9.addEventListener('click',function(evt){
+  screen9.transformed = !screen9.transformed;
+  screen9.transformed ?
+    tl9.play() :
+    tl9.reverse();
+});
+
+ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
+ScrollTrigger.refresh();
 
 
 

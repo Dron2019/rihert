@@ -37,7 +37,12 @@ h1 {
   }
 }
 
-
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  overscroll-behavior: none;
+}
 #sectionPin {
   height: 100vh;
   overflow: hidden;
@@ -52,16 +57,29 @@ h1 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px 10vw;
+  padding: 50px 0vw;
   transform-origin: bottom right;
 
   & > * {
-    min-width: 100vw;
+    min-width: 80vw;
     padding: 0 5vw;
   }
 }
 .screen5 {
    transform-origin: top right;
+  }
+  
+  .screen6 {
+    
+    transform-origin: bottom right;
+}
+
+.screen7 {
+  width: 100vw;
+  overflow: hidden;
+}
+img {
+  object-fit: contain;
 }
 // img {
 //   height: 80vh;
