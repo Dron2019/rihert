@@ -3,6 +3,11 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import LocomotiveScroll from 'locomotive-scroll';
 
 global.gsap = gsap;
+
+gsap.defaults({
+  ease: 'power3.out',
+  duration: 2,
+})
 gsap.registerPlugin(ScrollTrigger);
 
 const screen1 = document.querySelector('.screen1');
@@ -117,6 +122,60 @@ ScrollTrigger.scrollerProxy(pageContainer, {
   pinType: pageContainer.style.transform ? "transform" : "fixed"
 });
 
+
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.screen1',
+    scroller: pageContainer,
+    // start: '-100 bottom',
+    // onEnter: () => {
+    //   gsap.timeline()
+    //     .add(stopCustomScroll)
+    //     .to('.screen1', { scale: 2.5 })
+    //     .add(startCustomScroll, '+0.5')
+    // },
+    onEnterBack: () => {
+      gsap.timeline()
+        .add(stopCustomScroll)
+        .add(() => {
+          scroller.scrollTo(document.querySelector('.screen1'))
+        })
+        .to('.screen1', { scale: 1 }, '+1')
+        .add(startCustomScroll, '+2.5')
+    }
+  }
+})
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.screen2',
+    scroller: pageContainer,
+    // start: '-100 bottom',
+    onEnter: () => {
+      gsap.timeline()
+        .add(stopCustomScroll)
+        .to('.screen1', { scale: 2.5 })
+        .add(() => {
+          scroller.scrollTo(document.querySelector('.screen2'))
+        })
+        .add(startCustomScroll, '+0.5')
+    },
+    // onLeaveBack: () => {
+    //   gsap.timeline()
+    //     .add(stopCustomScroll)
+    //     .to('.screen1', { scale: 1 })
+    //     .add(startCustomScroll, '+0.5')
+    // }
+  }
+})
+
+
+function stopCustomScroll() {
+  scroller.stop();
+}
+function startCustomScroll() {
+  scroller.start();
+}
 ////////////////////////////////////
 ////////////////////////////////////
 
@@ -139,10 +198,21 @@ ScrollTrigger.scrollerProxy(pageContainer, {
         onUpdate: () => {
             console.log('ddd');
         },
-        onEnterBack: () => {
-            // gsap.to('.pin-wrap', { scale: 1 })
-        },
         onLeave: () => {
+          gsap.timeline()
+            .add(() => scroller.stop())
+            .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+            .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
+            .add(() => scroller.start())
+            /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
+            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
+        },
+        onEnterBack: () => {
+          gsap.timeline()
+            .add(() => scroller.stop())
+            .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
+            .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
+            .add(() => scroller.start())
             /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
             .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         }
@@ -157,19 +227,23 @@ ScrollTrigger.scrollerProxy(pageContainer, {
       scrub: true,
       start: `top top`,
       trigger: "#sectionPin",
-      end: pinWrapWidth + 1000,
+      end: pinWrapWidth,
+      onLeave: () => {
+        // scroller.stop()
+      }
     }
   })
-  .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+  // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
 
 gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen5',
     scrub: true,
-    onUpdate: ({progress}) => console.log(progress)
+    
+    // onUpdate: ({progress}) => console.log(progress)
   }
-}).fromTo('.pin-wrap', { scale: 1 }, { scale: 0 })
+})
 gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,

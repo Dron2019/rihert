@@ -43,6 +43,10 @@ body {
   width: 100%;
   overscroll-behavior: none;
 }
+
+.screen {
+  min-height: 100vh;
+}
 #sectionPin {
   height: 100vh;
   overflow: hidden;
