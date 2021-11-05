@@ -150,7 +150,7 @@ gsap.timeline({
   scrollTrigger: {
     trigger: '.screen2',
     scroller: pageContainer,
-    // start: '-100 bottom',
+    start: '-20px bottom',
     onEnter: () => {
       gsap.timeline()
         .add(stopCustomScroll)
