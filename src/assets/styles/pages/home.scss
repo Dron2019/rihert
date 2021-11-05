@@ -74,9 +74,17 @@ body {
    transform-origin: top right;
   }
   
-  .screen6 {
-    
-    transform-origin: bottom right;
+.screen6 {
+
+    transform-origin: top left;
+    &__inner {
+      height: 100%;
+      transform-origin: top left;
+    }
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
 }
 
 .screen7 {
@@ -84,7 +92,7 @@ body {
   overflow: hidden;
 }
 img {
-  object-fit: contain;
+  object-fit: cover;
 }
 // img {
 //   height: 80vh;

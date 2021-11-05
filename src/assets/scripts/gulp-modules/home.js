@@ -14,7 +14,7 @@ const screen1 = document.querySelector('.screen1');
 screen1.transformed = false;
 window.addEventListener('click',function(evt){
     screen1.transformed = !screen1.transformed;
-    screen1.transformed === true ? enableScroll() : disableScroll();
+    // screen1.transformed === true ? enableScroll() : disableScroll();
     gsap.to('.screen1', {
         scale: () => screen1.transformed ? 5 : 1,
         ease: 'power4.out',
@@ -22,37 +22,34 @@ window.addEventListener('click',function(evt){
     })
 });
 
+const params = {
+  screen: 'screen1'
+};
 
 
-// const horScroll = new LocomotiveScroll({
-//     el: document.querySelector('.screen4-horizontal'),
-//     direction: 'horizontal',
-//     // gestureDirection: 'horizontal',
-//     smooth: true,
-//     resetNativeScroll: false,
-// });
-
-
-
-// ScrollTrigger.create({
-//     trigger: '.screen4-horizontal-wrapper',
-//     start: "top top",
-//     scrub: 1,
-//     // end: '+=2000 top',
-//     // scrub: 0.1,
-//     // scrub: true,
-//     pin: true,
-//     markers: true,
-//     snap: true,
-//     onUpdate: ({progress}) => {
-//         console.log(progress);
-//     },
-//     onEnter: () => {
-//         console.log('eee');
-//     }
-    
+// window.addEventListener('wheel',() => {
+//   console.log(params.screen);
 // })
 
+
+
+window.screen1To2Tl = gsap.timeline({ paused: true })
+  .add(startCustomScroll)
+  .to('.screen1', { scale: 2.5 })
+  .add(() => {
+    scroller.scrollTo(document.querySelector('.screen2'))
+  })
+  // .add(startCustomScroll)
+
+
+window.screen2To1Tl = gsap.timeline({ paused: true })
+  .add(startCustomScroll)
+  .add(() => {
+    scroller.scrollTo(document.querySelector('.screen1'))
+  })
+  .to('.screen1', {
+    scale: 1
+  }, '+1.5')
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function preventDefault(e) {
@@ -141,7 +138,7 @@ gsap.timeline({
         .add(() => {
           scroller.scrollTo(document.querySelector('.screen1'))
         })
-        .to('.screen1', { scale: 1 }, '+1')
+        // .to('.screen1', { scale: 1 }, '+1')
         .add(startCustomScroll, '+2.5')
     }
   }
@@ -154,7 +151,7 @@ gsap.timeline({
     onEnter: () => {
       gsap.timeline()
         .add(stopCustomScroll)
-        .to('.screen1', { scale: 2.5 })
+        // .to('.screen1', { scale: 2.5 })
         .add(() => {
           scroller.scrollTo(document.querySelector('.screen2'))
         })
@@ -196,11 +193,12 @@ function startCustomScroll() {
       start: "top top",
       end: pinWrapWidth,
         onUpdate: () => {
-            console.log('ddd');
+            // console.log('ddd');
         },
         onLeave: () => {
           gsap.timeline()
-            .add(() => scroller.stop())
+            // .add(() => scroller.stop())
+            .add(() => scroller.scrollTo(document.querySelector('.screen5')))
             .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
             .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
             .add(() => scroller.start())
@@ -228,8 +226,8 @@ function startCustomScroll() {
       start: `top top`,
       trigger: "#sectionPin",
       end: pinWrapWidth,
-      onLeave: () => {
-        // scroller.stop()
+      onEnterBack: () => {
+        console.log('ENTERBACK');
       }
     }
   })
@@ -249,9 +247,20 @@ gsap.timeline({
     scroller: pageContainer,
     trigger: '.screen6',
     scrub: true,
-    onUpdate: ({progress}) => console.log(progress)
+    // onUpdate: ({progress}) => console.log(progress)
+    onEnterBack: () => {
+      console.log('enterBackTo6');
+      gsap.timeline()
+        .add(stopCustomScroll)
+        // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+        .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
+        .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
+        .fromTo('.screen7__inner', { yPercent: 0, xPercent: 0 }, { yPercent: 100, xPercent: 100, duration: 2.5 }, '<')
+        .set('.screen6', { minHeight: 'auto' })
+        .add(startCustomScroll)
+    }
   }
-}).fromTo('.screen7__inner', { xPercent: 50, yPercent: 50 }, { xPercent: 0, yPercent: 0 }, '<')
+})/*.fromTo('.screen7__inner', { xPercent: 50, yPercent: 50 }, { xPercent: 0, yPercent: 0 }, '<')*/
 
 
 gsap.timeline({
@@ -259,9 +268,21 @@ gsap.timeline({
     scroller: pageContainer,
     trigger: '.screen7',
     scrub: true,
-    onUpdate: ({progress}) => console.log(progress)
+    // onUpdate: ({progress}) => console.log(progress)
+    onEnter: () => {
+      gsap.timeline()
+        .add(stopCustomScroll)
+        // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
+        .set('.screen6', { minHeight: 'auto' })
+        .fromTo('.screen6', { height: '100vh' }, { height: '50vh', duration: 2.5 }, '<')
+        .fromTo('.screen6__inner', { scale: 1 }, { scale: 0.5, duration: 2.5 }, '<')
+        .fromTo('.screen7__inner', { yPercent: 100, xPercent: 100 }, { yPercent: 0, xPercent: 0, duration: 2.5 }, '<')
+        .add(startCustomScroll)
+    }
+
   }
-}).fromTo('.screen6', { scale: 1 }, { scale: 0.5 })
+})
+// .fromTo('.screen6', { scale: 1 }, { scale: 0.5 })
 
 
 const screen9 = document.querySelector('.screen9');
