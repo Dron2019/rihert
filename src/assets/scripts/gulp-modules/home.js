@@ -1,4 +1,5 @@
 import {gsap, ScrollTrigger} from 'gsap/all';
+import { param } from 'jquery';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 
@@ -10,21 +11,19 @@ gsap.defaults({
 })
 gsap.registerPlugin(ScrollTrigger);
 
-const screen1 = document.querySelector('.screen1');
-screen1.transformed = false;
-window.addEventListener('click',function(evt){
-    screen1.transformed = !screen1.transformed;
-    // screen1.transformed === true ? enableScroll() : disableScroll();
-    gsap.to('.screen1', {
-        scale: () => screen1.transformed ? 5 : 1,
-        ease: 'power4.out',
-        duration: 2.5
-    })
-});
+// const screen1 = document.querySelector('.screen1');
+// screen1.transformed = false;
+// window.addEventListener('click',function(evt){
+//     screen1.transformed = !screen1.transformed;
+//     // screen1.transformed === true ? enableScroll() : disableScroll();
+//     gsap.to('.screen1', {
+//         scale: () => screen1.transformed ? 5 : 1,
+//         ease: 'power4.out',
+//         duration: 2.5
+//     })
+// });
+// const changeScreen = new CustomEvent('screenChange', {  });
 
-const params = {
-  screen: 'screen1'
-};
 
 
 // window.addEventListener('wheel',() => {
@@ -133,13 +132,8 @@ gsap.timeline({
     //     .add(startCustomScroll, '+0.5')
     // },
     onEnterBack: () => {
-      gsap.timeline()
-        .add(stopCustomScroll)
-        .add(() => {
-          scroller.scrollTo(document.querySelector('.screen1'))
-        })
-        // .to('.screen1', { scale: 1 }, '+1')
-        .add(startCustomScroll, '+2.5')
+      params[1]();
+      // changeCurrentScreen(1);
     }
   }
 })
@@ -153,7 +147,7 @@ gsap.timeline({
         .add(stopCustomScroll)
         // .to('.screen1', { scale: 2.5 })
         .add(() => {
-          scroller.scrollTo(document.querySelector('.screen2'))
+          // scroller.scrollTo(document.querySelector('.screen2'))
         })
         .add(startCustomScroll, '+0.5')
     },
@@ -196,23 +190,25 @@ function startCustomScroll() {
             // console.log('ddd');
         },
         onLeave: () => {
-          gsap.timeline()
-            // .add(() => scroller.stop())
-            .add(() => scroller.scrollTo(document.querySelector('.screen5')))
-            .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-            .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
-            .add(() => scroller.start())
+          params[5]()
+          // gsap.timeline()
+          //   // .add(() => scroller.stop())
+          //   .add(() => scroller.scrollTo(document.querySelector('.screen5')))
+          //   .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+          //   .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
+          //   .add(() => scroller.start())
             /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
             .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         },
         onEnterBack: () => {
-          gsap.timeline()
-            .add(() => scroller.stop())
-            .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
-            .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
-            .add(() => scroller.start())
-            /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
-            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
+          params[4]()
+          // gsap.timeline()
+          //   .add(() => scroller.stop())
+          //   .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
+          //   .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
+          //   .add(() => scroller.start())
+          //   /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
+          //   .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         }
     },
     x: -horizontalScrollLength,
@@ -298,6 +294,113 @@ screen9.addEventListener('click',function(evt){
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
+
+stopCustomScroll();
+
+/**
+ * Анимация срабатывает когда попадаешь на этот номер экрана
+ * Номер экрана изменяется на некоторых экранах по скроллу
+ * если экран с прокруткой, для смены используется скролл триггер
+ * изменения номер текущего экрана в самой функции, вне нее идет только ее вызов с параметром номера экрана
+ */
+const params = {
+  excludeScreenOnScrollChange: [2,3,5],
+  currentScreen: '1',
+  isAnimating: false,
+  2: () => {
+    gsap.timeline({ paused: true })
+      .add(stopCustomScroll)
+      .add(() => params.isAnimating = true)
+      .to('.screen1', { scale: 2.5 })
+      .add(() => {
+        scroller.scrollTo(document.querySelector('.screen2'))
+      })
+      .add(() => params.isAnimating = false)
+      .add(startCustomScroll)
+      .add(() => {
+        params.currentScreen = 2;
+      })
+      .play();
+  },
+  3: () => {
+    
+  },
+  4: () => {
+    gsap.timeline()
+      .add(stopCustomScroll)
+      .add(() => {
+        params.isAnimating = true;
+      })
+      .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
+      .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
+      .add(startCustomScroll)
+      .add(() => {
+        params.currentScreen = 4;
+        params.isAnimating = false;
+      })
+      /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
+      .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
+  },
+  5: () => {
+    gsap.timeline()
+      // .add(() => scroller.stop())
+      .add(() => stopCustomScroll())
+
+      .add(() => {
+        
+        params.isAnimating = true;
+      })
+      .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+      .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
+      .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
+      .add(() => {
+        
+        params.currentScreen = 5;
+      })
+      .add(() => {
+        startCustomScroll();
+        params.isAnimating = false;
+      })
+  },
+  6: () => {
+    
+  },
+  7: () => {
+    
+  },
+  8: () => {
+    
+  },
+  1: () => {
+    gsap.timeline({ paused: true })
+      .add(stopCustomScroll)
+      .add(() => params.isAnimating = true)
+      .add(() => {
+        scroller.scrollTo(document.querySelector('.screen1'))
+      })
+      .to('.screen1', {
+        scale: 1
+      }, '+1.5')
+      .add(() => params.isAnimating = false)
+      .add(stopCustomScroll)
+      .add(() => {
+        params.currentScreen = 1;
+      })
+      .play();
+      
+  },
+};
+function changeCurrentScreen(evt) {
+  if (params.isAnimating || params.excludeScreenOnScrollChange.includes(params.currentScreen)) return;
+  const direction = evt.deltaY / 100;
+  const currentScreenNumber = +params.currentScreen;
+  params[currentScreenNumber + direction]();
+  params.currentScreen += direction;
+  console.log(currentScreenNumber);
+}
+window.addEventListener('wheel',changeCurrentScreen);
+
+
 
 
 
