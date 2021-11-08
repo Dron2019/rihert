@@ -124,16 +124,8 @@ gsap.timeline({
   scrollTrigger: {
     trigger: '.screen1',
     scroller: pageContainer,
-    // start: '-100 bottom',
-    // onEnter: () => {
-    //   gsap.timeline()
-    //     .add(stopCustomScroll)
-    //     .to('.screen1', { scale: 2.5 })
-    //     .add(startCustomScroll, '+0.5')
-    // },
     onEnterBack: () => {
       params[1]();
-      // changeCurrentScreen(1);
     }
   }
 })
@@ -191,24 +183,9 @@ function startCustomScroll() {
         },
         onLeave: () => {
           params[5]()
-          // gsap.timeline()
-          //   // .add(() => scroller.stop())
-          //   .add(() => scroller.scrollTo(document.querySelector('.screen5')))
-          //   .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-          //   .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
-          //   .add(() => scroller.start())
-            /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
-            .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         },
         onEnterBack: () => {
           params[4]()
-          // gsap.timeline()
-          //   .add(() => scroller.stop())
-          //   .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
-          //   .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
-          //   .add(() => scroller.start())
-          //   /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
-          //   .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
         }
     },
     x: -horizontalScrollLength,
@@ -247,17 +224,9 @@ gsap.timeline({
     onEnterBack: () => {
       console.log('enterBackTo6');
       params[6]();
-      // gsap.timeline()
-      //   .add(stopCustomScroll)
-      //   // .add(() => scroller.scrollTo(document.querySelector('.screen7')))
-      //   .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
-      //   .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
-      //   .fromTo('.screen7__inner', { yPercent: 0, xPercent: 0 }, { yPercent: 100, xPercent: 100, duration: 2.5 }, '<')
-      //   .set('.screen6', { minHeight: 'auto' })
-      //   .add(startCustomScroll)
     }
   }
-})/*.fromTo('.screen7__inner', { xPercent: 50, yPercent: 50 }, { xPercent: 0, yPercent: 0 }, '<')*/
+})
 
 
 gsap.timeline({
@@ -407,6 +376,9 @@ const params = {
     
   },
   9: () => {
+    let isAnimating = false;
+    let innerState = 1;
+    // stopCustomScroll();
     gsap.timeline({paused: true})
       .add(stopCustomScroll)
       .add(() => {
@@ -415,22 +387,72 @@ const params = {
       }).play();
       window.addEventListener('wheel', innerScreen9Handler);
       function innerScreen9Handler(evt) {
-        const tl = gsap.timeline({ paused: true })
-        if (evt.deltaY > 0) {
-          tl.to('.screen9', { scale: 1 })
-          // .add(startCustomScroll)
-        } else {
-          tl.to('.screen9', { scale: 3 })
-          tl.add(() => {
-            // window.removeEventListener('wheel', innerScreen9Handler);
-          })
+        if (isAnimating === true) return;
+        if (evt.deltaY > 0 && innerState === 1) {
+          transferInnerDown9().play();
+          innerState++;
+        } else if (evt.deltaY > 0 && innerState === 2) {
+          transferFrom9().play();
+        } else if (evt.deltaY < 0 && innerState === 2) {
+          transferInnerUp().play();
+          innerState--;
+        } else if (evt.deltaY < 0 && innerState === 1) {
+          transferFrom9Up().play();
         }
-        tl.play();
+        // const tl = gsap.timeline({ paused: true })
+        // if (evt.deltaY > 0) {
+        //   tl.to('.screen9', { scale: 1 })
+        //   // .add(startCustomScroll)
+        // } else {
+        //   tl.to('.screen9', { scale: 3 })
+        //   tl.add(() => {
+        //     // window.removeEventListener('wheel', innerScreen9Handler);
+        //   })
+        // }
+        // tl.play();
       }
-      // .add(() => {
-      //   params.isAnimating = truefalse;
-      //   scroller.scrollTo(document.querySelector('.screen9'));
-      // })
+      let it = setInterval(() => {
+        console.log(isAnimating);
+      }, 500);
+      function transferFrom9Up() {
+        console.log('Leave 9 Up');
+        clearInterval(it);
+        return gsap.timeline({ paused: true })
+          .add(() => isAnimating = true)  
+          .add(() => {
+              window.removeEventListener('wheel', innerScreen9Handler);
+          })
+          .add(() => {
+            scroller.scrollTo(document.querySelector('.screen8'));
+            // startCustomScroll();
+          }) 
+          .add(() => isAnimating = false)  
+          .add(startCustomScroll)
+      }
+      function transferInnerUp() {
+        return gsap.timeline({ paused: true })
+          .add(() => isAnimating = true)
+          .to('.screen9', { scale: 4 })
+         
+          .add(() => isAnimating = false)
+        }
+      function transferInnerDown9(){
+        return gsap.timeline({ paused: true })
+          .add(() => isAnimating = true)
+          .to('.screen9', { scale: 1 })
+          .add(() => isAnimating = false)
+
+      }
+      function transferFrom9() {
+        return gsap.timeline({ paused: true })
+          // .add(() => isAnimating = true)  
+          // .add(() => {
+          //     window.removeEventListener('wheel', innerScreen9Handler);
+          // })
+          // .add(() => isAnimating = false)  
+          // .add(startCustomScroll)
+          // .add(startCustomScroll)
+      }
   },
   1: () => {
     gsap.timeline({ paused: true })
