@@ -248,14 +248,14 @@ gsap.timeline({
     },
     onEnterBack: () => {
       console.log('enter back 9');
-      params[9]()
+      params[9]('fromBack')
 
     }
   }
 })
 
 
-const screen9 = document.querySelector('.screen9');
+const screen9 = document.querySelector('.screen9 .screen7__inner');
 // 0.28
 gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
 // const tl9 = gsap.timeline().fromTo(screen9, { scale: 1 }, { scale: 3.4 });
@@ -380,9 +380,9 @@ const params = {
   8: () => {
     
   },
-  9: () => {
+  9: (fromBack) => {
     let isAnimating = false;
-    let innerState = 1;
+    let innerState = fromBack ? 2 : 1;
     // stopCustomScroll();
     gsap.timeline({paused: true})
       .add(stopCustomScroll)
@@ -439,14 +439,14 @@ const params = {
       function transferInnerUp() {
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)
-          .to('.screen9', { scale: 4 })
+          .to('.screen9 .screen7__inner', { scale: 4 })
          
           .add(() => isAnimating = false)
         }
       function transferInnerDown9(){
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)
-          .to('.screen9', { scale: 1 })
+          .to('.screen9 .screen7__inner', { scale: 1 })
           .add(() => isAnimating = false)
 
       }
