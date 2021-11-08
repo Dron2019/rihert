@@ -245,6 +245,11 @@ gsap.timeline({
     onEnter: () => {
       params[9]()
       console.log('enter 9');
+    },
+    onEnterBack: () => {
+      console.log('enter back 9');
+      params[9]()
+
     }
   }
 })
@@ -253,13 +258,13 @@ gsap.timeline({
 const screen9 = document.querySelector('.screen9');
 // 0.28
 gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
-const tl9 = gsap.timeline().fromTo(screen9, { scale: 1 }, { scale: 3.4 });
-screen9.addEventListener('click',function(evt){
-  screen9.transformed = !screen9.transformed;
-  screen9.transformed ?
-    tl9.play() :
-    tl9.reverse();
-});
+// const tl9 = gsap.timeline().fromTo(screen9, { scale: 1 }, { scale: 3.4 });
+// screen9.addEventListener('click',function(evt){
+//   screen9.transformed = !screen9.transformed;
+//   screen9.transformed ?
+//     tl9.play() :
+//     tl9.reverse();
+// });
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
@@ -425,6 +430,8 @@ const params = {
           .add(() => {
             scroller.scrollTo(document.querySelector('.screen8'));
             // startCustomScroll();
+            scroller.update();
+            params.currentScreen = 8;
           }) 
           .add(() => isAnimating = false)  
           .add(startCustomScroll)
@@ -445,12 +452,14 @@ const params = {
       }
       function transferFrom9() {
         return gsap.timeline({ paused: true })
-          // .add(() => isAnimating = true)  
-          // .add(() => {
-          //     window.removeEventListener('wheel', innerScreen9Handler);
-          // })
-          // .add(() => isAnimating = false)  
-          // .add(startCustomScroll)
+          .add(() => isAnimating = true)  
+          .add(() => {
+              window.removeEventListener('wheel', innerScreen9Handler);
+              scroller.scrollTo(document.querySelector('.screen10'));
+              scroller.update();
+          })
+          .add(() => isAnimating = false)  
+          .add(startCustomScroll)
           // .add(startCustomScroll)
       }
   },
