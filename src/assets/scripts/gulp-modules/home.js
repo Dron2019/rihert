@@ -505,6 +505,55 @@ const params = {
       }, '<+1.2').play();
   },
   11: () => {
+    let isAnimating = true;
+    let currentState = 1;
+    window.addEventListener('wheel',handlerScreen11);
+    function handlerScreen11({ deltaY }) {  
+      if (isAnimating === true) return;
+      if (deltaY > 0 && currentState === 1) {
+        // currentState = 2;
+        switchState1To2().play();
+      } else if (deltaY < 0 && currentState === 1) {
+        leaveBack().play();
+      } else if (deltaY < 0 && currentState === 2) {
+        switchState2To1().play();
+      }
+    }
+    function leaveBack() {
+      return gsap.timeline({ paused: true })
+        .add(() => {
+          isAnimating = true;
+          scroller.scrollTo(document.querySelector('.screen10'));
+        })
+        // .to('.screen11 img', { scale: 1.5 })
+        .add(() => {
+          currentState = 1;
+        })
+        .add(() => {
+          isAnimating = false;
+          params.currentScreen = 10;
+          window.removeEventListener('wheel',handlerScreen11);
+        })
+    }
+    function switchState1To2(){
+      return gsap.timeline({ paused: true })
+        .add(() => isAnimating = true)
+        .to('.screen11 img', { scale: 1.5 })
+        .add(() => {
+          currentState = 2;
+        })
+        .add(() => isAnimating = false)
+    }
+    function switchState2To1(){
+      return gsap.timeline({ paused: true })
+        .add(() => isAnimating = true)
+        .to('.screen11 img', { scale: 1 })
+        .add(() => {
+          currentState = 1;
+        })
+        .add(() => isAnimating = false)
+    }
+
     gsap.timeline({ paused: true })
       .add(() => {
         stopCustomScroll();
@@ -514,7 +563,8 @@ const params = {
       .add(() => {
         params.isAnimating = false;
         params.currentScreen = 11;
-        startCustomScroll();
+        isAnimating = false;
+        // startCustomScroll();
       }, '<+1.2').play();
   },
   1: () => {

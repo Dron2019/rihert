@@ -93,6 +93,14 @@ body {
   width: 100vw;
   overflow: hidden;
 }
+
+.screen11 {
+  img {
+
+    transform-origin: top right;
+  }
+  transform-origin: top right;
+}
 img {
   object-fit: cover;
 }
