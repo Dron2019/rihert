@@ -7,7 +7,7 @@ global.gsap = gsap;
 
 gsap.defaults({
   ease: 'power3.out',
-  duration: 2,
+  duration: 2.5,
 })
 gsap.registerPlugin(ScrollTrigger);
 
@@ -253,6 +253,38 @@ gsap.timeline({
     }
   }
 })
+gsap.timeline({
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen10',
+    scrub: true,
+    onEnter: () => {
+      // params[11]()
+      console.log('enter 11');
+    },
+    onEnterBack: () => {
+      // console.log('enter back 9');
+      params[10]('fromBack')
+
+    }
+  }
+})
+gsap.timeline({
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen11',
+    scrub: true,
+    onEnter: () => {
+      params[11]()
+      console.log('enter 11');
+    },
+    onEnterBack: () => {
+      console.log('enter back 9');
+      // params[9]('fromBack')
+
+    }
+  }
+})
 
 
 const screen9 = document.querySelector('.screen9 .screen7__inner');
@@ -278,7 +310,7 @@ stopCustomScroll();
  * изменения номер текущего экрана в самой функции, вне нее идет только ее вызов с параметром номера экрана
  */
 const params = {
-  excludeScreenOnScrollChange: [2,3,5, 6,7],
+  excludeScreenOnScrollChange: [2,3,5, 6,7, 10, 11],
   currentScreen: '1',
   isAnimating: false,
   2: () => {
@@ -381,7 +413,7 @@ const params = {
     
   },
   9: (fromBack) => {
-    let isAnimating = false;
+    let isAnimating = true;
     let innerState = fromBack ? 2 : 1;
     // stopCustomScroll();
     gsap.timeline({paused: true})
@@ -389,7 +421,11 @@ const params = {
       .add(() => {
         params.isAnimating = true;
         scroller.scrollTo(document.querySelector('.screen9'));
-      }).play();
+      })
+      .add(() => {
+        isAnimating = false;
+      }, '<+1.5')
+      .play();
       window.addEventListener('wheel', innerScreen9Handler);
       function innerScreen9Handler(evt) {
         if (isAnimating === true) return;
@@ -404,24 +440,13 @@ const params = {
         } else if (evt.deltaY < 0 && innerState === 1) {
           transferFrom9Up().play();
         }
-        // const tl = gsap.timeline({ paused: true })
-        // if (evt.deltaY > 0) {
-        //   tl.to('.screen9', { scale: 1 })
-        //   // .add(startCustomScroll)
-        // } else {
-        //   tl.to('.screen9', { scale: 3 })
-        //   tl.add(() => {
-        //     // window.removeEventListener('wheel', innerScreen9Handler);
-        //   })
-        // }
-        // tl.play();
       }
-      let it = setInterval(() => {
-        console.log(isAnimating);
-      }, 500);
+      // let it = setInterval(() => {
+      //   console.log(isAnimating);
+      // }, 500);
       function transferFrom9Up() {
         console.log('Leave 9 Up');
-        clearInterval(it);
+        // clearInterval(it);
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)  
           .add(() => {
@@ -460,8 +485,37 @@ const params = {
           })
           .add(() => isAnimating = false)  
           .add(startCustomScroll)
+          .add(() => {
+            params[10]()
+          })
           // .add(startCustomScroll)
       }
+  },
+  10: () => {
+    gsap.timeline({ paused: true })
+      .add(() => {
+        stopCustomScroll();
+        params.isAnimating = true;
+        scroller.scrollTo(document.querySelector('.screen10'));
+      })
+      .add(() => {
+        params.isAnimating = false;
+        params.currentScreen = 10;
+        startCustomScroll();
+      }, '<+1.2').play();
+  },
+  11: () => {
+    gsap.timeline({ paused: true })
+      .add(() => {
+        stopCustomScroll();
+        params.isAnimating = true;
+        scroller.scrollTo(document.querySelector('.screen11'));
+      })
+      .add(() => {
+        params.isAnimating = false;
+        params.currentScreen = 11;
+        startCustomScroll();
+      }, '<+1.2').play();
   },
   1: () => {
     gsap.timeline({ paused: true })
