@@ -1,3 +1,8 @@
+.screen {
+  min-height: 100vh;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .screen-mini-subtitle {
   font-family: $default-font2;
   font-size: 20px;line-height: 1.4em;
@@ -54,21 +59,66 @@
 }
 .screen2 {
   margin-top: 20px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
   &__title {
     width: 67%;
     margin-left: auto;
     margin-bottom: 40px;
+    margin-bottom: auto;
   }
   img {
     width: 100vw;
-    height: 42vw;
+    height: 72vh;
   }
   .screen-mini-subtitle {
     float: left;
     padding-right: 80px;
   }
 }
-
+.screen3 {
+  height: 100vh;
+  &__title {
+    font-size: 88.8216px;
+    line-height: 90%;
+    /* or 80px */
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 115px;
+    
+  }
+  &__title-empty-space {
+    padding-left: 10ch;
+  }
+  &__text {
+    font-size: 30px;
+    line-height: 90%;
+    /* or 27px */
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  &__first {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    &-left {
+      width: 29%;
+      height: 100%;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-right {
+      padding-top: 40px;
+      width: 71%;
+      height: 100%;
+    }
+  }
+}
 .screen4-horizontal-wrapper {
   // height: 300vh;
   position: relative;
@@ -95,11 +145,7 @@ body {
   overscroll-behavior: none;
 }
 
-.screen {
-  min-height: 100vh;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
+
 #sectionPin {
   height: 100vh;
   overflow: hidden;
@@ -114,12 +160,12 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px 0vw;
+  // padding: 50px 0vw;
   transform-origin: bottom right;
 
   & > * {
-    min-width: 80vw;
-    padding: 0 5vw;
+    min-width: 100vw;
+    // padding: 0 5vw;
   }
 }
 .screen5 {
