@@ -15,110 +15,19 @@
   /* or 58px */
   letter-spacing: -0.04em;
 }
-.screen1 {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transform-origin: bottom right;
-  background-color: #B87B74;
-  margin-bottom: 20px;
-  margin-top: 0 !important;
-  img {
-    width: 20vw;
-    height: auto;
-    object-fit: cover;
-    margin-left: auto;
-    margin-top: auto;
-  }
-  .h1 {
-    font-size: 12vw;
-    line-height: 90%;
-    text-transform: uppercase;
-    letter-spacing: -0.04em;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    span:last-child {
-      display: inline-block;
-      margin-left: auto;
-      letter-spacing: -0.04em;
-    }
-  }
-  &__decor {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 26vw;
-    z-index: 1;
 
-  }
-}
-.screen2 {
-  margin-top: 20px;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  &__title {
-    width: 67%;
-    margin-left: auto;
-    margin-bottom: 40px;
-    margin-bottom: auto;
-  }
-  img {
-    width: 100vw;
-    height: 72vh;
-  }
-  .screen-mini-subtitle {
-    float: left;
-    padding-right: 80px;
-  }
-}
-.screen3 {
-  height: 100vh;
-  &__title {
-    font-size: 88.8216px;
-    line-height: 90%;
-    /* or 80px */
-    font-weight: 500;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: #000000;
-    margin-bottom: 115px;
-    
-  }
-  &__title-empty-space {
-    padding-left: 10ch;
-  }
-  &__text {
-    font-size: 30px;
-    line-height: 90%;
-    /* or 27px */
-    letter-spacing: -0.04em;
-    color: #000000;
-  }
-  &__first {
-    display: flex;
-    align-items: flex-start;
-    height: 100%;
-    &-left {
-      width: 29%;
-      height: 100%;
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    &-right {
-      padding-top: 40px;
-      width: 71%;
-      height: 100%;
-    }
-  }
-}
+
+@import './home/screen1-home';
+@import './home/screen2-home';
+@import './home/screen3-home';
+@import './home/screen4-home';
+@import './home/screen5-home';
+@import './home/screen6-home';
+@import './home/screen7-home';
+@import './home/screen8-home';
+@import './home/screen9-home';
+@import './home/screen10-home';
+@import './home/screen11-home';
 .screen4-horizontal-wrapper {
   // height: 300vh;
   position: relative;
@@ -164,7 +73,7 @@ body {
   transform-origin: bottom right;
 
   & > * {
-    min-width: 100vw;
+    // min-width: 100vw;
     // padding: 0 5vw;
   }
 }

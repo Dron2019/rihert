@@ -1,0 +1,42 @@
+.screen1 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transform-origin: bottom right;
+    background-color: #B87B74;
+    margin-bottom: 20px;
+    margin-top: 0 !important;
+    img {
+      width: 20vw;
+      height: auto;
+      object-fit: cover;
+      margin-left: auto;
+      margin-top: auto;
+    }
+    .h1 {
+      font-size: 12vw;
+      line-height: 90%;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      span:last-child {
+        display: inline-block;
+        margin-left: auto;
+        letter-spacing: -0.04em;
+      }
+    }
+    &__decor {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 26vw;
+      z-index: 1;
+  
+    }
+  }
