@@ -31,6 +31,7 @@
         // width: 493px;
         width: 18.8%;
         height: 100%;
+        padding-bottom: 50px;
       }
       &-2 {
         // width: 890px;
@@ -42,22 +43,18 @@
         flex-wrap: wrap;
         justify-content: space-between;
         position: relative;
+        padding-bottom: 50px;
         .screen3__title {
           width: 70%;
           padding-top: 40px;
         }
-        img {
-          width: 20%;
-          height: auto;
-          height: 368px;
-          right: 0;
-          top: 6px;
-        }
+        
       }
       &-3 {
-        width: 1200px;
+        width: 45.6%;
         height: 100%;
-        background: rgba(0,0,0,0.25);
+        // background: rgba(0,0,0,0.25);
+        padding-bottom: 50px;
       }
     }
     &__first>svg {
@@ -66,6 +63,7 @@
       top: 0;
       width: 100%;
       height: 100%;
+      pointer-events: none;
     }
     &__first-right {
       position: relative;
@@ -83,11 +81,55 @@
   .screen3__text {
     width: 350px;
     margin-right: auto;
-
-    &:before {
-      content: '-------';
-      color: transparent;
-    }
   }
+  img {
+    width: 20%;
+    height: auto;
+    height: 368px;
+    right: 0;
+    top: 6px;
+  }
+}
+.screen3__first-3 {
+  --rihter-photo-width: 10%;
+  padding-left: 40px;
+  padding-top: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .screen3__text {
+    max-width: 670px;
+    margin-top: auto;
+    margin-left: calc(217px + var(--rihter-photo-width));
+    margin-bottom: 50px;
+  }
+  &-brick {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    width: 128px;
+    height: 74px;
+  }
+  &-rihter-photo {
+    position: absolute;
+    left: 8px;
+    bottom: 35px;
+    width: 10%;height: auto;
+  }
+}
 
+.screen3-subtitle {
+  font-size: 29.6072px;
+  line-height: 90%;
+  /* identical to box height, or 27px */
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: top;
+}
+.screen3__text {
+  &:before {
+    content: '-------';
+    color: transparent;
+  }
 }
