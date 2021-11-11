@@ -28,11 +28,13 @@
       position: relative;
       width: 2840px;
       &-1 {
-        width: 493px;
+        // width: 493px;
+        width: 18.8%;
         height: 100%;
       }
       &-2 {
-        width: 890px;
+        // width: 890px;
+        width: 35.3%;
         // padding-top: 40px;
         padding-left: 30px;
         height: 100%;
@@ -54,6 +56,8 @@
       }
       &-3 {
         width: 1200px;
+        height: 100%;
+        background: rgba(0,0,0,0.25);
       }
     }
     &__first>svg {
@@ -74,3 +78,16 @@
       height: 100%;
     }
   }
+
+.screen3__first-2 {
+  .screen3__text {
+    width: 350px;
+    margin-right: auto;
+
+    &:before {
+      content: '-------';
+      color: transparent;
+    }
+  }
+
+}

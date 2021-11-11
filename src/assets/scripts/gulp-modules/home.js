@@ -663,14 +663,31 @@ function fromPathToArray(path) {
 }
 
 
-const screen3FirstSvgPath = document.querySelector('[data-screen3-first-svg-line]');
+(function (){
+
+  const screen3FirstSvgPath = document.querySelector('[data-screen3-bottom-line]');
 const d = screen3FirstSvgPath.getAttribute('d');
 let result = fromPathToArray(d);
 result.forEach(el => {
   const svg = screen3FirstSvgPath.closest('svg');
-  const svgSideDiscrepancy = svg.getBoundingClientRect().height / svg.getBoundingClientRect().width
-  el.y = el.y * svgSideDiscrepancy * 0.90;
+  const svgSideDiscrepancy = svg.getBoundingClientRect().width / svg.getBoundingClientRect().height;
+  el.y = +el.y + (window.innerHeight - (+el.y));
+  el.y -= (el.y * 0.1);
 })
 result = result.map(el => Object.values(el).join(' '));
 
-screen3FirstSvgPath.setAttribute('d',result.join(' ') )
+screen3FirstSvgPath.setAttribute('d',result.join(' ') );
+})()
+
+
+const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
+screen3VertLines.forEach(el => {
+  console.log(el);
+  let result = fromPathToArray(el.getAttribute('d'));
+  console.log(result);
+  result[0].y = +result[0].y + (window.innerHeight - (+result[0].y));
+
+  result[0].y -= result[0].y * 0.1;
+  result = result.map(el => Object.values(el).join(' '));
+  el.setAttribute('d',result.join(' '));
+})
