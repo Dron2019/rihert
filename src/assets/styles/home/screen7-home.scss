@@ -1,0 +1,27 @@
+.screen7-title {
+    font-size: 108.978px;
+    font-size: 7.5vw;
+    line-height: 90%;
+    /* or 98px */
+
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.screen7 {
+    &__inner {
+        will-change: transform;
+        background-color: #8886C2;
+        padding-left: 17.7%;
+        padding-top: calc(125px + 75px);
+       min-height: calc(100vh + 75px);
+        clip-path: polygon(0 77px, 100% 0, 100% 100%, 0 calc(100% - 65px));
+    }
+    img {
+        width: 147px;
+        height: 136px;
+        display: inline;
+        margin-top: -54px;
+    }
+}

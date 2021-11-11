@@ -71,6 +71,7 @@ body {
   align-items: center;
   // padding: 50px 0vw;
   transform-origin: bottom right;
+  will-change: transform;
 
   & > * {
     // min-width: 100vw;

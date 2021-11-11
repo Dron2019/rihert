@@ -115,6 +115,19 @@
     left: 8px;
     bottom: 35px;
     width: 10%;height: auto;
+    div {
+      position: absolute;
+    right: 30px;
+    top: 17px;
+    transform-origin: top right;
+    transform: rotate(-103.17deg);
+    font-size: 15px;
+    line-height: 90%;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    }
   }
 }
 

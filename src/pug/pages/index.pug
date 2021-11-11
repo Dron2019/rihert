@@ -46,7 +46,10 @@ block content
           .screen3__title   <span class="screen3-subtitle">ХVII</span> Спочатку ТУТ БУЛА цеглянА ФАБРИКА МОНАСТИРЯ
           .screen3__text    ця фабрика довгий час залишалася невеликим підприємством – аж до XIX ст., поки вона не перейшла до нового власника. Ним став купець Михайло Ріхерт. Саме він розширив фабрику та перетворив її на повноцінний завод.
           +img('screen3/brick.png').screen3__first-3-brick
-          +img('screen3/rihter-foto.png').screen3__first-3-rihter-photo
+          .screen3__first-3-rihter-photo
+            +img('screen3/rihter-foto.png')
+            div МИХАЙЛО РІХТЕР
+
   .screen5 
     //- h1 Новий відкритий житловий комплекс і громадський простір, що будується на Подолі
     +img('screen5.jpg')
@@ -55,7 +58,8 @@ block content
       +img('screen6.jpg')
   .screen7.screen
     .screen7__inner
-      +img('screen7.jpg')
+      .screen7-title         АЛЕ зараз місце віднайде свою форму   <img src='./assets/images/screen7/img.png'>   та своїх людей, які будуть наповнювати його новою історією.
+      //- +img('screen7.jpg')
   .screen8.screen
     .screen7__inner
       +img('screen8.jpg')

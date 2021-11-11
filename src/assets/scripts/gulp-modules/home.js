@@ -310,7 +310,7 @@ stopCustomScroll();
  * изменения номер текущего экрана в самой функции, вне нее идет только ее вызов с параметром номера экрана
  */
 const params = {
-  excludeScreenOnScrollChange: [2,3,5, 6,7, 10, 11],
+  excludeScreenOnScrollChange: [1, 2,3,5, 6,7, 10, 11],
   currentScreen: '1',
   isAnimating: false,
   2: () => {
@@ -338,12 +338,13 @@ const params = {
         params.isAnimating = true;
       })
       .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
-      .fromTo('.pin-wrap', { scale: 0.5 }, { scale: 1 }, '<')
-      .add(startCustomScroll)
+      .fromTo('.pin-wrap', { scale: 0.415 }, { scale: 1 }, '<')
+      .fromTo('.screen2', { y: '174vh' }, { y: '0' }, '<')
       .add(() => {
         params.currentScreen = 4;
         params.isAnimating = false;
       })
+      .add(startCustomScroll, '<+0.5')
       /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
       .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
   },
@@ -357,7 +358,8 @@ const params = {
         params.isAnimating = true;
       })
       .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-      .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.5 }, '<')
+      .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.415 }, '<')
+      .fromTo('.screen2', { y:  '0'}, { y:'174vh'  }, '<')
       .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
       .add(() => {
         
@@ -590,9 +592,11 @@ function changeCurrentScreen(evt) {
   if (params.isAnimating || params.excludeScreenOnScrollChange.includes(params.currentScreen)) return;
   const direction = evt.deltaY / 100;
   const currentScreenNumber = +params.currentScreen;
-  params[currentScreenNumber + direction]();
-  params.currentScreen += direction;
-  console.log(currentScreenNumber);
+  if (typeof params[currentScreenNumber + direction] === 'function') {
+    params[currentScreenNumber + direction]();
+    params.currentScreen += direction;
+  }
+  console.log(params.currentScreen);
 }
 window.addEventListener('wheel',changeCurrentScreen);
 
@@ -601,7 +605,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.pin-wrap'));
+scroller.scrollTo(document.querySelector('.screen7'));
 
 
 
@@ -687,7 +691,7 @@ screen3VertLines.forEach(el => {
   console.log(result);
   result[0].y = +result[0].y + (window.innerHeight - (+result[0].y));
 
-  result[0].y -= result[0].y * 0.1;
+  result[0].y -= 50;
   result = result.map(el => Object.values(el).join(' '));
   el.setAttribute('d',result.join(' '));
 })
