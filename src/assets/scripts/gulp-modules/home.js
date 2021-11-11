@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 window.screen1To2Tl = gsap.timeline({ paused: true })
   .add(startCustomScroll)
-  .to('.screen1', { scale: 2.5 })
+  .to('.screen1', { scale: 2.05 })
   .add(() => {
     scroller.scrollTo(document.querySelector('.screen2'))
   })
@@ -317,7 +317,7 @@ const params = {
     gsap.timeline({ paused: true })
       .add(stopCustomScroll)
       .add(() => params.isAnimating = true)
-      .to('.screen1', { scale: 2.5 })
+      .to('.screen1', { scale: 2.05 })
       .add(() => {
         scroller.scrollTo(document.querySelector('.screen2'))
       })

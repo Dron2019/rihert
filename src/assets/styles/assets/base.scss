@@ -121,6 +121,12 @@ select:hover {
 	cursor: pointer;
 }
 
+button {
+	font-family: $default-font2;
+	border: none;
+	background-color: transparent;
+}
+
 .iti-flag {
 	//background-image: url("../img/flag/flags.png");
 }

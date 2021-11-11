@@ -10,11 +10,21 @@ block scripts
 block content
   //- .scroller-container
   .screen1.screen
-    h1 Новий квартал 1895 року
-    +img('screen1-bottom.jpg')
+    h1.h1 <span>Новий квартал</span> <span>1895</span> <span> року</span>
+    //- +img('screen1-bottom.jpg')
+    <svg class="screen1__decor" width="1442" height="377" viewBox="0 0 1442 377" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1463 164.51L-10 153.003" stroke="black"/>
+      <path d="M1463 63.002L-10 0.999348" stroke="black"/>
+      <path d="M1463 347.511L-10 366.003" stroke="black"/>
+      <path d="M711.457 31.5059L711.457 357.006" stroke="black"/>
+      <image width="450" height="187" xlink:href="./assets/images/screen1/img.png" x="990" y="158">
+      </svg>
+
   .screen2.screen
-    h1 Новий відкритий житловий комплекс і громадський простір, що будується на Подолі
-    +img('screen2.jpg')
+    .screen2__title 
+      .screen-mini-subtitle ІНФО
+      .h2 Новий відкритий житловий комплекс і громадський простір, що будується на Подолі
+    +img('screen2/img.jpg')
   #sectionPin 
     .pin-wrap
       <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>

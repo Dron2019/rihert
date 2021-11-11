@@ -1,5 +1,5 @@
-$default-font: "HelveticaNeueCyr", sans-serif;
-$default-font2: "HelveticaNeueCyr", sans-serif;
+$default-font: "Suisse Intl", sans-serif;
+$default-font2: "Corporate A", sans-serif;
 
 $mc2: #ff554c;
 $mc3: #e5df06;
@@ -18,15 +18,12 @@ $gold: #cfa46e;
 :root {
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
   --header-h: 144px;
-  --logo-w: 160px;
-  --sliceFigure: 239px;
-  --sliceFigure-big: 541px;
-
-  --color-red: #ff3300;
+  --logo-w: 79px;
+  --logo-h: calc(var(--logo-w) / 79.95 * 16.6);
   --color-white: #ffffff;
-  --color-gray: #656e75;
+  --color-violet: #8886C2;
   --color-black: #000000;
-
+  --page-side-fields: 16px;
   --h1-size: 96px;
   --h2-size: 48px;
   --h3-size: 36px;
@@ -34,7 +31,6 @@ $gold: #cfa46e;
   --h5-size: 18px;
   --h6-size: 14px;
 
-  --page-side-fields: 100px;
 
   --margin-l: 250px;
 }
@@ -58,10 +54,8 @@ $gold: #cfa46e;
     --h5-size: 16px;
     --h6-size: 12px;
 
-    --page-side-fields: 75px;
 
     --header-h: 100px;
-    --logo-w: 60px;
     --sliceFigure-big: 362px;
   }
 }
@@ -83,7 +77,6 @@ $gold: #cfa46e;
     --h5-size: 14px;
     --h6-size: 10px;
 
-    --page-side-fields: 50px;
 
     --sliceFigure-big: 44px;
   }
@@ -97,8 +90,6 @@ $gold: #cfa46e;
     --h5-size: 14px;
     --h5-size: 10px;
     --h6-size: 8px;
-
-    --page-side-fields: 20px;
 
     --header-h: 56px;
     --sliceFigure: 100px;

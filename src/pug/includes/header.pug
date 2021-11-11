@@ -1,0 +1,15 @@
+-
+    var links = [
+        ['ІНФО','#info'],
+        ['ІСТОРІЯ','#info'],
+        ['ФІЧІ','#info'],
+        ['ЛОКАЦІЯ','#info'],
+        ['ЗАБУДОВНИКА','#info'],
+        ['КОНТАКТИ','#info'],
+    ]
+
+nav.nav 
+    +svg('logo').nav__logo
+    each val in links 
+        a.nav__link(href=val[1]) #{val[0]}
+    button(type="button").nav__button Записатися на перегляд
