@@ -339,7 +339,7 @@ const params = {
       })
       .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
       .fromTo('.pin-wrap', { scale: 0.415 }, { scale: 1 }, '<')
-      .fromTo('.screen2', { y: '174vh' }, { y: '0' }, '<')
+      // .fromTo('.screen2', { y: '174vh' }, { y: '0' }, '<')
       .add(() => {
         params.currentScreen = 4;
         params.isAnimating = false;
@@ -359,7 +359,7 @@ const params = {
       })
       .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
       .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.415 }, '<')
-      .fromTo('.screen2', { y:  '0'}, { y:'174vh'  }, '<')
+      // .fromTo('.screen2', { y:  '0'}, { y:'174vh'  }, '<')
       .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
       .add(() => {
         
@@ -605,7 +605,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen5'));
+scroller.scrollTo(document.querySelector('.screen9'));
 
 
 

@@ -1,0 +1,63 @@
+.screen9 {
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    
+    .h1 {
+        font-size: 142.208px;
+        line-height: 80%;
+        /* or 114px */
+
+        letter-spacing: -0.07em;
+        text-transform: uppercase;
+    }
+    &-switcher {
+        clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 100%, 0 100%, 0 0, 89% 0);
+    }
+}
+.screen9-list {
+    font-size: 27.6104px;
+    line-height: 100%;
+    /* or 28px */
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    padding-left: 28px;
+    li {
+        cursor: pointer;
+    }
+    li:before {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: var(--color-black);
+        margin-right: 10px;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        transition: .2s ease-in-out;
+    }
+    li:hover:before {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+    }
+    .sub-item {
+
+        font-size: 8.83532px;
+        line-height: 10px;
+        /* identical to box height */
+        letter-spacing: -0.01em;
+        display: inline-block;vertical-align: top;
+        padding-top: 0.3em;
+    }
+}
+
+.screen9-sub-item {
+    font-family: $default-font2;
+    font-size: 18.9611px;
+    line-height: 121%;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    display: inline-block;vertical-align: top;
+        padding-top: 0.3em;
+    text-transform: uppercase;
+}
