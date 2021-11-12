@@ -1,6 +1,9 @@
 .temp-fixed-menu {
     @extend .nav;
     align-content: flex-start;
+    @include to(575px){
+        position: absolute;
+    }
     a {
         
         @extend .nav__link;
