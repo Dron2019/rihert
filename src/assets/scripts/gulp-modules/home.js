@@ -605,7 +605,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen7'));
+scroller.scrollTo(document.querySelector('.screen5'));
 
 
 
