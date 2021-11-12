@@ -24,10 +24,20 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-start;
-      span:last-child {
-        display: inline-block;
-        margin-left: auto;
-        letter-spacing: -0.04em;
+      @include from(769px){
+        span:last-child {
+          display: inline-block;
+          margin-left: auto;
+          letter-spacing: -0.04em;
+        }
+      }
+      @include to(575px){
+        font-size: 84.4558px;
+        line-height: 90%;
+      } 
+      @include to(375px){
+        font-size: 60px;
+
       }
     }
     &__decor {
