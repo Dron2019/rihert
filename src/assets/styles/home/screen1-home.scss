@@ -24,6 +24,7 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-start;
+      padding-right: 20px;
       @include from(769px){
         span:last-child {
           display: inline-block;

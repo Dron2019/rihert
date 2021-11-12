@@ -1,13 +1,35 @@
 .temp-fixed-menu {
     @extend .nav;
+    align-content: flex-start;
     a {
         
         @extend .nav__link;
         text-transform: uppercase;
         font-size: 18px;
+        transition: .15s ease-in-out;
+        position: relative;
+    }
+    a:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: attr(data-some);
+        text-transform: uppercase;
+        transition: .3s ease-in-out;
+        transform-origin: bottom;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        color: #6bc28a;
+    }
+    @include from(951px){
+        a:hover:before {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            transform-origin: top;
+        }
     }
     a~a {
-        margin-top: 10px;
+        margin-top: 5px;
     }
     svg {
         width: 183px;
@@ -56,6 +78,9 @@
     }
     .screen1__decor {
         height: 29.1vw;
+        @include from(2100px){
+            height: 25.1vw;
+        }
         @include to(768px){
             right: 0;
             width: 145vw;

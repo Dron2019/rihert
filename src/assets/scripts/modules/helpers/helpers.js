@@ -96,3 +96,60 @@ export const wrap = function (toWrap, wrapper, tag = 'div') {
   wrapper.appendChild(toWrap);
   return wrapper;
 };
+
+
+
+
+export function fromPathToArray(path) {
+  const PATH_COMMANDS = {
+    M: ["x", "y"],
+    m: ["dx", "dy"],
+    H: ["x"],
+    h: ["dx"],
+    V: ["y"],
+    v: ["dy"],
+    L: ["x", "y"],
+    l: ["dx", "dy"],
+    Z: [],
+    C: ["x1", "y1", "x2", "y2", "x", "y"],
+    c: ["dx1", "dy1", "dx2", "dy2", "dx", "dy"],
+    S: ["x2", "y2", "x", "y"],
+    s: ["dx2", "dy2", "dx", "dy"],
+    Q: ["x1", "y1", "x", "y"],
+    q: ["dx1", "dy1", "dx", "dy"],
+    T: ["x", "y"],
+    t: ["dx", "dy"],
+    A: ["rx", "ry", "rotation", "large-arc", "sweep", "x", "y"],
+    a: ["rx", "ry", "rotation", "large-arc", "sweep", "dx", "dy"]
+  };
+  const items = path.replace(/[\n\r]/g, '').
+                replace(/-/g, ' -').
+                replace(/(\d*\.)(\d+)(?=\.)/g, '$1$2 ').
+                trim().
+                split(/\s*,|\s+/);
+  const segments = [];
+  let currentCommand = '';
+  let currentElement = {};
+  while (items.length > 0){
+    let it = items.shift();
+    if (PATH_COMMANDS.hasOwnProperty(it)){
+      currentCommand = it;
+    }
+    else{
+      items.unshift(it);
+    }
+    currentElement = {type: currentCommand};
+    PATH_COMMANDS[currentCommand].forEach((prop) => {
+      it = items.shift();  // TODO sanity check
+      currentElement[prop] = it;
+    });
+    if (currentCommand === 'M'){
+      currentCommand = 'L';
+    }
+    else if (currentCommand === 'm'){
+      currentCommand = 'l';
+    }
+    segments.push(currentElement);
+  }
+  return segments
+}

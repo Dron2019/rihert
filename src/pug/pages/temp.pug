@@ -18,22 +18,23 @@ block meta
 block head
     link(rel='stylesheet', href="./assets/styles/main.min.css")
 block scripts
+  script(defer src="./assets/scripts/temp.bundle.js")
 block content
   .temp-fixed-menu
     //- .temp-fixed-menu-subtitle Скоро старт продажу
     +svg('logo')
-    a(href="tel:380443346460") 044 334 64 60
-    a(href="https://www.facebook.com/rihert.and.park" target='_blank') facebook
-    a(href="https://www.instagram.com/rihert.and.park/" target='_blank') instagram
+    a(href="tel:380443346460" data-some="044 334 64 60") 044 334 64 60
+    a(href="https://www.facebook.com/rihert.and.park" target='_blank' data-some="facebook") facebook
+    a(href="https://www.instagram.com/rihert.and.park/" target='_blank' data-some="instagram") instagram
   .screen1.screen.temp-fixed-screen
     h1.h1 <span>Новий</span> <span>квартал</span> <span>1895</span> <span> року</span>
     //- +img('screen1-bottom.jpg')
     <svg preserveAspectRatio="xMaxYMax meet" class="screen1__decor" width="1441" height="419" viewBox="0 0 1441 419" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <text x="17" y="58" class="temp-fixed-menu-subtitle">Скоро старт  </text>
-      <text x="17" y="101" class="temp-fixed-menu-subtitle"> продажу </text>
-      <path d="M1416.71 14.3127L1423.36 389.427L483.521 400.668L484.788 165.024L516.126 122.142V90.5014L576.588 8.48425L1416.71 14.3127Z" fill="url(#pattern0)"/>
-      <path d="M1440.79 389.386L1.49995 408" stroke="black" stroke-width="2.05332"/>
-      <path d="M1440.79 13.6259L1.00001 2" stroke="black" stroke-width="2.05332"/>
+      <text data-screen1-text x="17" y="58" class="temp-fixed-menu-subtitle">Скоро старт  </text>
+      <text data-screen1-text x="17" y="101" class="temp-fixed-menu-subtitle"> продажу </text>
+      <path d="M 1416.71 14.3127 L 1423.36 389.427 L 483.521 400.668 L 484.788 165.024 L 516.126 122.142 V 90.5014 L 576.588 8.48425 L 1416.71 14.3127 Z" fill="url(#pattern0)"/>
+      <path data-screen1-hor-lines d="M 1440.79 389.386 L -5 408" stroke="black" stroke-width="2.05332"/>
+      <path data-screen1-hor-lines d="M 1440.79 13.6259 L -5 2" stroke="black" stroke-width="2.05332"/>
       <defs>
       <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
       <use xlink:href="#image0_23_1458" transform="translate(0 -0.188974) scale(0.00025 0.000599108)"/>
