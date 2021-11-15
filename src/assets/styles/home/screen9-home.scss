@@ -2,17 +2,36 @@
     position: fixed;
     z-index: 30;
     left: 0;
-    
+    background: white;
     .h1 {
         font-size: 142.208px;
         line-height: 80%;
+        font-weight: 500;
         /* or 114px */
 
         letter-spacing: -0.07em;
         text-transform: uppercase;
     }
     &-switcher {
-        clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 100%, 0 100%, 0 0, 89% 0);
+        clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
+    }
+    &__inner {
+        display: grid; 
+        grid-template-columns: 29vw 48vw 23vw; 
+        grid-template-rows: 40vh 60vh; 
+        gap: 0px 0px; 
+        grid-template-areas: 
+        "map title title"
+        ". photo legend"; 
+        align-items: end;
+    }
+    .map { grid-area: map; }
+    .title { grid-area: title; }
+    .photo { grid-area: photo;
+        margin-bottom: auto;
+    }
+    .legend { grid-area: legend;
+        margin-bottom: auto;
     }
 }
 .screen9-list {
