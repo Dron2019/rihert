@@ -1,0 +1,31 @@
+.screen11 {
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .text {
+        width: 66%;
+        padding-top: 15px;
+        padding-top: 73px;
+        font-size: 25.9992px;
+        line-height: 100%;
+        /* or 26px */
+        letter-spacing: -0.04em;
+        text-transform: lowercase;
+    }
+    &__links {
+        width: 34%;
+        border: 1.09084px solid rgba(0,0,0,0.1);
+        padding: 15px;
+    }
+    &__links a {
+        font-size: 77.9977px;
+        line-height: 80%;
+        font-weight: 500;
+        /* or 62px */
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: var(--color-black);
+        text-decoration: none;
+    }
+}
