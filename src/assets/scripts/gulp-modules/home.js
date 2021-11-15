@@ -701,3 +701,11 @@ screen3VertLines.forEach(el => {
 
 
 screen9Handler();
+
+
+const scr10Tl = gsap.timeline({ paused: true })
+  .to('.screen10 .right-bg', { width: '100vw' });
+
+window.addEventListener('click', () => {
+  scr10Tl.progress(0).play();
+})
