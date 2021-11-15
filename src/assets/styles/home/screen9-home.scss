@@ -10,7 +10,7 @@
         line-height: 80%;
         font-weight: 500;
         /* or 114px */
-
+        padding-top: 0.2em;
         letter-spacing: -0.07em;
         text-transform: uppercase;
     }
@@ -25,10 +25,32 @@
         grid-template-areas: 
         "map title title"
         ". photo legend"; 
-        align-items: end;
+        align-items: start;
+        transform-origin: left top;
     }
-    .map { grid-area: map; }
-    .title { grid-area: title; }
+    .map { 
+        grid-area: map; 
+        position: relative;
+        &>div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 500;
+            font-size: 3.1px;
+            line-height: 100%;
+            width: 33px;
+            /* or 10px */
+            letter-spacing: -0.05em;
+        }
+        @for $i from 1 through 10 {
+            &>div:nth-child(3n + #{$i}) {
+              left: #{$i * 10}px;
+            }
+          }
+    }
+    .title { 
+        grid-area: title; 
+    }
     .photo { 
         grid-area: photo;
         margin-bottom: auto;

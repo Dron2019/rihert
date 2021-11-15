@@ -245,7 +245,7 @@ gsap.timeline({
     trigger: '.screen9',
     scrub: true,
     onEnter: () => {
-      // params[9]()
+      params[9]()
       console.log('enter 9');
     },
     onEnterBack: () => {
@@ -468,14 +468,16 @@ const params = {
       function transferInnerUp() {
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)
-          .to('.screen9 .screen7__inner', { scale: 4 })
+          .to('.screen9 .screen9__inner', { scale: () => {
+            return document.querySelector('.screen9').getBoundingClientRect().width / document.querySelector('.screen9 .map').getBoundingClientRect().width
+          } })
          
           .add(() => isAnimating = false)
         }
       function transferInnerDown9(){
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)
-          .to('.screen9 .screen7__inner', { scale: 1 })
+          .to('.screen9 .screen9__inner', { scale: 1 })
           .add(() => isAnimating = false)
 
       }
@@ -542,7 +544,7 @@ const params = {
     function switchState1To2(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11 img', { scale: 1.5 })
+        .to('.screen11', { scale: 1.3 })
         .add(() => {
           currentState = 2;
         })
@@ -551,7 +553,7 @@ const params = {
     function switchState2To1(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11 img', { scale: 1 })
+        .to('.screen11', { scale: 1 })
         .add(() => {
           currentState = 1;
         })
@@ -607,7 +609,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen10'));
+scroller.scrollTo(document.querySelector('.screen11'));
 
 
 
