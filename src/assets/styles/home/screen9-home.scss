@@ -5,6 +5,8 @@
     background: white;
     .h1 {
         font-size: 142.208px;
+        font-size: 9.85vw;
+        font-size: Min(9.85vw, 142.208px);
         line-height: 80%;
         font-weight: 500;
         /* or 114px */
@@ -36,6 +38,7 @@
 }
 .screen9-list {
     font-size: 27.6104px;
+    font-size: 1.9vw;
     line-height: 100%;
     /* or 28px */
     font-weight: 500;
@@ -80,3 +83,53 @@
         padding-top: 0.3em;
     text-transform: uppercase;
 }
+
+.screen9-switcher {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: rgba(255,255,255, 0.25);
+        opacity: 0;
+    }
+    &.opened:before {
+        opacity: 1;
+    }
+    &.closing:before {
+        opacity: 1;
+    }
+}
+.pending {
+    &:before {
+        opacity: 1;
+    }
+}
+.opened {
+    animation: switcherOpen .5s ease-in-out 1;
+}
+.closing {
+    animation: switcherClose .5s ease-in-out 1;
+}
+// @keyframes switcherOpen {
+//     from {
+//         clip-path: polygon(50% 0%, 100% 0, 100% 0, 74% 0, 29% 0, 0 0, 0 0, 0 0, 0 0);
+//     }
+//     to {
+//         clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
+//     }
+    
+// }
+// @keyframes switcherClose {
+//     from {
+//         clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
+//     }
+//     to {
+//         clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 64% 100%, 37% 100%, 35% 100%, 0 100%, 0 100%, 0 100%);
+//     }
+    
+// }

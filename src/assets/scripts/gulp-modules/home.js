@@ -3,6 +3,8 @@ import { param } from 'jquery';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 
+import screen9Handler from './home/screen9';
+
 global.gsap = gsap;
 
 gsap.defaults({
@@ -695,3 +697,7 @@ screen3VertLines.forEach(el => {
   result = result.map(el => Object.values(el).join(' '));
   el.setAttribute('d',result.join(' '));
 })
+
+
+
+screen9Handler();
