@@ -1,5 +1,5 @@
 .screen9 {
-    position: fixed;
+    // position: fixed;
     z-index: 30;
     left: 0;
     background: white;
@@ -29,8 +29,11 @@
     }
     .map { grid-area: map; }
     .title { grid-area: title; }
-    .photo { grid-area: photo;
+    .photo { 
+        grid-area: photo;
         margin-bottom: auto;
+        height: 53vh;
+            overflow: hidden;
     }
     .legend { grid-area: legend;
         margin-bottom: auto;
@@ -102,6 +105,10 @@
     }
     &.closing:before {
         opacity: 1;
+    }
+    img {
+        height: 100%;
+        object-fit: cover;        
     }
 }
 .pending {

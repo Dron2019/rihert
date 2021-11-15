@@ -127,7 +127,7 @@ gsap.timeline({
     trigger: '.screen1',
     scroller: pageContainer,
     onEnterBack: () => {
-      params[1]();
+      // params[1]();
     }
   }
 })
@@ -184,10 +184,10 @@ function startCustomScroll() {
             // console.log('ddd');
         },
         onLeave: () => {
-          params[5]()
+          // params[5]()
         },
         onEnterBack: () => {
-          params[4]()
+          // params[4]()
         }
     },
     x: -horizontalScrollLength,
@@ -225,7 +225,7 @@ gsap.timeline({
     // onUpdate: ({progress}) => console.log(progress)
     onEnterBack: () => {
       console.log('enterBackTo6');
-      params[6]();
+      // params[6]();
     }
   }
 })
@@ -236,7 +236,7 @@ gsap.timeline({
     scroller: pageContainer,
     trigger: '.screen7',
     scrub: true,
-    onEnter: () => params[7]()
+    // onEnter: () => /*params[7]()*/
   }
 })
 gsap.timeline({
@@ -245,7 +245,7 @@ gsap.timeline({
     trigger: '.screen9',
     scrub: true,
     onEnter: () => {
-      params[9]()
+      // params[9]()
       console.log('enter 9');
     },
     onEnterBack: () => {
@@ -607,7 +607,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen9'));
+scroller.scrollTo(document.querySelector('.screen10'));
 
 
 

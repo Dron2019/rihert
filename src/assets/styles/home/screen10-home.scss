@@ -1,0 +1,68 @@
+.screen10 {
+    // position: fixed;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-violet);
+    &__inner {
+        padding-top: 116px;
+        &-right {
+            --offset: 130px;
+            margin-left: calc(var(--offset) / -2);
+            margin-right: calc(var(--offset) / -2);
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .subtitle {
+            @include customOffsetWidth(100, var(--offset));
+        }
+        ul {
+            @include customOffsetWidth(50, var(--offset));
+        }
+        .text {
+            @include customOffsetWidth(50, var(--offset));
+        }
+        
+    }
+    .h1 {
+        font-weight: 500;
+        font-size: 57px;
+    }
+    .subtitle {
+        font-size: 57.5237px;
+        line-height: 100%;
+        /* or 58px */
+        letter-spacing: -0.04em;
+        text-transform: lowercase;
+    }
+    .text {
+        font-size: 25px;
+        line-height: 100%;
+        /* or 25px */
+        letter-spacing: -0.04em;
+        text-transform: lowercase;
+    }
+    .projects-list li a {
+        font-size: 30px;
+        line-height: 100%;
+        /* identical to box height, or 30px */
+        letter-spacing: -0.05em;
+        text-decoration-line: underline;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: var(--color-black);
+    }
+    .screen-viewer {
+        font-size: 20px;
+        line-height: 24px;
+        /* identical to box height */
+        letter-spacing: -0.01em;
+        color: #000000;
+        font-family: $default-font2;
+    }
+}
+
+.screen10-tab {
+    padding-left: 4ch;
+    display: inline-block;
+}
