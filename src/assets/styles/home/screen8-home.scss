@@ -25,3 +25,46 @@
     // transform-box: fill-box;
     will-change: transform;
 }
+
+.screen8__inner {
+    position: relative;
+    img {
+        position: absolute;
+        // left: 0;
+        // top: 0;
+        // width: 100px;
+        // height: 100px;
+        object-fit: cover;
+        z-index: 3;
+    }
+    [data-frame="1"] {
+        width: 427px;
+        height: 277px;
+        left: 40.9%;
+        top: 35%;
+    }
+    [data-frame="2"] {
+        width: 203px;
+        height: 275px;
+        left: 18.2%;
+        top: 66.5%;
+    }
+    [data-frame="3"] {
+       width: 184px;
+       height: 214px;
+       left: 79.9%;
+       top: 66.1%;
+    }
+    [data-frame="4"] {
+        height: 268.5px;
+        width: 205.5px;
+        left: 4.2%;
+        top: 6.1%;
+    }
+    [data-frame="5"] {
+        height: 155px;
+        width: 111.5px;
+        left: 33.2%;
+        top: 18.3%;
+    }
+}
