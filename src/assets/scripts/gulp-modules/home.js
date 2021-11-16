@@ -876,20 +876,36 @@ gsap.timeline({
     scrub: true,
     scroller: pageContainer,
     trigger: ".screen5",
-    start: "0 bottom",
+    start: "0 top",
     end: `${innerHeight} bottom`,
     onLeaveBack: () => {
-      gsap.timeline().to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
+      gsap.timeline()
+        .add(() => stopCustomScroll())
+        .to('.screen5__inner', { scale: 2.7, transformOrigin: '100% 0', duration: 3 })
+        .add(() => {
+          scroller.scrollTo(document.querySelector('#sectionPin'), { 
+            duration: 0,
+            disableLerp: true,
+            callback: () => {
+              startCustomScroll();
+            }
+          })
+        })
+        .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
         .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
     },
     onEnter: () => {
-      gsap.timeline().to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
+      gsap.timeline()
+        .add(() => stopCustomScroll())
+        .to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
         .to('#sectionPin', { autoAlpha: 0, duration: 0.1 }, '<')
+        .to('.screen5__inner', { scale: 1, duration: 3 }, '<')
+        .add(() => startCustomScroll())
 
     }
   }
 })
-.from('.screen5__inner', { scale: 2.7, y: '-100vh', transformOrigin: '100% 0' })
+// .from('.screen5__inner', { scale: 2.7, y: '-100vh', transformOrigin: '100% 0' })
 gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
