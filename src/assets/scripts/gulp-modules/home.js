@@ -747,35 +747,37 @@ gsap.timeline( {
 })
 .to('[data-frame="1"]', { 
   scale: 1.7, 
-  x: getDistanceToScreenCenter('[data-frame="1"]').x, 
+  x: getDistanceToScreenCenter('[data-frame="1"]', 1.7).x, 
   // y: getDistanceToScreenCenter('[data-frame="1"]').y 
 })
 .to(".screen8 text", { y: 50 }, '<')
 .to('[data-frame="2"]', { 
   scale: 1.7,
-  x: getDistanceToScreenCenter('[data-frame="2"]').x, 
+  x: () => {
+    return getDistanceToScreenCenter('[data-frame="2"]', 1.7).x;
+  }, 
   // y: getDistanceToScreenCenter('[data-frame="2"]').y
 })
 .to('[data-frame="1"]', { scale: 1, x: 0, y: 0 }, '<')
 .to(".screen8 text", { y: 100 }, '<')
-.to('[data-frame="2"]', { scale: 1, })
+.to('[data-frame="2"]', { scale: 1, x: 0, y: 0 })
 .to('[data-frame="3"]', 
 { 
       scale: 2, 
       x: getDistanceToScreenCenter('[data-frame="3"]').x, 
     },'<')
-.to('[data-frame="3"]', { scale: 1, })
+.to('[data-frame="3"]', { scale: 1, x: 0, y: 0})
 .to('[data-frame="4"]', { 
   scale: 2, 
-  x: getDistanceToScreenCenter('[data-frame="4"]').x,
+  x: getDistanceToScreenCenter('[data-frame="4"]', 2).x,
 })
 
 
-function getDistanceToScreenCenter(selector) {
+function getDistanceToScreenCenter(selector, scaleFactor = 0) {
   const el = document.querySelector(selector);
-  const currentOffsetOfSmoothScroll = pageContainer;
-  // console.log(getComputedStyle(document.querySelector('.scroller-container')).transform.replace(/matrix\(|\)/g,'').split(',').pop());
+  const currentOffsetOfSmoothScroll = scroller.scroll.instance.scroll.y;
   const { left, width, top } = el.getBoundingClientRect();
+  console.log(top, currentOffsetOfSmoothScroll);
   const centerScreen = window.innerWidth / 2;
   const centerScreenY = window.innerHeight / 2;
   const xDistance = left - centerScreen;
@@ -783,7 +785,7 @@ function getDistanceToScreenCenter(selector) {
   // gsap.to(el, { x: xDistance, y: yDistance });
   console.log(xDistance, yDistance,top, selector);
   return {
-    x: xDistance * -1 - width,
+    x: xDistance * -1  - (width / 2),
     y: yDistance,
   }
 }
