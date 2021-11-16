@@ -419,6 +419,9 @@ const params = {
   9: (fromBack) => {
     let isAnimating = true;
     let innerState = fromBack ? 2 : 1;
+    if (!fromBack) gsap.set('.screen9 .screen9__inner', {scale: () => {
+      return document.querySelector('.screen9').getBoundingClientRect().width / document.querySelector('.screen9 .map').getBoundingClientRect().width
+    }})
     // stopCustomScroll();
     gsap.timeline({paused: true})
       .add(stopCustomScroll)
@@ -471,7 +474,6 @@ const params = {
           .to('.screen9 .screen9__inner', { scale: () => {
             return document.querySelector('.screen9').getBoundingClientRect().width / document.querySelector('.screen9 .map').getBoundingClientRect().width
           } })
-         
           .add(() => isAnimating = false)
         }
       function transferInnerDown9(){

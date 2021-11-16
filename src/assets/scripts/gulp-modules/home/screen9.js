@@ -27,5 +27,13 @@ export default function screen9Handler() {
             .add(el => inProgress = false, '<+0.5')
             
         })
+    });
+
+
+    const $videos = document.querySelectorAll('.map-part');
+    $videos.forEach(part => {
+        const video = part.querySelector('video');
+        part.addEventListener('mouseenter', () => video.play())
+        part.addEventListener('mouseleave', () => video.load())
     })
 }

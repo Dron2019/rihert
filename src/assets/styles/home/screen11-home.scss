@@ -1,14 +1,15 @@
 .screen11 {
+    --padding-top: Min(20vh, 205px);
     &__inner {
         display: flex;
         flex-wrap: wrap;
     }
     .empty-block1 {
         width: 66%;
-        padding-top: 208px;
+        padding-top: var(--padding-top);
     }
     .empty-block2 {
-        padding-top: 208px;
+        padding-top: var(--padding-top);
         width: 34%;
         border-left: 1.09084px solid rgba(0,0,0,0.1);
 

@@ -32,21 +32,13 @@
         grid-area: map; 
         position: relative;
         &>div {
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-weight: 500;
-            font-size: 3.1px;
-            line-height: 100%;
-            width: 33px;
-            /* or 10px */
-            letter-spacing: -0.05em;
+            
         }
-        @for $i from 1 through 10 {
-            &>div:nth-child(3n + #{$i}) {
-              left: #{$i * 10}px;
-            }
-          }
+        // @for $i from 1 through 10 {
+        //     &>div:nth-child(3n + #{$i}) {
+        //       left: #{$i * 30}px;
+        //     }
+        //   }
     }
     .title { 
         grid-area: title; 
@@ -144,21 +136,67 @@
 .closing {
     animation: switcherClose .5s ease-in-out 1;
 }
-// @keyframes switcherOpen {
-//     from {
-//         clip-path: polygon(50% 0%, 100% 0, 100% 0, 74% 0, 29% 0, 0 0, 0 0, 0 0, 0 0);
-//     }
-//     to {
-//         clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
-//     }
+
+.map-part {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    font-weight: 500;
+    font-size: 3.1px;
+    line-height: 100%;
+    width: 33px;
+    overflow: hidden;
+    --image-h: 2.3vw;
     
-// }
-// @keyframes switcherClose {
-//     from {
-//         clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
-//     }
-//     to {
-//         clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 64% 100%, 37% 100%, 35% 100%, 0 100%, 0 100%, 0 100%);
-//     }
-    
-// }
+    /* or 10px */
+    cursor: pointer;
+    transform: translate(-50%,-50%);
+    letter-spacing: -0.05em;
+    img, video {
+        width: var(--image-h);
+        height: calc(var(--image-h) * 1.31);
+        object-fit: cover;
+    }
+    span {
+        text-transform: uppercase;
+        background-color: var(--color-white);
+        padding: 0.6px;
+        width: 100%;
+    }
+}
+
+.map-part[data-item="FIRST POINT COFFEE"] {
+    left: 52%;
+    top: 82%;
+}
+[data-item="ART CENTER 41"] {
+    left: 79%;
+    top: 48%;
+}
+[data-item="М. ТАРАСА ШЕВЧЕНКО –10 ХВ"] {
+    left: 92%;
+    top: 72%;
+}
+[data-item="ART CENTER CLOSER"] {
+    left: 16%;
+    top: 29%;
+}
+
+[data-item="РЕНОВАНА БУДІВЛЯ ЗАВОДУ"] {
+    left: 37%;
+    top: 62%;
+}
+[data-item="М. ПОШТОВА ПЛОЩА – 30 ХВ"] {
+    top: 88%;
+    left: 10%;
+}
+[data-item="М. Контрактова площа  – 20 ХВ"] {
+    left: 72%;
+    top: 86%;
+}
+[data-item="ОЗЕРО НА ТЕРИТОРІЇ"] {
+    left: 50%;
+    top: 24%;
+}
