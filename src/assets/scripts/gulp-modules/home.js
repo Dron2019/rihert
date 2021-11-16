@@ -38,7 +38,7 @@ window.screen1To2Tl = gsap.timeline({ paused: true })
   .add(startCustomScroll)
   .to('.screen1', { scale: 2.05 })
   .add(() => {
-    scroller.scrollTo(document.querySelector('.screen2'))
+    // scroller.scrollTo(document.querySelector('.screen2'))
   })
   // .add(startCustomScroll)
 
@@ -321,7 +321,7 @@ const params = {
       .add(() => params.isAnimating = true)
       .to('.screen1', { scale: 2.05 })
       .add(() => {
-        scroller.scrollTo(document.querySelector('.screen2'))
+        // scroller.scrollTo(document.querySelector('.screen2'))
       })
       .add(() => params.isAnimating = false)
       .add(startCustomScroll)
@@ -749,12 +749,14 @@ gsap.timeline( {
   ease: "none"
 })
 // frame 1
+// .set(gsap.utils.toArray(frames), { willChange: 'transform' })
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
   scale: 1.7, 
   // x: getDistanceToScreenCenter(frames[1], 1.7).x, 
   top: '26%'
 })
+.to('[data-frame="1-1"]', { autoAlpha: 1, duration: 0.35 }, '<')
 .to(frames[4], {
   xPercent: 75,
   yPercent: 75, 
@@ -768,6 +770,9 @@ gsap.timeline( {
   xPercent: -55,
   scale: 1 / 1.87
 },'<')
+
+
+
 // frame 2
 .to(frames[2], { 
   scale: 1 / 0.49,
@@ -777,6 +782,7 @@ gsap.timeline( {
   yPercent: -50,
   top: '50%'
 })
+.to('[data-frame="1-1"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[1], { 
   scale: 1 / 2.3, 
   xPercent: 62, 
@@ -795,14 +801,15 @@ gsap.timeline( {
 .to(frames[3], { 
   xPercent: -135,
 }, '<')
+.to('[data-frame="1-2"]', { autoAlpha: 1, duration: 0.35 } )
 // frame 3
-
 
 .to(frames[3], { 
   scale: 1 / 0.37,
   xPercent: -262,
   yPercent: -115
 })
+.to('[data-frame="1-2"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[2], { 
   scale: 1 / 1.38,
   x: 0,
@@ -814,9 +821,47 @@ gsap.timeline( {
 .to(frames[1], { 
   xPercent: 83,
 }, '<')
+.to(frames[5], { 
+  xPercent: -100,
+  yPercent: -70,
+  scale: 1/0.83,
+}, '<')
+.to(frames[4], { 
+  xPercent: 100,
+  yPercent: 100,
+  scale: 1/2.04,
+}, '<')
+.to('[data-frame="1-3"]', { autoAlpha: 1, duration: 0.35 } )
 
 
-
+// frame 4
+.to(frames[1], { 
+  yPercent: -100,
+  scale: 1/2.94,
+})
+.to('[data-frame="1-3"]', { autoAlpha: 0, duration: 0.15 }, '<' )
+.to(frames[3], { 
+  yPercent: -100,
+  xPercent: -40,
+  scale: 0.98,
+}, '<')
+.to(frames[4], { 
+  xPercent: 245,
+  yPercent: 75,
+  scale: 1 / 0.5,
+}, '<')
+.to(frames[2], { 
+  xPercent: 0,
+  yPercent: 0,
+  scale: 1 / 1.39,
+  transformOrigin: '0 0', 
+}, '<')
+.to(frames[5], { 
+  xPercent: -100,
+  yPercent: -70,
+  scale: 1 / 1.39,
+}, '<')
+.to('[data-frame="1-4"]', { autoAlpha: 1, duration: 0.15 })
 // .to(frames[2], { 
 //   scale: 1, 
 //   x: 0, 
@@ -831,11 +876,11 @@ gsap.timeline( {
 // })
 // .to(frames[3], { scale: 1, x: 0, top: getDistanceToScreenCenter(frames[3]).initialTop})
 // frame 4
-.to(frames[4], { 
-  scale: 2, 
-  x: getDistanceToScreenCenter(frames[4], 2).x,
-  top: '50%'
-})
+// .to(frames[4], { 
+//   scale: 2, 
+//   x: getDistanceToScreenCenter(frames[4], 2).x,
+//   top: '50%'
+// })
 
 
 function getDistanceToScreenCenter(selector, scaleFactor = 0) {
