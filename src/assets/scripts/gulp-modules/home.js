@@ -721,9 +721,21 @@ window.addEventListener('click', () => {
 //   pin: '.screen8__inner',
 //   end: 5000
 // })
+
+
+const frames = [
+  undefined, 
+  document.querySelector('[data-frame="1"]'),
+  document.querySelector('[data-frame="2"]'),
+  document.querySelector('[data-frame="3"]'),
+  document.querySelector('[data-frame="4"]'),
+  document.querySelector('[data-frame="5"]'),
+];
+
 gsap.timeline( {
   defaults: {
-    transformOrigin: '50% 50%'
+    transformOrigin: '50% 50%',
+    ease: 'none'
   },
   scrollTrigger: {
     scroller: pageContainer, //locomotive-scroll
@@ -733,48 +745,101 @@ gsap.timeline( {
     // anticipatePin: 1,
     start: "top top",
     end: `bottom ${window.innerHeight}px`,
-      onUpdate: () => {
-          // console.log('ddd');
-      },
-      onLeave: () => {
-        // params[5]()
-      },
-      onEnterBack: () => {
-        // params[4]()
-      }
   },
   ease: "none"
 })
-.to('[data-frame="1"]', { 
+// frame 1
+.set(frames[1], { zIndex: 10 })
+.to(frames[1], { 
   scale: 1.7, 
-  x: getDistanceToScreenCenter('[data-frame="1"]', 1.7).x, 
-  // y: getDistanceToScreenCenter('[data-frame="1"]').y 
+  // x: getDistanceToScreenCenter(frames[1], 1.7).x, 
+  top: '26%'
 })
-.to(".screen8 text", { y: 50 }, '<')
-.to('[data-frame="2"]', { 
-  scale: 1.7,
+.to(frames[4], {
+  xPercent: 75,
+  yPercent: 75, 
+  scale: 0.75
+},'<')
+.to(frames[2], {
+  xPercent: 32,
+  scale: 1 / 1.5
+},'<')
+.to(frames[3], {
+  xPercent: -55,
+  scale: 1 / 1.87
+},'<')
+// frame 2
+.to(frames[2], { 
+  scale: 1 / 0.49,
   x: () => {
-    return getDistanceToScreenCenter('[data-frame="2"]', 1.7).x;
+    return getDistanceToScreenCenter(frames[2], 1.7).x;
   }, 
-  // y: getDistanceToScreenCenter('[data-frame="2"]').y
+  yPercent: -50,
+  top: '50%'
 })
-.to('[data-frame="1"]', { scale: 1, x: 0, y: 0 }, '<')
-.to(".screen8 text", { y: 100 }, '<')
-.to('[data-frame="2"]', { scale: 1, x: 0, y: 0 })
-.to('[data-frame="3"]', 
-{ 
-      scale: 2, 
-      x: getDistanceToScreenCenter('[data-frame="3"]').x, 
-    },'<')
-.to('[data-frame="3"]', { scale: 1, x: 0, y: 0})
-.to('[data-frame="4"]', { 
+.to(frames[1], { 
+  scale: 1 / 2.3, 
+  xPercent: 62, 
+  yPercent: -50,
+  top: getDistanceToScreenCenter(frames[1]).initialTop 
+}, '<')
+.to(frames[5], { 
+  scale: 1 / 1.49, 
+  xPercent: -100, 
+}, '<')
+.to(frames[4], { 
+  scale: 1 / 1.4, 
+  yPercent: 108,
+  xPercent: 100, 
+}, '<')
+.to(frames[3], { 
+  xPercent: -135,
+}, '<')
+// frame 3
+
+
+.to(frames[3], { 
+  scale: 1 / 0.37,
+  xPercent: -262,
+  yPercent: -115
+})
+.to(frames[2], { 
+  scale: 1 / 1.38,
+  x: 0,
+  y: 0,
+  xPercent: 60,
+  yPercent: 0,
+  top: getDistanceToScreenCenter(frames[2]).initialTop
+}, '<')
+.to(frames[1], { 
+  xPercent: 83,
+}, '<')
+
+
+
+// .to(frames[2], { 
+//   scale: 1, 
+//   x: 0, 
+//   top: getDistanceToScreenCenter(frames[2]).initialTop 
+// })
+
+// .to(frames[3], 
+// { 
+//   scale: 2, 
+//   x: getDistanceToScreenCenter(frames[3]).x, 
+//   top: '50%'
+// })
+// .to(frames[3], { scale: 1, x: 0, top: getDistanceToScreenCenter(frames[3]).initialTop})
+// frame 4
+.to(frames[4], { 
   scale: 2, 
-  x: getDistanceToScreenCenter('[data-frame="4"]', 2).x,
+  x: getDistanceToScreenCenter(frames[4], 2).x,
+  top: '50%'
 })
 
 
 function getDistanceToScreenCenter(selector, scaleFactor = 0) {
-  const el = document.querySelector(selector);
+  const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
   const currentOffsetOfSmoothScroll = scroller.scroll.instance.scroll.y;
   const { left, width, top } = el.getBoundingClientRect();
   console.log(top, currentOffsetOfSmoothScroll);
@@ -787,8 +852,9 @@ function getDistanceToScreenCenter(selector, scaleFactor = 0) {
   return {
     x: xDistance * -1  - (width / 2),
     y: yDistance,
+    initialTop: getComputedStyle(el).top,
   }
 }
 
-// getDistanceToScreenCenter('[data-frame="1"]')
+// getDistanceToScreenCenter(frames[1])
 
