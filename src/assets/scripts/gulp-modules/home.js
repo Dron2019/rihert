@@ -732,17 +732,19 @@ const frames = [
   document.querySelector('[data-frame="5"]'),
 ];
 
-gsap.timeline( {
+window.ttl = gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
     ease: 'none'
   },
   scrollTrigger: {
     scroller: pageContainer, //locomotive-scroll
-    scrub: true,
+    scrub: 1,
     trigger: ".screen8",
     pin: ".screen8__inner",
-    // anticipatePin: 1,
+    onScrubComplete: (e) => {
+      console.log(e);
+    },
     start: "top top",
     end: `bottom ${window.innerHeight}px`,
   },
@@ -770,6 +772,7 @@ gsap.timeline( {
   xPercent: -55,
   scale: 1 / 1.87
 },'<')
+.addLabel('frame1')
 
 
 
@@ -802,6 +805,7 @@ gsap.timeline( {
   xPercent: -135,
 }, '<')
 .to('[data-frame="1-2"]', { autoAlpha: 1, duration: 0.35 } )
+.addLabel('frame2')
 // frame 3
 
 .to(frames[3], { 
@@ -832,7 +836,7 @@ gsap.timeline( {
   scale: 1/2.04,
 }, '<')
 .to('[data-frame="1-3"]', { autoAlpha: 1, duration: 0.35 } )
-
+.addLabel('frame3')
 
 // frame 4
 .to(frames[1], { 
@@ -862,25 +866,42 @@ gsap.timeline( {
   scale: 1 / 1.39,
 }, '<')
 .to('[data-frame="1-4"]', { autoAlpha: 1, duration: 0.15 })
-// .to(frames[2], { 
-//   scale: 1, 
-//   x: 0, 
-//   top: getDistanceToScreenCenter(frames[2]).initialTop 
-// })
+.addLabel('frame4');
 
-// .to(frames[3], 
-// { 
-//   scale: 2, 
-//   x: getDistanceToScreenCenter(frames[3]).x, 
-//   top: '50%'
-// })
-// .to(frames[3], { scale: 1, x: 0, top: getDistanceToScreenCenter(frames[3]).initialTop})
-// frame 4
-// .to(frames[4], { 
-//   scale: 2, 
-//   x: getDistanceToScreenCenter(frames[4], 2).x,
-//   top: '50%'
-// })
+
+
+gsap.timeline({
+  ease: 'none',
+  scrollTrigger:  {
+    scrub: true,
+    scroller: pageContainer,
+    trigger: ".screen7",
+    // start: "-200px bottom",
+    end: '500px bottom',
+    onLeave: () => {
+      scroller.update();
+      ScrollTrigger.refresh();
+    }
+  }
+})
+.from('.screen7__inner', { yPercent: 100, xPercent: 100, scale: 2, transformOrigin: '0 0' })
+// .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
+gsap.timeline({
+  ease: 'none',
+  scrollTrigger:  {
+    scrub: true,
+    scroller: pageContainer,
+    trigger: ".screen10",
+    start: "80% bottom",
+    end: '+=300px top',
+    onLeave: () => {
+
+    }
+  }
+})
+.to('.right-bg', { width: '100vw'}, '<')
+
+
 
 
 function getDistanceToScreenCenter(selector, scaleFactor = 0) {
