@@ -37,3 +37,5 @@ export default function screen9Handler() {
         part.addEventListener('mouseleave', () => video.load())
     })
 }
+
+

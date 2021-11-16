@@ -1,0 +1,27 @@
+.screen8 {
+    height: 500vh;
+    width: 100vw;
+    svg {
+        width: 100%;
+    }
+    &__inner {
+        will-change: transform;
+    }
+    text {
+        font-size: 35px;
+        line-height: 100%;
+        /* or 35px */
+
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+
+        fill: #000000;
+        font-weight: 500;
+            }
+}
+
+[fill*="url"] {
+    // transform-origin: center !important;
+    // transform-box: fill-box;
+    will-change: transform;
+}

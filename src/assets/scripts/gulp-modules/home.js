@@ -460,7 +460,7 @@ const params = {
               window.removeEventListener('wheel', innerScreen9Handler);
           })
           .add(() => {
-            scroller.scrollTo(document.querySelector('.screen8'));
+            // scroller.scrollTo(document.querySelector('.screen8'));
             // startCustomScroll();
             scroller.update();
             params.currentScreen = 8;
@@ -611,7 +611,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen11'));
+scroller.scrollTo(document.querySelector('.screen8'));
 
 
 
@@ -713,3 +713,41 @@ const scr10Tl = gsap.timeline({ paused: true })
 window.addEventListener('click', () => {
   scr10Tl.progress(0).play();
 })
+
+// ScrollTrigger.create({
+//   trigger: '.screen8__inner',
+//   scroller: pageContainer,
+//   scrub: true,
+//   pin: '.screen8__inner',
+//   end: 5000
+// })
+gsap.timeline( {
+  scrollTrigger: {
+    scroller: pageContainer, //locomotive-scroll
+    scrub: true,
+    trigger: ".screen8",
+    pin: ".screen8__inner",
+    // anticipatePin: 1,
+    start: "top top",
+    end: `bottom ${window.innerHeight}px`,
+      onUpdate: () => {
+          // console.log('ddd');
+      },
+      onLeave: () => {
+        // params[5]()
+      },
+      onEnterBack: () => {
+        // params[4]()
+      }
+  },
+  ease: "none"
+})
+.to("[fill='url(#pattern4)']", { scale: 1.7, transformOrigin:"50% 50%" })
+.to(".screen8 text", { y: 50 }, '<')
+.to("[fill='url(#pattern2)']", { scale: 1.7, transformOrigin:"50% 50%" })
+.to("[fill='url(#pattern4)']", { scale: 1, transformOrigin:"50% 50%" }, '<')
+.to(".screen8 text", { y: 100 }, '<')
+.to("[fill='url(#pattern2)']", { scale: 1, transformOrigin:"50% 50%" })
+.to("[fill='url(#pattern3)']", { scale: 2, transformOrigin:"50% 50%" },'<')
+.to("[fill='url(#pattern3)']", { scale: 1, transformOrigin:"50% 50%" })
+.to("[fill='url(#pattern0)']", { scale: 2, transformOrigin:"50% 50%" })
