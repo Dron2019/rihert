@@ -6,15 +6,19 @@
     --left-column-width: 33.55%;
     --medium-column-width: 28.55%;
     --right-column-width: 37.9%;
-    
+    @include to(575px){
+        --left-column-width: 0%;
+        --medium-column-width: 50%;
+        --right-column-width: 50%;
+    }
     &__inner {
         display: grid;
         position: relative;
         grid-template-columns: var(--left-column-width) var(--medium-column-width) var(--right-column-width);
         grid-template-rows: 350px 380px 350px 445px;
         background-color: #fff;
-        &>* {
-            // border: 1px solid rgba(255,0,0,0.1)
+        @include to(575px){
+            width: 200vw; 
         }
     }
 

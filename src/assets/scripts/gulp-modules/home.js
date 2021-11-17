@@ -949,7 +949,8 @@ startCustomScroll()
 
 
 // console.log(getComputedStyle().getPropertyValue("--screen5-height"));
-
+const screen5 = document.querySelector('.screen5');
+const screen5Inner = document.querySelector('.screen5__inner');
 document.querySelector('.screen5').style.setProperty('--screen5-height', innerWidth * 1.3 + document.querySelector('.screen5__inner').getBoundingClientRect().height + 'px')
 gsap.timeline( {
   defaults: {

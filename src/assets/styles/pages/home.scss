@@ -1,5 +1,9 @@
 .scroller-container {
   will-change: transform;
+  @include to(575px){
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 }
 .screen {
   min-height: 100vh;

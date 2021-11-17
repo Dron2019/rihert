@@ -3,10 +3,14 @@
     background-color: white;
     width: 100vw;
     height: calc(100vh + 148px);
+    font-weight: 500;
     --padding-top: 116px;
     --right-width: 71%;
     @include to(1320px){
         --right-width: 85%;
+    }
+    @include to(575px){
+        --right-width: 100%;
     }
     &__inner {
         display: flex;
@@ -15,12 +19,17 @@
         padding-left: 35px;
         // width: 71%;
         
-
+        @include to(575px){
+            padding-left: 0;   
+        }
         &-left {
             position: relative;
             z-index: 2;
             padding-top: var(--padding-top);
             width: calc(100% - var(--right-width));
+            @include to(575px){
+                display: none;
+            }
         }
         &-right {
             position: relative;
@@ -32,6 +41,12 @@
             padding-bottom: 148px;
             --left-p: 73px;
             --right-p: 45px;
+            @include to(575px){
+                --left-p: 10px;
+                --right-p: 10px;
+                padding-bottom: 95px;
+
+            }
         }
         .right-bg {
             position: absolute;
@@ -42,6 +57,9 @@
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 70px));
             background-color: var(--color-violet);
             z-index: 1;
+            @include to(575px){
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 35px), 0 calc(100% - 70px))
+            }
         }
         &-right-content {
             --offset: 130px;
@@ -55,12 +73,19 @@
         }
         .h1 {
             @include customOffsetWidth(75, var(--offset));
+            @include to(575px){
+                @include customOffsetWidth(100, var(--offset));
+            }
         }
         .button-wrap {
             @include customOffsetWidth(25, var(--offset));
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            @include to(575px){
+                display: none;
+
+            }
         }
         .subtitle {
             @include customOffsetWidth(100, var(--offset));
@@ -68,6 +93,10 @@
         }
         ul {
             @include customOffsetWidth(50, var(--offset));
+            @include to(575px){
+                @include customOffsetWidth(100, var(--offset));
+
+            }
             margin-top: 40px;
             li~li {
                 margin-top: 20px;
@@ -75,6 +104,10 @@
         }
         .text {
             @include customOffsetWidth(50, var(--offset));
+            @include to(575px){
+                @include customOffsetWidth(100, var(--offset));
+
+            }
             margin-top: 40px;
         }
         
@@ -82,6 +115,9 @@
     .h1 {
         font-weight: 500;
         font-size: 57px;
+        @include to(575px){
+            font-size: 30px;
+        }
     }
     .subtitle {
         font-size: 57.5237px;
@@ -89,6 +125,10 @@
         /* or 58px */
         letter-spacing: -0.04em;
         text-transform: lowercase;
+        @include to(575px){
+            font-size: 20px;
+            line-height: 100%;
+        }  
     }
     .text {
         font-size: 25px;
@@ -96,6 +136,11 @@
         /* or 25px */
         letter-spacing: -0.04em;
         text-transform: lowercase;
+        font-weight: normal;
+        @include to(575px){
+            font-size: 20px;
+            line-height: 100%;
+        }       
     }
     .projects-list li a {
         font-size: 30px;

@@ -27,18 +27,22 @@
         ". photo legend"; 
         align-items: start;
         transform-origin: left top;
+        @include to(575px){
+            display: flex;
+            flex-direction: column;
+        }
     }
     .map { 
         grid-area: map; 
         position: relative;
-        &>div {
-            
+        @include to(575px){
+            width: 100vw;
+            overflow-x: scroll;
+            img {
+                height: 100vh;
+                width: calc(100vw / 0.59);
+            }
         }
-        // @for $i from 1 through 10 {
-        //     &>div:nth-child(3n + #{$i}) {
-        //       left: #{$i * 30}px;
-        //     }
-        //   }
     }
     .title { 
         grid-area: title; 
