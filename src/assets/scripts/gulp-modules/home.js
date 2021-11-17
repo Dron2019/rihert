@@ -4,6 +4,7 @@ import { param } from 'jquery';
 import LocomotiveScroll from 'locomotive-scroll';
 
 import screen9Handler from './home/screen9';
+import headerHandle from './home/header';
 import { fromPathToArray } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
@@ -14,7 +15,7 @@ gsap.defaults({
 })
 gsap.registerPlugin(ScrollTrigger);
 
-
+headerHandle();
 
 
 window.screen1To2Tl = gsap.timeline({ paused: true })
