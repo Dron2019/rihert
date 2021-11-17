@@ -17,6 +17,9 @@
   line-height: 100%;
   /* or 58px */
   letter-spacing: -0.04em;
+  @include to(575px){
+    font-size: 30px;
+  } 
 }
 
 

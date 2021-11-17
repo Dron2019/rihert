@@ -4,6 +4,7 @@ import { param } from 'jquery';
 import LocomotiveScroll from 'locomotive-scroll';
 
 import screen9Handler from './home/screen9';
+import { fromPathToArray } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
 
@@ -71,7 +72,7 @@ function enableScroll() {
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
-disableScroll();
+// disableScroll();
 const pageContainer = document.querySelector(".scroller-container");
 
 /* SMOOTH SCROLL */
@@ -127,12 +128,6 @@ gsap.timeline({
         })
         .add(startCustomScroll, '+0.5')
     },
-    // onLeaveBack: () => {
-    //   gsap.timeline()
-    //     .add(stopCustomScroll)
-    //     .to('.screen1', { scale: 1 })
-    //     .add(startCustomScroll, '+0.5')
-    // }
   }
 })
 
@@ -145,8 +140,6 @@ function startCustomScroll() {
 }
 ////////////////////////////////////
 ////////////////////////////////////
-
-  let pinBoxes = document.querySelectorAll(".pin-wrap > *");
   let pinWrap = document.querySelector(".pin-wrap");
   let pinWrapWidth = pinWrap.offsetWidth;
   let horizontalScrollLength = pinWrapWidth - window.innerWidth;
@@ -274,13 +267,6 @@ gsap.timeline({
 const screen9 = document.querySelector('.screen9 .screen7__inner');
 // 0.28
 gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
-// const tl9 = gsap.timeline().fromTo(screen9, { scale: 1 }, { scale: 3.4 });
-// screen9.addEventListener('click',function(evt){
-//   screen9.transformed = !screen9.transformed;
-//   screen9.transformed ?
-//     tl9.play() :
-//     tl9.reverse();
-// });
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
@@ -303,7 +289,7 @@ const params = {
       .add(() => params.isAnimating = true)
       .to('.screen1', { scale: 2.05 })
       .add(() => {
-        // scroller.scrollTo(document.querySelector('.screen2'))
+        scroller.scrollTo(document.querySelector('.screen2'))
       })
       .add(() => params.isAnimating = false)
       .add(startCustomScroll)
@@ -599,60 +585,60 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 console.log(document.querySelector('[data-screen3-first-svg-line]'));
 
-const PATH_COMMANDS = {
-  M: ["x", "y"],
-  m: ["dx", "dy"],
-  H: ["x"],
-  h: ["dx"],
-  V: ["y"],
-  v: ["dy"],
-  L: ["x", "y"],
-  l: ["dx", "dy"],
-  Z: [],
-  C: ["x1", "y1", "x2", "y2", "x", "y"],
-  c: ["dx1", "dy1", "dx2", "dy2", "dx", "dy"],
-  S: ["x2", "y2", "x", "y"],
-  s: ["dx2", "dy2", "dx", "dy"],
-  Q: ["x1", "y1", "x", "y"],
-  q: ["dx1", "dy1", "dx", "dy"],
-  T: ["x", "y"],
-  t: ["dx", "dy"],
-  A: ["rx", "ry", "rotation", "large-arc", "sweep", "x", "y"],
-  a: ["rx", "ry", "rotation", "large-arc", "sweep", "dx", "dy"]
-};
+// const PATH_COMMANDS = {
+//   M: ["x", "y"],
+//   m: ["dx", "dy"],
+//   H: ["x"],
+//   h: ["dx"],
+//   V: ["y"],
+//   v: ["dy"],
+//   L: ["x", "y"],
+//   l: ["dx", "dy"],
+//   Z: [],
+//   C: ["x1", "y1", "x2", "y2", "x", "y"],
+//   c: ["dx1", "dy1", "dx2", "dy2", "dx", "dy"],
+//   S: ["x2", "y2", "x", "y"],
+//   s: ["dx2", "dy2", "dx", "dy"],
+//   Q: ["x1", "y1", "x", "y"],
+//   q: ["dx1", "dy1", "dx", "dy"],
+//   T: ["x", "y"],
+//   t: ["dx", "dy"],
+//   A: ["rx", "ry", "rotation", "large-arc", "sweep", "x", "y"],
+//   a: ["rx", "ry", "rotation", "large-arc", "sweep", "dx", "dy"]
+// };
 
-function fromPathToArray(path) {
-  const items = path.replace(/[\n\r]/g, '').
-                replace(/-/g, ' -').
-                replace(/(\d*\.)(\d+)(?=\.)/g, '$1$2 ').
-                trim().
-                split(/\s*,|\s+/);
-  const segments = [];
-  let currentCommand = '';
-  let currentElement = {};
-  while (items.length > 0){
-    let it = items.shift();
-    if (PATH_COMMANDS.hasOwnProperty(it)){
-      currentCommand = it;
-    }
-    else{
-      items.unshift(it);
-    }
-    currentElement = {type: currentCommand};
-    PATH_COMMANDS[currentCommand].forEach((prop) => {
-      it = items.shift();  // TODO sanity check
-      currentElement[prop] = it;
-    });
-    if (currentCommand === 'M'){
-      currentCommand = 'L';
-    }
-    else if (currentCommand === 'm'){
-      currentCommand = 'l';
-    }
-    segments.push(currentElement);
-  }
-  return segments
-}
+// function fromPathToArray(path) {
+//   const items = path.replace(/[\n\r]/g, '').
+//                 replace(/-/g, ' -').
+//                 replace(/(\d*\.)(\d+)(?=\.)/g, '$1$2 ').
+//                 trim().
+//                 split(/\s*,|\s+/);
+//   const segments = [];
+//   let currentCommand = '';
+//   let currentElement = {};
+//   while (items.length > 0){
+//     let it = items.shift();
+//     if (PATH_COMMANDS.hasOwnProperty(it)){
+//       currentCommand = it;
+//     }
+//     else{
+//       items.unshift(it);
+//     }
+//     currentElement = {type: currentCommand};
+//     PATH_COMMANDS[currentCommand].forEach((prop) => {
+//       it = items.shift();  // TODO sanity check
+//       currentElement[prop] = it;
+//     });
+//     if (currentCommand === 'M'){
+//       currentCommand = 'L';
+//     }
+//     else if (currentCommand === 'm'){
+//       currentCommand = 'l';
+//     }
+//     segments.push(currentElement);
+//   }
+//   return segments
+// }
 
 
 (function (){
@@ -863,10 +849,10 @@ gsap.timeline({
         // .to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
         // .to('#sectionPin', { autoAlpha: 0, duration: 0.1 }, '<')
         // .set('.screen2+.pin-spacer', { display: 'none' })
-        .from('.screen5__inner', { scale: 2.7, duration: 3, transformOrigin: '100% 0' }, '<+1.5')
-
+        // .from('.screen5__inner', { scale: 2.7, duration: 3, transformOrigin: '100% 0' }, '<+1.5')
         // .to('.screen3__first', { scale: 1 / 2, duration: 3, transformOrigin: '100% 0' }, '<')
-
+        .to('.screen5__inner', { scale: 1, transformOrigin: '100% 0', duration: 1.5 })
+        .add(() => scroller.scrollTo(document.querySelector('.screen5')),'<')
         .add(() => startCustomScroll())
     }
   }
@@ -882,7 +868,12 @@ gsap.timeline({
     onLeaveBack: () => {
       gsap.timeline()
         .add(() => stopCustomScroll())
-        .to('.screen5__inner', { scale: 2.7, transformOrigin: '100% 0', duration: 3 })
+        .set('.screen5__inner', { marginTop: '-100vh' })
+        .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
+        // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
+        .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
+        .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
+        .set('.screen5__inner', { marginTop: '' })
         
         // .add(() => {
         //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
@@ -893,8 +884,6 @@ gsap.timeline({
         //     }
         //   })
         // })
-        // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
-        // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
         .add(() => startCustomScroll())
     },
     onEnter: () => {

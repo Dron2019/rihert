@@ -23,8 +23,15 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       padding-right: 20px;
+      svg {
+        width: 100vw;
+        height: auto;
+        @include from(576px){
+            display: none;
+        }
+      }
       @include from(769px){
         span:last-child {
           display: inline-block;
@@ -35,12 +42,15 @@
       @include to(575px){
         font-size: 84.4558px;
         line-height: 90%;
+        flex-direction: column;
+        align-items: flex-start;        
       } 
       @include to(375px){
         font-size: 60px;
 
       }
     }
+   
     &__decor {
       position: absolute;
       bottom: 0;
@@ -48,6 +58,13 @@
       width: 100vw;
       height: 26vw;
       z-index: 1;
+      @include to(575px){
+        position: static; 
+        margin-top: 110px;
+        height: auto;
+        width: 150vw;
+        margin-left: -50vw;
+      }
   
     }
   }

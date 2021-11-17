@@ -100,7 +100,7 @@ export const wrap = function (toWrap, wrapper, tag = 'div') {
 
 
 
-export function fromPathToArray(path) {
+export const fromPathToArray = function(path) {
   const PATH_COMMANDS = {
     M: ["x", "y"],
     m: ["dx", "dy"],

@@ -3,6 +3,9 @@
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
+    @include to(575px){
+      min-height: auto;
+    }
     &__title {
       width: 67%;
       margin-left: auto;
@@ -12,13 +15,26 @@
       @include to(1320px){
         width: 75%;
       }
+      @include to(575px){
+        width: 100%;
+        padding-left: 10px;
+        margin-bottom: 20px;
+
+      }
     }
     img {
       width: 100vw;
       height: 72vh;
+      @include to(575px){
+        width: 100vw;
+        height: calc(100vw / 373 * 225);
+      }
     }
     .screen-mini-subtitle {
       float: left;
       padding-right: 80px;
+      @include to(575px){
+        padding-right: 25px; 
+      }
     }
   }
