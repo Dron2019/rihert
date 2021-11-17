@@ -919,7 +919,7 @@ startCustomScroll()
 // console.log(getComputedStyle().getPropertyValue("--screen5-height"));
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
-document.querySelector('.screen5').style.setProperty('--screen5-height', innerWidth * 1.3 + document.querySelector('.screen5__inner').getBoundingClientRect().height + 'px')
+screen5.style.setProperty('--screen5-height', innerWidth * 1.3 + screen5Inner.getBoundingClientRect().height + 'px')
 gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
@@ -928,18 +928,18 @@ gsap.timeline( {
   scrollTrigger: {
     scroller: pageContainer, //locomotive-scroll
     scrub: 1,
-    trigger: ".screen5",
-    pin: ".screen5__inner",
+    trigger: screen5,
+    pin: screen5Inner,
     end: `${innerWidth * 1.3} top`,
     markers: true,
     start: "top top",
   },
   ease: "none"
 })
-.to('.screen5__inner', { scale: 2.2, transformOrigin: '0 0', duration: 0 })
-.to('.screen5__inner', 
+.to(screen5Inner, { scale: 2.2, transformOrigin: '0 0', duration: 0 })
+.to(screen5Inner, 
 {
   x: innerWidth * -1.3 + 150,
   transformOrigin: '0 0',
 }, '<')
-.to('.screen5__inner', { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
+.to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })

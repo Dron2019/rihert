@@ -1,6 +1,7 @@
 .screen8 {
     height: 800vh;
     width: 100vw;
+    margin-top: 0;
     svg {
         width: 100vw;
         height: auto;
@@ -19,7 +20,17 @@
 
         fill: #000000;
         font-weight: 500;
-            }
+    }
+    .screen8-mobile-svg {
+        @include from(576px){
+            display: none;
+        }
+    }
+    .screen8-desktop-svg {
+        @include to(575px){
+            display: none;
+        }
+    }
 }
 
 [fill*="url"] {
@@ -50,6 +61,12 @@
         height: 19.3vw;
         left: 40.9%;
         top: 35%;
+        @include to(575px){
+            width: 38.7vw;
+            height: 24.9vw;
+            left: 55%;
+            top: 31.78%;
+        }
         
     }
     [data-frame="1-1"] {
@@ -87,6 +104,12 @@
         left: 18.2%;
         top: 66.5%;
         z-index: 3;
+        @include to(575px){
+            width: 18.8vw;
+            height: 25.3vw;
+            left: 24.6%;
+            top: 46.2%;
+        }
     }
     [data-frame="1-3"] {
         width: 112px;
@@ -108,6 +131,18 @@
         height: 14.9vw;
        left: 79.9%;
        top: 66.1%;
+       @include to(575px){
+            width: 36.8vw;
+            height: 66.9vw;
+            left: 55.4%;
+            top: 60.6%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top right;
+            }
+       }
        
     }
     [data-frame="1-4"] {
@@ -130,6 +165,12 @@
         width: 14vw;
         left: 4.2%;
         top: 6.1%;
+        @include to(575px){
+            height: 25vw;
+            width: 18.7vw;
+            left: 5.2%;
+            top: 18.2%;
+        }
     }
     [data-frame="5"] {
         height: 155px;
@@ -138,5 +179,20 @@
         width: 7.75vw;
         left: 33.2%;
         top: 18.3%;
+        @include to(575px){
+            height: 25.2vw;
+            width: 15.85vw;
+            left: 38.2%;
+            top: 3.6%;
+            overflow: hidden;
+            img {
+                width: 137%;
+                height: 100%;
+                margin-left: -34%;
+                object-fit: cover;
+                object-position: top right;
+                max-width: none;
+            }
+        }
     }
 }

@@ -57,6 +57,7 @@
             img {
                 height: 100vh;
                 width: calc(100vw / 0.59);
+                max-width: none;
             }
         }
     }
@@ -223,6 +224,11 @@
     cursor: pointer;
     transform: translate(-50%,-50%);
     letter-spacing: -0.05em;
+    @include to(575px){
+        --image-h: 67px;
+        width: 60px;
+        font-size: 8.1px;
+    }
     img, video {
         width: var(--image-h);
         height: calc(var(--image-h) * 1.31);
@@ -239,33 +245,72 @@
 .map-part[data-item="FIRST POINT COFFEE"] {
     left: 52%;
     top: 82%;
+    @include to(575px) {
+        left: calc(52vw * 1.59);
+        top: 82vh;
+
+    }
 }
 [data-item="ART CENTER 41"] {
     left: 79%;
     top: 48%;
+    @include to(575px) {
+        left: calc(79vw * 1.59);
+        top: 48vh;
+
+    }
 }
 [data-item="М. ТАРАСА ШЕВЧЕНКО –10 ХВ"] {
     left: 92%;
     top: 72%;
+    @include to(575px) {
+        left: calc(92vw * 1.59);
+        top: 72vh;
+
+    }
 }
 [data-item="ART CENTER CLOSER"] {
     left: 16%;
     top: 29%;
+    @include to(575px) {
+        left: calc(16vw * 1.59);
+        top: 29vh;
+
+    }
 }
 
 [data-item="РЕНОВАНА БУДІВЛЯ ЗАВОДУ"] {
     left: 37%;
     top: 62%;
+    @include to(575px) {
+        left: calc(37vw * 1.59);
+        top: 62vh;
+
+    }
 }
 [data-item="М. ПОШТОВА ПЛОЩА – 30 ХВ"] {
     top: 88%;
     left: 10%;
+    @include to(575px) {
+        top: calc(88vw * 1.59);
+        left: calc(10vw * 1.59);
+    }
 }
 [data-item="М. Контрактова площа  – 20 ХВ"] {
     left: 72%;
     top: 86%;
+    @include to(575px) {
+        left: calc(72vw * 1.59);
+        top: 86vh;
+
+    }
 }
 [data-item="ОЗЕРО НА ТЕРИТОРІЇ"] {
     left: 50%;
     top: 24%;
+    @include to(575px) {
+        left: calc(50vw * 1.59);
+        top: 24vh;
+
+    }
 }
