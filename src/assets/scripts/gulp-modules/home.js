@@ -13,24 +13,6 @@ gsap.defaults({
 })
 gsap.registerPlugin(ScrollTrigger);
 
-// const screen1 = document.querySelector('.screen1');
-// screen1.transformed = false;
-// window.addEventListener('click',function(evt){
-//     screen1.transformed = !screen1.transformed;
-//     // screen1.transformed === true ? enableScroll() : disableScroll();
-//     gsap.to('.screen1', {
-//         scale: () => screen1.transformed ? 5 : 1,
-//         ease: 'power4.out',
-//         duration: 2.5
-//     })
-// });
-// const changeScreen = new CustomEvent('screenChange', {  });
-
-
-
-// window.addEventListener('wheel',() => {
-//   console.log(params.screen);
-// })
 
 
 
@@ -611,7 +593,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-scroller.scrollTo(document.querySelector('.screen8'));
+
 
 
 
@@ -869,7 +851,26 @@ window.ttl = gsap.timeline( {
 .addLabel('frame4');
 
 
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.screen5',
+    scroller: pageContainer,
+    end: '100% bottom',
+    onEnter: () => {
+      console.log('leave Hor');
+      gsap.timeline()
+        // .add(() => stopCustomScroll())
+        // .to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
+        // .to('#sectionPin', { autoAlpha: 0, duration: 0.1 }, '<')
+        // .set('.screen2+.pin-spacer', { display: 'none' })
+        .from('.screen5__inner', { scale: 2.7, duration: 3, transformOrigin: '100% 0' }, '<+1.5')
 
+        // .to('.screen3__first', { scale: 1 / 2, duration: 3, transformOrigin: '100% 0' }, '<')
+
+        .add(() => startCustomScroll())
+    }
+  }
+})
 gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
@@ -882,25 +883,22 @@ gsap.timeline({
       gsap.timeline()
         .add(() => stopCustomScroll())
         .to('.screen5__inner', { scale: 2.7, transformOrigin: '100% 0', duration: 3 })
-        .add(() => {
-          scroller.scrollTo(document.querySelector('#sectionPin'), { 
-            duration: 0,
-            disableLerp: true,
-            callback: () => {
-              startCustomScroll();
-            }
-          })
-        })
-        .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
-        .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
+        
+        // .add(() => {
+        //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
+        //     duration: 0,
+        //     disableLerp: true,
+        //     callback: () => {
+        //       startCustomScroll();
+        //     }
+        //   })
+        // })
+        // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
+        // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
+        .add(() => startCustomScroll())
     },
     onEnter: () => {
-      gsap.timeline()
-        .add(() => stopCustomScroll())
-        .to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
-        .to('#sectionPin', { autoAlpha: 0, duration: 0.1 }, '<')
-        .to('.screen5__inner', { scale: 1, duration: 3 }, '<')
-        .add(() => startCustomScroll())
+      
 
     }
   }
@@ -959,4 +957,5 @@ function getDistanceToScreenCenter(selector, scaleFactor = 0) {
 }
 
 // getDistanceToScreenCenter(frames[1])
-
+startCustomScroll()
+// scroller.scrollTo(document.querySelector('.screen8'));

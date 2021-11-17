@@ -10,6 +10,7 @@
       color: #000000;
       margin-bottom: 115px;
       
+      
     }
     &__title-empty-space {
       padding-left: 5ch;
@@ -98,6 +99,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  .screen3__title {
+    padding-right: 35%;
+  }
   .screen3__text {
     max-width: 670px;
     margin-top: auto;
@@ -139,6 +143,7 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
   display: inline-block;
+  padding-right: 7ch;
   vertical-align: top;
 }
 .screen3__text {
