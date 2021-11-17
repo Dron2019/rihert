@@ -183,7 +183,7 @@ gsap.timeline({
     // onEnter: () => /*params[7]()*/
   }
 })
-gsap.timeline({
+!isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen9',
@@ -199,7 +199,7 @@ gsap.timeline({
     }
   }
 })
-gsap.timeline({
+!isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen10',
@@ -215,7 +215,7 @@ gsap.timeline({
     }
   }
 })
-gsap.timeline({
+!isMobile() &&  gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen11',
@@ -825,56 +825,61 @@ gsap.timeline({
         // .add(() => startCustomScroll())
     }
   }
-})
-gsap.timeline({
-  ease: 'none',
-  scrollTrigger:  {
-    scrub: true,
-    scroller: pageContainer,
-    trigger: ".screen5",
-    start: "0 top",
-    end: `${innerHeight} bottom`,
-    onLeaveBack: () => {
-      gsap.timeline()
-        // .add(() => stopCustomScroll())
-        // .set('.screen5__inner', { marginTop: '-100vh' })
-        // .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
-        // // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
-        // .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
-        // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
-        // .set('.screen5__inner', { marginTop: '' })
+});
+// gsap.timeline({
+//   ease: 'none',
+//   scrollTrigger:  {
+//     scrub: true,
+//     scroller: pageContainer,
+//     trigger: ".screen5",
+//     start: "0 top",
+//     end: `${innerHeight} bottom`,
+//     onLeaveBack: () => {
+//       gsap.timeline()
+//         // .add(() => stopCustomScroll())
+//         // .set('.screen5__inner', { marginTop: '-100vh' })
+//         // .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
+//         // // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
+//         // .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
+//         // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
+//         // .set('.screen5__inner', { marginTop: '' })
         
-        // .add(() => {
-        //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
-        //     duration: 0,
-        //     disableLerp: true,
-        //     callback: () => {
-        //       startCustomScroll();
-        //     }
-        //   })
-        // })
-        .add(() => startCustomScroll())
-    },
-    onEnter: () => {
-    }
-  }
-})
+//         // .add(() => {
+//         //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
+//         //     duration: 0,
+//         //     disableLerp: true,
+//         //     callback: () => {
+//         //       startCustomScroll();
+//         //     }
+//         //   })
+//         // })
+//         .add(() => startCustomScroll())
+//     },
+//     onEnter: () => {
+//     }
+//   }
+// })
 // .from('.screen5__inner', { scale: 2.7, y: '-100vh', transformOrigin: '100% 0' })
-gsap.timeline({
+!isMobile() && gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
     scrub: true,
     scroller: pageContainer,
     trigger: ".screen7",
     // start: "-200px bottom",
-    end: '500px bottom',
-    onLeave: () => {
-      scroller.update();
-      ScrollTrigger.refresh();
-    }
+    end: `${innerHeight} bottom`,
+    // onLeave: () => {
+    //   scroller.update();
+    //   ScrollTrigger.refresh();
+    // }
   }
 })
-.from('.screen7__inner', { yPercent: 100, xPercent: 100, scale: 2, transformOrigin: '0 0' })
+.to('.screen5__inner', { 
+  // x: innerHeight / -1,
+  scale: 0.5,
+  transformOrigin: '0 100%'
+})
+.from('.screen7__inner', { yPercent: -30, xPercent: 100, scale: 2, transformOrigin: '0 0' }, '<')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
 gsap.timeline({
   ease: 'none',
@@ -921,7 +926,10 @@ startCustomScroll()
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
 screen5.style.setProperty('--screen5-height', innerWidth * 1.3 + screen5Inner.getBoundingClientRect().height + 'px')
-gsap.timeline( {
+
+
+console.log(isMobile());
+const tl5scr = !isMobile() && gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
     ease: 'none'

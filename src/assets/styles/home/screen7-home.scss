@@ -19,8 +19,15 @@
         line-height: 90%;
     }   
 }
-
 .screen7 {
+    
+    // overflow: hidden;
+  }
+.screen7 {
+    width: 100vw;
+    @include to(575px) {
+        min-height: auto;
+    }
     &__inner {
         will-change: transform;
         background-color: #8886C2;
