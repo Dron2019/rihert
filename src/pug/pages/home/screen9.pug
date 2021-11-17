@@ -42,7 +42,15 @@
                     source(src="./static/videoplayback.mp4")
                 //- +img('screen9/map/Rectangle 13-7.jpg')
                 span М. Контрактова площа  – 20 ХВ
-        .h1.title <span class="screen9-sub-item">(НАВКОЛО)</span>Культурний центр міста
+        a(href="https://goo.gl/maps/ixLvBqZ9BNhRWoQG8" target='_blank').button.screen9-mob-button Показати на мапі
+        .h1.title <span class="screen9-sub-item">(НАВКОЛО)</span>
+            span Культурний центр
+            <div class="screen9-switcher-mob photo"><img src="./assets/images/screen9/switch.jpg" title="foto" alt="foto">
+                </div>
+            span міста
+            <svg width="375" height="6" viewBox="0 0 375 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.1" d="M379.785 1.04297L-3.70002 4.56509" stroke="black"/>
+                </svg>
         .screen9-switcher.photo
             +img('screen9/switch.jpg')
         ul.screen9-list.legend

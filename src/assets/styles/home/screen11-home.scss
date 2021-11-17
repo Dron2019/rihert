@@ -1,5 +1,9 @@
 .screen11 {
     --padding-top: Min(20vh, 205px);
+    @include to(575px){
+        margin-top: 50px;
+
+    }
     &__inner {
         display: flex;
         flex-wrap: wrap;
