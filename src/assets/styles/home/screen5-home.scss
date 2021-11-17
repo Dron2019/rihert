@@ -1,6 +1,8 @@
 .screen5 {
     will-change: transform;
-    min-height: 150vh;
+    --screen5-height: 500vh;
+    height: var(--screen5-height);
+    overflow: hidden;
     --left-column-width: 33.55%;
     --medium-column-width: 28.55%;
     --right-column-width: 37.9%;

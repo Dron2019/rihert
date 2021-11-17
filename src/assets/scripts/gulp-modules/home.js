@@ -140,47 +140,47 @@ function startCustomScroll() {
 }
 ////////////////////////////////////
 ////////////////////////////////////
-  let pinWrap = document.querySelector(".pin-wrap");
-  let pinWrapWidth = pinWrap.offsetWidth;
-  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+  // let pinWrap = document.querySelector(".pin-wrap");
+  // let pinWrapWidth = pinWrap.offsetWidth;
+  // let horizontalScrollLength = pinWrapWidth - window.innerWidth;
 
   // Pinning and horizontal scrolling
 
-  gsap.to(".pin-wrap", {
-    scrollTrigger: {
-      scroller: pageContainer, //locomotive-scroll
-      scrub: true,
-      trigger: "#sectionPin",
-      pin: true,
-      // anticipatePin: 1,
-      start: "top top",
-      end: pinWrapWidth,
-        onUpdate: () => {
-            // console.log('ddd');
-        },
-        onLeave: () => {
-          // params[5]()
-        },
-        onEnterBack: () => {
-          // params[4]()
-        }
-    },
-    x: -horizontalScrollLength,
-    ease: "none"
-  });
-  // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-  gsap.timeline({
-    scrollTrigger: {
-      scroller: pageContainer, //locomotive-scroll
-      scrub: true,
-      start: `top top`,
-      trigger: "#sectionPin",
-      end: pinWrapWidth,
-      onEnterBack: () => {
-        console.log('ENTERBACK');
-      }
-    }
-  })
+  // gsap.to(".pin-wrap", {
+  //   scrollTrigger: {
+  //     scroller: pageContainer, //locomotive-scroll
+  //     scrub: true,
+  //     trigger: "#sectionPin",
+  //     pin: true,
+  //     // anticipatePin: 1,
+  //     start: "top top",
+  //     end: pinWrapWidth,
+  //       onUpdate: () => {
+  //           // console.log('ddd');
+  //       },
+  //       onLeave: () => {
+  //         // params[5]()
+  //       },
+  //       onEnterBack: () => {
+  //         // params[4]()
+  //       }
+  //   },
+  //   x: -horizontalScrollLength,
+  //   ease: "none"
+  // });
+  // // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
+  // gsap.timeline({
+  //   scrollTrigger: {
+  //     scroller: pageContainer, //locomotive-scroll
+  //     scrub: true,
+  //     start: `top top`,
+  //     trigger: "#sectionPin",
+  //     end: pinWrapWidth,
+  //     onEnterBack: () => {
+  //       console.log('ENTERBACK');
+  //     }
+  //   }
+  // })
   // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
 
 gsap.timeline({
@@ -289,7 +289,7 @@ const params = {
       .add(() => params.isAnimating = true)
       .to('.screen1', { scale: 2.05 })
       .add(() => {
-        scroller.scrollTo(document.querySelector('.screen2'))
+        // scroller.scrollTo(document.querySelector('.screen2'))
       })
       .add(() => params.isAnimating = false)
       .add(startCustomScroll)
@@ -330,7 +330,7 @@ const params = {
       .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
       .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.415 }, '<')
       // .fromTo('.screen2', { y:  '0'}, { y:'174vh'  }, '<')
-      .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
+      // .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
       .add(() => {
         
         params.currentScreen = 5;
@@ -641,21 +641,21 @@ console.log(document.querySelector('[data-screen3-first-svg-line]'));
 // }
 
 
-(function (){
+// (function (){
 
-  const screen3FirstSvgPath = document.querySelector('[data-screen3-bottom-line]');
-const d = screen3FirstSvgPath.getAttribute('d');
-let result = fromPathToArray(d);
-result.forEach(el => {
-  const svg = screen3FirstSvgPath.closest('svg');
-  const svgSideDiscrepancy = svg.getBoundingClientRect().width / svg.getBoundingClientRect().height;
-  el.y = +el.y + (window.innerHeight - (+el.y));
-  el.y -= (el.y * 0.1);
-})
-result = result.map(el => Object.values(el).join(' '));
+//   const screen3FirstSvgPath = document.querySelector('[data-screen3-bottom-line]');
+// const d = screen3FirstSvgPath.getAttribute('d');
+// let result = fromPathToArray(d);
+// result.forEach(el => {
+//   const svg = screen3FirstSvgPath.closest('svg');
+//   const svgSideDiscrepancy = svg.getBoundingClientRect().width / svg.getBoundingClientRect().height;
+//   el.y = +el.y + (window.innerHeight - (+el.y));
+//   el.y -= (el.y * 0.1);
+// })
+// result = result.map(el => Object.values(el).join(' '));
 
-screen3FirstSvgPath.setAttribute('d',result.join(' ') );
-})()
+// screen3FirstSvgPath.setAttribute('d',result.join(' ') );
+// })()
 
 
 const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
@@ -851,9 +851,9 @@ gsap.timeline({
         // .set('.screen2+.pin-spacer', { display: 'none' })
         // .from('.screen5__inner', { scale: 2.7, duration: 3, transformOrigin: '100% 0' }, '<+1.5')
         // .to('.screen3__first', { scale: 1 / 2, duration: 3, transformOrigin: '100% 0' }, '<')
-        .to('.screen5__inner', { scale: 1, transformOrigin: '100% 0', duration: 1.5 })
-        .add(() => scroller.scrollTo(document.querySelector('.screen5')),'<')
-        .add(() => startCustomScroll())
+        // .to('.screen5__inner', { scale: 1, transformOrigin: '100% 0', duration: 1.5 })
+        // .add(() => scroller.scrollTo(document.querySelector('.screen5')),'<')
+        // .add(() => startCustomScroll())
     }
   }
 })
@@ -867,13 +867,13 @@ gsap.timeline({
     end: `${innerHeight} bottom`,
     onLeaveBack: () => {
       gsap.timeline()
-        .add(() => stopCustomScroll())
-        .set('.screen5__inner', { marginTop: '-100vh' })
-        .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
-        // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
-        .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
-        .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
-        .set('.screen5__inner', { marginTop: '' })
+        // .add(() => stopCustomScroll())
+        // .set('.screen5__inner', { marginTop: '-100vh' })
+        // .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
+        // // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
+        // .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
+        // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
+        // .set('.screen5__inner', { marginTop: '' })
         
         // .add(() => {
         //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
@@ -887,8 +887,6 @@ gsap.timeline({
         .add(() => startCustomScroll())
     },
     onEnter: () => {
-      
-
     }
   }
 })
@@ -948,3 +946,31 @@ function getDistanceToScreenCenter(selector, scaleFactor = 0) {
 // getDistanceToScreenCenter(frames[1])
 startCustomScroll()
 // scroller.scrollTo(document.querySelector('.screen8'));
+
+
+// console.log(getComputedStyle().getPropertyValue("--screen5-height"));
+
+document.querySelector('.screen5').style.setProperty('--screen5-height', innerWidth * 1.3 + document.querySelector('.screen5__inner').getBoundingClientRect().height + 'px')
+gsap.timeline( {
+  defaults: {
+    transformOrigin: '50% 50%',
+    ease: 'none'
+  },
+  scrollTrigger: {
+    scroller: pageContainer, //locomotive-scroll
+    scrub: 1,
+    trigger: ".screen5",
+    pin: ".screen5__inner",
+    end: `${innerWidth * 1.3} top`,
+    markers: true,
+    start: "top top",
+  },
+  ease: "none"
+})
+.to('.screen5__inner', { scale: 2.2, transformOrigin: '0 0', duration: 0 })
+.to('.screen5__inner', 
+{
+  x: innerWidth * -1.3 + 150,
+  transformOrigin: '0 0',
+}, '<')
+.to('.screen5__inner', { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
