@@ -635,7 +635,8 @@ window.ttl = gsap.timeline( {
   scale: tl8IsMobile ? 1 : 1 / 1.5
 },'<')
 .to(frames[3], {
-  xPercent: tl8IsMobile ? -20 : -55,
+  yPercent: tl8IsMobile ? 8 : 0,
+  xPercent: tl8IsMobile ? -32 : -55,
   scale: tl8IsMobile ? 0.36 : 1 / 1.87
 },'<')
 .addLabel('frame1')
@@ -644,7 +645,7 @@ window.ttl = gsap.timeline( {
 
 // frame 2
 .to(frames[2], { 
-  scale: 1 / 0.49,
+  scale: tl8IsMobile ? 2.85 :  1 / 0.49,
   x: () => {
     return getDistanceToScreenCenter(frames[2], 1.7).x;
   }, 
@@ -654,54 +655,59 @@ window.ttl = gsap.timeline( {
 .to('[data-frame="1-1"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[1], { 
   scale: 1 / 2.3, 
-  xPercent: 62, 
-  yPercent: -50,
+  xPercent: tl8IsMobile ? 0 : 62, 
+  yPercent: tl8IsMobile ? -140 : -50,
   top: getDistanceToScreenCenter(frames[1]).initialTop 
 }, '<')
 .to(frames[5], { 
-  scale: 1 / 1.49, 
-  xPercent: -100, 
+  scale: tl8IsMobile ? 0.64 : 1 / 1.49, 
+  yPercent: tl8IsMobile ? 40 : 0,
+  xPercent: tl8IsMobile ? -108 : -100, 
 }, '<')
 .to(frames[4], { 
   scale: 1 / 1.4, 
-  yPercent: 108,
-  xPercent: 100, 
+  xPercent: tl8IsMobile ? -15 : 100, 
+  yPercent: tl8IsMobile ?  70 : 108,
 }, '<')
 .to(frames[3], { 
-  xPercent: -135,
+  xPercent: tl8IsMobile ? 30 : -135,
 }, '<')
 .to('[data-frame="1-2"]', { autoAlpha: 1, duration: 0.35 } )
 .addLabel('frame2')
 // frame 3
 
 .to(frames[3], { 
-  scale: 1 / 0.37,
-  xPercent: -262,
-  yPercent: -115
+  scale: tl8IsMobile ? 1.4 : 1 / 0.37,
+  xPercent: tl8IsMobile ? -15 : -262,
+  yPercent: tl8IsMobile ? -107 : -115
 })
+
 .to('[data-frame="1-2"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[2], { 
-  scale: 1 / 1.38,
+  scale: tl8IsMobile ? 1 : 1 / 1.38,
   x: 0,
   y: 0,
-  xPercent: 60,
-  yPercent: 0,
+  xPercent: tl8IsMobile ? -100 : 60,
+  yPercent: tl8IsMobile ? 102 : 0,
   top: getDistanceToScreenCenter(frames[2]).initialTop
 }, '<')
 .to(frames[1], { 
-  xPercent: 83,
-}, '<')
-.to(frames[5], { 
-  xPercent: -100,
-  yPercent: -70,
-  scale: 1/0.83,
+  xPercent: tl8IsMobile ? -16 : 83,
+  yPercent: tl8IsMobile ? -232 : -140,
 }, '<')
 .to(frames[4], { 
-  xPercent: 100,
-  yPercent: 100,
-  scale: 1/2.04,
+  xPercent: tl8IsMobile ? 81 :  100,
+  yPercent: tl8IsMobile ? 88 :  100,
+  scale: tl8IsMobile ? 0.79 : 1/2.04,
+}, '<')
+
+.to(frames[5], { 
+  xPercent: tl8IsMobile ? -180 : -100,
+  yPercent: tl8IsMobile ? 40  : -70,
+  scale: tl8IsMobile ? 0.8 : 1/0.83,
 }, '<')
 .to('[data-frame="1-3"]', { autoAlpha: 1, duration: 0.35 } )
+//translate(-180%, 40%) scale(0.8)
 .addLabel('frame3')
 
 // frame 4
@@ -718,7 +724,7 @@ window.ttl = gsap.timeline( {
 .to(frames[4], { 
   xPercent: 245,
   yPercent: 75,
-  scale: 1 / 0.5,
+  scale: tl8IsMobile ? 3.09 : 1 / 0.5,
 }, '<')
 .to(frames[2], { 
   xPercent: 0,
