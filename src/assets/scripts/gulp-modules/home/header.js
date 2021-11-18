@@ -1,4 +1,5 @@
 import gsap from "gsap/all";
+import { isMobile } from "../../modules/helpers/helpers";
 
 export default function headerHandle() {
     const button = document.querySelector('[data-mob-toggle]');
@@ -12,4 +13,5 @@ export default function headerHandle() {
             }
         })
     })
+    if (isMobile()) button.dispatchEvent(new Event('click')); 
 }

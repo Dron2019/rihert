@@ -153,3 +153,5 @@ export const fromPathToArray = function(path) {
   }
   return segments
 }
+
+export const isMobile = () => window.matchMedia('(max-width: 575px)').matches;

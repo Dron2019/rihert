@@ -13,8 +13,9 @@ nav.nav
     each val in links 
         a.nav__link(href=val[1]) #{val[0]}
     button(type="button").nav__button Записатися на перегляд
-    .nav__menu-toggle-mob(data-mob-toggle) ...
-    .nav__lang ua
-        .nav__lang-else 
-            a(href="#ru") ru
-            a(href="#en") en
+    .nav__group.df
+        .nav__menu-toggle-mob(data-mob-toggle) ...
+        .nav__lang ua
+            .nav__lang-else 
+                a(href="#ru") ru
+                a(href="#en") en
