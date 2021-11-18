@@ -50,6 +50,7 @@
             font-size: 13px;
             line-height: 100%;
             max-width: 200px;
+            border: none;
         }
         
     }
@@ -77,6 +78,9 @@
             font-size: 62.6232px;
             line-height: 80%;
         }   
+        @include to(374px){
+            font-size: 50.6232px;
+        }
         
     }
     &__links a:before {

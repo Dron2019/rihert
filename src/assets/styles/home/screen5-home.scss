@@ -10,6 +10,9 @@
         --left-column-width: 0%;
         --medium-column-width: 50%;
         --right-column-width: 50%;
+        height: auto;
+
+        overflow: scroll;
     }
     &__inner {
         display: grid;
@@ -19,6 +22,7 @@
         background-color: #fff;
         @include to(575px){
             width: 200vw; 
+            display: none;
         }
     }
 
@@ -73,6 +77,61 @@
     }
 }
 
+.screen5__inner-mobile {
+    width: 217vw;
+    height: 434.4vw;
+    display: grid;
+    grid-template-columns: 46.7% 53.2%;
+    grid-template-rows: 18.4% 18.4% 20% 17.4% 25.7%;
+    position: relative;
+    &>svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    &-grid {
+        position: relative;
+        padding-left: 6.1%;
+        display: flex;
+        flex-direction: column;
+        .screen5-title {
+            padding-top: 8px;
+        }
+        .screen5-rihter-photo {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+        }
+        &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-fit: contain;
+            object-position: top left;
+        }
+    }
+    .grid-1-1 {
+        padding-bottom: 10px;
+        .screen5-text {
+            margin-top: auto;
+            max-width: 250px;
+        }
+    }
+    .grid-1-5 {
+        padding-left: 6.1%;
+    }
+    .grid-2-1 {
+        align-content: flex-end;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-bottom: 10px;
+        max-width: 250px;
+    }
+}
 
 .screen5-grid {
     &-2-1 {

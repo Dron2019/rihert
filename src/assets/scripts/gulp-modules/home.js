@@ -106,7 +106,7 @@ function startCustomScroll() {
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 
 
-console.log(isMobile);
+// console.log(isMobile);
 ////////////////////////////////////
 ////////////////////////////////////
   // let pinWrap = document.querySelector(".pin-wrap");
@@ -552,7 +552,7 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-console.log(document.querySelector('[data-screen3-first-svg-line]'));
+// console.log(document.querySelector('[data-screen3-first-svg-line]'));
 
 // const PATH_COMMANDS = {
 //   M: ["x", "y"],
@@ -903,13 +903,11 @@ function getDistanceToScreenCenter(selector, scaleFactor = 0) {
   const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
   const currentOffsetOfSmoothScroll = scroller.scroll.instance.scroll.y;
   const { left, width, top } = el.getBoundingClientRect();
-  console.log(top, currentOffsetOfSmoothScroll);
   const centerScreen = window.innerWidth / 2;
   const centerScreenY = window.innerHeight / 2;
   const xDistance = left - centerScreen;
   const yDistance = top - centerScreenY;
   // gsap.to(el, { x: xDistance, y: yDistance });
-  console.log(xDistance, yDistance,top, selector);
   return {
     x: xDistance * -1  - (width / 2),
     y: yDistance,
@@ -928,7 +926,7 @@ const screen5Inner = document.querySelector('.screen5__inner');
 screen5.style.setProperty('--screen5-height', innerWidth * 1.3 + screen5Inner.getBoundingClientRect().height + 'px')
 
 
-console.log(isMobile());
+// console.log(isMobile());
 const tl5scr = !isMobile() && gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
