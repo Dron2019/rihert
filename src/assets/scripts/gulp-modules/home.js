@@ -546,87 +546,6 @@ window.addEventListener('wheel',changeCurrentScreen);
 
 
 
-
-
-
-
-
-
-// console.log(document.querySelector('[data-screen3-first-svg-line]'));
-
-// const PATH_COMMANDS = {
-//   M: ["x", "y"],
-//   m: ["dx", "dy"],
-//   H: ["x"],
-//   h: ["dx"],
-//   V: ["y"],
-//   v: ["dy"],
-//   L: ["x", "y"],
-//   l: ["dx", "dy"],
-//   Z: [],
-//   C: ["x1", "y1", "x2", "y2", "x", "y"],
-//   c: ["dx1", "dy1", "dx2", "dy2", "dx", "dy"],
-//   S: ["x2", "y2", "x", "y"],
-//   s: ["dx2", "dy2", "dx", "dy"],
-//   Q: ["x1", "y1", "x", "y"],
-//   q: ["dx1", "dy1", "dx", "dy"],
-//   T: ["x", "y"],
-//   t: ["dx", "dy"],
-//   A: ["rx", "ry", "rotation", "large-arc", "sweep", "x", "y"],
-//   a: ["rx", "ry", "rotation", "large-arc", "sweep", "dx", "dy"]
-// };
-
-// function fromPathToArray(path) {
-//   const items = path.replace(/[\n\r]/g, '').
-//                 replace(/-/g, ' -').
-//                 replace(/(\d*\.)(\d+)(?=\.)/g, '$1$2 ').
-//                 trim().
-//                 split(/\s*,|\s+/);
-//   const segments = [];
-//   let currentCommand = '';
-//   let currentElement = {};
-//   while (items.length > 0){
-//     let it = items.shift();
-//     if (PATH_COMMANDS.hasOwnProperty(it)){
-//       currentCommand = it;
-//     }
-//     else{
-//       items.unshift(it);
-//     }
-//     currentElement = {type: currentCommand};
-//     PATH_COMMANDS[currentCommand].forEach((prop) => {
-//       it = items.shift();  // TODO sanity check
-//       currentElement[prop] = it;
-//     });
-//     if (currentCommand === 'M'){
-//       currentCommand = 'L';
-//     }
-//     else if (currentCommand === 'm'){
-//       currentCommand = 'l';
-//     }
-//     segments.push(currentElement);
-//   }
-//   return segments
-// }
-
-
-// (function (){
-
-//   const screen3FirstSvgPath = document.querySelector('[data-screen3-bottom-line]');
-// const d = screen3FirstSvgPath.getAttribute('d');
-// let result = fromPathToArray(d);
-// result.forEach(el => {
-//   const svg = screen3FirstSvgPath.closest('svg');
-//   const svgSideDiscrepancy = svg.getBoundingClientRect().width / svg.getBoundingClientRect().height;
-//   el.y = +el.y + (window.innerHeight - (+el.y));
-//   el.y -= (el.y * 0.1);
-// })
-// result = result.map(el => Object.values(el).join(' '));
-
-// screen3FirstSvgPath.setAttribute('d',result.join(' ') );
-// })()
-
-
 const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
 screen3VertLines.forEach(el => {
   console.log(el);
@@ -669,6 +588,7 @@ const frames = [
   document.querySelector('[data-frame="5"]'),
 ];
 
+const tl8IsMobile = isMobile();
 window.ttl = gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
@@ -691,23 +611,32 @@ window.ttl = gsap.timeline( {
 // .set(gsap.utils.toArray(frames), { willChange: 'transform' })
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
-  scale: 1.7, 
+  // scale: 1.7, 
   // x: getDistanceToScreenCenter(frames[1], 1.7).x, 
-  top: '26%'
+  yPercent: tl8IsMobile ? 60 : null,
+  xPercent: tl8IsMobile ? -50 : null,
+  top: tl8IsMobile ? null : '26%',
+  scale: tl8IsMobile ? 2.08 : 1.7,
 })
 .to('[data-frame="1-1"]', { autoAlpha: 1, duration: 0.35 }, '<')
-.to(frames[4], {
-  xPercent: 75,
-  yPercent: 75, 
+.to(frames[5], {
+  xPercent: 100, 
+  yPercent: 15, 
   scale: 0.75
 },'<')
+.to(frames[4], {
+  xPercent: tl8IsMobile ? null : 75,
+  yPercent: tl8IsMobile ? null : 75, 
+  scale: tl8IsMobile ? 0.65 :0.75,
+  transformOrigin: '100% 0',
+},'<')
 .to(frames[2], {
-  xPercent: 32,
-  scale: 1 / 1.5
+  xPercent: tl8IsMobile ? null : 32,
+  scale: tl8IsMobile ? 1 : 1 / 1.5
 },'<')
 .to(frames[3], {
-  xPercent: -55,
-  scale: 1 / 1.87
+  xPercent: tl8IsMobile ? -20 : -55,
+  scale: tl8IsMobile ? 0.36 : 1 / 1.87
 },'<')
 .addLabel('frame1')
 

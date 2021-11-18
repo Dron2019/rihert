@@ -83,6 +83,13 @@
         left: 50%;
         transform: translateX(-50%) !important;
         opacity: 0;
+        @include to(575px){
+            font-size: 12px;
+            line-height: 100%;
+            left: 0;
+            width: 140px;
+            transform: none !important;
+        }   
     }
     [data-frame="1-2"] {
         font-size: 8px;
