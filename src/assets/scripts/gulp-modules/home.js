@@ -959,23 +959,47 @@ isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen5',
-    end: `100% top`,
-    scrub: 1,
-    pin: '.screen5__inner-mobile',
+    end: `100% bottom`,
+    markers: true,
+    scrub: 0.25,
+    // pin: '.screen5__inner-mobile',
     start: "top top",
+    onLeave: () => {
+      // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
+    },
+    onEnterBack: () => {
+      // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
+    }
   }
 })
 .to('.screen5__inner-mobile', {
+  // scale: 1,
   x: '-45%',
-  y:' -16.6%',
-  ease: 'none'
+  // y:' -16.6%',
+  transformOrigin: '0 0',
+  ease: 'none',
+  duration: 0.75,
 })
 .to('.screen5__inner-mobile', {
-  x: '0',
-  y:' -36.8%',
-  ease: 'none'
+  // scale: 1,
+  x: '0%',
+  // y:' -36.8%',
+  transformOrigin: '0 0',
+  ease: 'none',
+  duration: 0.75,
+})
+.to('.screen5__inner-mobile', {
+  // scale: 1,
+  x: '0%',
+  // y:' -36.8%',
+  transformOrigin: '0 0',
+  ease: 'none',
+  duration: 0.75,
 })
 .to('.screen5__inner-mobile', {
   scale: 0.5,
-  transformOrigin: '0 0'
+  // y:' -46.8%',
+  x: '0%',
+  transformOrigin: '0 100%',
+  ease: 'none',
 })
