@@ -10,9 +10,11 @@
         --left-column-width: 0%;
         --medium-column-width: 50%;
         --right-column-width: 50%;
-        height: auto;
+        will-change: auto;
+        overflow: hidden;
+        height: 434vw;
 
-        overflow: scroll;
+        // overflow: scroll;
     }
     &__inner {
         display: grid;
@@ -170,8 +172,8 @@
         .screen5-rihter-photo {
             width: 66px;
             position: absolute;
-            left: 0;
-            bottom: 0;
+            left: -2.6%;
+            bottom: -1%;
             display: flex;
             align-items: flex-end;
 
@@ -195,6 +197,7 @@
         }
     }
     .grid-1-4 {
+        padding-left: 4.5%;
         .screen5-title {
             margin-top: auto;
             max-width: 80%;

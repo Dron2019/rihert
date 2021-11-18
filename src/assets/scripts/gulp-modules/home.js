@@ -950,3 +950,32 @@ const tl5scr = !isMobile() && gsap.timeline( {
   transformOrigin: '0 0',
 }, '<')
 .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
+
+if (isMobile()) {
+  // document.querySelector('.screen5').style.height = document.querySelector('.screen5__inner-mobile').getBoundingClientRect().height + 'px';
+}
+isMobile() && gsap.timeline({
+  ease: "none",
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen5',
+    end: `100% top`,
+    scrub: 1,
+    pin: '.screen5__inner-mobile',
+    start: "top top",
+  }
+})
+.to('.screen5__inner-mobile', {
+  x: '-45%',
+  y:' -16.6%',
+  ease: 'none'
+})
+.to('.screen5__inner-mobile', {
+  x: '0',
+  y:' -36.8%',
+  ease: 'none'
+})
+.to('.screen5__inner-mobile', {
+  scale: 0.5,
+  transformOrigin: '0 0'
+})
