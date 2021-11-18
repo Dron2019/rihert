@@ -589,6 +589,10 @@ const frames = [
 ];
 
 const tl8IsMobile = isMobile();
+function adaptiveScreen8Values(mobile, desktop) {
+  if (isMobile()) return mobile;
+  return desktop;
+}
 window.ttl = gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
@@ -712,9 +716,10 @@ window.ttl = gsap.timeline( {
 
 // frame 4
 .to(frames[1], { 
-  yPercent: -100,
+  yPercent: adaptiveScreen8Values(-236,100),
   scale: 1/2.94,
 })
+//-6%, -236%
 .to('[data-frame="1-3"]', { autoAlpha: 0, duration: 0.15 }, '<' )
 .to(frames[3], { 
   yPercent: -100,
