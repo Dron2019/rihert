@@ -655,7 +655,7 @@ window.ttl = gsap.timeline( {
   }, 
   yPercent: -50,
   top: '50%'
-})
+}, '+=1')
 .to('[data-frame="1-1"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[1], { 
   scale: 1 / 2.3, 
@@ -684,7 +684,7 @@ window.ttl = gsap.timeline( {
   scale: tl8IsMobile ? 1.4 : 1 / 0.37,
   xPercent: tl8IsMobile ? -15 : -262,
   yPercent: tl8IsMobile ? -107 : -115
-})
+}, '+=1')
 
 .to('[data-frame="1-2"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[2], { 
@@ -712,13 +712,13 @@ window.ttl = gsap.timeline( {
 }, '<')
 .to('[data-frame="1-3"]', { autoAlpha: 1, duration: 0.35 } )
 //translate(-180%, 40%) scale(0.8)
-.addLabel('frame3')
 
+.addLabel('frame3')
 // frame 4
 .to(frames[1], { 
   yPercent: adaptiveScreen8Values(-236,100),
   scale: 1/2.94,
-})
+}, '+=1')
 //-6%, -236%
 .to('[data-frame="1-3"]', { autoAlpha: 0, duration: 0.15 }, '<' )
 .to(frames[3], { 
