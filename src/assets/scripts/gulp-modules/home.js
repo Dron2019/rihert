@@ -894,16 +894,19 @@ const tl5scr = !isMobile() && gsap.timeline( {
 if (isMobile()) {
   // document.querySelector('.screen5').style.height = document.querySelector('.screen5__inner-mobile').getBoundingClientRect().height + 'px';
 }
+
+// gsap.ticker.fps(60)
 isMobile() && gsap.timeline({
   ease: "none",
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen5',
     end: `100% bottom`,
-    markers: true,
-    scrub: 0.25,
-    // pin: '.screen5__inner-mobile',
+    // markers: true,
+    scrub: 1,
+    pin: '.screen5__inner-mobile',
     start: "top top",
+    // snap: 1000,
     onLeave: () => {
       // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
     },
@@ -914,32 +917,23 @@ isMobile() && gsap.timeline({
 })
 .to('.screen5__inner-mobile', {
   // scale: 1,
-  x: '-45%',
-  // y:' -16.6%',
+  xPercent: -45,
+  yPercent: -16,
   transformOrigin: '0 0',
   ease: 'none',
-  duration: 0.75,
 })
 .to('.screen5__inner-mobile', {
   // scale: 1,
-  x: '0%',
-  // y:' -36.8%',
+  xPercent: 0,
+  yPercent: -36,
   transformOrigin: '0 0',
   ease: 'none',
-  duration: 0.75,
-})
-.to('.screen5__inner-mobile', {
-  // scale: 1,
-  x: '0%',
-  // y:' -36.8%',
-  transformOrigin: '0 0',
-  ease: 'none',
-  duration: 0.75,
 })
 .to('.screen5__inner-mobile', {
   scale: 0.5,
-  // y:' -46.8%',
-  x: '0%',
+  yPercent: -65,
+  xPercent: 0,
   transformOrigin: '0 100%',
   ease: 'none',
+
 })
