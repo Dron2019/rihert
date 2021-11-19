@@ -138,3 +138,23 @@ img {
   z-index: 5;
   display: none;
 }
+
+.horizontal-mob-curtain {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-red);
+  font-family: $default-font2;
+  font-size: 5vw;
+  line-height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  text-align: center;
+  @media (orientation: landscape) and (max-width: 950px) {
+    display: flex;
+  }
+}
