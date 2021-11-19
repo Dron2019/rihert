@@ -619,7 +619,7 @@ window.ttl = gsap.timeline( {
 .addLabel('frame3')
 // frame 4
 .to(frames[1], { 
-  yPercent: adaptiveScreen8Values(-236,100),
+  yPercent: adaptiveScreen8Values(-236,-100),
   scale: adaptiveScreen8Values(0.44, 1/2.94),
 }, '+=1')
 //-6%, -236%
