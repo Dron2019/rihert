@@ -321,12 +321,15 @@
     }
     &-3-2 {
         grid-area: 2/3/2/3;
-        padding-left: 34%;
+        padding-left: 25%;
         --image-h: 165px;
         padding-top: calc(var(--image-h) - 2.9em);
         position: relative; 
         @include from(2100px){
             --image-h: 240px;
+        }
+        @include from(1025px){
+            padding-right: 10%;
         }
         img {
             position: absolute;
@@ -345,7 +348,7 @@
     }
     &-3-3 {
         grid-area: 3/3/3/3;
-        padding-left: 34%;
+        padding-left: 25%;
         padding-top: 134px;
     }
     &-2-4 {

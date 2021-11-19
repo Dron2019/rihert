@@ -669,7 +669,8 @@ window.ttl = gsap.timeline( {
 .to('.screen5__inner', { 
   // x: innerHeight / -1,
   scale: 0.5,
-  transformOrigin: '0 100%'
+  transformOrigin: '0 100%',
+  duration: 5
 })
 .from('.screen7__inner', { yPercent: -30, xPercent: 100, scale: 2, transformOrigin: '0 0' }, '<')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
@@ -730,7 +731,7 @@ const tl5scr = !isMobile() && gsap.timeline( {
     trigger: screen5,
     pin: screen5Inner,
     end: `${innerWidth * screen5ScaleCoef} top`,
-    markers: true,
+    markers: false,
     start: "top top",
   },
   ease: "none"
@@ -752,7 +753,7 @@ isMobile() && gsap.timeline({
     scroller: pageContainer,
     trigger: '.screen5',
     end: `100% bottom`,
-    markers: true,
+    markers: false,
     scrub: 1,
     pin: '.screen5__inner-mobile',
     start: "top top",
@@ -798,7 +799,7 @@ isMobile() && gsap.timeline({
     trigger: '.screen9',
     start: 'top top',
     end: `100% bottom`,
-    // markers: true,
+    // markers: false,
     scrub: 1,
     pin: '.screen9__inner',
     start: "top top",

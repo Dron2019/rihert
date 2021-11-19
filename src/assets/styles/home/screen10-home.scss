@@ -87,13 +87,13 @@
             padding-top: var(--padding-top);
         }
         .h1 {
-            @include customOffsetWidth(75, var(--offset));
+            @include customOffsetWidth(60, var(--offset));
             @include to(575px){
                 @include customOffsetWidth(100, var(--offset));
             }
         }
         .button-wrap {
-            @include customOffsetWidth(25, var(--offset));
+            @include customOffsetWidth(40, var(--offset));
             display: flex;
             align-items: center;
             justify-content: flex-end;
