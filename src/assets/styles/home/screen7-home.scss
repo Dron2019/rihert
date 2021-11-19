@@ -20,7 +20,9 @@
     }   
 }
 .screen7 {
-    
+    @include from-to(576px, 1024px){
+        min-height: auto;
+    }
     // overflow: hidden;
   }
 .screen7 {
@@ -36,6 +38,11 @@
         min-height: calc(100vh + 75px);
         clip-path: polygon(0 77px, 100% 0, 100% 100%, 0 calc(100% - 65px));
         -webkit-clip-path: polygon(0 77px, 100% 0, 100% 100%, 0 calc(100% - 65px));
+        @include from-to(576px, 1024px){
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }   
         @include to(575px){
             width: 100%;
             padding-left: 20px;

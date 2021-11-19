@@ -53,6 +53,11 @@
         align-items: start;
         transform-origin: left top;
         will-change: transform;
+        @include from-to(576px, 1024px){
+            grid-template-areas:
+            "map title title"
+            "photo photo legend";
+        }
         @include to(575px){
             display: flex;
             flex-direction: column;
