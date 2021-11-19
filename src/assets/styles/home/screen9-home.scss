@@ -3,6 +3,10 @@
     z-index: 30;
     left: 0;
     background: white;
+    @include from(576px){
+        overflow: hidden;
+        height: 200vh;
+    }
     .h1 {
         font-size: 142.208px;
         font-size: 9.85vw;
@@ -19,6 +23,9 @@
             line-height: 80%;
             margin-bottom: 25px;
         }       
+        @include from(1680px){
+            font-size: 9vw;
+        }
         svg {
             position: absolute;
             left: 0;

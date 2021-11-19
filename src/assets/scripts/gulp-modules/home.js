@@ -189,12 +189,12 @@ gsap.timeline({
     trigger: '.screen9',
     scrub: true,
     onEnter: () => {
-      params[9]()
+      // params[9]()
       console.log('enter 9');
     },
     onEnterBack: () => {
       console.log('enter back 9');
-      params[9]('fromBack')
+      // params[9]('fromBack')
 
     }
   }
@@ -233,7 +233,7 @@ gsap.timeline({
 })
 
 
-const screen9 = document.querySelector('.screen9 .screen7__inner');
+const screen9 = document.querySelector('.screen9 .screen9__inner');
 // 0.28
 gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
 
@@ -373,6 +373,7 @@ const params = {
       window.addEventListener('wheel', innerScreen9Handler);
       function innerScreen9Handler(evt) {
         if (isAnimating === true) return;
+        console.log(innerState);
         if (evt.deltaY > 0 && innerState === 1) {
           transferInnerDown9().play();
           innerState++;
@@ -934,4 +935,39 @@ isMobile() && gsap.timeline({
   xPercent: 0,
   transformOrigin: '0 100%',
   ease: 'none',
+})
+
+
+
+!isMobile() && gsap.timeline({
+  ease: "none",
+  scrollTrigger: {
+    scroller: pageContainer,
+    trigger: '.screen9',
+    start: 'top top',
+    end: `100% bottom`,
+    // markers: true,
+    scrub: 1,
+    pin: '.screen9__inner',
+    start: "top top",
+    onLeave: () => {
+      // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
+    },
+    onEnterBack: () => {
+      // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
+    }
+  }
+})
+.to('.screen9__inner', {
+  ease: "none",
+  scale: 1
+})
+.to('.screen9__inner', {
+  scale: 1
+})
+.to('.screen9__inner', {
+  scale: 1
+})
+.to('.screen9__inner', {
+  scale: 1
 })

@@ -23,6 +23,9 @@
         @include to(575px){
             padding-left: 0;   
         }
+        @include from(576px){
+            height: 100%;
+        }
         &-left {
             position: relative;
             z-index: 2;
@@ -46,7 +49,9 @@
                 --left-p: 10px;
                 --right-p: 10px;
                 padding-bottom: 95px;
-
+            }
+            @include from(576px){
+                height: 100%;
             }
         }
         .right-bg {

@@ -2,14 +2,20 @@
     --padding-top: Min(20vh, 205px);
     @include to(575px){
         margin-top: 50px;
-
+    }
+    @include from(576px){
+        height: 100vh;
     }
     &__inner {
         display: flex;
         flex-wrap: wrap;
+        align-content: flex-start;
         @include to(575px){
             justify-content: flex-start;
         }
+        @include from(576px){
+            height: 100%;
+        }   
     }
     .empty-block1 {
         width: 66%;
@@ -40,6 +46,7 @@
         letter-spacing: -0.04em;
         text-transform: lowercase;
         border-top: 1.09084px solid rgba(0,0,0,0.1);
+        height: calc(100% - var(--padding-top));
         @include to(575px){
             width: 100%;
             padding-left: 20px;
@@ -59,6 +66,7 @@
         border-left: 1.09084px solid rgba(0,0,0,0.1);
         border-top: 1.09084px solid rgba(0,0,0,0.1);
         padding: 15px;
+        height: calc(100% - var(--padding-top));
         @include to(575px){
             width: 100%;
             border: none;
