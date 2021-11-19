@@ -235,12 +235,12 @@ gsap.timeline({
 
 const screen9 = document.querySelector('.screen9 .screen9__inner');
 // 0.28
-gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
+!isMobile() && gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
 
-stopCustomScroll();
+// stopCustomScroll();
 
 /**
  * Анимация срабатывает когда попадаешь на этот номер экрана
@@ -718,31 +718,33 @@ window.ttl = gsap.timeline( {
 // frame 4
 .to(frames[1], { 
   yPercent: adaptiveScreen8Values(-236,100),
-  scale: 1/2.94,
+  scale: adaptiveScreen8Values(0.44, 1/2.94),
 }, '+=1')
 //-6%, -236%
 .to('[data-frame="1-3"]', { autoAlpha: 0, duration: 0.15 }, '<' )
 .to(frames[3], { 
-  yPercent: -100,
-  xPercent: -40,
-  scale: 0.98,
+  yPercent: adaptiveScreen8Values(9, -100 ),
+  xPercent: adaptiveScreen8Values(39, -40),
+  scale: adaptiveScreen8Values(0.38, 0.98),
 }, '<')
+//translate(39%, 9%) scale(0.38);
 .to(frames[4], { 
   xPercent: 245,
   yPercent: 75,
   scale: tl8IsMobile ? 3.09 : 1 / 0.5,
 }, '<')
 .to(frames[2], { 
-  xPercent: 0,
-  yPercent: 0,
-  scale: 1 / 1.39,
+  xPercent: adaptiveScreen8Values(-114, 0),
+  yPercent: adaptiveScreen8Values(160,0),
+  scale: adaptiveScreen8Values( 0.5, 1 / 1.39),
   transformOrigin: '0 0', 
 }, '<')
 .to(frames[5], { 
-  xPercent: -100,
-  yPercent: -70,
+  xPercent: adaptiveScreen8Values(-177, -100),
+  yPercent: adaptiveScreen8Values(88,-70),
   scale: 1 / 1.39,
 }, '<')
+//translate(-177%, 88%) scale(0.7194, 0.719424)
 .to('[data-frame="1-4"]', { autoAlpha: 1, duration: 0.15 })
 .addLabel('frame4');
 
@@ -901,12 +903,13 @@ isMobile() && gsap.timeline({
     scroller: pageContainer,
     trigger: '.screen5',
     end: `100% bottom`,
-    // markers: true,
+    markers: true,
     scrub: 1,
     pin: '.screen5__inner-mobile',
     start: "top top",
     onLeave: () => {
       // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
+      console.log('fff');
     },
     onEnterBack: () => {
       // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
