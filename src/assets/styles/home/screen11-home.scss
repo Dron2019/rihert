@@ -20,6 +20,9 @@
     .empty-block1 {
         width: 66%;
         padding-top: var(--padding-top);
+        @include from(2100px){
+            width: 60%;
+        }
         @include to(575px){
             display: none;   
         }
@@ -28,10 +31,13 @@
         padding-top: var(--padding-top);
         width: 34%;
         border-left: 1.09084px solid rgba(0,0,0,0.1);
+        @include from(2100px){
+            width: 40%;
+        }
         @include to(575px){
             display: none;   
         }
-
+        
     }
     .text {
         width: 66%;
@@ -47,6 +53,9 @@
         text-transform: lowercase;
         border-top: 1.09084px solid rgba(0,0,0,0.1);
         height: calc(100% - var(--padding-top));
+        @include from(2100px){
+            width: 60%;
+        }
         @include to(575px){
             width: 100%;
             padding-left: 20px;
@@ -59,6 +68,9 @@
             max-width: 200px;
             border: none;
         }
+        @include from(2100px){
+            font-size: 40.9992px;
+        }
         
     }
     &__links {
@@ -67,6 +79,9 @@
         border-top: 1.09084px solid rgba(0,0,0,0.1);
         padding: 15px;
         height: calc(100% - var(--padding-top));
+        @include from(2100px){
+            width: 40%;
+        }
         @include to(575px){
             width: 100%;
             border: none;
@@ -82,6 +97,9 @@
         text-transform: uppercase;
         color: var(--color-black);
         text-decoration: none;
+        @include from(2100px){
+            font-size: 110.9977px;
+        }
         @include to(575px){
             font-size: 62.6232px;
             line-height: 80%;

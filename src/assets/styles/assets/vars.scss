@@ -35,6 +35,7 @@ $gold: #cfa46e;
 
   --margin-l: 250px;
 }
+
 @media (max-width: 1920px) {
   :root {
     --header-h: 124px;
@@ -105,5 +106,10 @@ $gold: #cfa46e;
 @media (max-width: 420px) {
   :root {
     --h1-size: 30px;
+  }
+}
+@media (min-width: 1920px) {
+  :root {
+    --logo-w: 195px;
   }
 }

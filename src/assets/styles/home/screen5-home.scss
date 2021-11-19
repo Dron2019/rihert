@@ -22,6 +22,9 @@
         grid-template-columns: var(--left-column-width) var(--medium-column-width) var(--right-column-width);
         grid-template-rows: 350px 380px 350px 445px;
         background-color: #fff;
+        @include from(2100px){
+            grid-template-rows: 700px 760px 700px 890px;
+        }
         @include to(575px){
             width: 200vw; 
             display: none;
@@ -243,6 +246,10 @@
             display: inline-block;
             margin-left: 20px;
             width: 35%;
+            @include from(2100px){
+                margin-left: 10px;
+                width: 46%;
+            }
         }
         
     }
@@ -260,6 +267,9 @@
             bottom: 2px;
             width: auto;
             height: 103px;
+            @include from(2100px){
+                height: 210px;
+            }
             img {
                 height: 100%;
                 width: auto;
@@ -276,6 +286,9 @@
                 text-transform: uppercase;
                 font-weight: 500;
                 white-space: nowrap;
+                @include from(2100px){
+                    font-size: 15px;
+                }
             }
         }
         .screen5-title {
@@ -312,6 +325,9 @@
         --image-h: 165px;
         padding-top: calc(var(--image-h) - 2.9em);
         position: relative; 
+        @include from(2100px){
+            --image-h: 240px;
+        }
         img {
             position: absolute;
             right: 6px;
@@ -365,6 +381,9 @@
     font-weight: 500;
     letter-spacing: -0.04em;
     text-transform: lowercase;
+    @include from(2100px){
+        font-size: 41.2737px;
+    }
 }
 .screen5-title {
     font-size: 39.5677px;
@@ -374,6 +393,10 @@
     letter-spacing: -0.04em;
     font-weight: 500;
     text-transform: uppercase;
+    @include from(2100px){
+        font-size: 80px;
+
+    }
     @include to(1360px){
         font-size: 2.5vw;
     }
@@ -387,12 +410,18 @@
         vertical-align: top;
         padding-right: 65px;
         padding-top: 0.3em;
+        @include from(2100px){
+            font-size: 24.18px;
+        }
     }
 }
 
 .screen5-text {
     @extend .screen3__text;
     font-size: 13.3642px;
+    @include from(2100px){
+        font-size: 32px;
+    }
     @include to(575px){
         font-size: 19.3932px;
         line-height: 90%;

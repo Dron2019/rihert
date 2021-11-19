@@ -155,3 +155,4 @@ export const fromPathToArray = function(path) {
 }
 
 export const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
+export const isFullHd = () => window.matchMedia('(min-width: 1920px)').matches;

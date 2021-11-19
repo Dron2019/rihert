@@ -5,7 +5,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 import screen9Handler from './home/screen9';
 import headerHandle from './home/header';
-import { fromPathToArray } from '../modules/helpers/helpers';
+import { fromPathToArray, isFullHd } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
 
@@ -715,8 +715,8 @@ startCustomScroll()
 // console.log(getComputedStyle().getPropertyValue("--screen5-height"));
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
-screen5.style.setProperty('--screen5-height', innerWidth * 1.3 + screen5Inner.getBoundingClientRect().height + 'px')
-
+const screen5ScaleCoef = isFullHd() ? 1 : 1.3;
+screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
 
 // console.log(isMobile());
 const tl5scr = !isMobile() && gsap.timeline( {
@@ -729,16 +729,16 @@ const tl5scr = !isMobile() && gsap.timeline( {
     scrub: 1,
     trigger: screen5,
     pin: screen5Inner,
-    end: `${innerWidth * 1.3} top`,
+    end: `${innerWidth * screen5ScaleCoef} top`,
     markers: true,
     start: "top top",
   },
   ease: "none"
 })
-.to(screen5Inner, { scale: 2.2, transformOrigin: '0 0', duration: 0 })
+.to(screen5Inner, { scale: isFullHd() ? 1.9 : 2.2, transformOrigin: '0 0', duration: 0 })
 .to(screen5Inner, 
 {
-  x: innerWidth * -1.3 + 150,
+  x: innerWidth * -screen5ScaleCoef + 150,
   transformOrigin: '0 0',
 }, '<')
 .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })

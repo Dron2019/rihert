@@ -6,6 +6,10 @@
     font-weight: 500;
     --padding-top: 116px;
     --right-width: 71%;
+    @include from(2100px){
+        --right-width: 80%;
+
+    }
     @include to(1320px){
         --right-width: 85%;
     }
@@ -52,6 +56,9 @@
             }
             @include from(576px){
                 height: 100%;
+            }
+            @include from(2100px){
+                min-height: calc(100vh + 148px);
             }
         }
         .right-bg {
@@ -126,6 +133,9 @@
         @include to(575px){
             font-size: 30px;
         }
+        @include from(2100px){
+            font-size: 82px;
+        }
     }
     .subtitle {
         font-size: 57.5237px;
@@ -149,6 +159,9 @@
             font-size: 20px;
             line-height: 100%;
         }       
+        @include from(2100px){
+            font-size: 32px;
+        }
     }
     .projects-list li a {
         font-size: 30px;
@@ -159,6 +172,9 @@
         text-transform: uppercase;
         cursor: pointer;
         color: var(--color-black);
+        @include from(2100px){
+            font-size: 48px;
+        }
     }
     .screen-viewer {
         font-size: 20px;
@@ -167,6 +183,9 @@
         letter-spacing: -0.01em;
         color: #000000;
         font-family: $default-font2;
+        @include from(2100px){
+            font-size: 32px;
+        }
     }
 }
 

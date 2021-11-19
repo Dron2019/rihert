@@ -6,6 +6,11 @@
     @include to(575px){
       min-height: auto;
     }
+    @include from(2100px){
+      .h2 {
+        font-size: 80.5237px;
+      }
+    }
     &__title {
       width: 67%;
       margin-left: auto;

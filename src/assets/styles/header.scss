@@ -26,6 +26,9 @@
         &:last-of-type {
             margin-bottom: 13px;
         }
+        @include from(2100px){
+            font-size: 26px;
+        }
     }
     &__button {
         @extend .button;
@@ -48,6 +51,11 @@
         color: var(--color-black);
         border: 1px solid var(--color-black);
         border-radius: 50%;
+        @include from(2100px){  
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+        }
         &-else {
             position: absolute;
             left: 100%;
@@ -62,6 +70,9 @@
                 text-decoration: none;
                 margin-left: 5px;
                 transition: .3s ease-in-out;
+                @include from(2100px){
+                    margin-left: 15px;
+                }
             }
             &>*:hover {
                 color: #E1F769;
@@ -76,7 +87,7 @@
     }
     &__menu-toggle-mob {
         font-size: 15px;
-        line-height: 17px;
+        line-height: 120%;
         width: 17px;
         height: 17px;
         letter-spacing: -0.01em;
@@ -84,6 +95,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        @include from(2100px){
+            width: 34px;
+            height: 34px;
+            font-size: 30px;
+        }
     }
     &__group {
         display: flex;
@@ -109,4 +126,8 @@
     color: var(--color-black);
     text-decoration: none;
     white-space: nowrap;
+    @include from(2100px){
+        font-size: 26.76px;
+        padding: 18px 24px;
+    }
 }
