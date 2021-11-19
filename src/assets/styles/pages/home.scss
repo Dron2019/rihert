@@ -124,3 +124,13 @@ img {
 //   width: auto;
 //   object-fit: cover;
 // }
+.curtain {
+  position: fixed;
+  left: 0;
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-red);
+  z-index: 5;
+  display: none;
+}

@@ -24,7 +24,6 @@ window.screen1To2Tl = gsap.timeline({ paused: true })
   .add(() => {
     // scroller.scrollTo(document.querySelector('.screen2'))
   })
-  // .add(startCustomScroll)
 
 
 window.screen2To1Tl = gsap.timeline({ paused: true })
@@ -46,6 +45,7 @@ const scroller = new LocomotiveScroll({
   smooth: true,
   smoothMobile: false,
   // inertia: 1.1,
+  multiplier: 0.5,
   lerp: 0.05,
 });
 window.scroller = scroller;
@@ -65,7 +65,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
       height: window.innerHeight
     };
   },
-  pinType: pageContainer.style.transform ? "transform" : "fixed"
+  pinType: document.querySelector('[data-scroll-section]').style.transform ? "transform" : "fixed"
 });
 
 
@@ -106,69 +106,12 @@ function startCustomScroll() {
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 
 
-// console.log(isMobile);
-////////////////////////////////////
-////////////////////////////////////
-  // let pinWrap = document.querySelector(".pin-wrap");
-  // let pinWrapWidth = pinWrap.offsetWidth;
-  // let horizontalScrollLength = pinWrapWidth - window.innerWidth;
-
-  // Pinning and horizontal scrolling
-
-  // gsap.to(".pin-wrap", {
-  //   scrollTrigger: {
-  //     scroller: pageContainer, //locomotive-scroll
-  //     scrub: true,
-  //     trigger: "#sectionPin",
-  //     pin: true,
-  //     // anticipatePin: 1,
-  //     start: "top top",
-  //     end: pinWrapWidth,
-  //       onUpdate: () => {
-  //           // console.log('ddd');
-  //       },
-  //       onLeave: () => {
-  //         // params[5]()
-  //       },
-  //       onEnterBack: () => {
-  //         // params[4]()
-  //       }
-  //   },
-  //   x: -horizontalScrollLength,
-  //   ease: "none"
-  // });
-  // // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-  // gsap.timeline({
-  //   scrollTrigger: {
-  //     scroller: pageContainer, //locomotive-scroll
-  //     scrub: true,
-  //     start: `top top`,
-  //     trigger: "#sectionPin",
-  //     end: pinWrapWidth,
-  //     onEnterBack: () => {
-  //       console.log('ENTERBACK');
-  //     }
-  //   }
-  // })
-  // .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-
-gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen5',
-    scrub: true,
-    
-    // onUpdate: ({progress}) => console.log(progress)
-  }
-})
 gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen6',
     scrub: true,
-    // onUpdate: ({progress}) => console.log(progress)
     onEnterBack: () => {
-      console.log('enterBackTo6');
       // params[6]();
     }
   }
@@ -278,14 +221,11 @@ const params = {
       })
       .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
       .fromTo('.pin-wrap', { scale: 0.415 }, { scale: 1 }, '<')
-      // .fromTo('.screen2', { y: '174vh' }, { y: '0' }, '<')
       .add(() => {
         params.currentScreen = 4;
         params.isAnimating = false;
       })
       .add(startCustomScroll, '<+0.5')
-      /*gsap.timeline().to('.pin-wrap', { scale: 0.5, duration: 2.5, ease: 'power4.out' })
-      .from('.screen5', { scale: 2.5, duration: 2.5, ease: 'power4.out' }, '<')*/
   },
   5: () => {
     gsap.timeline()
@@ -298,8 +238,6 @@ const params = {
       })
       .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
       .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.415 }, '<')
-      // .fromTo('.screen2', { y:  '0'}, { y:'174vh'  }, '<')
-      // .add(() => scroller.scrollTo(document.querySelector('.screen5')), '<')
       .add(() => {
         
         params.currentScreen = 5;
@@ -310,16 +248,13 @@ const params = {
       })
   },
   6: () => {
-    const screen6Height = document.querySelector('.screen6').getBoundingClientRect().height;
     console.log('ee');
     gsap.timeline()
         .add(() => {
           stopCustomScroll();
           params.isAnimating = true;
         })
-        // .fromTo('.screen6', { height: screen6Height }, { height: screen6Height * 2, duration: 2.5 }, '<')
         .add(() => scroller.scrollTo(document.querySelector('.screen6')))
-        // .fromTo('.screen6', { height: '50vh' }, { height: '100vh', duration: 2.5 }, '<')
         .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
         .fromTo('.screen7__inner', {xPercent: 0 }, { xPercent: 100, duration: 2.5 }, '<')
         // .set('.screen6', { minHeight: 'auto' })
@@ -373,7 +308,6 @@ const params = {
       window.addEventListener('wheel', innerScreen9Handler);
       function innerScreen9Handler(evt) {
         if (isAnimating === true) return;
-        console.log(innerState);
         if (evt.deltaY > 0 && innerState === 1) {
           transferInnerDown9().play();
           innerState++;
@@ -386,12 +320,7 @@ const params = {
           transferFrom9Up().play();
         }
       }
-      // let it = setInterval(() => {
-      //   console.log(isAnimating);
-      // }, 500);
       function transferFrom9Up() {
-        console.log('Leave 9 Up');
-        // clearInterval(it);
         return gsap.timeline({ paused: true })
           .add(() => isAnimating = true)  
           .add(() => {
@@ -562,23 +491,6 @@ screen3VertLines.forEach(el => {
 
 
 screen9Handler();
-
-
-const scr10Tl = gsap.timeline({ paused: true })
-  .to('.screen10 .right-bg', { width: '100vw' });
-
-window.addEventListener('click', () => {
-  scr10Tl.progress(0).play();
-})
-
-// ScrollTrigger.create({
-//   trigger: '.screen8__inner',
-//   scroller: pageContainer,
-//   scrub: true,
-//   pin: '.screen8__inner',
-//   end: 5000
-// })
-
 
 const frames = [
   undefined, 
@@ -974,3 +886,30 @@ isMobile() && gsap.timeline({
 .to('.screen9__inner', {
   scale: 1
 })
+
+function curtainOpen() {
+  gsap.timeline()
+    .set('.curtain', { display: 'block' })
+    .fromTo('.curtain', { xPercent: 100 }, { xPercent: 0, duration: 0.75, ease: 'power2.out' })
+}
+function curtainClose() {
+  gsap.timeline()
+    .to('.curtain', { xPercent: -100, duration: 0.75, ease: 'power2.out' })
+    .set('.curtain', { display: 'none' })
+}
+
+
+document.querySelectorAll('.nav__link').forEach(el => {
+  el.addEventListener('click',function(evt){
+    evt.preventDefault();
+    console.log();
+    gsap.timeline()
+      .add(curtainOpen)
+      .add(() => {
+        scroller.scrollTo(document.querySelector(el.getAttribute('href')))
+      }, '<+1.5')
+      .add(curtainClose, '<+1.5')
+  });
+})
+window.curtainOpen = curtainOpen;
+window.curtainClose = curtainClose;

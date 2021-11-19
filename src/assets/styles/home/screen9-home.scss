@@ -3,6 +3,7 @@
     z-index: 30;
     left: 0;
     background: white;
+    will-change: transform;
     @include from(576px){
         overflow: hidden;
         height: 200vh;
@@ -39,6 +40,7 @@
     }
     &-switcher {
         clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
+        -webkit-clip-path: polygon(90% 0, 96% 20%, 96% 28%, 100% 39%, 100% 100%, 32% 98%, 0 98%, 0 0, 89% 0);
     }
     &__inner {
         display: grid; 
@@ -50,6 +52,7 @@
         ". photo legend"; 
         align-items: start;
         transform-origin: left top;
+        will-change: transform;
         @include to(575px){
             display: flex;
             flex-direction: column;
@@ -110,6 +113,7 @@
         background-color: var(--color-black);
         margin-right: 10px;
         clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
         transition: .2s ease-in-out;
         @include to(575px){
             width: 14px;
@@ -117,7 +121,8 @@
         }
     }
     li:hover:before {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
     .sub-item {
 

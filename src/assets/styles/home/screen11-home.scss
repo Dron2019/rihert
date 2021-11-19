@@ -99,10 +99,12 @@
         color: var(--color-red);
         line-height: 80%;
         clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
         transition: .3s ease-in-out;
     }
     &__links a:hover:before {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
     &-delimiter {
         display: inline-block;
