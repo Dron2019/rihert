@@ -61,6 +61,7 @@
     .map { 
         grid-area: map; 
         position: relative;
+        will-change: transform;
         @include to(575px){
             width: 100vw;
             overflow-x: scroll;

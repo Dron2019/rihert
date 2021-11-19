@@ -18,25 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 headerHandle();
 
 
-window.screen1To2Tl = gsap.timeline({ paused: true })
-  .add(startCustomScroll)
-  .to('.screen1', { scale: 2.05 })
-  .add(() => {
-    // scroller.scrollTo(document.querySelector('.screen2'))
-  })
-
-
-window.screen2To1Tl = gsap.timeline({ paused: true })
-  .add(startCustomScroll)
-  .add(() => {
-    scroller.scrollTo(document.querySelector('.screen1'))
-  })
-  .to('.screen1', {
-    scale: 1
-  }, '+1.5')
-
-
-// disableScroll();
 const pageContainer = document.querySelector(".scroller-container");
 
 /* SMOOTH SCROLL */
@@ -106,26 +87,26 @@ function startCustomScroll() {
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 
 
-gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen6',
-    scrub: true,
-    onEnterBack: () => {
-      // params[6]();
-    }
-  }
-})
+// gsap.timeline({
+//   scrollTrigger: {
+//     scroller: pageContainer,
+//     trigger: '.screen6',
+//     scrub: true,
+//     onEnterBack: () => {
+//       // params[6]();
+//     }
+//   }
+// })
 
 
-gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen7',
-    scrub: true,
-    // onEnter: () => /*params[7]()*/
-  }
-})
+// gsap.timeline({
+//   scrollTrigger: {
+//     scroller: pageContainer,
+//     trigger: '.screen7',
+//     scrub: true,
+//     // onEnter: () => /*params[7]()*/
+//   }
+// })
 !isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
@@ -461,17 +442,17 @@ const params = {
       
   },
 };
-function changeCurrentScreen(evt) {
-  if (params.isAnimating || params.excludeScreenOnScrollChange.includes(params.currentScreen)) return;
-  const direction = evt.deltaY / 100;
-  const currentScreenNumber = +params.currentScreen;
-  if (typeof params[currentScreenNumber + direction] === 'function') {
-    params[currentScreenNumber + direction]();
-    params.currentScreen += direction;
-  }
-  console.log(params.currentScreen);
-}
-window.addEventListener('wheel',changeCurrentScreen);
+// function changeCurrentScreen(evt) {
+//   if (params.isAnimating || params.excludeScreenOnScrollChange.includes(params.currentScreen)) return;
+//   const direction = evt.deltaY / 100;
+//   const currentScreenNumber = +params.currentScreen;
+//   if (typeof params[currentScreenNumber + direction] === 'function') {
+//     params[currentScreenNumber + direction]();
+//     params.currentScreen += direction;
+//   }
+//   console.log(params.currentScreen);
+// }
+// window.addEventListener('wheel',changeCurrentScreen);
 
 
 
@@ -516,11 +497,20 @@ window.ttl = gsap.timeline( {
     scrub: 1,
     trigger: ".screen8",
     pin: ".screen8__inner",
-    onScrubComplete: (e) => {
-      console.log(e);
-    },
     start: "top top",
     end: `bottom ${window.innerHeight}px`,
+    onEnter: () => {
+      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
+    },
+    onLeave: () => {
+      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
+    },
+    onEnterBack: () => {
+      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
+    },
+    onLeaveBack: () => {
+      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
+    },
   },
   ease: "none"
 })
@@ -661,60 +651,7 @@ window.ttl = gsap.timeline( {
 .addLabel('frame4');
 
 
-gsap.timeline({
-  scrollTrigger: {
-    trigger: '.screen5',
-    scroller: pageContainer,
-    end: '100% bottom',
-    onEnter: () => {
-      console.log('leave Hor');
-      gsap.timeline()
-        // .add(() => stopCustomScroll())
-        // .to('.screen5__inner', { autoAlpha: 1, duration: 0.1 })
-        // .to('#sectionPin', { autoAlpha: 0, duration: 0.1 }, '<')
-        // .set('.screen2+.pin-spacer', { display: 'none' })
-        // .from('.screen5__inner', { scale: 2.7, duration: 3, transformOrigin: '100% 0' }, '<+1.5')
-        // .to('.screen3__first', { scale: 1 / 2, duration: 3, transformOrigin: '100% 0' }, '<')
-        // .to('.screen5__inner', { scale: 1, transformOrigin: '100% 0', duration: 1.5 })
-        // .add(() => scroller.scrollTo(document.querySelector('.screen5')),'<')
-        // .add(() => startCustomScroll())
-    }
-  }
-});
-// gsap.timeline({
-//   ease: 'none',
-//   scrollTrigger:  {
-//     scrub: true,
-//     scroller: pageContainer,
-//     trigger: ".screen5",
-//     start: "0 top",
-//     end: `${innerHeight} bottom`,
-//     onLeaveBack: () => {
-//       gsap.timeline()
-//         // .add(() => stopCustomScroll())
-//         // .set('.screen5__inner', { marginTop: '-100vh' })
-//         // .to('.screen5__inner', { scale: 2.2, transformOrigin: '100% 0', duration: 1.5 })
-//         // // .to('.screen5__inner', { autoAlpha: 0, duration: 0.1 })
-//         // .add(() => scroller.scrollTo(document.querySelector('#sectionPin')),'<')
-//         // .to('#sectionPin', { autoAlpha: 1, duration: 0.1 }, '<')
-//         // .set('.screen5__inner', { marginTop: '' })
-        
-//         // .add(() => {
-//         //   scroller.scrollTo(document.querySelector('#sectionPin'), { 
-//         //     duration: 0,
-//         //     disableLerp: true,
-//         //     callback: () => {
-//         //       startCustomScroll();
-//         //     }
-//         //   })
-//         // })
-//         .add(() => startCustomScroll())
-//     },
-//     onEnter: () => {
-//     }
-//   }
-// })
-// .from('.screen5__inner', { scale: 2.7, y: '-100vh', transformOrigin: '100% 0' })
+
 !isMobile() && gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
@@ -865,19 +802,30 @@ isMobile() && gsap.timeline({
     scrub: 1,
     pin: '.screen9__inner',
     start: "top top",
-    onLeave: () => {
-      // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
-    },
-    onEnterBack: () => {
-      // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
-    }
+    // onLeave: () => {
+    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
+    //   gsap.set('.map',{ willChange: '' })
+    // },
+    // onLeaveBack: () => {
+    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
+    //   gsap.set('.map',{ willChange: '' })
+    // },
+    // onEnter: () => {
+    //   gsap.set('.map',{ willChange: 'transform' })
+    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
+    // },
+    // onEnterBack: () => {
+    //   gsap.set('.map',{ willChange: 'transform' })
+    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
+    // }
   }
 })
-.to('.screen9__inner', {
+.to('.screen9__inner>div', {
   ease: "none",
   scale: 1
 })
 .to('.screen9__inner', {
+  ease: "none",
   scale: 1
 })
 .to('.screen9__inner', {
