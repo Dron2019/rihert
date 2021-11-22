@@ -200,7 +200,7 @@ const params = {
     function switchState1To2(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11__inner', { scale: 1.3 })
+        .to('.screen11__inner', { scale: 1.25, transformOrigin: '100% 100%' })
         .add(() => {
           currentState = 2;
         })
@@ -209,7 +209,7 @@ const params = {
     function switchState2To1(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11__inner', { scale: 1 })
+        .to('.screen11__inner', { scale: 1, transformOrigin: '100% 100%' })
         .add(() => {
           currentState = 1;
         })
@@ -316,7 +316,7 @@ window.ttl = gsap.timeline( {
   // x: getDistanceToScreenCenter(frames[1], 1.7).x, 
   yPercent: tl8IsMobile ? 60 : null,
   xPercent: tl8IsMobile ? -50 : null,
-  top: tl8IsMobile ? null : '26%',
+  // top: tl8IsMobile ? null : '26%',
   scale: tl8IsMobile ? 2.08 : 1.7,
 })
 .to('[data-frame="1-1"]', { autoAlpha: 1, duration: 0.35 }, '<')
@@ -332,6 +332,7 @@ window.ttl = gsap.timeline( {
   transformOrigin: '100% 0',
 },'<')
 .to(frames[2], {
+  yPercent: 0,
   xPercent: tl8IsMobile ? null : 32,
   scale: tl8IsMobile ? 1 : 1 / 1.5
 },'<')
@@ -346,12 +347,14 @@ window.ttl = gsap.timeline( {
 
 // frame 2
 .to(frames[2], { 
-  scale: tl8IsMobile ? 2.85 :  1 / 0.49,
-  x: () => {
-    return getDistanceToScreenCenter(frames[2], 1.7).x;
-  }, 
-  yPercent: -50,
-  top: '50%'
+  // scale: tl8IsMobile ? 2.85 :  1 / 0.49,
+  scale: tl8IsMobile ? 2.85 :  1 / 0.51,
+  // x: () => {
+  //   return getDistanceToScreenCenter(frames[2], 1.7).x;
+  // }, 
+  xPercent: 170,
+  yPercent: -100,
+  // top: '50%'
 }, '+=1')
 .to('[data-frame="1-1"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[1], { 
@@ -386,8 +389,8 @@ window.ttl = gsap.timeline( {
 .to('[data-frame="1-2"]', { autoAlpha: 0, duration: 0.35 }, '<')
 .to(frames[2], { 
   scale: tl8IsMobile ? 1 : 1 / 1.38,
-  x: 0,
-  y: 0,
+  // x: 0,
+  // y: 0,
   xPercent: tl8IsMobile ? -100 : 60,
   yPercent: tl8IsMobile ? 102 : 0,
   top: getDistanceToScreenCenter(frames[2]).initialTop
@@ -433,7 +436,7 @@ window.ttl = gsap.timeline( {
   xPercent: adaptiveScreen8Values(-114, 0),
   yPercent: adaptiveScreen8Values(160,0),
   scale: adaptiveScreen8Values( 0.5, 1 / 1.39),
-  transformOrigin: '0 0', 
+  // transformOrigin: '0 0', 
 }, '<')
 .to(frames[5], { 
   xPercent: adaptiveScreen8Values(-177, -100),
@@ -658,13 +661,14 @@ function curtainClose() {
 document.querySelectorAll('.nav__link').forEach(el => {
   el.addEventListener('click',function(evt){
     evt.preventDefault();
-    console.log();
     gsap.timeline()
       .add(curtainOpen)
+      .set('body', { cursor: 'progress' }, '<')
       .add(() => {
         scroller.scrollTo(document.querySelector(el.getAttribute('href')))
       }, '<+1.5')
       .add(curtainClose, '<+1.5')
+      .set('body', { cursor: '' }, '<')
   });
 })
 window.curtainOpen = curtainOpen;
