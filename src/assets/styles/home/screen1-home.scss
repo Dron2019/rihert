@@ -1,13 +1,16 @@
 .screen1 {
     position: relative;
     width: 100vw;
-    height: 200vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     transform-origin: bottom right;
     background-color: #B87B74;
     margin-bottom: 20px;
     margin-top: 0 !important;
+    @include from(950px){
+      height: 270vh;
+    }
     &__inner {
       position: relative;
       height: 100vh;
@@ -47,6 +50,7 @@
       @include from-to(576px, 1024px){
         flex-direction: column;
         align-items: flex-start;
+        font-size: 20vw;
         
       }
       @include to(575px){

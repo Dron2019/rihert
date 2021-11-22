@@ -18,9 +18,10 @@
         padding-top: 0.2em;
         letter-spacing: -0.07em;
         text-transform: uppercase;
-        @include to(575px){
+        @include to(1024px){
             position: relative;
             font-size: 47px;
+            font-size: 100px;
             line-height: 80%;
             margin-bottom: 25px;
         }       
@@ -58,7 +59,7 @@
             "map title title"
             "photo photo legend";
         }
-        @include to(575px){
+        @include to(1024px){
             display: flex;
             flex-direction: column;
         }
@@ -67,7 +68,7 @@
         grid-area: map; 
         position: relative;
         will-change: transform;
-        @include to(575px){
+        @include to(1024px){
             width: 100vw;
             overflow-x: scroll;
             img {
@@ -101,7 +102,7 @@
     letter-spacing: -0.04em;
     text-transform: uppercase;
     padding-left: 28px;
-    @include to(575px){
+    @include to(1024px){
         font-size: 20.7287px;
         line-height: 100%;
         padding-left: 0;
@@ -121,7 +122,7 @@
         clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
         -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
         transition: .2s ease-in-out;
-        @include to(575px){
+        @include to(1024px){
             width: 14px;
             height: 14px;
         }
@@ -150,7 +151,7 @@
     display: inline-block;vertical-align: top;
     padding-top: 0.3em;
     text-transform: uppercase;
-    @include to(575px){
+    @include to(1024px){
         padding-right: 15px;
         font-size: 11px;
         line-height: 13px;
@@ -159,7 +160,7 @@
 
 .screen9-switcher {
     position: relative;
-    @include to(575px){
+    @include to(1024px){
         display: none;
     }
     &:before {
@@ -188,18 +189,20 @@
     @extend  .screen9-switcher;
     width: 61px;
     height: 35px !important;
-    @include to(575px){
+    width: 116px;
+    height: 67px !important;
+    @include to(1024px){
         display: inline-block;   
         margin-left: 10px;
         margin-right: 5px;
         vertical-align: middle;
     }
-    @include from(576px){
+    @include from(1024px){
         display: none;
     }
 }
 .screen9-mob-button {
-    @include from(576px){
+    @include from(1024px){
         display: none;
     }
     width: calc(100% - 20px);
@@ -242,7 +245,7 @@
     cursor: pointer;
     transform: translate(-50%,-50%);
     letter-spacing: -0.05em;
-    @include to(575px){
+    @include to(1024px){
         --image-h: 67px;
         width: 60px;
         font-size: 8.1px;
@@ -263,7 +266,7 @@
 .map-part[data-item="FIRST POINT COFFEE"] {
     left: 52%;
     top: 82%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(52vw * 1.59);
         top: 82vh;
 
@@ -272,7 +275,7 @@
 [data-item="ART CENTER 41"] {
     left: 79%;
     top: 48%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(79vw * 1.59);
         top: 48vh;
 
@@ -281,7 +284,7 @@
 [data-item="М. ТАРАСА ШЕВЧЕНКО –10 ХВ"] {
     left: 92%;
     top: 72%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(92vw * 1.59);
         top: 72vh;
 
@@ -290,7 +293,7 @@
 [data-item="ART CENTER CLOSER"] {
     left: 16%;
     top: 29%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(16vw * 1.59);
         top: 29vh;
 
@@ -300,7 +303,7 @@
 [data-item="РЕНОВАНА БУДІВЛЯ ЗАВОДУ"] {
     left: 37%;
     top: 62%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(37vw * 1.59);
         top: 62vh;
 
@@ -309,7 +312,7 @@
 [data-item="М. ПОШТОВА ПЛОЩА – 30 ХВ"] {
     top: 88%;
     left: 10%;
-    @include to(575px) {
+    @include to(1024px) {
         top: calc(88vw * 1.59);
         left: calc(10vw * 1.59);
     }
@@ -317,7 +320,7 @@
 [data-item="М. Контрактова площа  – 20 ХВ"] {
     left: 72%;
     top: 86%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(72vw * 1.59);
         top: 86vh;
 
@@ -326,7 +329,7 @@
 [data-item="ОЗЕРО НА ТЕРИТОРІЇ"] {
     left: 50%;
     top: 24%;
-    @include to(575px) {
+    @include to(1024px) {
         left: calc(50vw * 1.59);
         top: 24vh;
 

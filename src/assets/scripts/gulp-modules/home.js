@@ -8,7 +8,8 @@ import headerHandle from './home/header';
 import { fromPathToArray, isFullHd } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
-
+const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
+const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
 gsap.defaults({
   ease: 'power3.out',
   duration: 2.5,
@@ -50,7 +51,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 });
 
 
-gsap.timeline({
+!isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen1',
@@ -87,7 +88,7 @@ function stopCustomScroll() {
 function startCustomScroll() {
   scroller.start();
 }
-const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
+
 
 
 !isMobile() && gsap.timeline({
@@ -126,7 +127,7 @@ const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 
 const screen9 = document.querySelector('.screen9 .screen9__inner');
 // 0.28
-!isMobile() && gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
+!isTablet() && gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
@@ -143,109 +144,14 @@ const params = {
   excludeScreenOnScrollChange: [1, 2,3,5, 6,7, 10, 11],
   currentScreen: '1',
   isAnimating: false,
-  2: () => {
-    gsap.timeline({ paused: true })
-      .add(stopCustomScroll)
-      .add(() => params.isAnimating = true)
-      .to('.screen1', { scale: 2.05 })
-      .add(() => {
-        // scroller.scrollTo(document.querySelector('.screen2'))
-      })
-      .add(() => params.isAnimating = false)
-      .add(startCustomScroll)
-      .add(() => {
-        params.currentScreen = 2;
-      })
-      .play();
-  },
-  3: () => {
-    
-  },
+  2: () => {},
+  3: () => {},
   4: () => {},
   5: () => {},
   6: () => {},
   7: () => {},
-  8: () => {
-    
-  },
-  9: (fromBack) => {
-    let isAnimating = true;
-    let innerState = fromBack ? 2 : 1;
-    if (!fromBack) gsap.set('.screen9 .screen9__inner', {scale: () => {
-      return document.querySelector('.screen9').getBoundingClientRect().width / document.querySelector('.screen9 .map').getBoundingClientRect().width
-    }})
-    // stopCustomScroll();
-    gsap.timeline({paused: true})
-      .add(stopCustomScroll)
-      .add(() => {
-        params.isAnimating = true;
-        scroller.scrollTo(document.querySelector('.screen9'));
-      })
-      .add(() => {
-        isAnimating = false;
-      }, '<+1.5')
-      .play();
-      window.addEventListener('wheel', innerScreen9Handler);
-      function innerScreen9Handler(evt) {
-        if (isAnimating === true) return;
-        if (evt.deltaY > 0 && innerState === 1) {
-          transferInnerDown9().play();
-          innerState++;
-        } else if (evt.deltaY > 0 && innerState === 2) {
-          transferFrom9().play();
-        } else if (evt.deltaY < 0 && innerState === 2) {
-          transferInnerUp().play();
-          innerState--;
-        } else if (evt.deltaY < 0 && innerState === 1) {
-          transferFrom9Up().play();
-        }
-      }
-      function transferFrom9Up() {
-        return gsap.timeline({ paused: true })
-          .add(() => isAnimating = true)  
-          .add(() => {
-              window.removeEventListener('wheel', innerScreen9Handler);
-          })
-          .add(() => {
-            // scroller.scrollTo(document.querySelector('.screen8'));
-            // startCustomScroll();
-            scroller.update();
-            params.currentScreen = 8;
-          }) 
-          .add(() => isAnimating = false)  
-          .add(startCustomScroll)
-      }
-      function transferInnerUp() {
-        return gsap.timeline({ paused: true })
-          .add(() => isAnimating = true)
-          .to('.screen9 .screen9__inner', { scale: () => {
-            return document.querySelector('.screen9').getBoundingClientRect().width / document.querySelector('.screen9 .map').getBoundingClientRect().width
-          } })
-          .add(() => isAnimating = false)
-        }
-      function transferInnerDown9(){
-        return gsap.timeline({ paused: true })
-          .add(() => isAnimating = true)
-          .to('.screen9 .screen9__inner', { scale: 1 })
-          .add(() => isAnimating = false)
-
-      }
-      function transferFrom9() {
-        return gsap.timeline({ paused: true })
-          .add(() => isAnimating = true)  
-          .add(() => {
-              window.removeEventListener('wheel', innerScreen9Handler);
-              scroller.scrollTo(document.querySelector('.screen10'));
-              scroller.update();
-          })
-          .add(() => isAnimating = false)  
-          .add(startCustomScroll)
-          .add(() => {
-            params[10]()
-          })
-          // .add(startCustomScroll)
-      }
-  },
+  8: () => {},
+  9: (fromBack) => {},
   10: () => {
     gsap.timeline({ paused: true })
       .add(() => {
@@ -547,7 +453,7 @@ window.ttl = gsap.timeline( {
     markers: true,
     trigger: ".screen7",
     // start: "-200px bottom",
-    end: `${innerHeight} bottom`,
+    end: `${innerHeight * 1.5} bottom`,
     // onLeave: () => {
     //   scroller.update();
     //   ScrollTrigger.refresh();
@@ -560,7 +466,7 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+0.5')
+.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+1.5')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
 gsap.timeline({
   ease: 'none',
@@ -680,7 +586,7 @@ isMobile() && gsap.timeline({
 
 
 
-!isMobile() && gsap.timeline({
+!isTablet() && gsap.timeline({
   ease: "none",
   scrollTrigger: {
     scroller: pageContainer,
@@ -711,12 +617,22 @@ isMobile() && gsap.timeline({
 })
 .to('.screen9__inner>div', {
   ease: "none",
-  scale: 1
+  scale: 1,
+
 })
+
 .to('.screen9__inner', {
-  ease: "none",
   scale: 1
 })
+.fromTo('.map img', {
+
+  scale: 1,
+  willChange: 'auto'
+}, { 
+  ease: "none",
+  scale: 1,
+  willChange: 'transform'
+}, '<')
 .to('.screen9__inner', {
   scale: 1
 })
