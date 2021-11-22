@@ -4,7 +4,7 @@
     left: 0;
     background: white;
     will-change: transform;
-    @include from(576px){
+    @include from(1025px){
         overflow: hidden;
         height: 200vh;
     }

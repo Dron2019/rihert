@@ -92,7 +92,7 @@ function startCustomScroll() {
 
 
 
-!isMobile() && gsap.timeline({
+!isTablet() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen10',
@@ -108,7 +108,7 @@ function startCustomScroll() {
     }
   }
 })
-!isMobile() &&  gsap.timeline({
+!isTablet() &&  gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen11',
@@ -200,7 +200,7 @@ const params = {
     function switchState1To2(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11', { scale: 1.3 })
+        .to('.screen11__inner', { scale: 1.3 })
         .add(() => {
           currentState = 2;
         })
@@ -209,7 +209,7 @@ const params = {
     function switchState2To1(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11', { scale: 1 })
+        .to('.screen11__inner', { scale: 1 })
         .add(() => {
           currentState = 1;
         })
@@ -251,17 +251,17 @@ const params = {
 
 
 
-const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
-screen3VertLines.forEach(el => {
-  console.log(el);
-  let result = fromPathToArray(el.getAttribute('d'));
-  console.log(result);
-  result[0].y = +result[0].y + (window.innerHeight - (+result[0].y));
+// const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
+// screen3VertLines.forEach(el => {
+//   console.log(el);
+//   let result = fromPathToArray(el.getAttribute('d'));
+//   console.log(result);
+//   result[0].y = +result[0].y + (window.innerHeight - (+result[0].y));
 
-  result[0].y -= 50;
-  result = result.map(el => Object.values(el).join(' '));
-  el.setAttribute('d',result.join(' '));
-})
+//   result[0].y -= 50;
+//   result = result.map(el => Object.values(el).join(' '));
+//   el.setAttribute('d',result.join(' '));
+// })
 
 
 

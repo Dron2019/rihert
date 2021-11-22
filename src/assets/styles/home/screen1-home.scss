@@ -75,6 +75,10 @@
       width: 100vw;
       height: 26vw;
       z-index: 1;
+      @include from-to(576px, 1024px){
+        transform: scale(2);
+        transform-origin: 100% 100%;
+      } 
       @include to(575px){
         position: static; 
         margin-top: 110px;

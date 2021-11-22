@@ -29,8 +29,9 @@
   }
 .screen7 {
     width: 100vw;
-    @include to(575px) {
+    @include to(1024px) {
         min-height: auto;
+        height: auto;
     }
     @include from(1025px){
         margin-bottom: -50px;
@@ -50,6 +51,8 @@
             align-items: center;
             justify-content: flex-start;
             padding-left: 20px;
+            min-height: auto;
+            padding-bottom: calc(125px + 75px);
 
         }   
         @include from(1025px){
