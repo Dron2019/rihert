@@ -51,7 +51,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 });
 
 
-!isMobile() && gsap.timeline({
+!isTablet() && gsap.timeline({
   ease: 'none',
   scrollTrigger: {
     scroller: pageContainer,
@@ -446,7 +446,7 @@ window.ttl = gsap.timeline( {
 
 
 
-!isMobile() && gsap.timeline({
+!isTablet() && gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
     scrub: true,
@@ -513,10 +513,10 @@ const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
 // const screen5ScaleCoef = isFullHd() ? 1 : 1.3;
 const screen5ScaleCoef = innerHeight / document.querySelector('.screen5-grid-2-1').getBoundingClientRect().height;
-screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
+!isTablet() && screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
 
 // console.log(isMobile());
-const tl5scr = !isMobile() && gsap.timeline( {
+const tl5scr = !isTablet() && gsap.timeline( {
   defaults: {
     transformOrigin: '50% 50%',
     ease: 'none'

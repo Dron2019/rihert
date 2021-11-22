@@ -6,6 +6,12 @@
     --left-column-width: 33.55%;
     --medium-column-width: 28.55%;
     --right-column-width: 37.9%;
+    @include from-to(576px, 1024px){
+        --screen5-height: auto;
+        --left-column-width: 0;
+        --medium-column-width: 50%;
+        --right-column-width: 50%;
+    }
     @include to(575px){
         --left-column-width: 0%;
         --medium-column-width: 50%;
