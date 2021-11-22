@@ -11,7 +11,7 @@ global.gsap = gsap;
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
 gsap.defaults({
-  ease: 'power3.out',
+  // ease: 'power3.out',
   duration: 2.5,
 })
 gsap.registerPlugin(ScrollTrigger);
@@ -52,6 +52,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 
 
 !isMobile() && gsap.timeline({
+  ease: 'none',
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen1',
@@ -60,7 +61,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
     end: '100% bottom',
   }
 })
-.to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%'} )
+.to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
 
 gsap.timeline({
   scrollTrigger: {
@@ -450,7 +451,7 @@ window.ttl = gsap.timeline( {
   scrollTrigger:  {
     scrub: true,
     scroller: pageContainer,
-    markers: true,
+    // markers: true,
     trigger: ".screen7",
     // start: "-200px bottom",
     end: `${innerHeight * 1.5} bottom`,
@@ -466,7 +467,7 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { /*yPercent: -30,*/ xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+0.5')
+.from('.screen7__inner', { yPercent: 30, xPercent: 70, scale: 3, transformOrigin: '0 0' }, '<+0.5')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
 gsap.timeline({
   ease: 'none',
@@ -510,7 +511,8 @@ startCustomScroll()
 // console.log(getComputedStyle().getPropertyValue("--screen5-height"));
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
-const screen5ScaleCoef = isFullHd() ? 1 : 1.3;
+// const screen5ScaleCoef = isFullHd() ? 1 : 1.3;
+const screen5ScaleCoef = innerHeight / document.querySelector('.screen5-grid-2-1').getBoundingClientRect().height;
 screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
 
 // console.log(isMobile());
@@ -530,10 +532,10 @@ const tl5scr = !isMobile() && gsap.timeline( {
   },
   ease: "none"
 })
-.to(screen5Inner, { scale: isFullHd() ? 1.9 : 2.2, transformOrigin: '0 0', duration: 0 })
+.to(screen5Inner, { scale: screen5ScaleCoef, transformOrigin: '0 0', duration: 0 })
 .to(screen5Inner, 
 {
-  x: innerWidth * -screen5ScaleCoef + 150,
+  x: innerHeight * -screen5ScaleCoef + 150,
   transformOrigin: '0 0',
 }, '<')
 .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
@@ -642,7 +644,7 @@ isMobile() && gsap.timeline({
 
 function curtainOpen() {
   gsap.timeline()
-    .set('.curtain', { display: 'block' })
+    .set('.curtain', { display: 'flex' })
     .fromTo('.curtain', { xPercent: 100 }, { xPercent: 0, duration: 0.75, ease: 'power2.out' })
 }
 function curtainClose() {

@@ -256,6 +256,7 @@
     }
     img, video {
         width: var(--image-h);
+        width: 100%;
         height: calc(var(--image-h) * 1.31);
         object-fit: cover;
     }

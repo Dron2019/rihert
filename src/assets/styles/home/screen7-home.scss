@@ -32,6 +32,11 @@
     @include to(575px) {
         min-height: auto;
     }
+    @include from(1025px){
+        margin-bottom: -50px;
+        z-index: 10;
+        position: relative;
+    }
     &__inner {
         will-change: transform;
         background-color: #8886C2;
@@ -49,6 +54,7 @@
         }   
         @include from(1025px){
             padding-bottom: 100px;
+
         }
         @include to(575px){
             width: 100%;
