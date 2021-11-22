@@ -9,15 +9,25 @@
     background-color: var(--color-red);
     z-index: 200;
     padding: 15px;
+    visibility: hidden;
+    opacity: 0;
     // form,
     // .subtitle {
     //     margin-top: auto;
     // }
-    &__bottom-line {
+    @include to(575px){
+        max-height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .border {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        left: -50px;
+        bottom: 20px;
+        width: calc(100vw + 50px);
+        height: 2px;
+        background-color: var(--color-black);
+        transform: matrix(-1, -0.01, 0.01, -1, 0, 0);
     }
     &__layout {
         margin-left: calc(var(--offset) * -0.5);
@@ -26,9 +36,16 @@
         flex-wrap: wrap;
         align-content: flex-start;
         height: 100%;
+        transform-origin: 100% 100%;
+        @include to(1024px){
+            align-content: center;
+        }
     }
     form>*:nth-child(n+2) {
         margin-top: 50px;
+        @include from(1920px){
+            margin-top: 100px;
+        }
     }
     .h1 {
         position: relative;
@@ -43,11 +60,17 @@
         margin-bottom: auto;
         padding-bottom: 70px;
         margin-bottom: 45px;
-        svg {
+        @include to(575px){
+            padding-bottom: 30px;
+        }
+        .border {
             position: absolute;
             left: -50px;
             bottom: 0;
             width: calc(100vw + 50px);
+            height: 2px;
+            background-color: var(--color-black);
+            transform: matrix(-1, -0.01, 0.01, -1, 0, 0);
         }
         span:first-child {
             width: 100%;
@@ -61,8 +84,17 @@
         line-height: 90%;
         /* or 27px */
         letter-spacing: -0.04em;
-        max-width: 390px;
+        // max-width: 390px;
         @include customOffsetWidth(30, var(--offset));
+        @include to(1024px){
+            @include customOffsetWidth(100, var(--offset));
+        }
+        @include from(1920px){
+            font-size: 52px;
+        }
+        @include to(575px){
+            font-size: 24px;
+        }
         span {
             display: inline-block;
             padding-right: 5ch;
@@ -79,6 +111,12 @@
         width: 60px;
         height: 60px;
         z-index: 5;
+        @include to(1024px){
+            right: 15px;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+        }
         @include from(1025px){
             &:hover path[stroke] {
                 stroke: #E1F769;
@@ -89,6 +127,10 @@
         @include customOffsetWidth(70, var(--offset));
         padding-right: 70px;
         padding-top: 45px;
+        @include to(1024px){
+            padding-right: 0;
+            @include customOffsetWidth(100, var(--offset));
+        }
     }
     button {
         width: 400px;
@@ -99,6 +141,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @include from(1920px){
+            width: 800px;   
+            height: 94px;
+            font-size: 42px;
+        }
+        @include to(575px){
+            font-size: 13px;
+            width: max-content;
+            height: auto;
+        }
     }
     input::placeholder,
     input {
@@ -109,6 +161,12 @@
         /* identical to box height, or 27px */
         letter-spacing: -0.04em;
         color: var(--color-black);
+        @include from(1920px){
+            font-size: 52px;
+        }
+        @include to(575px){
+            font-size: 24px;
+        }
     }
     .form-field {
         padding-bottom: 20px;
@@ -121,6 +179,13 @@
         svg {
             width: 183px;
             height: 38px;
+            @include to(575px){
+                width: 90px;
+                height: 19px;
+            }
+        }
+        @include to(1024px){
+            transform: translateY(-100%);
         }
     }
     .input-message,
@@ -128,6 +193,10 @@
         position: absolute;
         left: 0;
         bottom: calc(100% + 5px);
+        @include from(1920px){
+            font-size: 24px;
+            bottom: calc(100% + 15px);
+        }
     }
     [data-status="field--error"] .input-placeholder {
         display: none;

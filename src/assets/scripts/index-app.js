@@ -81,8 +81,51 @@ formsWithTel.forEach(form => {
 const formWrapper = document.querySelector('[data-form-wrapper]');
 const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call]');
 formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
-  gsap.to(formWrapper, { autoAlpha: 1 })
+  gsap.timeline({
+  })
+    .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
+    .fromTo('.form-wrapper__layout', { scale: 0.75 },{
+      scale: 1,
+      transformOrigin: '100% 100%',
+      duration: 1,
+      ease: 'power2.out'
+    })
+    // .fromTo(formWrapper, 
+    //   { 
+    //     clipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)', 
+    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)',
+    //     ease: 'power3.out',
+    //     duration: 0.25
+    //   },
+    //   { 
+    //     clipPath: 'polygon(100% 0%, 100% 100%, 51% 100%, 63% 52%, 61% 0%)', 
+    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 51% 100%, 63% 52%, 61% 0%)',
+    //     ease: 'power3.in',
+    //     duration: 0.25
+    //   })
+    // .to(formWrapper, 
+    //   { 
+    //     clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 38% 50%, 16% 0%)', 
+    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 38% 50%, 16% 0%)',
+    //     ease: 'power3.out',
+    //     duration: 0.25
+    // })
+    // .to(formWrapper, 
+    //   { 
+    //     clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 0% 50%, 0% 0%)', 
+    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 0% 50%, 0% 0%)',
+    //     ease: 'power3.in',
+    //     duration: 0.25
+    //   })
 }))
 formWrapper.querySelector('[class*="close"]').addEventListener('click',function(evt){
-  gsap.to(formWrapper, { autoAlpha: 0 })
+  gsap.timeline({
+  })
+  .to('.form-wrapper__layout', {
+    scale: 0.75,
+    transformOrigin: '100% 100%',
+    duration: 1,
+    ease: 'power2.in',
+  })
+  .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
 });
