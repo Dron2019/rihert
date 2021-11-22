@@ -10,19 +10,19 @@ block scripts
 block content
   //- .scroller-container
   .screen1.screen(data-scroll-section)
-    h1.h1 
-      <span>Новий</span> <span>квартал</span> <span>1895</span> <span> року</span>
-      <svg width="375" height="24" viewBox="0 0 375 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M385.041 23.1851L-129.862 1.00022" stroke="black" stroke-width="0.35782"/>
+    .screen1__inner
+      h1.h1 
+        <span>Новий</span> <span>квартал</span> <span>1895</span> <span> року</span>
+        <svg width="375" height="24" viewBox="0 0 375 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M385.041 23.1851L-129.862 1.00022" stroke="black" stroke-width="0.35782"/>
+          </svg>
+      <svg class="screen1__decor" width="1442" height="377" viewBox="0 0 1442 377" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1463 164.51L-10 153.003" stroke="black"/>
+        <path d="M1463 63.002L-10 0.999348" stroke="black"/>
+        <path d="M1463 347.511L-10 366.003" stroke="black"/>
+        <path d="M711.457 31.5059L711.457 357.006" stroke="black"/>
+        <image width="450" height="187" xlink:href="./assets/images/screen1/img.png" x="990" y="158">
         </svg>
-    //- +img('screen1-bottom.jpg')
-    <svg class="screen1__decor" width="1442" height="377" viewBox="0 0 1442 377" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1463 164.51L-10 153.003" stroke="black"/>
-      <path d="M1463 63.002L-10 0.999348" stroke="black"/>
-      <path d="M1463 347.511L-10 366.003" stroke="black"/>
-      <path d="M711.457 31.5059L711.457 357.006" stroke="black"/>
-      <image width="450" height="187" xlink:href="./assets/images/screen1/img.png" x="990" y="158">
-      </svg>
 
   .screen2.screen(id="info" data-scroll-section)
     .screen2__title 

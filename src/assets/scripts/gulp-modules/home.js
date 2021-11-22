@@ -50,22 +50,25 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 });
 
 
-
 gsap.timeline({
   scrollTrigger: {
-    trigger: '.screen1',
     scroller: pageContainer,
-    onEnterBack: () => {
-      // params[1]();
-    }
+    trigger: '.screen1',
+    scrub: true,
+    pin: '.screen1__inner',
+    end: '100% bottom',
   }
 })
+.to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%'} )
+
 gsap.timeline({
   scrollTrigger: {
     trigger: '.screen2',
     scroller: pageContainer,
     start: '-20px bottom',
+    ease: 'none',
     onEnter: () => {
+      console.log('d');
       gsap.timeline()
         .add(stopCustomScroll)
         // .to('.screen1', { scale: 2.5 })
@@ -87,42 +90,6 @@ function startCustomScroll() {
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 
 
-// gsap.timeline({
-//   scrollTrigger: {
-//     scroller: pageContainer,
-//     trigger: '.screen6',
-//     scrub: true,
-//     onEnterBack: () => {
-//       // params[6]();
-//     }
-//   }
-// })
-
-
-// gsap.timeline({
-//   scrollTrigger: {
-//     scroller: pageContainer,
-//     trigger: '.screen7',
-//     scrub: true,
-//     // onEnter: () => /*params[7]()*/
-//   }
-// })
-!isMobile() && gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen9',
-    scrub: true,
-    onEnter: () => {
-      // params[9]()
-      console.log('enter 9');
-    },
-    onEnterBack: () => {
-      console.log('enter back 9');
-      // params[9]('fromBack')
-
-    }
-  }
-})
 !isMobile() && gsap.timeline({
   scrollTrigger: {
     scroller: pageContainer,
@@ -194,78 +161,10 @@ const params = {
   3: () => {
     
   },
-  4: () => {
-    gsap.timeline()
-      .add(stopCustomScroll)
-      .add(() => {
-        params.isAnimating = true;
-      })
-      .fromTo('.screen5', { scale: 1 }, { scale: 2.5 })
-      .fromTo('.pin-wrap', { scale: 0.415 }, { scale: 1 }, '<')
-      .add(() => {
-        params.currentScreen = 4;
-        params.isAnimating = false;
-      })
-      .add(startCustomScroll, '<+0.5')
-  },
-  5: () => {
-    gsap.timeline()
-      // .add(() => scroller.stop())
-      .add(() => stopCustomScroll())
-
-      .add(() => {
-        
-        params.isAnimating = true;
-      })
-      .fromTo('.screen5', { scale: 2.5 }, { scale: 1 })
-      .fromTo('.pin-wrap', { scale: 1 }, { scale: 0.415 }, '<')
-      .add(() => {
-        
-        params.currentScreen = 5;
-      })
-      .add(() => {
-        startCustomScroll();
-        params.isAnimating = false;
-      })
-  },
-  6: () => {
-    console.log('ee');
-    gsap.timeline()
-        .add(() => {
-          stopCustomScroll();
-          params.isAnimating = true;
-        })
-        .add(() => scroller.scrollTo(document.querySelector('.screen6')))
-        .fromTo('.screen6__inner', { scale: 0.5 }, { scale: 1, duration: 2.5 }, '<')
-        .fromTo('.screen7__inner', {xPercent: 0 }, { xPercent: 100, duration: 2.5 }, '<')
-        // .set('.screen6', { minHeight: 'auto' })
-        .add(() => {
-          startCustomScroll();
-          scroller.update();
-          params.currentScreen = 6;
-          params.isAnimating = false;
-        })
-  },
-  7: () => {
-    const screen6Height = document.querySelector('.screen6').getBoundingClientRect().height;
-    gsap.timeline()
-        .add(() => {
-          stopCustomScroll();
-          params.isAnimating = true;
-        })
-        .add(() => scroller.scrollTo(document.querySelector('.screen7')))
-        
-        // .set('.screen6', { minHeight: 'auto' })
-        // .fromTo('.screen6', { height: screen6Height }, { height: screen6Height / 2, duration: 2.5 }, '<')
-        .fromTo('.screen6__inner', { scale: 1 }, { scale: 0.5, duration: 2.5 })
-        .fromTo('.screen7__inner', { xPercent: 100 }, {xPercent: 0, duration: 2.5 }, '<')
-        .add(() => {
-          startCustomScroll();
-          scroller.update();
-          params.currentScreen = 7;
-          params.isAnimating = false;
-        })
-  },
+  4: () => {},
+  5: () => {},
+  6: () => {},
+  7: () => {},
   8: () => {
     
   },
@@ -442,18 +341,6 @@ const params = {
       
   },
 };
-// function changeCurrentScreen(evt) {
-//   if (params.isAnimating || params.excludeScreenOnScrollChange.includes(params.currentScreen)) return;
-//   const direction = evt.deltaY / 100;
-//   const currentScreenNumber = +params.currentScreen;
-//   if (typeof params[currentScreenNumber + direction] === 'function') {
-//     params[currentScreenNumber + direction]();
-//     params.currentScreen += direction;
-//   }
-//   console.log(params.currentScreen);
-// }
-// window.addEventListener('wheel',changeCurrentScreen);
-
 
 
 
@@ -657,6 +544,7 @@ window.ttl = gsap.timeline( {
   scrollTrigger:  {
     scrub: true,
     scroller: pageContainer,
+    markers: true,
     trigger: ".screen7",
     // start: "-200px bottom",
     end: `${innerHeight} bottom`,
@@ -672,7 +560,7 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { yPercent: -30, xPercent: 100, scale: 2, transformOrigin: '0 0' }, '<')
+.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+0.5')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
 gsap.timeline({
   ease: 'none',
