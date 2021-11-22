@@ -1,0 +1,111 @@
+.form-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    --offset: 50px;
+    width: 100vw;
+    
+    height: 100vh;
+    background-color: var(--color-red);
+    z-index: 200;
+    padding: 15px;
+    // form,
+    // .subtitle {
+    //     margin-top: auto;
+    // }
+    &__layout {
+        margin-left: calc(var(--offset) * -0.5);
+        margin-right: calc(var(--offset) * -0.5);
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        height: 100%;
+    }
+    form>*:nth-child(n+2) {
+        margin-top: 50px;
+    }
+    .h1 {
+        @include customOffsetWidth(100, var(--offset));
+        font-size: 174.753px;
+        line-height: 90%;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: auto;
+        span:first-child {
+            width: 100%;
+        }
+        span:last-child {
+            margin-left: auto;
+        }
+    }
+    .subtitle {
+        font-size: 30px;
+        line-height: 90%;
+        /* or 27px */
+        letter-spacing: -0.04em;
+        max-width: 390px;
+        @include customOffsetWidth(30, var(--offset));
+        span {
+            display: inline-block;
+            padding-right: 5ch;
+        }
+    }
+    &__close {
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 60px;
+        height: 60px;
+        @include from(1025px){
+            &:hover path[stroke] {
+                stroke: blue;
+            }
+        }
+    }
+    form {
+        @include customOffsetWidth(70, var(--offset));
+        padding-right: 70px;
+    }
+    button {
+        width: 400px;
+        height: 60px;
+        font-size: 24px;
+        line-height: 100%;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    input::placeholder,
+    input {
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        line-height: 90%;
+        /* identical to box height, or 27px */
+        letter-spacing: -0.04em;
+        color: var(--color-black);
+    }
+    .form-field {
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--color-black);
+        position: relative;
+    }
+    &__logo {
+        @include customOffsetWidth(100, var(--offset));
+        text-align: left;
+        svg {
+            width: 183px;
+            height: 38px;
+        }
+    }
+    .input-placeholder {
+        position: absolute;
+        left: 0;
+        bottom: 100%;
+    }
+
+} 

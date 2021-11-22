@@ -9,17 +9,17 @@ const config = {
     const path1 = item.split('/');
     // path1.pop();
     const name = path1.pop().replace(/\.js/, '');
-    if (name === 'index') {
+    if (name === 'index-app') {
       acc[name] = './src/assets/scripts/index-app.js';
-      console.warn('Dont use index.js in gulp-modules folder, it will be ignored')
-    } 
+      console.warn('Dont use index.js in gulp-modules folder, it will be ignored');
+    }
     else if (name === 'libs') {
       console.log('libs script ingrored by webpack');
     }
     else {
       acc[name] = item;
     }
-    return acc;
+    return { ...acc, 'index-app': './src/assets/scripts/index-app.js'};
   }, {}),
   output: {
     filename: '[name].bundle.js',

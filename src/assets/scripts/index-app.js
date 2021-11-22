@@ -21,7 +21,7 @@ global.axios = axios;
  */
 
 
-const formsWithTel = ['[data-home-communication]'];
+const formsWithTel = ['[data-form]'];
 
 formsWithTel.forEach(form => {
   const $form = document.querySelector(form);
@@ -34,13 +34,6 @@ formsWithTel.forEach(form => {
         $form,
         showSuccessMessage: false,
         successAction: () => {
-          const tl = gsap.timeline({paused: true})
-            .set('[data-thank-page]', { display: 'block' })
-            .fromTo('[data-thank-page]', { autoAlpha: 0 }, { autoAlpha: 1 });
-            tl.play();
-            document.querySelector('.thanks-form__close').onclick = () => {
-              tl.reverse();
-          }
         },
         $btnSubmit: $form.querySelector('[data-btn-submit]'),
         fields: {
@@ -51,8 +44,8 @@ formsWithTel.forEach(form => {
             valid: false,
             error: [],
           },
-          text: {
-            inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-text]') }),
+          phone: {
+            inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
             rule: yup.string().required(i18next.t('required')).trim(),
             defaultMessage: i18next.t('name'),
             valid: false,
@@ -84,5 +77,3 @@ formsWithTel.forEach(form => {
 });
 
 /** ******************************* */
-
-console.log('i here');

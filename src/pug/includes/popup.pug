@@ -1,0 +1,24 @@
+.form-wrapper 
+    .form-wrapper__layout
+        <svg class="form-wrapper__close" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M64 64L4 4M4 64L64 4L4 64Z" stroke="white" stroke-width="10"/>
+            </svg>
+        .h1 
+            span Записатися 
+            span на 
+            span перегляд
+        .subtitle  <span></span>Якщо у вас виникли питання, залиште свій номер і ми передзвонимо вам:
+        form(data-form)
+            .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive")
+                input( autocomplete="off" type='text' name="name" placeholder="Ім’я:").form-field__input
+                .input-message(data-input-message)
+                .input-placeholder Ваше ім’я
+            .form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+                input( autocomplete="off" type='text' name="phone" placeholder="Телефон:").form-field__input
+                .input-message(data-input-message)
+                .input-placeholder Ваш телефон
+                .mask-absolute.js-mask-absolute
+            button.button(type="submit" data-btn-submit) 
+                span(data-btn-submit-text) Записатися на перегляд
+        .form-wrapper__logo
+            +svg('logo')

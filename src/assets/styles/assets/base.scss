@@ -126,6 +126,10 @@ button {
 	border: none;
 	background-color: transparent;
 }
+input::placeholder,
+input {
+	font-family: $default-font;
+}
 
 .iti-flag {
 	//background-image: url("../img/flag/flags.png");

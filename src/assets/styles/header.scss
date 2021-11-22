@@ -133,6 +133,10 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
+    &:disabled {
+        background-color: gray;
+        pointer-events: none;
+    }
     &>* {
         position: relative;
         z-index: 1;
