@@ -629,11 +629,12 @@ isMobile() && gsap.timeline({
 .fromTo('.map img', {
 
   scale: 1,
-  willChange: 'auto'
+  z: 0,
+  // willChange: 'auto'
 }, { 
   ease: "none",
   scale: 1,
-  willChange: 'transform'
+  z: 0,
 }, '<')
 .to('.screen9__inner', {
   scale: 1

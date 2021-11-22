@@ -151,11 +151,13 @@
         height: 105%;
         background-color: #fff;
         clip-path: circle(1.1% at 100% 0);
+        -webkit-clip-path: circle(1.1% at 100% 0);
         transition: .3s ease-in-out;
         z-index: 0;
     }
     &:hover:after {
         clip-path: circle(141.6% at 100% 0);
+        -webkit-clip-path: circle(141.6% at 100% 0);
     }
     @include from(2100px){
         font-size: 26.76px;
