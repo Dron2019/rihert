@@ -62,6 +62,7 @@
         margin-bottom: 45px;
         @include to(575px){
             padding-bottom: 30px;
+            margin-bottom: 30px;
         }
         .border {
             position: absolute;
@@ -111,11 +112,18 @@
         width: 60px;
         height: 60px;
         z-index: 5;
+
         @include to(1024px){
             right: 15px;
             top: 15px;
             width: 40px;
             height: 40px;
+        }
+        @include to(575px){
+            right: 23px;
+            top: 0px;
+            width: 25px;
+            height: 25px;
         }
         @include from(1025px){
             &:hover path[stroke] {

@@ -466,7 +466,7 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+1.5')
+.from('.screen7__inner', { /*yPercent: -30,*/ xPercent: 70, scale: 2, transformOrigin: '0 0' }, '<+0.5')
 // .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
 gsap.timeline({
   ease: 'none',

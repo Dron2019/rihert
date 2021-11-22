@@ -250,6 +250,10 @@
         width: 60px;
         font-size: 8.1px;
     }
+    @include from(1920px){
+        width: 50px;
+        font-size: 7.1px;
+    }
     img, video {
         width: var(--image-h);
         height: calc(var(--image-h) * 1.31);

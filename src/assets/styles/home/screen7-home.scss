@@ -21,6 +21,7 @@
     }
 }
 .screen7 {
+    margin-bottom: 0;
     @include from-to(576px, 1024px){
         min-height: auto;
     }

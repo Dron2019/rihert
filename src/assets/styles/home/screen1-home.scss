@@ -11,6 +11,9 @@
     @include from(950px){
       height: 270vh;
     }
+    @include from(1920px){
+      height: 170vh;
+    }
     &__inner {
       position: relative;
       height: 100vh;

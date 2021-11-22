@@ -3,6 +3,9 @@
     width: 100vw;
     margin-top: 0;
     overflow: hidden;
+    @include from(1920px){
+        height: 400vh;
+    }
     svg {
         width: 100vw;
         height: auto;
