@@ -1,4 +1,4 @@
-.form-wrapper 
+.form-wrapper(data-form-wrapper)
     .form-wrapper__layout
         <svg class="form-wrapper__close" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M64 64L4 4M4 64L64 4L4 64Z" stroke="white" stroke-width="10"/>
@@ -7,6 +7,9 @@
             span Записатися 
             span на 
             span перегляд
+            <svg preserveAspectRatio="xMidYMid slice" width="1440" height="27" viewBox="0 0 1440 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1440.79 25.625L-1515.89 1.99878" stroke="black" stroke-width="2.05332"/>
+                </svg>
         .subtitle  <span></span>Якщо у вас виникли питання, залиште свій номер і ми передзвонимо вам:
         form(data-form)
             .form-field.form-field-input(data-field-input data-field-name data-status="field--inactive")
@@ -22,3 +25,6 @@
                 span(data-btn-submit-text) Записатися на перегляд
         .form-wrapper__logo
             +svg('logo')
+    <svg preserveAspectRatio="xMidYMid slice" class="form-wrapper__bottom-line" width="1440" height="41" viewBox="0 0 1440 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1440.79 1.38614L-1516 39.3561" stroke="black" stroke-width="2.05332"/>
+        </svg>

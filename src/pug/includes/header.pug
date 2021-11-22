@@ -12,7 +12,7 @@ nav.nav
     +svg('logo').nav__logo
     each val in links 
         a.nav__link(href=val[1]) #{val[0]}
-    button(type="button").nav__button 
+    button(type="button" data-form-wrapper-call).nav__button 
         span Записатися на перегляд
     .nav__group.df
         .nav__menu-toggle-mob(data-mob-toggle) ...

@@ -77,3 +77,12 @@ formsWithTel.forEach(form => {
 });
 
 /** ******************************* */
+
+const formWrapper = document.querySelector('[data-form-wrapper]');
+const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call]');
+formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
+  gsap.to(formWrapper, { autoAlpha: 1 })
+}))
+formWrapper.querySelector('[class*="close"]').addEventListener('click',function(evt){
+  gsap.to(formWrapper, { autoAlpha: 0 })
+});

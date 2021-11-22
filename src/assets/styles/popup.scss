@@ -13,6 +13,12 @@
     // .subtitle {
     //     margin-top: auto;
     // }
+    &__bottom-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
     &__layout {
         margin-left: calc(var(--offset) * -0.5);
         margin-right: calc(var(--offset) * -0.5);
@@ -25,18 +31,28 @@
         margin-top: 50px;
     }
     .h1 {
+        position: relative;
         @include customOffsetWidth(100, var(--offset));
         font-size: 174.753px;
+        font-size: 11vw;
         line-height: 90%;
         text-transform: uppercase;
         letter-spacing: -0.04em;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: auto;
+        padding-bottom: 70px;
+        margin-bottom: 45px;
+        svg {
+            position: absolute;
+            left: -50px;
+            bottom: 0;
+            width: calc(100vw + 50px);
+        }
         span:first-child {
             width: 100%;
         }
-        span:last-child {
+        span:last-of-type {
             margin-left: auto;
         }
     }
@@ -52,6 +68,9 @@
             padding-right: 5ch;
         }
     }
+    path[stroke] {
+        transition: .3s ease-in-out;
+    }
     &__close {
         cursor: pointer;
         position: absolute;
@@ -59,15 +78,17 @@
         top: 30px;
         width: 60px;
         height: 60px;
+        z-index: 5;
         @include from(1025px){
             &:hover path[stroke] {
-                stroke: blue;
+                stroke: #E1F769;
             }
         }
     }
     form {
         @include customOffsetWidth(70, var(--offset));
         padding-right: 70px;
+        padding-top: 45px;
     }
     button {
         width: 400px;
@@ -102,10 +123,14 @@
             height: 38px;
         }
     }
+    .input-message,
     .input-placeholder {
         position: absolute;
         left: 0;
-        bottom: 100%;
+        bottom: calc(100% + 5px);
+    }
+    [data-status="field--error"] .input-placeholder {
+        display: none;
     }
 
 } 
