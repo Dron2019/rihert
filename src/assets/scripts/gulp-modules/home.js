@@ -283,7 +283,7 @@ function adaptiveScreen8Values(mobile, desktop) {
 }
 window.ttl = gsap.timeline( {
   defaults: {
-    transformOrigin: '50% 50%',
+    // transformOrigin: '50% 50%',
     ease: 'none'
   },
   scrollTrigger: {
@@ -329,7 +329,7 @@ window.ttl = gsap.timeline( {
   xPercent: tl8IsMobile ? null : 75,
   yPercent: tl8IsMobile ? null : 75, 
   scale: tl8IsMobile ? 0.65 :0.75,
-  transformOrigin: '100% 0',
+  // transformOrigin: '100% 0',
 },'<')
 .to(frames[2], {
   yPercent: 0,
