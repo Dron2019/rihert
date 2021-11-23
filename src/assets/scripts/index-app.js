@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
+import { lazyImages } from './modules/helpers/helpers';
 
 /** ******************************* */
 /*
@@ -19,8 +20,7 @@ global.axios = axios;
 /*
  * form handlers start
  */
-
-
+lazyImages();
 const formsWithTel = ['[data-form]'];
 
 formsWithTel.forEach(form => {
@@ -89,7 +89,7 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
       transformOrigin: '100% 100%',
       duration: 1,
       ease: 'power2.out'
-    })
+    }, '<')
     // .fromTo(formWrapper, 
     //   { 
     //     clipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)', 

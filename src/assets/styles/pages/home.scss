@@ -1,5 +1,5 @@
 .scroller-container {
-  @include from(576px){
+  @include from(1025px){
     will-change: transform;
   }
   @include to(1024px){

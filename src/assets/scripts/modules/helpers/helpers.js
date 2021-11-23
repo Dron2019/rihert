@@ -156,3 +156,32 @@ export const fromPathToArray = function(path) {
 
 export const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 export const isFullHd = () => window.matchMedia('(min-width: 1920px)').matches;
+export const lazyImages = () => {
+  const options = {
+    rootMargin: '0px',
+    threshold: 0.01,
+  };
+  const lazyImages = document.querySelectorAll('img[data-src]:not(.swiper-lazy)');
+  
+  lazyImages.forEach((imageArgs) => {
+    const image = imageArgs;
+    image.style.opacity = 0;
+    image.style.transition = ' .1s ease-out';
+    image.addEventListener('load', () => {
+      image.style.opacity = 1;
+    });
+    const target = image;
+    const observer = new IntersectionObserver((entries) => {
+      /* Content excerpted, show below */
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          image.style.transition = '';
+          observer.unobserve(target);
+        }
+      });
+    }, options);
+    observer.observe(target);
+  });
+}

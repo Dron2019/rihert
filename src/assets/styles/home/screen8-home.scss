@@ -56,7 +56,7 @@
     }
     [data-frame] {
         position: absolute;
-        will-change: transform;
+        // will-change: transform;
     }
     [data-frame="1"] {
         width: 427px;
@@ -210,7 +210,7 @@
         left: 4.2%;
         top: 6.1%;
         img {
-            will-change: transform;
+            // will-change: transform;
         }
         @include to(575px){
             height: 25vw;

@@ -294,16 +294,16 @@ window.ttl = gsap.timeline( {
     start: "top top",
     end: `bottom ${window.innerHeight}px`,
     onEnter: () => {
-      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
+      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
     },
     onLeave: () => {
-      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
+      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
     },
     onEnterBack: () => {
-      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
+      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
     },
     onLeaveBack: () => {
-      gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
+      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
     },
   },
   ease: "none"
@@ -626,9 +626,9 @@ isMobile() && gsap.timeline({
 
 })
 
-.to('.screen9__inner', {
-  scale: 1
-})
+// .to('.screen9__inner', {
+//   scale: 1
+// })
 .fromTo('.map img', {
 
   scale: 1,
