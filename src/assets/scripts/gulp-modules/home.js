@@ -539,6 +539,7 @@ const tl5scr = !isTablet() && gsap.timeline( {
 .to(screen5Inner, 
 {
   x: innerHeight * -screen5ScaleCoef + 150,
+  z: 0,
   transformOrigin: '0 0',
 }, '<')
 .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
@@ -602,35 +603,13 @@ isMobile() && gsap.timeline({
     scrub: 1,
     pin: '.screen9__inner',
     start: "top top",
-    // onLeave: () => {
-    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
-    //   gsap.set('.map',{ willChange: '' })
-    // },
-    // onLeaveBack: () => {
-    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
-    //   gsap.set('.map',{ willChange: '' })
-    // },
-    // onEnter: () => {
-    //   gsap.set('.map',{ willChange: 'transform' })
-    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
-    // },
-    // onEnterBack: () => {
-    //   gsap.set('.map',{ willChange: 'transform' })
-    //   // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
-    // }
   }
 })
 .to('.screen9__inner>div', {
   ease: "none",
   scale: 1,
-
 })
-
-// .to('.screen9__inner', {
-//   scale: 1
-// })
 .fromTo('.map img', {
-
   scale: 1,
   z: 0,
   // willChange: 'auto'
@@ -642,9 +621,9 @@ isMobile() && gsap.timeline({
 .to('.screen9__inner', {
   scale: 1
 })
-.to('.screen9__inner', {
-  scale: 1
-})
+// .to('.screen9__inner', {
+//   scale: 1
+// })
 
 function curtainOpen() {
   gsap.timeline()
