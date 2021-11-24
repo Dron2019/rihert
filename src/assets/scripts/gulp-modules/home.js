@@ -8,6 +8,7 @@ import headerHandle from './home/header';
 import { fromPathToArray, isFullHd } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
+gsap.core.globals("ScrollTrigger", ScrollTrigger);
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
 gsap.defaults({

@@ -238,7 +238,7 @@ gulp.task('clear', function () {
 // webpack
 function scripts() {
 		return gulp.src(paths.scripts.src)
-				.pipe(gulpWebpack(webpackConfig, webpack))
+				.pipe(gulpWebpack(webpackConfig('development'), webpack))
 				.pipe(gulp.dest(paths.scripts.dest));
 }
 
@@ -396,8 +396,11 @@ function _static() {
 }
 // JS
 function _scripts() {
+	// return gulp.src(pathsProd.js.src)
+	// 	.pipe(gulp.dest(pathsProd.js.dest))
 	return gulp.src(pathsProd.js.src)
-		.pipe(gulp.dest(pathsProd.js.dest))
+		.pipe(gulpWebpack(webpackConfig('production'), webpack))
+		.pipe(gulp.dest(pathsProd.js.dest));
 }
 // IMG
 function _images() {

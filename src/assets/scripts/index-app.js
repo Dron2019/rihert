@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import FormMonster from '../../pug/components/form/form';
 import SexyInput from '../../pug/components/input/input';
-import { lazyImages } from './modules/helpers/helpers';
+import { isMobile, lazyImages, lazyPosters } from './modules/helpers/helpers';
 
 /** ******************************* */
 /*
@@ -21,6 +21,7 @@ global.axios = axios;
  * form handlers start
  */
 lazyImages();
+lazyPosters();
 const formsWithTel = ['[data-form]'];
 
 formsWithTel.forEach(form => {
@@ -137,3 +138,11 @@ window.addEventListener('succesFormSend',function(evt){
     closeForm();
   }, 2000);
 });
+
+
+const screen1Image = document.querySelector('.screen1 image');
+if (isMobile()) {
+  screen1Image.dataset.hrefMob && screen1Image.setAttribute('xlink:href', screen1Image.dataset.hrefMob);
+} else {
+  screen1Image.dataset.href && screen1Image.setAttribute('xlink:href', screen1Image.dataset.href);
+}

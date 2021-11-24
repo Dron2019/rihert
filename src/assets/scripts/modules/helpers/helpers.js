@@ -161,7 +161,7 @@ export const lazyImages = () => {
     rootMargin: '0px',
     threshold: 0.01,
   };
-  const lazyImages = document.querySelectorAll('img[data-src]:not(.swiper-lazy)');
+  const lazyImages = document.querySelectorAll('img[data-src]');
   
   lazyImages.forEach((imageArgs) => {
     const image = imageArgs;
@@ -177,6 +177,30 @@ export const lazyImages = () => {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
           lazyImage.src = lazyImage.dataset.src;
+          image.style.transition = '';
+          observer.unobserve(target);
+        }
+      });
+    }, options);
+    observer.observe(target);
+  });
+}
+export const lazyPosters = () => {
+  const options = {
+    rootMargin: '0px',
+    threshold: 0.01,
+  };
+  const lazyImages = document.querySelectorAll('[data-poster]');
+  
+  lazyImages.forEach((imageArgs) => {
+    const image = imageArgs;
+    const target = image;
+    const observer = new IntersectionObserver((entries) => {
+      /* Content excerpted, show below */
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.setAttribute('poster', lazyImage.dataset.poster);
           image.style.transition = '';
           observer.unobserve(target);
         }

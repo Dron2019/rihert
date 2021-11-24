@@ -2,12 +2,14 @@
 
 @font-face {
 	font-family: 'Suisse Intl';
+	font-display: swap;
 	src: local('SuisseIntl'),
 		url('../fonts/SuisseIntl.ttf') format('truetype');
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Suisse Intl';
+	font-display: swap;
 	src: local('SuisseIntl'),
 		url('../fonts/SuisseIntl-Medium.ttf') format('truetype');
 		font-weight: 500;
@@ -15,6 +17,7 @@
 }
 @font-face {
 	font-family: 'Corporate A';
+	font-display: swap;
 	src: local('Corporate A'),
 		url('../fonts/CorporateA-Regular.ttf') format('truetype');
 	font-style: normal;

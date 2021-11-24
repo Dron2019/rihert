@@ -260,6 +260,7 @@
         img {
             position: absolute;
             right: 7.5px;
+            right: 3%;
             top: 0;
             height: 163px;
             width: auto;
@@ -333,6 +334,7 @@
         .screen5-text {
             margin-top: auto;
             margin-bottom: 20px;
+            margin-bottom: 40px;
             padding-left: 30%;
             padding-right: 12%;
         }
@@ -458,7 +460,7 @@
     text-transform: uppercase;
     @include from(2100px){
         font-size: 80px;
-        font-size: 70px;
+        font-size: 60px;
 
     }
     @include to(1360px){
