@@ -539,6 +539,7 @@ isMobile() && gsap.timeline({
 .to('.screen9__inner>div', {
   ease: "none",
   scale: 1,
+  duration: 2,
 })
 .fromTo('.map img', {
   scale: 1,
@@ -549,6 +550,9 @@ isMobile() && gsap.timeline({
   scale: 1,
   z: 0,
 }, '<')
+.to('.screen9__inner', {
+  scale: 1
+})
 .to('.screen9__inner', {
   scale: 1
 })

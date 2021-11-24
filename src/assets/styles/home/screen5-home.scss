@@ -490,6 +490,7 @@
     font-size: 13.3642px;
     @include from(2100px){
         font-size: 32px;
+        font-size: 28px;
     }
     @include to(575px){
         font-size: 19.3932px;
