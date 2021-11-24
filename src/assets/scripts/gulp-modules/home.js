@@ -313,7 +313,6 @@ window.ttl = gsap.timeline( {
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
   // scale: 1.7, 
-  // x: getDistanceToScreenCenter(frames[1], 1.7).x, 
   yPercent: tl8IsMobile ? 60 : null,
   xPercent: tl8IsMobile ? -50 : null,
   // top: tl8IsMobile ? null : '26%',
@@ -349,9 +348,6 @@ window.ttl = gsap.timeline( {
 .to(frames[2], { 
   // scale: tl8IsMobile ? 2.85 :  1 / 0.49,
   scale: tl8IsMobile ? 2.85 :  1 / 0.51,
-  // x: () => {
-  //   return getDistanceToScreenCenter(frames[2], 1.7).x;
-  // }, 
   xPercent: 170,
   yPercent: -100,
   // top: '50%'
@@ -361,7 +357,6 @@ window.ttl = gsap.timeline( {
   scale: 1 / 2.3, 
   xPercent: tl8IsMobile ? 0 : 62, 
   yPercent: tl8IsMobile ? -140 : -50,
-  top: getDistanceToScreenCenter(frames[1]).initialTop 
 }, '<')
 .to(frames[5], { 
   scale: tl8IsMobile ? 0.64 : 1 / 1.49, 
@@ -393,7 +388,6 @@ window.ttl = gsap.timeline( {
   // y: 0,
   xPercent: tl8IsMobile ? -100 : 60,
   yPercent: tl8IsMobile ? 102 : 0,
-  top: getDistanceToScreenCenter(frames[2]).initialTop
 }, '<')
 .to(frames[1], { 
   xPercent: tl8IsMobile ? -16 : 83,
@@ -454,14 +448,8 @@ window.ttl = gsap.timeline( {
   scrollTrigger:  {
     scrub: true,
     scroller: pageContainer,
-    // markers: true,
     trigger: ".screen7",
-    // start: "-200px bottom",
     end: `${innerHeight * 1.5} bottom`,
-    // onLeave: () => {
-    //   scroller.update();
-    //   ScrollTrigger.refresh();
-    // }
   }
 })
 .to('.screen5__inner', { 
@@ -470,8 +458,9 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { yPercent: 30, xPercent: 70, scale: 3, transformOrigin: '0 0' }, '<+0.5')
-// .to('.screen5__inner', {  scale: 0.75, xPercent: -30, yPercent: 80, transformOrigin: 'right top' }, '<');
+.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 4, transformOrigin: '0 0', ease: 'none' }, '<')
+
+
 gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
@@ -488,33 +477,10 @@ gsap.timeline({
 .to('.right-bg', { width: '100vw'}, '<')
 
 
-
-
-function getDistanceToScreenCenter(selector, scaleFactor = 0) {
-  const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
-  const currentOffsetOfSmoothScroll = scroller.scroll.instance.scroll.y;
-  const { left, width, top } = el.getBoundingClientRect();
-  const centerScreen = window.innerWidth / 2;
-  const centerScreenY = window.innerHeight / 2;
-  const xDistance = left - centerScreen;
-  const yDistance = top - centerScreenY;
-  // gsap.to(el, { x: xDistance, y: yDistance });
-  return {
-    x: xDistance * -1  - (width / 2),
-    y: yDistance,
-    initialTop: getComputedStyle(el).top,
-  }
-}
-
-// getDistanceToScreenCenter(frames[1])
 startCustomScroll()
-// scroller.scrollTo(document.querySelector('.screen8'));
 
-
-// console.log(getComputedStyle().getPropertyValue("--screen5-height"));
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
-// const screen5ScaleCoef = isFullHd() ? 1 : 1.3;
 const screen5ScaleCoef = innerHeight / document.querySelector('.screen5-grid-2-1').getBoundingClientRect().height;
 !isTablet() && screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
 
@@ -538,15 +504,15 @@ const tl5scr = !isTablet() && gsap.timeline( {
 .to(screen5Inner, { scale: screen5ScaleCoef, transformOrigin: '0 0', duration: 0 })
 .to(screen5Inner, 
 {
-  x: innerHeight * -screen5ScaleCoef + 150,
+  // x: innerHeight  * -screen5ScaleCoef,
+  x: screen5.getBoundingClientRect().width * -screen5ScaleCoef + innerWidth,
   z: 0,
   transformOrigin: '0 0',
 }, '<')
 .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
 
-if (isMobile()) {
-  // document.querySelector('.screen5').style.height = document.querySelector('.screen5__inner-mobile').getBoundingClientRect().height + 'px';
-}
+
+const inner5Mobile = '.screen5__inner-mobile';
 isMobile() && gsap.timeline({
   ease: "none",
   scrollTrigger: {
@@ -555,18 +521,11 @@ isMobile() && gsap.timeline({
     end: `100% bottom`,
     markers: false,
     scrub: 1,
-    pin: '.screen5__inner-mobile',
+    pin: inner5Mobile,
     start: "top top",
-    onLeave: () => {
-      // gsap.to('.screen5__inner-mobile', { autoAlpha: 0 })
-      console.log('fff');
-    },
-    onEnterBack: () => {
-      // gsap.to('.screen5__inner-mobile', { autoAlpha: 1 })
-    }
   }
 })
-.to('.screen5__inner-mobile', {
+.to(inner5Mobile, {
   // scale: 1,
   xPercent: -45,
   yPercent: -16.6,
@@ -574,7 +533,7 @@ isMobile() && gsap.timeline({
   ease: 'none',
   // duration: 0.75,
 })
-.to('.screen5__inner-mobile', {
+.to(inner5Mobile, {
   // scale: 1,
   xPercent: 0,
   yPercent: -36.8,
@@ -582,7 +541,7 @@ isMobile() && gsap.timeline({
   ease: 'none',
   // duration: 0.75,
 })
-.to('.screen5__inner-mobile', {
+.to(inner5Mobile, {
   scale: 0.5,
   yPercent: -60,
   xPercent: 0,
@@ -621,9 +580,9 @@ isMobile() && gsap.timeline({
 .to('.screen9__inner', {
   scale: 1
 })
-// .to('.screen9__inner', {
-//   scale: 1
-// })
+.to('.screen9__inner', {
+  scale: 1
+})
 
 function curtainOpen() {
   gsap.timeline()
