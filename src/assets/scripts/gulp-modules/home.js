@@ -97,12 +97,7 @@ function startCustomScroll() {
     scroller: pageContainer,
     trigger: '.screen10',
     scrub: true,
-    onEnter: () => {
-      // params[11]()
-      console.log('enter 11');
-    },
     onEnterBack: () => {
-      // console.log('enter back 9');
       params[10]('fromBack')
 
     }
@@ -249,22 +244,6 @@ const params = {
   },
 };
 
-
-
-// const screen3VertLines = document.querySelectorAll('[data-screen3-side-line]');
-// screen3VertLines.forEach(el => {
-//   console.log(el);
-//   let result = fromPathToArray(el.getAttribute('d'));
-//   console.log(result);
-//   result[0].y = +result[0].y + (window.innerHeight - (+result[0].y));
-
-//   result[0].y -= 50;
-//   result = result.map(el => Object.values(el).join(' '));
-//   el.setAttribute('d',result.join(' '));
-// })
-
-
-
 screen9Handler();
 
 const frames = [
@@ -283,7 +262,6 @@ function adaptiveScreen8Values(mobile, desktop) {
 }
 window.ttl = gsap.timeline( {
   defaults: {
-    // transformOrigin: '50% 50%',
     ease: 'none'
   },
   scrollTrigger: {
@@ -293,23 +271,10 @@ window.ttl = gsap.timeline( {
     pin: ".screen8__inner",
     start: "top top",
     end: `bottom ${window.innerHeight}px`,
-    onEnter: () => {
-      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
-    },
-    onLeave: () => {
-      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
-    },
-    onEnterBack: () => {
-      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: 'transform' })
-    },
-    onLeaveBack: () => {
-      // gsap.set(document.querySelectorAll('.screen8 img'), { willChange: '' })
-    },
   },
   ease: "none"
 })
 // frame 1
-// .set(gsap.utils.toArray(frames), { willChange: 'transform' })
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
   // scale: 1.7, 
@@ -458,7 +423,13 @@ window.ttl = gsap.timeline( {
   transformOrigin: '0 100%',
   duration: 5
 })
-.from('.screen7__inner', { yPercent: -30, xPercent: 70, scale: 4, transformOrigin: '0 0', ease: 'none' }, '<')
+.from('.screen7__inner', { 
+  yPercent: -30, 
+  xPercent: 70, 
+  scale: 4, 
+  transformOrigin: '0 0', 
+  ease: 'none' 
+}, '<')
 
 
 gsap.timeline({
@@ -577,9 +548,6 @@ isMobile() && gsap.timeline({
   scale: 1,
   z: 0,
 }, '<')
-.to('.screen9__inner', {
-  scale: 1
-})
 .to('.screen9__inner', {
   scale: 1
 })

@@ -33,8 +33,7 @@ formsWithTel.forEach(form => {
       elements: {
         $form,
         showSuccessMessage: false,
-        successAction: () => {
-        },
+        successAction: 'toster',
         $btnSubmit: $form.querySelector('[data-btn-submit]'),
         fields: {
           name: {
@@ -118,7 +117,9 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
     //     duration: 0.25
     //   })
 }))
-formWrapper.querySelector('[class*="close"]').addEventListener('click',function(evt){
+
+
+function closeForm() {
   gsap.timeline({
   })
   .to('.form-wrapper__layout', {
@@ -128,4 +129,11 @@ formWrapper.querySelector('[class*="close"]').addEventListener('click',function(
     ease: 'power2.in',
   })
   .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
+
+}
+formWrapper.querySelector('[class*="close"]').addEventListener('click',closeForm);
+window.addEventListener('succesFormSend',function(evt){
+  setTimeout(() => {
+    closeForm();
+  }, 2000);
 });
