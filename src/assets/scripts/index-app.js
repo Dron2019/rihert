@@ -84,12 +84,12 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
   gsap.timeline({
   })
     .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
-    .fromTo('.form-wrapper__layout', { scale: 0.75 },{
-      scale: 1,
-      transformOrigin: '100% 100%',
-      duration: 1,
-      ease: 'power2.out'
-    }, '<')
+    // .fromTo('.form-wrapper__layout', { scale: 0.75 },{
+    //   scale: 1,
+    //   transformOrigin: '100% 100%',
+    //   duration: 1,
+    //   ease: 'power2.out'
+    // }, '<')
     // .fromTo(formWrapper, 
     //   { 
     //     clipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)', 
@@ -123,12 +123,12 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
 function closeForm() {
   gsap.timeline({
   })
-  .to('.form-wrapper__layout', {
-    scale: 0.75,
-    transformOrigin: '100% 100%',
-    duration: 1,
-    ease: 'power2.in',
-  })
+  // .to('.form-wrapper__layout', {
+  //   scale: 0.75,
+  //   transformOrigin: '100% 100%',
+  //   duration: 1,
+  //   ease: 'power2.in',
+  // })
   .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
 
 }
