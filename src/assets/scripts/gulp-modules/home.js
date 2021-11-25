@@ -416,6 +416,18 @@ window.ttl = gsap.timeline( {
     scroller: pageContainer,
     trigger: ".screen7",
     end: `${innerHeight * 1.5} bottom`,
+    onEnter: () => {
+      gsap.set('.screen7__inner', { willChange: 'transform' })
+    },
+    onEnterBack: () => {
+      gsap.set('.screen7__inner', { willChange: 'transform' })
+    },
+    onLeave: () => {
+      gsap.set('.screen7__inner', { willChange: 'auto' })
+    },
+    onLeaveBack: () => {
+      gsap.set('.screen7__inner', { willChange: 'auto' })
+    },
   }
 })
 .to('.screen5__inner', { 
@@ -427,6 +439,7 @@ window.ttl = gsap.timeline( {
 .from('.screen7__inner', { 
   yPercent: -30, 
   xPercent: 70, 
+  z: 0,
   scale: 4, 
   transformOrigin: '0 0', 
   ease: 'none' 
