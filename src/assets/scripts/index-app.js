@@ -109,6 +109,7 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
       ease: 'power3.out',
       stagger: 0.15
     },'<')
+    .set('.form-wrapper__layout', { backgroundColor: 'var(--color-red)' })
     
 }))
 const splitTolines = document.querySelectorAll('[data-split-to-lines]');
@@ -132,6 +133,7 @@ function closeForm() {
       ease: 'power3.out',
       stagger: 0.15
     },'<')
+    .set('.form-wrapper__layout', { backgroundColor: '' },' <')
     .fromTo('.form-wrapper__layout [data-splited-line]', {
       // autoAlpha: 0,
       yPercent: 0
@@ -152,7 +154,7 @@ function closeForm() {
     }, '<')
     
     
-    .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
+    .to(formWrapper, { autoAlpha: 0, duration: 0.25 }).timeScale(2);
 
 }
 formWrapper.querySelector('[class*="close"]').addEventListener('click',closeForm);

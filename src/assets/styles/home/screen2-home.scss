@@ -3,9 +3,12 @@
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    will-change: opacity;
+    
     @include to(575px){
       min-height: auto;
+    }
+    @include from(1025px){
+      will-change: opacity;
     }
     @include from(2100px){
       .h2 {

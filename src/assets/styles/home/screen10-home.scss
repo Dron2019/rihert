@@ -87,6 +87,7 @@
             padding-top: var(--padding-top);
         }
         .h1 {
+            white-space: nowrap;
             @include customOffsetWidth(60, var(--offset));
             @include to(575px){
                 @include customOffsetWidth(100, var(--offset));
