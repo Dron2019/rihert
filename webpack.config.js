@@ -3,6 +3,7 @@ const path = require('path');
 const glob = require('glob');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+/*  "locomotive-scroll": "^3.5.4", */
 
 function config(mode = 'development') {
   const config = {

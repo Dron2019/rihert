@@ -1,5 +1,5 @@
 .screen5 {
-    will-change: transform;
+    // will-change: transform;
     --screen5-height: 500vh;
     height: var(--screen5-height);
     overflow: hidden;
@@ -119,7 +119,7 @@
     grid-template-columns: 46.7% 53.2%;
     grid-template-rows: 18.4% 18.4% 20% 17.4% 25.7%;
     position: relative;
-    will-change: transform;
+    // will-change: transform;
     @include from(576px){
         display: none;
     }

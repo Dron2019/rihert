@@ -113,18 +113,13 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
 }))
 const splitTolines = document.querySelectorAll('[data-split-to-lines]');
 splitTolines.forEach(elem => {
-  if (document.documentElement.clientWidth < 1024) {
-    elem.innerHTML = elem.innerHTML.replace(/~/g, '');
-  } else {
-    // gsap.set(splitTolines, { width: 'auto' });
-    const text = elem.innerHTML.split('~').reduce((acc, el) => {
-      acc += `<span style="white-space:nowrap; overflow:hidden; display: inline-block">
-        <span data-splited-line style="display:inline-block">${el}</span>
-      </span>`;
-      return acc;
-    }, '');
-    elem.innerHTML = text;
-  }
+  const text = elem.innerHTML.split('~').reduce((acc, el) => {
+    acc += `<span style="white-space:nowrap; overflow:hidden; display: inline-block">
+      <span data-splited-line style="display:inline-block">${el}</span>
+    </span>`;
+    return acc;
+  }, '');
+  elem.innerHTML = text;
 });
 
 function closeForm() {

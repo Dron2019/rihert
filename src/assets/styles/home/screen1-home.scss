@@ -8,8 +8,10 @@
     background-color: #B87B74;
     margin-bottom: 20px;
     margin-top: 0 !important;
+
     @include from(950px){
       height: 270vh;
+      will-change: opacity;
     }
     @include from(1920px){
       height: 170vh;
@@ -17,6 +19,7 @@
     &__inner {
       position: relative;
       height: 100vh;
+      transform: translate3d(0px,0px,0px);
     }
     img {
       width: 20vw;
@@ -36,6 +39,7 @@
       justify-content: space-between;
       padding-right: 20px;
       padding-top: 0.1em;
+      
       svg {
         width: 100vw;
         height: auto;

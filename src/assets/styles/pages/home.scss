@@ -1,7 +1,7 @@
 .scroller-container {
   overflow-x: hidden;
   @include from(1025px){
-    will-change: transform;
+    // will-change: transform;
   }
   @include to(1024px){
     max-width: 100vw;
@@ -87,7 +87,7 @@ body {
   align-items: center;
   // padding: 50px 0vw;
   transform-origin: bottom right;
-  will-change: transform;
+  // will-change: transform;
 
   & > * {
     // min-width: 100vw;

@@ -3,7 +3,7 @@
     z-index: 30;
     left: 0;
     background: white;
-    will-change: transform;
+    // will-change: transform;
     @include from(1025px){
         overflow: hidden;
         height: 200vh;
@@ -24,7 +24,10 @@
             font-size: 100px;
             line-height: 80%;
             margin-bottom: 25px;
-        }       
+        }
+        @include to(575px){
+            font-size: 47px;
+        }
         @include from(1680px){
             font-size: 9vw;
         }
@@ -53,7 +56,7 @@
         ". photo legend"; 
         align-items: start;
         transform-origin: left top;
-        will-change: transform;
+        // will-change: transform;
         @include from-to(576px, 1024px){
             grid-template-areas:
             "map title title"
@@ -67,7 +70,7 @@
     .map { 
         grid-area: map; 
         position: relative;
-        will-change: transform;
+        // will-change: transform;
         @include to(1024px){
             width: 100vw;
             height: 100vh;
@@ -191,13 +194,20 @@
     @extend  .screen9-switcher;
     width: 61px;
     height: 35px !important;
-    width: 116px;
-    height: 67px !important;
+    
+    @include from-to(576px, 1024px){
+        width: 116px;
+        height: 67px !important;
+    }   
     @include to(1024px){
         display: inline-block;   
         margin-left: 10px;
         margin-right: 5px;
         vertical-align: middle;
+    }
+    @include to(575px){
+        margin-left: 2px;
+        margin-right: 2px;
     }
     @include from(1024px){
         display: none;

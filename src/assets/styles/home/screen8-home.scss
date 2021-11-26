@@ -11,7 +11,7 @@
         height: auto;
     }
     &__inner {
-        will-change: transform;
+        // will-change: transform;
         height: 100vh;
     }
     text {
@@ -40,7 +40,7 @@
 [fill*="url"] {
     // transform-origin: center !important;
     // transform-box: fill-box;
-    will-change: transform;
+    // will-change: transform;
 }
 
 .screen8__inner {

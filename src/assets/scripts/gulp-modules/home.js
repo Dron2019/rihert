@@ -60,6 +60,10 @@ ScrollTrigger.scrollerProxy(pageContainer, {
     scrub: true,
     pin: '.screen1__inner',
     end: '100% bottom',
+    // onEnter: () => gsap.set('.screen1__inner', { willChange: 'transform' }),
+    // onEnterBack: () => gsap.set('.screen1__inner', { willChange: 'transform' }),
+    // onLeaveBack: () => gsap.set('.screen1__inner', { willChange: '' }),
+    // onLeave: () => gsap.set('.screen1__inner', { willChange: '' }),
   }
 })
 .to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
