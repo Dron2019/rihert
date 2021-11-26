@@ -6,7 +6,7 @@
     width: 100vw;
     
     height: 100vh;
-    background-color: var(--color-red);
+    // background-color: var(--color-red);
     z-index: 200;
     padding: 15px;
     visibility: hidden;
@@ -15,10 +15,28 @@
     // .subtitle {
     //     margin-top: auto;
     // }
+    
     @include to(575px){
         max-height: 100vh;
         overflow-y: scroll;
         overflow-x: hidden;
+    }
+
+    &__curtains {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        perspective: 500px;
+        div {
+            position: relative;
+            z-index: -1;
+            pointer-events: none;
+            width: 20%;
+            background-color: var(--color-red);
+        }
     }
     .border {
         position: absolute;
@@ -76,11 +94,12 @@
         span:first-child {
             width: 100%;
         }
-        span:last-of-type {
+        &>span:last-of-type {
             margin-left: auto;
         }
     }
     .subtitle {
+        position: relative;
         font-size: 30px;
         line-height: 90%;
         /* or 27px */
@@ -182,6 +201,7 @@
         position: relative;
     }
     &__logo {
+        position: relative;
         @include customOffsetWidth(100, var(--offset));
         text-align: left;
         svg {

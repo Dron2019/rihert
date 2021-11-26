@@ -1,12 +1,18 @@
 .form-wrapper(data-form-wrapper)
+    .form-wrapper__curtains
+        div 
+        div 
+        div 
+        div 
+        div 
     .form-wrapper__layout
         <svg class="form-wrapper__close" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M64 64L4 4M4 64L64 4L4 64Z" stroke="white" stroke-width="10"/>
             </svg>
         .h1 
-            span Записатися 
-            span на 
-            span перегляд
+            span(data-split-to-lines) Записатися 
+            span(data-split-to-lines) на 
+            span(data-split-to-lines) перегляд
             div.border
         .subtitle  <span></span>Якщо у вас виникли питання, залиште свій номер і ми передзвонимо вам:
         form(data-form)

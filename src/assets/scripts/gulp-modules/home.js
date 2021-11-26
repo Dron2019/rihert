@@ -440,7 +440,7 @@ window.ttl = gsap.timeline( {
   yPercent: -30, 
   xPercent: 70, 
   z: 0,
-  scale: 4, 
+  scale: 3, 
   transformOrigin: '0 0', 
   ease: 'none' 
 }, '<')

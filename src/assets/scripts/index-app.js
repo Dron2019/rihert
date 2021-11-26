@@ -84,52 +84,80 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
   gsap.timeline({
   })
     .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
-    // .fromTo('.form-wrapper__layout', { scale: 0.75 },{
-    //   scale: 1,
-    //   transformOrigin: '100% 100%',
-    //   duration: 1,
-    //   ease: 'power2.out'
-    // }, '<')
-    // .fromTo(formWrapper, 
-    //   { 
-    //     clipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)', 
-    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 100% 100%, 100% 50%, 100% 0%)',
-    //     ease: 'power3.out',
-    //     duration: 0.25
-    //   },
-    //   { 
-    //     clipPath: 'polygon(100% 0%, 100% 100%, 51% 100%, 63% 52%, 61% 0%)', 
-    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 51% 100%, 63% 52%, 61% 0%)',
-    //     ease: 'power3.in',
-    //     duration: 0.25
-    //   })
-    // .to(formWrapper, 
-    //   { 
-    //     clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 38% 50%, 16% 0%)', 
-    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 38% 50%, 16% 0%)',
-    //     ease: 'power3.out',
-    //     duration: 0.25
-    // })
-    // .to(formWrapper, 
-    //   { 
-    //     clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 0% 50%, 0% 0%)', 
-    //     webkitClipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 0% 50%, 0% 0%)',
-    //     ease: 'power3.in',
-    //     duration: 0.25
-    //   })
+    .fromTo('.form-wrapper__curtains div', {
+      scaleY: 0
+    }, {
+      scaleY: 1,
+      stagger: 0.15,
+      duration: 1.75,
+      transformOrigin: '50% 100%',
+      ease: 'power4.out'
+    }, '<+0.5')
+    .fromTo('.form-wrapper__layout [data-splited-line]', {
+      // autoAlpha: 0,
+      yPercent: 100
+    }, {
+      // autoAlpha: 1,
+      yPercent: 0,
+      ease: 'power3.out'
+    },'>-55%')
+    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+      autoAlpha: 0,
+    }, {
+      // autoAlpha: 1,
+      autoAlpha: 1,
+      ease: 'power3.out',
+      stagger: 0.15
+    },'<')
+    
 }))
-
+const splitTolines = document.querySelectorAll('[data-split-to-lines]');
+splitTolines.forEach(elem => {
+  if (document.documentElement.clientWidth < 1024) {
+    elem.innerHTML = elem.innerHTML.replace(/~/g, '');
+  } else {
+    // gsap.set(splitTolines, { width: 'auto' });
+    const text = elem.innerHTML.split('~').reduce((acc, el) => {
+      acc += `<span style="white-space:nowrap; overflow:hidden; display: inline-block">
+        <span data-splited-line style="display:inline-block">${el}</span>
+      </span>`;
+      return acc;
+    }, '');
+    elem.innerHTML = text;
+  }
+});
 
 function closeForm() {
   gsap.timeline({
   })
-  // .to('.form-wrapper__layout', {
-  //   scale: 0.75,
-  //   transformOrigin: '100% 100%',
-  //   duration: 1,
-  //   ease: 'power2.in',
-  // })
-  .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
+    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+      autoAlpha: 1,
+    }, {
+      autoAlpha: 0,
+      ease: 'power3.out',
+      stagger: 0.15
+    },'<')
+    .fromTo('.form-wrapper__layout [data-splited-line]', {
+      // autoAlpha: 0,
+      yPercent: 0
+    }, {
+      // autoAlpha: 1,
+      yPercent: 100,
+      ease: 'power3.out'
+    },'>-55%')
+    .fromTo('.form-wrapper__curtains div', {
+      scaleY: 1
+    }, {
+      scaleY: 0,
+      stagger: -0.15,
+      duration: 1.5,
+      transformOrigin: '50% 100%',
+
+      ease: 'power4.out'
+    }, '<')
+    
+    
+    .to(formWrapper, { autoAlpha: 0, duration: 0.25 })
 
 }
 formWrapper.querySelector('[class*="close"]').addEventListener('click',closeForm);
