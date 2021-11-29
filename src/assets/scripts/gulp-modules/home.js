@@ -5,7 +5,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 
 import screen9Handler from './home/screen9';
 import headerHandle from './home/header';
-import { fromPathToArray, isFullHd } from '../modules/helpers/helpers';
+import { fromPathToArray, isFullHd, debounce } from '../modules/helpers/helpers';
 
 global.gsap = gsap;
 gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -68,24 +68,24 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 })
 .to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
 
-gsap.timeline({
-  scrollTrigger: {
-    trigger: '.screen2',
-    scroller: pageContainer,
-    start: '-20px bottom',
-    ease: 'none',
-    onEnter: () => {
-      console.log('d');
-      gsap.timeline()
-        .add(stopCustomScroll)
-        // .to('.screen1', { scale: 2.5 })
-        .add(() => {
-          // scroller.scrollTo(document.querySelector('.screen2'))
-        })
-        .add(startCustomScroll, '+0.5')
-    },
-  }
-})
+// gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.screen2',
+//     scroller: pageContainer,
+//     start: '-20px bottom',
+//     ease: 'none',
+//     onEnter: () => {
+//       console.log('d');
+//       gsap.timeline()
+//         .add(stopCustomScroll)
+//         // .to('.screen1', { scale: 2.5 })
+//         .add(() => {
+//           // scroller.scrollTo(document.querySelector('.screen2'))
+//         })
+//         .add(startCustomScroll, '+0.5')
+//     },
+//   }
+// })
 
 
 function stopCustomScroll() {
@@ -471,34 +471,47 @@ startCustomScroll()
 const screen5 = document.querySelector('.screen5');
 const screen5Inner = document.querySelector('.screen5__inner');
 const screen5ScaleCoef = innerHeight / document.querySelector('.screen5-grid-2-1').getBoundingClientRect().height;
-!isTablet() && screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
+function setScreen5Height() {
+  !isTablet() && screen5.style.setProperty('--screen5-height', innerWidth * screen5ScaleCoef + screen5Inner.getBoundingClientRect().height + 'px')
+}
+setScreen5Height();
+function get5ScreenTl() {
+  return gsap.timeline( {
+    defaults: {
+      transformOrigin: '50% 50%',
+      ease: 'none'
+    },
+    scrollTrigger: {
+      scroller: pageContainer, //locomotive-scroll
+      scrub: 1,
+      trigger: screen5,
+      pin: screen5Inner,
+      end: `${innerWidth * screen5ScaleCoef} top`,
+      markers: false,
+      start: "top top",
+    },
+    ease: "none"
+  })
+  .to(screen5Inner, { scale: screen5ScaleCoef, transformOrigin: '0 0', duration: 0 })
+  .to(screen5Inner, 
+  {
+    // x: innerHeight  * -screen5ScaleCoef,
+    x: screen5.getBoundingClientRect().width * -screen5ScaleCoef + innerWidth,
+    z: 0,
+    transformOrigin: '0 0',
+  }, '<')
+  .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 });
+}
 
-// console.log(isMobile());
-const tl5scr = !isTablet() && gsap.timeline( {
-  defaults: {
-    transformOrigin: '50% 50%',
-    ease: 'none'
-  },
-  scrollTrigger: {
-    scroller: pageContainer, //locomotive-scroll
-    scrub: 1,
-    trigger: screen5,
-    pin: screen5Inner,
-    end: `${innerWidth * screen5ScaleCoef} top`,
-    markers: false,
-    start: "top top",
-  },
-  ease: "none"
-})
-.to(screen5Inner, { scale: screen5ScaleCoef, transformOrigin: '0 0', duration: 0 })
-.to(screen5Inner, 
-{
-  // x: innerHeight  * -screen5ScaleCoef,
-  x: screen5.getBoundingClientRect().width * -screen5ScaleCoef + innerWidth,
-  z: 0,
-  transformOrigin: '0 0',
-}, '<')
-.to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
+function refreshScr5() {
+  location.reload();
+}
+const refreshSCr5Debounced = debounce(refreshScr5, 1000);
+window.tlscr5 = !isTablet() && get5ScreenTl();
+window.addEventListener('resize',function(evt){
+  // refreshSCr5Debounced();
+
+});
 
 
 const inner5Mobile = '.screen5__inner-mobile';

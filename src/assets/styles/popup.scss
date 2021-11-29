@@ -64,6 +64,9 @@
         @include from(2100px){
             margin-top: 100px;
         }
+        @media (min-width: 1025px) and  (max-height: 730px) {
+            margin-top: 30px;
+        }
     }
     .h1 {
         position: relative;
@@ -81,6 +84,9 @@
         @include to(575px){
             padding-bottom: 30px;
             margin-bottom: 30px;
+        }
+        @media (min-width: 1025px) and (max-height:730px){
+            margin-bottom: 10px;
         }
         .border {
             position: absolute;
@@ -178,6 +184,12 @@
             width: max-content;
             height: auto;
         }
+        @media (min-width: 1025px) and (max-height: 730px){
+            font-size: 18px;
+            height: 45px;
+            width: 300px;
+        }
+        
     }
     input::placeholder,
     input {
@@ -192,6 +204,9 @@
             font-size: 52px;
         }
         @include to(575px){
+            font-size: 24px;
+        }
+        @media (min-width: 1025px) and (max-height: 730px) {
             font-size: 24px;
         }
     }

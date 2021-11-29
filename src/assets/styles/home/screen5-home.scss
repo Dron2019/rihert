@@ -68,6 +68,9 @@
         background-color: #7b7b7b;
         transform: rotate(-0.69deg);
         width: 91.3%;
+        @include from-to(1025px, 1920px){
+            width: calc(66.45% + 355px);   
+        }
         @include from(2100px){
             width: 93.6%;
         }
@@ -83,6 +86,9 @@
         transform: rotate(-0.69deg);
         width: 93.6%;
         width: 91%;
+        @include from-to(1025px, 1920px){
+            width:  calc(66.45% + 324px);   
+        }
     }
     &-horizontal-delimiter-row4 {
         grid-area: 4/1/4/4;
@@ -94,6 +100,9 @@
         transform: rotate(-0.69deg);
         width: 87.3%;
         margin-left: auto;
+        @include from-to(1025px, 1920px){
+            width: calc(66.45% + 300px);   
+        }
     }
     &-vertical-delimiter-column2 {
         grid-area: 1/2/5/2;
