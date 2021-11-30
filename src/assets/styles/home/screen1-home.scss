@@ -57,7 +57,7 @@
       @include from-to(576px, 1024px){
         flex-direction: column;
         align-items: flex-start;
-        font-size: 20vw;
+        font-size: 12vh;
         
       }
       @include to(575px){
