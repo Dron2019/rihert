@@ -200,7 +200,7 @@ const params = {
     function switchState1To2(){
       return gsap.timeline({ paused: true })
         .add(() => isAnimating = true)
-        .to('.screen11__inner', { scale: 1.25, transformOrigin: '100% 100%' })
+        .to('.screen11__inner', { scale: 1.15, transformOrigin: '100% 100%' })
         .add(() => {
           currentState = 2;
         })
@@ -434,7 +434,9 @@ window.ttl = gsap.timeline( {
     },
   }
 })
-.to('.screen5__inner', { 
+.fromTo('.screen5__inner', 
+{scale: 1},
+{ 
   // x: innerHeight / -1,
   scale: 0.5,
   transformOrigin: '0 100%',

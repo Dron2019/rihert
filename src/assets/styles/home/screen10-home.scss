@@ -179,6 +179,12 @@
         text-transform: uppercase;
         cursor: pointer;
         color: var(--color-black);
+        transition: .3s ease-in-out;
+        @include from(950px){
+            &:hover {
+                color: var(--color-red);
+            }
+        }
         @include from(2100px){
             font-size: 48px;
         }
