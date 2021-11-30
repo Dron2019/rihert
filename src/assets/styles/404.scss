@@ -1,0 +1,41 @@
+.page404-wrap {
+    min-height: 100vh;
+    background-image: url(../images/screen9/mini.jpg);
+    background-color: rgba(193, 136, 128, 0.25);
+    background: linear-gradient(90deg, rgba(193,136,128,0.6) 36%, rgba(193,136,128,0.6) 57%),  url(../images/screen9/mini.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.page404 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &__title {
+        width: 100%;
+        font-family: $default-font2;
+        font-size: 12vw;
+        line-height: 100%;
+        margin-bottom: 1em;
+    }
+    &__subtitle {
+        font-size: 3vw;
+        line-height: 100%;
+        margin-bottom: 0.6em;
+    }
+    .button {
+        @include customOffsetWidth(50, var(--offset));
+    }
+    .link-wrap {
+        display: flex;
+        width: 50%;
+        --offset: 25px;
+        margin-left: calc(var(--offset) * -0.5);
+        margin-right: calc(var(--offset) * -0.5);
+    }
+}
