@@ -8,6 +8,9 @@
     @include from(576px){
         height: 100vh;
     }
+    @include from(1025px){
+        height: 200vh;
+    }
     &__inner {
         display: flex;
         flex-wrap: wrap;
