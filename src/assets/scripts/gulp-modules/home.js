@@ -66,6 +66,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
     // onLeave: () => gsap.set('.screen1__inner', { willChange: '' }),
   }
 })
+.to('.screen1__inner .h1', {  z: 10, duration: 0.5 })
 .to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
 
 // gsap.timeline({
@@ -74,18 +75,9 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 //     scroller: pageContainer,
 //     start: '-20px bottom',
 //     ease: 'none',
-//     onEnter: () => {
-//       console.log('d');
-//       gsap.timeline()
-//         .add(stopCustomScroll)
-//         // .to('.screen1', { scale: 2.5 })
-//         .add(() => {
-//           // scroller.scrollTo(document.querySelector('.screen2'))
-//         })
-//         .add(startCustomScroll, '+0.5')
-//     },
 //   }
 // })
+// .to('.screen2__title .h2', {  z: 10, duration: 0.5 })
 
 
 function stopCustomScroll() {
