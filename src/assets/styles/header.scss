@@ -73,7 +73,7 @@
             &>* {
                 @extend .nav__lang;
                 text-decoration: none;
-                margin-left: 5px;
+                margin-left: 10px;
                 transition: .3s ease-in-out;
                 @include from(2100px){
                     margin-left: 15px;
