@@ -9,7 +9,7 @@
     margin-bottom: 20px;
     margin-top: 0 !important;
 
-    @include from(950px){
+    @include from(1025px){
       height: 240vh;
       will-change: opacity;
     }

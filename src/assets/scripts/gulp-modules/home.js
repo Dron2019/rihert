@@ -547,7 +547,7 @@ isMobile() && gsap.timeline({
 })
 .to(inner5Mobile, {
   scale: 0.5,
-  yPercent: -60,
+  yPercent: -70,
   xPercent: 0,
   transformOrigin: '0 100%',
   ease: 'none',
