@@ -89,33 +89,33 @@ function startCustomScroll() {
 
 
 
-!isTablet() && gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen10',
-    scrub: true,
-    onEnterBack: () => {
-      params[10]('fromBack')
+// !isTablet() && gsap.timeline({
+//   scrollTrigger: {
+//     scroller: pageContainer,
+//     trigger: '.screen10',
+//     scrub: true,
+//     onEnterBack: () => {
+//       params[10]('fromBack')
 
-    }
-  }
-})
-!isTablet() &&  gsap.timeline({
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen11',
-    scrub: true,
-    onEnter: () => {
-      params[11]()
-      console.log('enter 11');
-    },
-    onEnterBack: () => {
-      console.log('enter back 9');
-      // params[9]('fromBack')
+//     }
+//   }
+// })
+// !isTablet() &&  gsap.timeline({
+//   scrollTrigger: {
+//     scroller: pageContainer,
+//     trigger: '.screen11',
+//     scrub: true,
+//     onEnter: () => {
+//       params[11]()
+//       console.log('enter 11');
+//     },
+//     onEnterBack: () => {
+//       console.log('enter back 9');
+//       // params[9]('fromBack')
 
-    }
-  }
-})
+//     }
+//   }
+// })
 
 
 const screen9 = document.querySelector('.screen9 .screen9__inner');
@@ -362,8 +362,9 @@ gsap.timeline({
     trigger: ".screen10",
     start: "80% bottom",
     end: '+=300px top',
-    onLeave: () => {
-
+    onEnter: () => {
+      scroller.update();
+      console.log('enter 10');
     }
   }
 })
@@ -493,20 +494,24 @@ isMobile() && gsap.timeline({
 
 
 
-!isTablet() && gsap.timeline({
-  ease: "none",
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen11',
-    start: 'top top',
-    end: `100% bottom`,
-    // markers: false,
-    scrub: 1,
-    pin: '.screen11__inner',
-    start: "top top",
-  }
-})
-.to('.screen11__inner', { scale: 1.15 })
+// !isTablet() && gsap.timeline({
+//   ease: "none",
+//   scrollTrigger: {
+//     scroller: pageContainer,
+//     trigger: '.screen11',
+//     start: 'top top',
+//     end: `100% bottom`,
+//     // markers: false,
+//     scrub: 1,
+//     pin: '.screen11__inner',
+//     start: "top top",
+//     onEnter: () => {
+     
+//       console.log('eeeeee');
+//     }
+//   }
+// })
+// .to('.screen11__inner', { scale: 1.15 })
 
 
 function curtainOpen() {

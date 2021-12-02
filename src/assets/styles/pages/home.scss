@@ -1,5 +1,6 @@
 .scroller-container {
   overflow-x: hidden;
+
   @include from(1025px){
     // will-change: transform;
   }
@@ -158,4 +159,8 @@ img {
   @media (orientation: landscape) and (max-width: 950px) {
     display: flex;
   }
+}
+
+body {
+  max-height: 100vh;
 }
