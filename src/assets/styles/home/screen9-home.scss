@@ -100,6 +100,11 @@
                 width: 50%;
             }
         }
+        @include to(575px){
+            &:not(.screen9-switcher-mob) {
+                height: 40vw;
+            }
+        }
     }
     .legend { grid-area: legend;
         margin-bottom: auto;
