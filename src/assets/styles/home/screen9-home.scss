@@ -26,7 +26,7 @@
             margin-bottom: 25px;
         }
         @include to(575px){
-            font-size: 47px;
+            font-size: 43px;
         }
         @include from(1680px){
             font-size: 9vw;
@@ -64,7 +64,9 @@
         }
         @include to(1024px){
             display: flex;
-            flex-direction: column;
+            // flex-direction: column;
+            flex-wrap: wrap;
+
         }
     }
     .map { 
@@ -92,10 +94,18 @@
         grid-area: photo;
         margin-bottom: auto;
         height: 53vh;
-            overflow: hidden;
+        overflow: hidden;
+        @include to(1024px){
+            &:not(.screen9-switcher-mob) {
+                width: 50%;
+            }
+        }
     }
     .legend { grid-area: legend;
         margin-bottom: auto;
+        @include to(1024px){
+            width: 50%;
+        }
     }
 }
 .screen9-list {
@@ -108,11 +118,14 @@
     text-transform: uppercase;
     padding-left: 28px;
     @include to(1024px){
-        font-size: 20.7287px;
+        font-size: 28px;
         line-height: 100%;
         padding-left: 0;
         margin-left: auto;
     }       
+    @include to(575px){
+        font-size: 15px;
+    }
     li {
         cursor: pointer;
     }
@@ -166,7 +179,7 @@
 .screen9-switcher {
     position: relative;
     @include to(1024px){
-        display: none;
+        // display: none;
     }
     &:before {
         content: '';

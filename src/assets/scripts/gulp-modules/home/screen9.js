@@ -2,10 +2,10 @@ import gsap from 'gsap';
 export default function screen9Handler() {
     const isMobile = window.matchMedia('(max-width: 1024px)').matches;
     const $li = document.querySelectorAll('.screen9 [data-src]');
-    const elToChangeSrc = isMobile ? 
-        document.querySelector('.screen9-switcher-mob img') :
-        document.querySelector('.screen9-switcher img');
-
+    // const elToChangeSrc = isMobile ? 
+    //     document.querySelector('.screen9-switcher-mob img') :
+    //     document.querySelector('.screen9-switcher img');
+    const elToChangeSrc =document.querySelector('.screen9-switcher img');
     let inProgress = false;
 
     $li.forEach(legendItem => {
