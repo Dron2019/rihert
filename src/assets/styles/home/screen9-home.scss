@@ -73,6 +73,9 @@
         grid-area: map; 
         position: relative;
         // will-change: transform;
+        @include from(1025px) {
+            height: calc(100vh / 3.4);
+        }
         @include to(1024px){
             width: 100vw;
             height: 100vh;
