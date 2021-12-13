@@ -65,6 +65,10 @@
         height: 19.3vw;
         left: 40.9%;
         top: 35%;
+        img {
+            height: 100%;
+            object-position: top;
+        }
         @include to(575px){
             width: 38.7vw;
             height: 24.9vw;
@@ -163,6 +167,10 @@
         height: 14.9vw;
        left: 79.9%;
        top: 66.1%;
+       img {
+            height: 100%;
+            object-position: top left;
+        }
        @include to(575px){
             width: 36.8vw;
             height: 66.9vw;
