@@ -9,15 +9,24 @@ import { fromPathToArray, isFullHd, debounce } from '../modules/helpers/helpers'
 
 global.gsap = gsap;
 gsap.core.globals("ScrollTrigger", ScrollTrigger);
+
+
+window.addEventListener('DOMContentLoaded', init);
+
+
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
 const isTablet = () => window.matchMedia('(max-width: 1024px)').matches;
 gsap.defaults({
   // ease: 'power3.out',
   duration: 2.5,
-})
+});
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 
-headerHandle();
+function init() {
+  headerHandle();
 
 
 const pageContainer = document.querySelector(".scroller-container");
@@ -540,4 +549,4 @@ document.querySelectorAll('.nav__link').forEach(el => {
   });
 })
 window.curtainOpen = curtainOpen;
-window.curtainClose = curtainClose;
+window.curtainClose = curtainClose;}
