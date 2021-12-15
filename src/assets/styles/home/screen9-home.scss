@@ -93,6 +93,7 @@
         grid-area: title; 
         padding-left: 10px;
         padding-right: 10px;
+        pointer-events: none;
     }
     .photo { 
         grid-area: photo;

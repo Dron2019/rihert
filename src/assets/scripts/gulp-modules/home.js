@@ -194,10 +194,10 @@ window.ttl = gsap.timeline( {
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
   // scale: 1.7, 
-  yPercent: tl8IsMobile ? 60 : null,
+  yPercent: tl8IsMobile ? 60 : -20,
   xPercent: tl8IsMobile ? -50 : null,
   // top: tl8IsMobile ? null : '26%',
-  scale: tl8IsMobile ? 2.08 : 1.7,
+  scale: tl8IsMobile ? 2.08 : 1.45,
 })
 .to('[data-frame="1-1"]', { autoAlpha: 1, duration: 0.35 }, '<')
 .to(frames[5], {
