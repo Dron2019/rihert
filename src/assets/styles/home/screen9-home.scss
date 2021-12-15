@@ -75,6 +75,7 @@
         // will-change: transform;
         @include from(1025px) {
             height: calc(100vh / 3.4);
+            height: auto;
         }
         @include to(1024px){
             width: 100vw;
