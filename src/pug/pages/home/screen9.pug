@@ -1,47 +1,65 @@
 .screen9.screen(id="location" data-scroll-section)
     .screen9__inner
+        - 
+            var points = [
+                ['Відреставрована солодовня ','./static/solodovnya.mp4','67~41', './static/posters/solodovnya-0.jpg'],
+                ['Дитячий садок','./static/kindergarden.mp4','56~21', './static/posters/kindergarden-0.jpg'],
+                ['Медичний центр','./static/medical-center.mp4','55~8', './static/posters/medical-center-0.jpg'],
+                ['Підземний паркінг','./static/underground-parking.mp4','53~54', './static/posters/underground-parking-0.jpg'],
+                ['Фестивальна площа та фонтан','./static/festival-square.mp4','69~31', './static/posters/festival-square-0.jpg'],
+                ['Мальовнича водойма на території','./static/vodoymka.mp4','30~80', './static/posters/vodoymka-0.jpg'],
+                ['Тропа здоров’я на Юрковицю','./static/health-tropa.mp4','20~60', './static/posters/health-tropa-0.jpg'],
+                ['Велодоріжки','./static/veloroads.mp4','40~60', './static/posters/veloroads-0.jpg'],
+                ['Дитячі та спортивні майданчики','./static/playground.mp4','50~30', './static/posters/playground-0.jpg'],
+            ];
         .map
             +img('screen9/mini.jpg')
-            div.map-part(data-item="FIRST POINT COFFEE")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13.jpg')
-                span FIRST POINT COFFEE
-            div.map-part(data-item="ART CENTER 41")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-1.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-1.jpg')
-                span ART CENTER 41
-            div.map-part(data-item="М. ТАРАСА ШЕВЧЕНКО –10 ХВ")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-2.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-2.jpg')
-                span М. ТАРАСА ШЕВЧЕНКО –10 ХВ
-            div.map-part(data-item="ART CENTER CLOSER")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-3.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-3.jpg')
-                span ART CENTER CLOSER
-            div.map-part(data-item="ОЗЕРО НА ТЕРИТОРІЇ")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-4.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-4.jpg')
-                span ОЗЕРО НА ТЕРИТОРІЇ
-            div.map-part(data-item="РЕНОВАНА БУДІВЛЯ ЗАВОДУ")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-5.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-5.jpg')
-                span РЕНОВАНА БУДІВЛЯ ЗАВОДУ
-            div.map-part(data-item="М. ПОШТОВА ПЛОЩА – 30 ХВ")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-6.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-6.jpg')
-                span М. ПОШТОВА ПЛОЩА – 30 ХВ
-            div.map-part(data-item="М. Контрактова площа  – 20 ХВ")
-                video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-7.jpg" muted)
-                    source(src="./static/videoplayback.mp4")
-                //- +img('screen9/map/Rectangle 13-7.jpg')
-                span М. Контрактова площа  – 20 ХВ
+            each val, index in points
+                div.map-part(data-item=val[0])
+                    video(playsinline data-poster=val[3] muted)
+                        source(src=val[1])
+                    //- +img('screen9/map/Rectangle 13.jpg')
+                    span #{val[0]}
+                style(type="text/css").
+                        [data-item='!{val[0]}'] {
+                            top:  #{val[2].split('~')[0]}%;
+                            left:  #{val[2].split('~')[1]}%;
+                        }
+            //- div.map-part(data-item="ART CENTER 41")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-1.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-1.jpg')
+            //-     span ART CENTER 41
+            //- div.map-part(data-item="М. ТАРАСА ШЕВЧЕНКО –10 ХВ")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-2.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-2.jpg')
+            //-     span М. ТАРАСА ШЕВЧЕНКО –10 ХВ
+            //- div.map-part(data-item="ART CENTER CLOSER")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-3.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-3.jpg')
+            //-     span ART CENTER CLOSER
+            //- div.map-part(data-item="ОЗЕРО НА ТЕРИТОРІЇ")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-4.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-4.jpg')
+            //-     span ОЗЕРО НА ТЕРИТОРІЇ
+            //- div.map-part(data-item="РЕНОВАНА БУДІВЛЯ ЗАВОДУ")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-5.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-5.jpg')
+            //-     span РЕНОВАНА БУДІВЛЯ ЗАВОДУ
+            //- div.map-part(data-item="М. ПОШТОВА ПЛОЩА – 30 ХВ")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-6.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-6.jpg')
+            //-     span М. ПОШТОВА ПЛОЩА – 30 ХВ
+            //- div.map-part(data-item="М. Контрактова площа  – 20 ХВ")
+            //-     video(playsinline data-poster="./assets/images/screen9/map/Rectangle 13-7.jpg" muted)
+            //-         source(src="./static/videoplayback.mp4")
+            //-     //- +img('screen9/map/Rectangle 13-7.jpg')
+            //-     span М. Контрактова площа  – 20 ХВ
         a(href="https://goo.gl/maps/ixLvBqZ9BNhRWoQG8" target='_blank').button.screen9-mob-button Показати на мапі
         .h1.title <span class="screen9-sub-item">(НАВКОЛО)</span>
             span Культурний центр&nbsp;
@@ -63,3 +81,5 @@
             li(data-src="./assets/images/screen9/1.jpg") KYIV-MOHYLA  <span class="sub-item">10 хв</span>
             li(data-src="./assets/images/screen9/1.jpg") ACADEMY <span class="sub-item">10 хв</span>
             li(data-src="./assets/images/screen9/1.jpg") ЖИТНІЙ РИНОК <span class="sub-item">10 хв</span>
+
+
