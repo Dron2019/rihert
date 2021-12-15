@@ -129,7 +129,8 @@ function startCustomScroll() {
 
 const screen9 = document.querySelector('.screen9 .screen9__inner');
 // 0.28
-!isTablet() && gsap.set(screen9, { scale: 3.4, transformOrigin: 'top left' })
+const mapRatio = innerWidth / document.querySelector('.map').getBoundingClientRect().width;
+!isTablet() && gsap.set(screen9, { scale: mapRatio, transformOrigin: 'top left' })
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
@@ -487,6 +488,7 @@ isMobile() && gsap.timeline({
 })
 .fromTo('.map img', {
   scale: 1,
+  y: 0,
   z: 0,
   // willChange: 'auto'
 }, { 
