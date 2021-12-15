@@ -101,7 +101,7 @@ formWrapperCall.forEach(el => el.addEventListener('click',function(evt){
       yPercent: 0,
       ease: 'power3.out'
     },'>-55%')
-    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+    .fromTo('.form-wrapper .subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
       autoAlpha: 0,
     }, {
       // autoAlpha: 1,
@@ -126,7 +126,7 @@ splitTolines.forEach(elem => {
 function closeForm() {
   gsap.timeline({
   })
-    .fromTo('.subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+    .fromTo('.form-wrapper .subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
       autoAlpha: 1,
     }, {
       autoAlpha: 0,

@@ -170,6 +170,10 @@
             font-size: 32px;
         }
     }
+    .projects-list li img {
+        height: 45px;
+        object-fit: cover;
+    }
     .projects-list li a {
         font-size: 30px;
         line-height: 100%;

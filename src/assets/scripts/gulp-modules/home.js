@@ -11,7 +11,7 @@ global.gsap = gsap;
 gsap.core.globals("ScrollTrigger", ScrollTrigger);
 
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('load', init);
 
 
 const isMobile = () => window.matchMedia('(max-width: 575px)').matches;
