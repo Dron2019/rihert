@@ -73,6 +73,9 @@
         grid-area: map; 
         position: relative;
         // will-change: transform;
+        &>img {
+            pointer-events: none;
+        }
         @include from(1025px) {
             height: calc(100vh / 3.4);
             height: auto;
