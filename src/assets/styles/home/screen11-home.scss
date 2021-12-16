@@ -2,7 +2,9 @@
     --padding-top: Min(20vh, 205px);
     width: 100vw;
     overflow: hidden;
-    height: 200vh;
+    @include from(576px){
+        height: 200vh;
+    }
     @include to(575px){
         margin-top: 50px;
     }
@@ -115,6 +117,7 @@
         color: var(--color-black);
         text-decoration: none;
         transition: color .3s ease-in-out;
+        white-space: nowrap;
         @include from-to(1025px, 1920px){
             font-size: 5vw;
         }
@@ -123,10 +126,12 @@
         }
         @include to(575px){
             font-size: 62.6232px;
+            font-size: 42.6232px;
             line-height: 80%;
         }   
         @include to(374px){
             font-size: 50.6232px;
+            font-size: 42.6232px;
         }
         
     }

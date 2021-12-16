@@ -479,6 +479,9 @@ isMobile() && gsap.timeline({
     scrub: 1,
     pin: '.screen9__inner',
     start: "top top",
+    onLeave: () => {
+      scroller.update();
+    }
   }
 })
 .to('.screen9__inner>div', {
@@ -538,12 +541,14 @@ function curtainClose() {
 
 
 document.querySelectorAll('.nav__link').forEach(el => {
+  
   el.addEventListener('click',function(evt){
     evt.preventDefault();
     gsap.timeline()
       .add(curtainOpen)
       .set('body', { cursor: 'progress' }, '<')
       .add(() => {
+        if (isTablet()) return;
         scroller.scrollTo(document.querySelector(el.getAttribute('href')))
       }, '<+1.5')
       .add(curtainClose, '<+1.5')

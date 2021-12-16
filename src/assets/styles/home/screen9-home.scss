@@ -75,7 +75,7 @@
         // will-change: transform;
         @include from(1025px) {
             height: calc(100vh / 3.4);
-            // height: auto;
+            height: auto;
         }
         @include to(1024px){
             width: 100vw;
@@ -290,7 +290,7 @@
     }
     @include from(1920px){
         width: 50px;
-        font-size: 6.1px;
+        font-size: 4.1px;
     }
     img, video {
         width: var(--image-h);
