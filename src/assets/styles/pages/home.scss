@@ -1,7 +1,9 @@
 .scroller-container {
   overflow-x: hidden;
   @include from(1025px){
+    position: fixed;
     // will-change: transform;
+    max-width: 100vw;
   }
   @include to(1024px){
     max-width: 100vw;
