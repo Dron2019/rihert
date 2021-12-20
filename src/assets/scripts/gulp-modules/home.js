@@ -470,11 +470,13 @@ isMobile() && gsap.timeline({
 
 !isTablet() && gsap.timeline({
   ease: "none",
+  force3D: false,
   scrollTrigger: {
     scroller: pageContainer,
     trigger: '.screen9',
     start: 'top top',
     end: `100% bottom`,
+    force3D: false,
     // markers: false,
     scrub: 1,
     pin: '.screen9__inner',
@@ -484,27 +486,28 @@ isMobile() && gsap.timeline({
     }
   }
 })
-.to('.screen9__inner>div', {
-  ease: "none",
-  scale: 1,
-  duration: 2,
-})
-.fromTo('.map img', {
-  scale: 1,
-  y: 0,
-  z: 0,
-  // willChange: 'auto'
-}, { 
-  ease: "none",
-  scale: 1,
-  z: 0,
-}, '<')
+// .to('.screen9__inner>div', {
+//   ease: "none",
+//   scale: 1,
+//   duration: 2,
+// })
+// .fromTo('.map img', {
+//   scale: 1,
+//   y: 0,
+//   z: 0,
+//   // willChange: 'auto'
+// }, { 
+//   ease: "none",
+//   scale: 1,
+//   z: 0,
+// }, '<')
 .to('.screen9__inner', {
-  scale: 1
+  scale: 1,
+  force3D: false,
 })
-.to('.screen9__inner', {
-  scale: 1
-})
+// .to('.screen9__inner', {
+//   scale: 1
+// })
 
 
 

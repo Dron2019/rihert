@@ -55,7 +55,7 @@
         "map title title"
         ". photo legend"; 
         align-items: start;
-        transform-origin: left top;
+        transform-origin: 0 0;
         // will-change: transform;
         @include from-to(576px, 1024px){
             grid-template-areas:
@@ -285,6 +285,7 @@
     /* or 10px */
     cursor: pointer;
     transform: translate(-50%,-50%);
+    
     letter-spacing: -0.05em;
     @include to(1024px){
         --image-h: 67px;
@@ -307,6 +308,9 @@
         padding: 0.6px;
         padding: 1px 0 0 1px;
         width: 100%;
+        @include from(1025px){
+            word-break: break-all;
+        }
     }
 }
 
