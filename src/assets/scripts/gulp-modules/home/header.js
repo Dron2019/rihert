@@ -11,7 +11,7 @@ export default function headerHandle() {
         
         isHidden === 'block' ? closePoints(linksHeight).play() : openPoints(linksHeight).play();
     })
-    if (isMobile()) button.dispatchEvent(new Event('click')); 
+    // if (isMobile()) button.dispatchEvent(new Event('click')); 
 }
 
 function openPoints(linksHeight) {

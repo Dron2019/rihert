@@ -544,7 +544,7 @@ function curtainClose() {
 
 
 document.querySelectorAll('.nav__link').forEach(el => {
-  
+  if (isTablet()) return;
   el.addEventListener('click',function(evt){
     evt.preventDefault();
     gsap.timeline()
