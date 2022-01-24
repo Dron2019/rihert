@@ -2,6 +2,8 @@
     --padding-top: Min(20vh, 205px);
     width: 100vw;
     overflow: hidden;
+    margin-bottom: 0;
+    position: relative;
     @include from(576px){
         height: 200vh;
     }
@@ -159,4 +161,23 @@
         display: inline-block;
         padding-left: 4ch;
     }
+}
+
+.developer-block {
+    position: absolute;
+    right: 50px;
+    bottom: 23px;
+    color: #989898;
+    font-size: 10px;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: flex;
+    @include to(1024px){
+        right: var(--page-side-fields);
+    }
+    a {
+        color: #989898;
+        margin-left: 1ch;
+    }
+
 }
