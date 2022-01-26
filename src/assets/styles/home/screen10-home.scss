@@ -17,6 +17,10 @@
         --right-width: 100%;
         height: auto;
     }
+    @include to(575px){
+        --padding-top: 63.48px;
+        min-height: auto;
+    }
     &__inner {
         display: flex;
         justify-content: space-between;

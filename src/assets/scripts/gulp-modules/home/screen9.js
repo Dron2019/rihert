@@ -6,6 +6,7 @@ export default function screen9Handler() {
     //     document.querySelector('.screen9-switcher-mob img') :
     //     document.querySelector('.screen9-switcher img');
     const elToChangeSrc =document.querySelector('.screen9-switcher img');
+    const elMobToChangeSrc = document.querySelector('.screen9-switcher-mob img');
     let inProgress = false;
 
     $li.forEach(legendItem => {
@@ -13,6 +14,7 @@ export default function screen9Handler() {
             
             gsap.timeline().add(() => {
                 elToChangeSrc.src = legendItem.dataset.src;
+                elMobToChangeSrc.src = legendItem.dataset.src;
                 if (inProgress === false) {
                     inProgress = true;
                     // elToChangeSrc.parentElement.classList.add('opened');

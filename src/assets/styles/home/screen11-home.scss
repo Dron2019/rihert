@@ -9,6 +9,8 @@
     }
     @include to(575px){
         margin-top: 50px;
+        min-height: auto;
+        padding-bottom: 196px;
     }
     @include from(576px){
         height: 100vh;
