@@ -10,7 +10,7 @@ block scripts
   script(defer src='./assets/scripts/home.bundle.js')
 block content
   //- .scroller-container
-  .screen1.screen(data-scroll-section)
+  .screen1.screen()
     .screen1__inner
       h1.h1 
         <span>Новий</span> <span>квартал</span> <span>1895</span> <span> року</span>
@@ -25,7 +25,7 @@ block content
         <image width="450" height="187" data-src="" data-href="./assets/images/screen1/img.png" data-href-mob="./assets/images/screen1/img-mob.png" xlink:href="#" x="990" y="158">
         </svg>
 
-  .screen2.screen(id="info" data-scroll-section)
+  .screen2.screen(id="info" )
     .screen2__title 
       .screen-mini-subtitle ІНФО
       .h2 Новий житловий комплекс і громадський простір, що будується на Подолі
@@ -56,12 +56,12 @@ block content
   //-           div МИХАЙЛО РІХТЕР
 
 
-  .screen5(id="history" data-scroll-section)
+  .screen5.screen(id="history" )
     include home/screen5.pug
-  .screen6.screen(data-scroll-section)
+  .screen6.screen()
     .screen6__inner
       +img('screen6.jpg')
-  .screen7.screen(data-scroll-section)
+  .screen7.screen()
     .screen7__inner
       .screen7-title &#9;Тепер це місце віднайде свою форму   <img src='./assets/images/screen7/img.png'>  та своїх людей, які наповнять його новими історіями.
       //- +img('screen7.jpg')

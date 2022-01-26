@@ -429,82 +429,82 @@ window.addEventListener('resize',function(evt){
 });
 
 
-const inner5Mobile = '.screen5__inner-mobile';
-isMobile() && gsap.timeline({
-  ease: "none",
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen5',
-    end: `100% bottom`,
-    markers: false,
-    scrub: 1,
-    pin: inner5Mobile,
-    start: "top top",
-  }
-})
-.to(inner5Mobile, {
-  // scale: 1,
-  xPercent: -45,
-  yPercent: -16.6,
-  transformOrigin: '0 0',
-  ease: 'none',
-  // duration: 0.75,
-})
-.to(inner5Mobile, {
-  // scale: 1,
-  xPercent: 0,
-  yPercent: -36.8,
-  transformOrigin: '0 0',
-  ease: 'none',
-  // duration: 0.75,
-})
-.to(inner5Mobile, {
-  scale: 0.5,
-  yPercent: -70,
-  xPercent: 0,
-  transformOrigin: '0 100%',
-  ease: 'none',
-})
-
-
-
-!isTablet() && gsap.timeline({
-  ease: "none",
-  force3D: false,
-  scrollTrigger: {
-    scroller: pageContainer,
-    trigger: '.screen9',
-    start: 'top top',
-    end: `100% bottom`,
-    force3D: false,
-    // markers: false,
-    scrub: 1,
-    pin: '.screen9__inner',
-    start: "top top",
-    onLeave: () => {
-      scroller.update();
+  const inner5Mobile = '.screen5__inner-mobile';
+  isMobile() && gsap.timeline({
+    ease: "none",
+    scrollTrigger: {
+      scroller: pageContainer,
+      trigger: '.screen5',
+      end: `100% bottom`,
+      markers: false,
+      scrub: 1,
+      pin: inner5Mobile,
+      start: "top top",
     }
-  }
-})
-// .to('.screen9__inner>div', {
-//   ease: "none",
-//   scale: 1,
-//   duration: 2,
-// })
-// .fromTo('.map img', {
-//   scale: 1,
-//   y: 0,
-//   z: 0,
-//   // willChange: 'auto'
-// }, { 
-//   ease: "none",
-//   scale: 1,
-//   z: 0,
-// }, '<')
-.to('.screen9__inner', {
-  scale: 1,
-  force3D: false,
-})
+  })
+  .to(inner5Mobile, {
+    // scale: 1,
+    xPercent: -45,
+    yPercent: -16.6,
+    transformOrigin: '0 0',
+    ease: 'none',
+    // duration: 0.75,
+  })
+  .to(inner5Mobile, {
+    // scale: 1,
+    xPercent: 0,
+    yPercent: -36.8,
+    transformOrigin: '0 0',
+    ease: 'none',
+    // duration: 0.75,
+  })
+  .to(inner5Mobile, {
+    scale: 0.5,
+    yPercent: -70,
+    xPercent: 0,
+    transformOrigin: '0 100%',
+    ease: 'none',
+  })
+
+
+
+  !isTablet() && gsap.timeline({
+    ease: "none",
+    force3D: false,
+    scrollTrigger: {
+      scroller: pageContainer,
+      trigger: '.screen9',
+      start: 'top top',
+      end: `100% bottom`,
+      force3D: false,
+      // markers: false,
+      scrub: 1,
+      pin: '.screen9__inner',
+      start: "top top",
+      onLeave: () => {
+        scroller.update();
+      }
+    }
+  })
+  // .to('.screen9__inner>div', {
+  //   ease: "none",
+  //   scale: 1,
+  //   duration: 2,
+  // })
+  // .fromTo('.map img', {
+  //   scale: 1,
+  //   y: 0,
+  //   z: 0,
+  //   // willChange: 'auto'
+  // }, { 
+  //   ease: "none",
+  //   scale: 1,
+  //   z: 0,
+  // }, '<')
+  .to('.screen9__inner', {
+    scale: 1,
+    force3D: false,
+  })
 // .to('.screen9__inner', {
 //   scale: 1
 // })
@@ -531,32 +531,107 @@ isMobile() && gsap.timeline({
 // .to('.screen11__inner', { scale: 1.15 })
 
 
-function curtainOpen() {
-  gsap.timeline()
-    .set('.curtain', { display: 'flex' })
-    .fromTo('.curtain', { xPercent: 100 }, { xPercent: 0, duration: 0.75, ease: 'power2.out' })
-}
-function curtainClose() {
-  gsap.timeline()
-    .to('.curtain', { xPercent: -100, duration: 0.75, ease: 'power2.out' })
-    .set('.curtain', { display: 'none' })
-}
-
-
-document.querySelectorAll('.nav__link').forEach(el => {
-  if (isTablet()) return;
-  el.addEventListener('click',function(evt){
-    evt.preventDefault();
+  function curtainOpen() {
     gsap.timeline()
-      .add(curtainOpen)
-      .set('body', { cursor: 'progress' }, '<')
-      .add(() => {
-        if (isTablet()) return;
-        scroller.scrollTo(document.querySelector(el.getAttribute('href')))
-      }, '<+1.5')
-      .add(curtainClose, '<+1.5')
-      .set('body', { cursor: '' }, '<')
-  });
-})
-window.curtainOpen = curtainOpen;
-window.curtainClose = curtainClose;}
+      .set('.curtain', { display: 'flex' })
+      .fromTo('.curtain', { xPercent: 100 }, { xPercent: 0, duration: 0.75, ease: 'power2.out' })
+  }
+  function curtainClose() {
+    gsap.timeline()
+      .to('.curtain', { xPercent: -100, duration: 0.75, ease: 'power2.out' })
+      .set('.curtain', { display: 'none' })
+  }
+
+
+  document.querySelectorAll('.nav__link').forEach(el => {
+    if (isTablet()) return;
+    el.addEventListener('click',function(evt){
+      evt.preventDefault();
+      gsap.timeline()
+        .add(curtainOpen)
+        .set('body', { cursor: 'progress' }, '<')
+        .add(() => {
+          if (isTablet()) return;
+          scroller.scrollTo(document.querySelector(el.getAttribute('href')))
+        }, '<+1.5')
+        .add(curtainClose, '<+1.5')
+        .set('body', { cursor: '' }, '<')
+    });
+  })
+  window.curtainOpen = curtainOpen;
+  window.curtainClose = curtainClose;
+  
+  function sectionFrames() {
+    const screens = document.querySelectorAll('.screen');
+    const defaultFrames = getScreenFrames();
+    const separationOfFrames = [
+      /*1*/ [0.75],
+      /*2*/ [0.33,0.66],
+      /*3*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
+      /*4*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
+      /*5*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
+      /*6*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
+      /*7*/ [],
+      /*8*/ [],
+      /*9*/ [],
+      /*10*/ [],
+      /*11*/ [],
+    ]
+    
+    
+    const framesWithSeparation = [];
+    defaultFrames.forEach((frame, index) => {
+      framesWithSeparation.push(defaultFrames[index]);
+      if (index === defaultFrames.length - 1) return;
+      // if (separationOfFrames[index].length === 0) return;
+      separationOfFrames[index].forEach(innerFrame => {
+        // console.log(innerFrame);
+        const rangeBetweenFrames = gsap.utils.mapRange(0,1,defaultFrames[index], defaultFrames[index + 1], innerFrame);
+        framesWithSeparation.push(rangeBetweenFrames);
+        // console.log(rangeBetweenFrames, '--->', defaultFrames[index], defaultFrames[index + 1]);
+      })
+    })
+    console.log(defaultFrames);
+    console.log(framesWithSeparation);
+    let CURRENT_FRAME = 0;
+    let isAnimating = false;
+    window.scroller.stop();
+    window.addEventListener('wheel',function(evt){
+      if (isAnimating) return;
+      
+      const direction = evt.deltaY > 0 ? CURRENT_FRAME + 1 : CURRENT_FRAME - 1;
+      CURRENT_FRAME = direction === 0 ? 0 : direction;
+      if (typeof defaultFrames[direction] === 'number') {
+        isAnimating = true;
+        window.scroller.scrollTo(defaultFrames[direction],  {
+          callback: () => isAnimating = false,
+          easing: [0.25,0.5,0.75,1.00],
+        });
+      }
+      // console.log(defaultFrames[direction]);
+
+
+    });
+  }
+
+  function getScreenFrames() {
+    const screens = document.querySelectorAll('.screen');
+    let preHeightAccumulator = 0;
+    const frames = Array.from(screens).reduce((acc,el, index) => {
+      console.log(el.getBoundingClientRect().height);
+      // const prevSum = acc.reduce((acc1, el) => {
+        //   acc1 += el;
+        //   return acc1
+        // }, 0);
+        // // acc.push(el.getBoundingClientRect().height + prevSum);
+        acc.push(el.getBoundingClientRect().height + preHeightAccumulator);
+        preHeightAccumulator += el.getBoundingClientRect().height;
+      return acc;
+    }, []);
+    frames.splice(0, 0, 0);
+
+    return frames;
+  }
+  sectionFrames();
+}
+
