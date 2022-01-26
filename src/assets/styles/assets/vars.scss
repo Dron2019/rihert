@@ -19,6 +19,7 @@ $gold: #cfa46e;
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
   --header-h: 144px;
   --logo-w: 79px;
+  --logo-w: 190px;
   --logo-h: calc(var(--logo-w) / 79.95 * 16.6);
   --color-white: #ffffff;
   --color-violet: #8886C2;
@@ -66,6 +67,7 @@ $gold: #cfa46e;
     --h1-size: 61px;
     --h2-size: 33px;
     --h3-size: 22px;
+    --logo-w: 120px;
     // --h4-size: 18px;
     // --h5-size: 16px;
   }

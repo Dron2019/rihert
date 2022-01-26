@@ -75,7 +75,7 @@ window.ttl1 = !isTablet() && gsap.timeline({
     // onLeave: () => gsap.set('.screen1__inner', { willChange: '' }),
   }
 })
-.to('.screen1__inner .h1', {  z: 10, duration: 0.5 })
+// .to('.screen1__inner .h1', {  z: 10, duration: 0.5 })
 .to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
 
 
@@ -450,7 +450,8 @@ window.addEventListener('resize',function(evt){
   })
   window.curtainOpen = curtainOpen;
   window.curtainClose = curtainClose;
-  
+  /**УПРАВЛЕНИЕ СКРОЛЛОМ */
+
   function sectionFrames() {
     const screens = document.querySelectorAll('.screen');
     const defaultFrames = getScreenFrames();
@@ -536,6 +537,7 @@ window.addEventListener('resize',function(evt){
 
     return frames;
   }
-  sectionFrames();
+  // sectionFrames();
+    /**УПРАВЛЕНИЕ СКРОЛЛОМ */
 }
 

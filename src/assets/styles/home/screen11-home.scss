@@ -118,7 +118,7 @@
         text-transform: uppercase;
         color: var(--color-black);
         text-decoration: none;
-        transition: color .3s ease-in-out;
+        transition: color .5s ease-in-out;
         white-space: nowrap;
         @include from-to(1025px, 1920px){
             font-size: 5vw;
@@ -137,24 +137,25 @@
         }
         
     }
-    &__links a:before {
-        content: attr(data-title);
-        position: absolute;
-        // left: 0;
-        // top: 0;
-        color: var(--color-red);
-        line-height: 80%;
-        clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
-        -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
-        transition: .3s ease-in-out;
-    }
+    // &__links a:before {
+    //     content: attr(data-title);
+    //     position: absolute;
+    //     // left: 0;
+    //     // top: 0;
+    //     color: var(--color-red);
+    //     line-height: 80%;
+    //     clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    //     -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    //     transition: .3s ease-in-out;
+    // }
     @include from(1025px){
-        &__links a:hover:before {
-            clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-            -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-        }
+        // &__links a:hover:before {
+        //     clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        //     -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+        // }
         &__links a:hover {
             color: #fff;
+            color: #8886C2;
         }
     }
     &-delimiter {
