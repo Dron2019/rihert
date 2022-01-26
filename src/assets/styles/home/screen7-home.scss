@@ -34,7 +34,7 @@
         height: auto;
     }
     @include from(1025px){
-        margin-bottom: -50px;
+        // margin-bottom: -50px;
         z-index: 10;
         position: relative;
     }

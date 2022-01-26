@@ -61,7 +61,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 });
 
 
-!isTablet() && gsap.timeline({
+window.ttl1 = !isTablet() && gsap.timeline({
   ease: 'none',
   scrollTrigger: {
     scroller: pageContainer,
@@ -78,53 +78,6 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 .to('.screen1__inner .h1', {  z: 10, duration: 0.5 })
 .to('.screen1__inner', {scale: 2.5, transformOrigin: '100% 100%', ease: 'none',} )
 
-// gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.screen2',
-//     scroller: pageContainer,
-//     start: '-20px bottom',
-//     ease: 'none',
-//   }
-// })
-// .to('.screen2__title .h2', {  z: 10, duration: 0.5 })
-
-
-function stopCustomScroll() {
-  scroller.stop();
-}
-function startCustomScroll() {
-  scroller.start();
-}
-
-
-
-// !isTablet() && gsap.timeline({
-//   scrollTrigger: {
-//     scroller: pageContainer,
-//     trigger: '.screen10',
-//     scrub: true,
-//     onEnterBack: () => {
-//       params[10]('fromBack')
-
-//     }
-//   }
-// })
-// !isTablet() &&  gsap.timeline({
-//   scrollTrigger: {
-//     scroller: pageContainer,
-//     trigger: '.screen11',
-//     scrub: true,
-//     onEnter: () => {
-//       params[11]()
-//       console.log('enter 11');
-//     },
-//     onEnterBack: () => {
-//       console.log('enter back 9');
-//       // params[9]('fromBack')
-
-//     }
-//   }
-// })
 
 
 const screen9 = document.querySelector('.screen9 .screen9__inner');
@@ -135,31 +88,7 @@ const mapRatio = innerWidth / document.querySelector('.map').getBoundingClientRe
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
 
-// stopCustomScroll();
 
-/**
- * Анимация срабатывает когда попадаешь на этот номер экрана
- * Номер экрана изменяется на некоторых экранах по скроллу
- * если экран с прокруткой, для смены используется скролл триггер
- * изменения номер текущего экрана в самой функции, вне нее идет только ее вызов с параметром номера экрана
- */
-const params = {
-  excludeScreenOnScrollChange: [1, 2,3,5, 6,7, 10, 11],
-  currentScreen: '1',
-  isAnimating: false,
-  2: () => {},
-  3: () => {},
-  4: () => {},
-  5: () => {},
-  6: () => {},
-  7: () => {},
-  8: () => {},
-  9: (fromBack) => {},
-  10: () => {},
-  11: () => {
-  },
-  1: () => {},
-};
 
 screen9Handler();
 
@@ -177,7 +106,7 @@ function adaptiveScreen8Values(mobile, desktop) {
   if (isMobile()) return mobile;
   return desktop;
 }
-window.ttl = gsap.timeline( {
+window.ttl8 = gsap.timeline( {
   defaults: {
     ease: 'none'
   },
@@ -415,7 +344,7 @@ function get5ScreenTl() {
     z: 0,
     transformOrigin: '0 0',
   }, '<')
-  .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 });
+  .to(screen5Inner, { scale: 1, transformOrigin: '0 0', duration: 0.3, x: 0 })
 }
 
 function refreshScr5() {
@@ -486,49 +415,10 @@ window.addEventListener('resize',function(evt){
       }
     }
   })
-  // .to('.screen9__inner>div', {
-  //   ease: "none",
-  //   scale: 1,
-  //   duration: 2,
-  // })
-  // .fromTo('.map img', {
-  //   scale: 1,
-  //   y: 0,
-  //   z: 0,
-  //   // willChange: 'auto'
-  // }, { 
-  //   ease: "none",
-  //   scale: 1,
-  //   z: 0,
-  // }, '<')
   .to('.screen9__inner', {
     scale: 1,
     force3D: false,
   })
-// .to('.screen9__inner', {
-//   scale: 1
-// })
-
-
-
-// !isTablet() && gsap.timeline({
-//   ease: "none",
-//   scrollTrigger: {
-//     scroller: pageContainer,
-//     trigger: '.screen11',
-//     start: 'top top',
-//     end: `100% bottom`,
-//     // markers: false,
-//     scrub: 1,
-//     pin: '.screen11__inner',
-//     start: "top top",
-//     onEnter: () => {
-     
-//       console.log('eeeeee');
-//     }
-//   }
-// })
-// .to('.screen11__inner', { scale: 1.15 })
 
 
   function curtainOpen() {
@@ -565,20 +455,32 @@ window.addEventListener('resize',function(evt){
     const screens = document.querySelectorAll('.screen');
     const defaultFrames = getScreenFrames();
     const separationOfFrames = [
-      /*1*/ [0.75],
-      /*2*/ [0.33,0.66],
-      /*3*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
-      /*4*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
-      /*5*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
-      /*6*/ [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95],
-      /*7*/ [],
+      /*1*/ [0.55],
+      /*2*/ [],
+      /*3*/ [0.35, 0.54, 0.64,0.74],
+      // /*3*/ ttl5(),
+      /*4*/ [],
+      /*5*/ [0.2,0.4,0.6,0.8],
+      /*6*/ [0.5],
+      /*7*/ [0.55],
       /*8*/ [],
       /*9*/ [],
       /*10*/ [],
       /*11*/ [],
     ]
     
-    
+    function ttl1() {
+      const tl = window.ttl1;
+      console.log('----------');
+      console.log(tl._tDur);
+      console.log(tl.labels);
+      const array = Object.values(tl.labels).map(val => {
+        return gsap.utils.mapRange(0,tl._tDur, 0,1, val);
+      })
+      console.log(array);
+      console.log('----------');
+      return array;
+    }
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
       framesWithSeparation.push(defaultFrames[index]);
@@ -601,11 +503,13 @@ window.addEventListener('resize',function(evt){
       
       const direction = evt.deltaY > 0 ? CURRENT_FRAME + 1 : CURRENT_FRAME - 1;
       CURRENT_FRAME = direction === 0 ? 0 : direction;
-      if (typeof defaultFrames[direction] === 'number') {
+      console.log(direction);
+      if (typeof framesWithSeparation[direction] === 'number') {
         isAnimating = true;
-        window.scroller.scrollTo(defaultFrames[direction],  {
+        window.scroller.scrollTo(framesWithSeparation[direction],  {
           callback: () => isAnimating = false,
           easing: [0.25,0.5,0.75,1.00],
+          duration: 1500
         });
       }
       // console.log(defaultFrames[direction]);
@@ -615,7 +519,7 @@ window.addEventListener('resize',function(evt){
   }
 
   function getScreenFrames() {
-    const screens = document.querySelectorAll('.screen');
+    const screens = document.querySelectorAll('.screen:not(.screen6)');
     let preHeightAccumulator = 0;
     const frames = Array.from(screens).reduce((acc,el, index) => {
       console.log(el.getBoundingClientRect().height);
