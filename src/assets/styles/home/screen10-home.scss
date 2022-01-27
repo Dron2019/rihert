@@ -36,7 +36,7 @@
         }
         &-left {
             position: relative;
-            z-index: 2;
+            z-index: 1;
             padding-top: var(--padding-top);
             width: calc(100% - var(--right-width));
             @include to(1024px){

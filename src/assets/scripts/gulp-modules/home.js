@@ -260,7 +260,7 @@ window.ttl8 = gsap.timeline( {
     scrub: true,
     scroller: pageContainer,
     trigger: ".screen7",
-    end: `${innerHeight * 1.5} bottom`,
+    end: `${innerHeight} bottom`,
     onEnter: () => {
       gsap.set('.screen7__inner', { willChange: 'transform' })
     },
@@ -281,25 +281,25 @@ window.ttl8 = gsap.timeline( {
   // x: innerHeight / -1,
   scale: 0.5,
   transformOrigin: '0 100%',
-  duration: 5
+  // duration: 5
 })
 .from('.screen7__inner', { 
-  yPercent: -30, 
+  // yPercent: -30, 
   xPercent: 70, 
   z: 0,
-  scale: 3, 
+  // scale: 3, 
   transformOrigin: '0 0', 
   ease: 'none' 
 }, '<')
 
 
-gsap.timeline({
+!isTablet() && gsap.timeline({
   ease: 'none',
   scrollTrigger:  {
     scrub: true,
     scroller: pageContainer,
     trigger: ".screen10",
-    start: "80% bottom",
+    start: "100% bottom",
     end: '+=300px top',
     onEnter: () => {
       scroller.update();
@@ -307,6 +307,10 @@ gsap.timeline({
     }
   }
 })
+
+.to('.screen10__inner-right-content', { x: (e, target) => {
+  return target.getBoundingClientRect().left * -1;
+}}, '<')
 .to('.right-bg', { width: '100vw'}, '<')
 
 
@@ -453,13 +457,12 @@ window.addEventListener('resize',function(evt){
   /**УПРАВЛЕНИЕ СКРОЛЛОМ */
 
   function sectionFrames() {
-    const screens = document.querySelectorAll('.screen');
+    const screens = document.querySelectorAll('.screen:not(.screen6)');
     const defaultFrames = getScreenFrames();
     const separationOfFrames = [
       /*1*/ [0.55],
       /*2*/ [],
-      /*3*/ [0.35, 0.54, 0.64,0.74],
-      // /*3*/ ttl5(),
+      /*3*/ [0.35, 0.54, 0.64,0.74, 0.8],
       /*4*/ [],
       /*5*/ [0.2,0.4,0.6,0.8],
       /*6*/ [0.5],
@@ -470,28 +473,20 @@ window.addEventListener('resize',function(evt){
       /*11*/ [],
     ]
     
-    function ttl1() {
-      const tl = window.ttl1;
-      console.log('----------');
-      console.log(tl._tDur);
-      console.log(tl.labels);
-      const array = Object.values(tl.labels).map(val => {
-        return gsap.utils.mapRange(0,tl._tDur, 0,1, val);
-      })
-      console.log(array);
-      console.log('----------');
-      return array;
-    }
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
       framesWithSeparation.push(defaultFrames[index]);
+      console.log(screens[index], defaultFrames);
+      if (screens[index]) {
+        screens[index].dataset.positionIndex = framesWithSeparation.indexOf(defaultFrames[index]);
+      }
       if (index === defaultFrames.length - 1) return;
-      // if (separationOfFrames[index].length === 0) return;
+
+      /**Формирование точек останова внутри секции */
       separationOfFrames[index].forEach(innerFrame => {
         // console.log(innerFrame);
         const rangeBetweenFrames = gsap.utils.mapRange(0,1,defaultFrames[index], defaultFrames[index + 1], innerFrame);
         framesWithSeparation.push(rangeBetweenFrames);
-        // console.log(rangeBetweenFrames, '--->', defaultFrames[index], defaultFrames[index + 1]);
       })
     })
     console.log(defaultFrames);
@@ -499,12 +494,23 @@ window.addEventListener('resize',function(evt){
     let CURRENT_FRAME = 0;
     let isAnimating = false;
     window.scroller.stop();
+
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click',function({target}){
+        const newIndexForScrollFrames = document.querySelector(target.getAttribute('href')).dataset.positionIndex;
+        console.log(newIndexForScrollFrames);
+        CURRENT_FRAME = +newIndexForScrollFrames;
+      });
+    })
     window.addEventListener('wheel',function(evt){
+      console.log(CURRENT_FRAME);
       if (isAnimating) return;
       
-      const direction = evt.deltaY > 0 ? CURRENT_FRAME + 1 : CURRENT_FRAME - 1;
+      const direction = evt.deltaY > 0 ? 
+        Math.min(CURRENT_FRAME + 1, framesWithSeparation.length - 1) : 
+        Math.max(CURRENT_FRAME - 1, 0);
+
       CURRENT_FRAME = direction === 0 ? 0 : direction;
-      console.log(direction);
       if (typeof framesWithSeparation[direction] === 'number') {
         isAnimating = true;
         window.scroller.scrollTo(framesWithSeparation[direction],  {
@@ -523,12 +529,14 @@ window.addEventListener('resize',function(evt){
     const screens = document.querySelectorAll('.screen:not(.screen6)');
     let preHeightAccumulator = 0;
     const frames = Array.from(screens).reduce((acc,el, index) => {
+
       console.log(el.getBoundingClientRect().height);
       // const prevSum = acc.reduce((acc1, el) => {
         //   acc1 += el;
         //   return acc1
         // }, 0);
         // // acc.push(el.getBoundingClientRect().height + prevSum);
+        el.dataset.position = el.getBoundingClientRect().height + preHeightAccumulator;
         acc.push(el.getBoundingClientRect().height + preHeightAccumulator);
         preHeightAccumulator += el.getBoundingClientRect().height;
       return acc;
@@ -537,7 +545,7 @@ window.addEventListener('resize',function(evt){
 
     return frames;
   }
-  // sectionFrames();
+  sectionFrames();
     /**УПРАВЛЕНИЕ СКРОЛЛОМ */
 }
 

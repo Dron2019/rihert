@@ -158,6 +158,9 @@
         cursor: pointer;
         position: relative;
         padding-left: 30px;
+        @include from(1025px){
+            margin-bottom: 10px;
+        }
     }
     li:before {
         content: '';
