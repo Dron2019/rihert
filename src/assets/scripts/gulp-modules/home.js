@@ -6,6 +6,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import screen9Handler from './home/screen9';
 import headerHandle from './home/header';
 import { fromPathToArray, isFullHd, debounce } from '../modules/helpers/helpers';
+import Hammer from 'hammerjs';
 
 global.gsap = gsap;
 gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -527,6 +528,7 @@ window.addEventListener('resize',function(evt){
 
   function getScreenFrames() {
     const screens = document.querySelectorAll('.screen:not(.screen6)');
+    
     let preHeightAccumulator = 0;
     const frames = Array.from(screens).reduce((acc,el, index) => {
 
@@ -545,7 +547,93 @@ window.addEventListener('resize',function(evt){
 
     return frames;
   }
-  sectionFrames();
+  // !isTablet() && sectionFrames();
+
+  function mobileSectionFrames() {
+    const defaultFrames = getScreenFrames();
+    const framesWithSeparation = [];
+    const screens = document.querySelectorAll('.screen:not(.screen6)');
+    let CURRENT_FRAME = 0;
+    let isAnimating = false;
+    const separationOfFrames = [
+      /*1*/ [],
+      /*2*/ [],
+      /*3*/ [0.2,0.4,0.6,0.8],
+      /*4*/ [],
+      /*5*/ [0.2,0.4,0.6,0.8],
+      /*6*/ [],
+      /*7*/ [],
+      /*8*/ [],
+      /*9*/ [],
+      /*10*/ [],
+      /*11*/ [],
+    ]
+    defaultFrames.forEach((frame, index) => {
+      framesWithSeparation.push(defaultFrames[index]);
+      console.log(screens[index], defaultFrames);
+      if (screens[index]) {
+        screens[index].dataset.positionIndex = framesWithSeparation.indexOf(defaultFrames[index]);
+      }
+      if (index === defaultFrames.length - 1) return;
+
+      /**Формирование точек останова внутри секции */
+      separationOfFrames[index].forEach(innerFrame => {
+        // console.log(innerFrame);
+        const rangeBetweenFrames = gsap.utils.mapRange(0,1,defaultFrames[index], defaultFrames[index + 1], innerFrame);
+        framesWithSeparation.push(rangeBetweenFrames);
+      })
+    })
+    // const hammer = new Hammertouchmove
+    console.log(defaultFrames, framesWithSeparation);
+    // window.addEventListener("scroll", preventMotion, false);
+    // window.addEventListener("touchmove", preventMotion, false);
+
+    function preventMotion(event) {
+        // window.scrollTo(0, 0);
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    const hammer = new Hammer(document.querySelector('.scroller-container'), {
+      threshold: 2
+    });
+    hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+    hammer.on('swipeup', () => {
+      const index = Math.min(CURRENT_FRAME + 1, framesWithSeparation.length - 1);
+      console.log(CURRENT_FRAME);
+      if (isAnimating) return;
+      isAnimating = true;
+      window.scrollTo({
+        top: framesWithSeparation[index],
+        left: 0,
+        behavior: 'smooth'
+      })
+      CURRENT_FRAME = index;
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    })
+    hammer.on('swipedown', () => {
+      if (isAnimating) return;
+      isAnimating = true;
+      const index = Math.max(CURRENT_FRAME - 1, 0);
+      console.log(CURRENT_FRAME);
+
+      window.scrollTo({
+        top: framesWithSeparation[index],
+        left: 0,
+        behavior: 'smooth'
+      })
+      // window.scrollTo(, framesWithSeparation[index], {
+      //   behavior: 'smooth'
+      // });
+      CURRENT_FRAME = index;
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    })
+  }
+  // isTablet() && mobileSectionFrames()
     /**УПРАВЛЕНИЕ СКРОЛЛОМ */
 }
 

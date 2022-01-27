@@ -70,6 +70,7 @@
         }
         @include to(575px){
             position: relative;
+            padding-bottom: 50px;
             &:after {
                 content: '';
                 position: absolute;

@@ -161,3 +161,11 @@ img {
     display: flex;
   }
 }
+
+
+.noscroll
+{
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
