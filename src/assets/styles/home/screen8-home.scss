@@ -65,6 +65,7 @@
         height: 19.3vw;
         left: 40.9%;
         top: 35%;
+        top: 21.4vw;
         img {
             height: 100%;
             object-position: top;
@@ -128,8 +129,10 @@
         height: 275px;
         width: 14.1vw;
         height: 19.1vw;
-        left: 18.2%;
-        top: 66.5%;
+        // left: 18.2%;
+        // top: 66.5%;
+        left: 18.3vw;
+        top: 40.9vw;
         z-index: 3;
         @include to(575px){
             width: 18.8vw;
@@ -165,8 +168,11 @@
        height: 214px;
        width: 12.8vw;
         height: 14.9vw;
-       left: 79.9%;
-       top: 66.1%;
+    //    left: 79.9%;
+    //    top: 66.1%;
+
+       left: 80vw;
+        top: 40.6vw;
        img {
             height: 100%;
             object-position: top left;
@@ -215,8 +221,10 @@
         width: 205.5px;
         height: 18.7vw;
         width: 14vw;
-        left: 4.2%;
-        top: 6.1%;
+        // left: 4.2%;
+        left: 3.9vw;
+        // top: 6.1%;
+        top: 3.9vw;
         img {
             // will-change: transform;
         }
@@ -234,6 +242,11 @@
         width: 7.75vw;
         left: 33.2%;
         top: 18.3%;
+        @include from(1025px){
+            left: 32.7vw;
+            top: 11.5vw;
+            width: 9vw;
+        }
         @include to(575px){
             height: 25.2vw;
             width: 15.85vw;

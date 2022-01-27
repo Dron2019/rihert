@@ -270,11 +270,11 @@
             position: absolute;
             right: 7.5px;
             right: 3%;
-            right: 2.6%;
+            right: 1.5%;
             top: 0.3%;
-            top: 0;
             height: 163px;
             width: auto;
+            transform: rotate(-0.66deg);
         }
         .screen5-title {
             padding-top: 17px;
@@ -368,13 +368,14 @@
     &-2-2 {
         grid-area: 2/2/2/2;
         margin-left: -12px;
-        margin-top: -4px;
+        margin-top: -8px;
         img {
             height: 100%;
             object-fit: contain;
             object-position: left;
             object-fit: cover;
             object-position: top right;
+            transform: rotate(-0.36deg);
         }
     }
     &-3-2 {
@@ -436,6 +437,7 @@
             margin-left: -5px;
             width: calc(100% + 15px);
             max-width: none;
+            transform: rotate(-0.16deg);
         }
     }
     &-3-4  {
