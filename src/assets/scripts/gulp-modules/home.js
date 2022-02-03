@@ -494,7 +494,7 @@ window.addEventListener('resize',function(evt){
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
       framesWithSeparation.push(defaultFrames[index]);
-      console.log(screens[index], defaultFrames);
+      // console.log(screens[index], defaultFrames);
       if (screens[index]) {
         screens[index].dataset.positionIndex = framesWithSeparation.indexOf(defaultFrames[index]);
       }
@@ -514,12 +514,12 @@ window.addEventListener('resize',function(evt){
     document.querySelectorAll('.nav__link').forEach(link => {
       link.addEventListener('click',function({target}){
         const newIndexForScrollFrames = document.querySelector(target.getAttribute('href')).dataset.positionIndex;
-        console.log(newIndexForScrollFrames);
+        // console.log(newIndexForScrollFrames);
         CURRENT_FRAME = +newIndexForScrollFrames;
       });
     })
     window.addEventListener('wheel',function(evt){
-      console.log(CURRENT_FRAME);
+      // console.log(CURRENT_FRAME);
       if (isAnimating) return;
       
       const direction = evt.deltaY > 0 ? 
@@ -582,7 +582,7 @@ window.addEventListener('resize',function(evt){
     let preHeightAccumulator = 0;
     const frames = Array.from(screens).reduce((acc,el, index) => {
 
-      console.log(el.getBoundingClientRect().height);
+      // console.log(el.getBoundingClientRect().height);
       // const prevSum = acc.reduce((acc1, el) => {
         //   acc1 += el;
         //   return acc1

@@ -39,9 +39,47 @@ export default function screen9Handler() {
     const $videos = document.querySelectorAll('.map-part');
     $videos.forEach(part => {
         const video = part.querySelector('video');
-        part.addEventListener('mouseenter', () => video.play())
-        part.addEventListener('mouseleave', () => video.load())
+        const clodeVideo = createCloneVideo(video);
+        part.addEventListener('mouseenter', () => {
+            // video.play();
+
+            if (!isMobile) {
+
+                clodeVideo.style.top = video.getBoundingClientRect().top+'px';
+                clodeVideo.style.left = video.getBoundingClientRect().left+'px';
+                clodeVideo.style.width = video.getBoundingClientRect().width+'px';
+                clodeVideo.style.height = video.getBoundingClientRect().height+'px';
+                document.body.append(clodeVideo);
+                clodeVideo.play();
+            } else {
+                video.play();
+            }
+            
+        })
+        part.addEventListener('mouseleave', () => {
+            // video.load();
+            if (!isMobile) {
+                clodeVideo.remove();
+                clodeVideo.load();
+            } else {
+                video.load();
+            }
+        })
     })
 }
 
-
+function createCloneVideo(video) {
+    const el = video.cloneNode(true);
+    const { width, height, x, y } = video.getBoundingClientRect();
+    el.style.cssText = `
+        width: ${width}px;
+        height: ${height}px;
+        position: fixed;
+        left: ${x}px;
+        top: 50%;
+        pointer-events: none;
+        object-fit:cover;
+        top: ${y}%
+    `;
+    return el;
+}
