@@ -36,9 +36,12 @@ const pageContainer = document.querySelector(".scroller-container");
 const scroller = new LocomotiveScroll({
   el: pageContainer,
   smooth: true,
-  smoothMobile: false,
+  smoothMobile: true,
+  smartphone: {
+    smooth: true
+  },
   // inertia: 1.1,
-  multiplier: 0.5,
+  multiplier: isMobile() ? 1 : 0.5,
   lerp: 0.05,
 });
 window.scroller = scroller;
@@ -394,7 +397,7 @@ window.addEventListener('resize',function(evt){
   })
   .to(inner5Mobile, {
     scale: 0.5,
-    yPercent: -70,
+    yPercent: -65,
     xPercent: 0,
     transformOrigin: '0 100%',
     ease: 'none',
@@ -439,14 +442,14 @@ window.addEventListener('resize',function(evt){
 
 
   document.querySelectorAll('.nav__link').forEach(el => {
-    if (isTablet()) return;
+    // if (isTablet()) return;
     el.addEventListener('click',function(evt){
       evt.preventDefault();
       gsap.timeline()
         .add(curtainOpen)
         .set('body', { cursor: 'progress' }, '<')
         .add(() => {
-          if (isTablet()) return;
+          // if (isTablet()) return;
           scroller.scrollTo(document.querySelector(el.getAttribute('href')))
         }, '<+1.5')
         .add(curtainClose, '<+1.5')
@@ -460,7 +463,7 @@ window.addEventListener('resize',function(evt){
   function sectionFrames() {
     const screens = document.querySelectorAll('.screen:not(.screen6)');
     const defaultFrames = getScreenFrames();
-    const separationOfFrames = [
+    let separationOfFrames = [
       /*1*/ [0.55],
       /*2*/ [],
       /*3*/ [0.35, 0.54, 0.64,0.74, 0.8],
@@ -473,7 +476,21 @@ window.addEventListener('resize',function(evt){
       /*10*/ [],
       /*11*/ [],
     ]
-    
+    if (isTablet()) {
+      separationOfFrames = [
+        /*1*/ [],
+        /*2*/ [],
+        /*3*/ [0.19,0.3,0.45,0.665],
+        /*4*/ [],
+        /*5*/ [0.2,0.4,0.6,0.83],
+        /*6*/ [0.5, 0.68],
+        /*7*/ [0.55],
+        /*8*/ [],
+        /*9*/ [],
+        /*10*/[],
+        /*11*/[],
+      ]
+    }
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
       framesWithSeparation.push(defaultFrames[index]);
@@ -490,8 +507,6 @@ window.addEventListener('resize',function(evt){
         framesWithSeparation.push(rangeBetweenFrames);
       })
     })
-    console.log(defaultFrames);
-    console.log(framesWithSeparation);
     let CURRENT_FRAME = 0;
     let isAnimating = false;
     window.scroller.stop();
@@ -524,6 +539,41 @@ window.addEventListener('resize',function(evt){
 
 
     });
+
+    const hammer = new Hammer(document.querySelector('.scroller-container'), {
+      threshold: 2
+    });
+    hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+    hammer.on('swipeup', (e) => {
+      if (isAnimating) return;
+      
+      const direction = Math.min(CURRENT_FRAME + 1, framesWithSeparation.length - 1);
+
+      CURRENT_FRAME = direction === 0 ? 0 : direction;
+      if (typeof framesWithSeparation[direction] === 'number') {
+        isAnimating = true;
+        window.scroller.scrollTo(framesWithSeparation[direction],  {
+          callback: () => isAnimating = false,
+          easing: [0.25,0.5,0.75,1.00],
+          duration: 750
+        });
+      }
+    })
+    hammer.on('swipedown', (e) => {
+      if (isAnimating) return;
+      
+      const direction = Math.max(CURRENT_FRAME - 1, 0);
+
+      CURRENT_FRAME = direction === 0 ? 0 : direction;
+      if (typeof framesWithSeparation[direction] === 'number') {
+        isAnimating = true;
+        window.scroller.scrollTo(framesWithSeparation[direction],  {
+          callback: () => isAnimating = false,
+          easing: [0.25,0.5,0.75,1.00],
+          duration: 750
+        });
+      }
+    })
   }
 
   function getScreenFrames() {
@@ -547,7 +597,7 @@ window.addEventListener('resize',function(evt){
 
     return frames;
   }
-  // !isTablet() && sectionFrames();
+ sectionFrames();
 
   function mobileSectionFrames() {
     const defaultFrames = getScreenFrames();
