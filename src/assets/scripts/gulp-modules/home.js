@@ -128,10 +128,10 @@ window.ttl8 = gsap.timeline( {
 .set(frames[1], { zIndex: 10 })
 .to(frames[1], { 
   // scale: 1.7, 
-  yPercent: tl8IsMobile ? 60 : -20,
+  yPercent: tl8IsMobile ? 60 : -43,
   xPercent: tl8IsMobile ? -50 : null,
   // top: tl8IsMobile ? null : '26%',
-  scale: tl8IsMobile ? 2.08 : 1.45,
+  scale: tl8IsMobile ? 2.08 : 1.40,
 })
 .to('[data-frame="1-1"]', { autoAlpha: 1, duration: 0.35 }, '<')
 .to(frames[5], {
@@ -162,9 +162,9 @@ window.ttl8 = gsap.timeline( {
 // frame 2
 .to(frames[2], { 
   // scale: tl8IsMobile ? 2.85 :  1 / 0.49,
-  scale: tl8IsMobile ? 2.85 :  1 / 0.51,
+  scale: tl8IsMobile ? 2.85 :  1.7,
   xPercent: 170,
-  yPercent: -100,
+  yPercent: -150,
   // top: '50%'
 }, '+=1')
 .to('[data-frame="1-1"]', { autoAlpha: 0, duration: 0.35 }, '<')
@@ -191,9 +191,9 @@ window.ttl8 = gsap.timeline( {
 // frame 3
 
 .to(frames[3], { 
-  scale: tl8IsMobile ? 1.4 : 1 / 0.37,
+  scale: tl8IsMobile ? 1.4 : 2.55,
   xPercent: tl8IsMobile ? -15 : -262,
-  yPercent: tl8IsMobile ? -107 : -115
+  yPercent: tl8IsMobile ? -107 : -165
 }, '+=1')
 
 .to('[data-frame="1-2"]', { autoAlpha: 0, duration: 0.35 }, '<')
@@ -238,7 +238,7 @@ window.ttl8 = gsap.timeline( {
 //translate(39%, 9%) scale(0.38);
 .to(frames[4], { 
   xPercent: 245,
-  yPercent: 75,
+  yPercent: 35,
   scale: tl8IsMobile ? 3.09 : 1 / 0.5,
 }, '<')
 .to(frames[2], { 
@@ -493,7 +493,7 @@ window.addEventListener('resize',function(evt){
     }
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
-      framesWithSeparation.push(defaultFrames[index]);
+      if (!isTablet() && index !== 2) framesWithSeparation.push(defaultFrames[index]);
       // console.log(screens[index], defaultFrames);
       if (screens[index]) {
         screens[index].dataset.positionIndex = framesWithSeparation.indexOf(defaultFrames[index]);
