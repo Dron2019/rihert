@@ -493,7 +493,7 @@ window.addEventListener('resize',function(evt){
     }
     const framesWithSeparation = [];
     defaultFrames.forEach((frame, index) => {
-      if (!isTablet() && index !== 2) framesWithSeparation.push(defaultFrames[index]);
+      framesWithSeparation.push(defaultFrames[index]);
       // console.log(screens[index], defaultFrames);
       if (screens[index]) {
         screens[index].dataset.positionIndex = framesWithSeparation.indexOf(defaultFrames[index]);
@@ -588,6 +588,7 @@ window.addEventListener('resize',function(evt){
         //   return acc1
         // }, 0);
         // // acc.push(el.getBoundingClientRect().height + prevSum);
+        console.log(el.getBoundingClientRect().height);
         el.dataset.position = el.getBoundingClientRect().height + preHeightAccumulator;
         acc.push(el.getBoundingClientRect().height + preHeightAccumulator);
         preHeightAccumulator += el.getBoundingClientRect().height;
