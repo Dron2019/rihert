@@ -7,6 +7,7 @@ import screen9Handler from './home/screen9';
 import headerHandle from './home/header';
 import { fromPathToArray, isFullHd, debounce } from '../modules/helpers/helpers';
 import Hammer from 'hammerjs';
+import googleMap from '../modules/map/map';
 
 global.gsap = gsap;
 gsap.core.globals("ScrollTrigger", ScrollTrigger);
@@ -598,7 +599,7 @@ window.addEventListener('resize',function(evt){
 
     return frames;
   }
- sectionFrames();
+//  sectionFrames();
 
   function mobileSectionFrames() {
     const defaultFrames = getScreenFrames();
@@ -688,3 +689,5 @@ window.addEventListener('resize',function(evt){
     /**УПРАВЛЕНИЕ СКРОЛЛОМ */
 }
 
+
+// googleMap();
