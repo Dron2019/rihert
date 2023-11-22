@@ -1,0 +1,124 @@
+.inner-footer {
+    
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: var(--menu-gap);
+    padding-right: var(--page-side-fields);
+    --v-padding: 90px;
+    position: relative;
+    padding-top: var(--v-padding);
+    padding-bottom: var(--v-padding);
+    margin-top: var(--container-v-gap);
+    width: calc(100% - var(--page-side-fields));
+    @include to(1366px){
+        --v-padding: 60px;
+    }
+    &__top-border {
+        position: absolute;
+        top: 12px;
+        left: var(--menu-gap);
+        width: calc(100% - var(--menu-gap));
+        height: 2px;
+        background-color: var(--color-black);
+        transform-origin: right;
+        transform: rotate(-0.432deg);
+
+    }
+    &__bottom-border {
+        position: absolute;
+        bottom: 12px;
+        left: var(--menu-gap);
+        width: calc(100% - var(--menu-gap));
+        height: 2px;
+        background-color: var(--color-black);
+        transform-origin: right;
+        transform: rotate(0.432deg);
+    }
+
+    &__group {
+        @include size(4);
+        @include shift(0);
+        column-gap: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        .inner-footer__subtitle {
+            width: 100%;
+        }
+    }
+    &__subtitle {
+        color: var(--color-black);
+        margin-bottom: 8px;
+        
+        text-transform: uppercase;
+        @include text-style-1920-body;
+        @include to(1366px){
+            @include text-style-1366-body;
+        }
+    }
+    &__lang-link {
+        color: #989898;
+        text-align: right;
+        font-family: Suisse Intl;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 10px */
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    &__langs {
+        position: absolute;
+        right: 0;
+        top: var(--v-padding);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-end;
+    }
+}
+
+.tablet {
+    .inner-footer {
+        &__group {
+            // @include size-sm(4);
+            // @include shift-sm(0);
+            width: 33%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+.mobile {
+    .inner-footer {
+        --v-padding: 28px;
+        width: calc(100% + 40px);
+        margin-left: calc(20px * -0.5);
+        margin-right: calc(20px * -0.5);
+        padding-left: 10px;
+        padding-right: 10px;
+        row-gap: 20px;
+
+        &__subtitle {
+            
+            @include text-style-360-body;
+            text-transform: uppercase;
+        }
+        &__group {
+            @include customOffsetWidth(50, 20px);
+            &--mobile-wide {
+                @include customOffsetWidth(100, 20px);
+                .inner-footer__subtitle {
+                    width: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+        &__langs {
+            position: static;
+            @include customOffsetWidth(100, 20px);
+            flex-direction: row;
+            gap: 24px;
+        }
+    }
+}

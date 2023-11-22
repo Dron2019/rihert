@@ -1,0 +1,22 @@
+.link-underlined {
+    color: var(--Black, #212721);
+    font-family: Suisse Intl;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.15px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+}
+
+.tablet {
+    .link-underlined {
+        font-size: 12px;
+    }
+}
+.mobile {
+    .link-underlined {
+        font-size: 12px;
+    }
+}

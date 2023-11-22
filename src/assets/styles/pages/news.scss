@@ -1,0 +1,38 @@
+.scroller-container {
+    width: 100%;
+    min-height: 100vh;
+    position: static;
+    overflow: initial;
+    background-color: var(--gray-light)
+}
+
+.news-container {
+    @include row-flex();
+    row-gap: 13vh;
+    margin-top: 100px;
+    .news-card {
+        @include size(6);
+        @include shift(0);
+    }
+}
+
+.tablet {
+    .news-container {
+        row-gap: 60px;
+        .news-card {
+            @include size-sm(6);
+            @include shift-sm(0);
+        }
+    }
+}
+
+.mobile {
+    .news-container {
+        margin-top: 70px;
+        row-gap: 40px;
+        .news-card {
+            @include size-xs(12);
+            @include shift-xs(0);
+        }
+    }
+}

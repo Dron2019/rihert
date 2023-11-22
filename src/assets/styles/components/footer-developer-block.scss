@@ -1,0 +1,18 @@
+.footer-developer-block {
+    display: flex;
+    justify-content: space-between;
+    color: #989898;
+    font-family: Suisse Intl;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase;
+    padding-left: var(--menu-gap);
+    padding-right: var(--page-side-fields);
+    padding-bottom: 24px;
+    margin-top: 60px;
+    a {
+        color: currentColor;
+    }
+}

@@ -1,0 +1,402 @@
+
+$color-gray-light: rgba(227,227,227,1);
+$color-black: rgba(33,39,33,1);
+$color-yellow: rgba(245,255,0,1);
+$color-gray-black: rgba(167,168,170,1);
+$color-orange: rgba(254,202,122,1);
+$color-brown: rgba(211,141,126,1);
+$color-blue: rgba(147,199,232,1);
+$color-green: rgba(107,194,138,1);
+$color-white: rgba(255,255,255,1);
+@mixin text-style-1920-h-1() {
+	font-size: 9.11vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-1920-h-2() {
+	font-size: 4.58vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-1920-h-3-caps() {
+	font-size: 2.9vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1920-h-3() {
+	font-size: 2.9vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1920-h-4() {
+	font-size: 1.56vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+@mixin text-style-1920-body() {
+	font-size: 1.3vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1920-tiny() {
+font-size: 0.83333vw;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+@mixin text-style-1366-h-1() {
+	font-size: 90px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-1366-h-2() {
+	font-size: 54px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-1366-h-3() {
+	font-size: 40px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1366-h-4() {
+	font-size: 24px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1366-body() {
+	font-size: 20px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-1366-tiny() {
+	font-size: 12px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+@mixin text-style-360-h-1() {
+	font-size: 40px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-360-h-2() {
+	font-size: 32px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-360-h-3() {
+	font-size: 28px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-360-h-4() {
+	font-size: 16px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+@mixin text-style-360-body() {
+	font-size: 14px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-360-tiny() {
+	font-size: 10px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+
+:root {
+	--color-gray-light: rgba(227,227,227,1);
+	--color-black: rgba(33,39,33,1);
+	--color-yellow: rgba(245,255,0,1);
+	--color-gray-black: rgba(167,168,170,1);
+	--color-orange: rgba(254,202,122,1);
+	--color-brown: rgba(211,141,126,1);
+	--color-blue: rgba(147,199,232,1);
+	--color-green: rgba(107,194,138,1);
+	--color-white: rgba(255,255,255,1);
+}
+.text-style-1920-h-1 {
+	font-size: 175px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-1920-h-2 {
+	font-size: 88px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-1920-h-3-caps {
+	font-size: 57px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1920-h-3 {
+	font-size: 57px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1920-h-4 {
+	font-size: 30px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+.text-style-1920-body {
+	font-size: 25px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1920-tiny {
+	font-size: 16px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+.text-style-1366-h-1 {
+	font-size: 90px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-1366-h-2 {
+	font-size: 54px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-1366-h-3 {
+	font-size: 40px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1366-h-4 {
+	font-size: 24px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1366-body {
+	font-size: 20px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-1366-tiny {
+	font-size: 12px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+.text-style-360-h-1 {
+	font-size: 40px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-360-h-2 {
+	font-size: 32px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.text-style-360-h-3 {
+	font-size: 28px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-360-h-4 {
+	font-size: 16px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 90%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+.text-style-360-body {
+	font-size: 14px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-360-tiny {
+	font-size: 10px;
+	font-family: "Suisse Intl";
+	font-weight: 400;
+	font-style: normal;
+	line-height: 100%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: lowercase;
+}

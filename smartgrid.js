@@ -16,10 +16,12 @@ var settings = {
             width: '1200px', /* -> @media (max-width: 1100px) */
         },
         md: {
-            width: '992px'
+            width: '992px',
+            offset: '40px',
         },
         sm: {
             width: '768px',
+            offset: '40px',
             fields: '10px' /* set fields only if you want to change container.fields */
         },
         xs: {

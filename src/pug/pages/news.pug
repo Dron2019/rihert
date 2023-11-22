@@ -1,0 +1,80 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'news'
+    var id_page = 'id-page-news'
+    var class_page = 'class-page-news'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/news.js')
+block content
+  .page-title
+    .page-title__text Новини
+    .page-title__bottom
+  .page-title-nav
+    .page-title-nav__item.active Усі
+    .page-title-nav__item Новини
+    .page-title-nav__item Акції
+  .container.news-container
+    .news-card
+      .news-card__date 01.02.2022
+      .news-card__img
+        img(src='./assets/images/screen9/2.jpg', alt='news')
+      .news-card__text
+        .news-card__title Динаміка розвитку компанії говорить сама за себе, буквально за три роки команда на 100% реалізувала три об’єкти.
+        <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 65L64 5M64 5H4M64 5V65" stroke="#93C7E8" stroke-width="10"/>
+        </svg>
+    .news-card
+      .news-card__date 01.02.2022
+      .news-card__img
+        img(src='./assets/images/screen9/2.jpg', alt='news')
+      .news-card__text
+        .news-card__title Динаміка розвитку компанії говорить сама за себе, буквально за три роки команда на 100% реалізувала три об’єкти.
+        <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 65L64 5M64 5H4M64 5V65" stroke="#93C7E8" stroke-width="10"/>
+        </svg>
+    .news-card
+      .news-card__date 01.02.2022
+      .news-card__img
+        img(src='./assets/images/screen9/2.jpg', alt='news')
+      .news-card__text
+        .news-card__title Динаміка розвитку компанії говорить сама за себе, буквально за три роки команда на 100% реалізувала три об’єкти.
+        <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 65L64 5M64 5H4M64 5V65" stroke="#93C7E8" stroke-width="10"/>
+        </svg>
+    .news-card
+      .news-card__date 01.02.2022
+      .news-card__img
+        img(src='./assets/images/screen9/2.jpg', alt='news')
+      .news-card__text
+        .news-card__title Динаміка розвитку компанії говорить сама за себе, буквально за три роки команда на 100% реалізувала три об’єкти.
+        <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 65L64 5M64 5H4M64 5V65" stroke="#93C7E8" stroke-width="10"/>
+        </svg>
+  .container
+    button.button-bordered Показати більше
+
+block footer
+  include ../includes/inner-footer.pug
+  include ../includes/footer-developer-block.pug
+
+block header
+  include ../includes/header.pug

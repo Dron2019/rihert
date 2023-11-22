@@ -1,3 +1,4 @@
+@import './assets/figmaVars.scss';  // переменные
 @import './assets/vars';  // переменные
 @import './assets/smart-grid';  // mixins smartgrid.js
 // libraries
@@ -30,3 +31,10 @@
 @import './assets/templates'; // main style
 @import './animation'; // main style
 
+@import 'components/page-title';
+@import 'components/page-title-nav';
+@import 'components/news-card';
+@import 'components/button';
+@import 'components/inner-footer';
+@import 'components/link-underlined';
+@import 'components/footer-developer-block';

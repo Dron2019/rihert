@@ -1,0 +1,48 @@
+.button-bordered {
+    padding: 19.5px 28px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    color: var(--Black, #212721);
+    font-family: Suisse Intl;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.15px;
+    text-transform: uppercase;
+    border: 3px solid var(--color-yellow);
+    width: max-content;
+    transition: .35s ease-out;
+}
+
+.desktop {
+    .button-bordered {
+        &.mobile-show {
+            display: none;
+        }
+        &:hover {
+            background-color: var(--color-yellow);
+        }
+        @include to(1366px){
+            padding: 17px 28px;
+        }
+    }
+}
+
+.tablet {
+    .button-bordered {
+        padding: 17px 18px;
+        font-size: 12px;
+    }
+}
+
+.mobile {
+    .button-bordered {
+        &.desktop-show {
+            display: none;
+        }
+        padding: 17px 18px;
+        font-size: 12px;
+    }
+}

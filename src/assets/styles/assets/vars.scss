@@ -1,6 +1,8 @@
 $default-font: "Suisse Intl", sans-serif;
 $default-font2: "Corporate A", sans-serif;
 
+
+
 $mc2: #ff554c;
 $mc3: #e5df06;
 $mc4: #4f90b6;
@@ -36,6 +38,22 @@ $gold: #cfa46e;
 
 
   --margin-l: 250px;
+  --page-title-skew-h: 108px;
+  --container-v-gap: 150px;
+  --menu-gap: 300px;
+}
+
+.tablet {
+  --page-side-fields: 20px;
+  --page-title-skew-h: 44px;
+  --menu-gap: var(--page-side-fields);
+  --container-v-gap: 100px;
+}
+
+.mobile {
+  --menu-gap: var(--page-side-fields);
+  --page-title-skew-h: 20px;
+  --container-v-gap: 50px;
 }
 
 @media (max-width: 1920px) {
