@@ -3,7 +3,13 @@
     min-height: 100vh;
     position: static;
     overflow: initial;
-    background-color: var(--gray-light)
+    background-color: var(--gray-light);
+}
+.mobile {
+    .scroller-container {
+        width: 100vw;
+        
+    }
 }
 .news-more-container {
     display: flex;

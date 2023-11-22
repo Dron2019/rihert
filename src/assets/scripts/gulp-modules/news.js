@@ -1,7 +1,10 @@
+import gsap from 'gsap';
+import pageTitleNav from '../components/page-title-nav.js';
 import { useState } from '../modules/helpers/useState.js';
 import getNews from '../modules/news/getNews.js';
+import { ScrollTrigger } from 'gsap/all';
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 const [ state, setState, useStateEffect ] = useState({
     pending: false,
@@ -81,3 +84,6 @@ useFilterEffect((filter) => {
             })
         })
 })
+
+
+pageTitleNav(gsap);

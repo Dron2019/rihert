@@ -19,6 +19,10 @@
 	max-width: none;
 	padding-left: var(--menu-gap);
 }
+.mobile .container {
+	margin-left: 0;
+	margin-right: 0;
+}
 
 html {
 	font-size: 14px;
