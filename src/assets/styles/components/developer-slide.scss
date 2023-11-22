@@ -31,3 +31,9 @@
         gap: 20px;
     }
 }
+
+.tablet {
+    .developer-slide {
+        grid-template-columns: 1fr 2fr; 
+    }
+}
