@@ -1,0 +1,33 @@
+.container-delimiter {
+    width: calc(100% - var(--menu-gap) - var(--page-side-fields));
+    margin-left: auto;
+    margin-right: var(--page-side-fields);
+    height: 2px;
+    background-color: var(--color-black);
+    transform-origin: right;
+    transform: rotate(-0.432deg);
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.desktop {
+    .container-delimiter {
+        @include to(1366px){
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+    }
+}
+
+.tablet {
+    .container-delimiter {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+}
+.mobile {
+    .container-delimiter {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}

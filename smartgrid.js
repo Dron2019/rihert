@@ -25,7 +25,8 @@ var settings = {
             fields: '10px' /* set fields only if you want to change container.fields */
         },
         xs: {
-            width: '560px'
+            width: '560px',
+            offset: '20px',
         }
         /* 
         We can create any quantity of break points.

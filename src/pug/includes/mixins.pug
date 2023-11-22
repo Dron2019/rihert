@@ -48,3 +48,10 @@ mixin RangeSlider(options)
 			.u-range-item-nav
 				input(id=option.id+"_min" class="js_"+option.id+"_min js-current-min" name=option.id+"_min" maxlength=option.max type="number" min=option.min value=option.min max=option.max)
 				input(id=option.id+"_max" class="js_"+option.id+"_max js-current-max" name=option.id+"_max" maxlength=option.max type="number" min=option.min value=option.max max=option.max)
+
+
+
+mixin pageTitle(title, type)
+	div(class="page-title "+type)
+		.page-title__text #{title}
+		.page-title__bottom

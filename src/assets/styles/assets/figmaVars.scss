@@ -221,15 +221,24 @@ font-size: 0.83333vw;
 	text-transform: uppercase;
 }
 .text-style-1920-h-2 {
-	font-size: 88px;
-	font-family: "Suisse Intl";
-	font-weight: 400;
-	font-style: normal;
-	line-height: 90%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: uppercase;
+	@include text-style-1920-h-2();
+	@media screen and (max-width:1366px){
+		@include text-style-1366-h-2();
+	}
 }
+
+.tablet {
+	.text-style-1920-h-2 {
+		@include text-style-1366-h-2();
+	}
+}
+
+.mobile {
+	.text-style-1920-h-2 {
+		@include text-style-360-h-2();
+	}
+}
+
 .text-style-1920-h-3-caps {
 	font-size: 57px;
 	font-family: "Suisse Intl";
@@ -250,6 +259,26 @@ font-size: 0.83333vw;
 	text-decoration: none;
 	text-transform: none;
 }
+
+.text-style-1920-h-3 {
+	@include text-style-1920-h-3();
+	@media screen and (max-width:1366px){
+		@include text-style-1366-h-3();
+	}
+}
+
+.tablet {
+	.text-style-1920-h-3 {
+		@include text-style-1366-h-3();
+	}
+}
+
+.mobile {
+	.text-style-1920-h-3 {
+		@include text-style-360-h-3();
+	}
+}
+
 .text-style-1920-h-4 {
 	font-size: 30px;
 	font-family: "Suisse Intl";
@@ -261,15 +290,19 @@ font-size: 0.83333vw;
 	text-transform: lowercase;
 }
 .text-style-1920-body {
-	font-size: 25px;
-	font-family: "Suisse Intl";
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: none;
+	@include text-style-1920-body();
+	@media screen and (max-width:1366px){
+		@include text-style-1366-body();
+	}
 }
+
+.mobile {
+	.text-style-1920-body {
+		@include text-style-360-body();
+	}
+
+}
+
 .text-style-1920-tiny {
 	font-size: 16px;
 	font-family: "Suisse Intl";

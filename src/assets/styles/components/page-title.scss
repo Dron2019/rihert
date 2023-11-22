@@ -4,12 +4,17 @@
     
 
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(  --page-title-skew-h)));
+    position: relative;
+    z-index: 2;
+    &.green {
+        background-color: var(--color-green)
+    }
     &__text {
         @include text-style-1920-h-1;
         @include to(1360px){
             @include text-style-1366-h-1;
         }
-        padding-bottom: 14px;
+        padding-bottom: 28px;
     }
     &__bottom {
         height: var(  --page-title-skew-h);

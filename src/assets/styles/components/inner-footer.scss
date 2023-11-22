@@ -92,7 +92,7 @@
 .mobile {
     .inner-footer {
         --v-padding: 28px;
-        width: calc(100% + 40px);
+        width: calc(100% + 20px);
         margin-left: calc(20px * -0.5);
         margin-right: calc(20px * -0.5);
         padding-left: 10px;
@@ -112,6 +112,9 @@
                     width: auto;
                     margin-right: auto;
                 }
+            }
+            .button-bordered {
+                width: 100%;
             }
         }
         &__langs {

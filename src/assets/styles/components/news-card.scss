@@ -1,5 +1,7 @@
 .news-card {
     position: relative;
+    text-decoration: none;
+    color: var(--color-black);
     &__date {
         position: absolute;
         left: 0;
@@ -37,22 +39,41 @@
             height: 100%;
         }
     }
-    &:nth-child(1) &__img {
+    &:nth-child(4n + 1) &__img {
         clip-path: polygon(115px 0, calc(100% - 9px) 12px, 100% 100%, 0 calc(100% - 13px), 0 63%, 42px 37%, 42px 19%);
     }
-    &:nth-child(2) &__img {
+    &:nth-child(4n + 2) &__img {
         clip-path: polygon(50px 50px, 100% 0, 100% 100%, 0% 100%);
     }
-    &:nth-child(3) &__img {
-        clip-path: polygon(200px 0, 78% 0, 78% 100%, 150px 100%, 150px 15%);
+    &:nth-child(4n + 3) &__img {
+        clip-path: polygon(20% 0, 78% 0, 78% 100%, 15% 100%, 15% 15%);
     }
-    &:nth-child(4) &__img {
+    &:nth-child(4n + 4) &__img {
         clip-path: polygon(14% 0, 100% 0, 98% 99%, 0 100%, 0 61%, 4% 31%, 10% 19%);
     }
     &__img {
         // &:nth-child(1n) {
         //     clip-path: polygon(115px 0, calc(100% - 9px) 12px, 100% 100%, 0 calc(100% - 13px), 0 63%, 42px 37%, 42px 19%);
         // }
+    }
+}
+
+.desktop {
+    .news-card {
+        [stroke],
+        [fill],
+        svg {
+            transition: .25s ease-out;
+        }
+        &:hover {
+            text-decoration: underline;
+            svg {
+                transform: rotate(45deg);
+                [stroke] {
+                    stroke: var(--color-yellow);
+                }
+            }
+        }
     }
 }
 
@@ -81,6 +102,18 @@
                 width: 26px;
                 height: 26px;
             }
+        }
+        &:nth-child(1) .news-card__img {
+            clip-path: polygon(115px 0, calc(100% - 9px) 12px, 100% 100%, 0 calc(100% - 13px), 0 63%, 42px 37%, 42px 19%);
+        }
+        &:nth-child(2) .news-card__img {
+            clip-path: polygon(15% 15%, 100% 0, 100% 100%, 0% 100%);
+        }
+        &:nth-child(3) .news-card__img {
+            clip-path: polygon(20% 0, 78% 0, 78% 100%, 15% 100%, 15% 15%);
+        }
+        &:nth-child(4) .news-card__img {
+            clip-path: polygon(14% 0, 100% 0, 98% 99%, 0 100%, 0 61%, 4% 31%, 10% 19%);
         }
     }
 }

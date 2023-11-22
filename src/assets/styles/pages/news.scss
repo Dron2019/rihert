@@ -5,6 +5,13 @@
     overflow: initial;
     background-color: var(--gray-light)
 }
+.news-more-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:  var(--container-v-gap);
+    padding-left: var(--menu-gap);
+}
 
 .news-container {
     @include row-flex();
@@ -13,6 +20,13 @@
     .news-card {
         @include size(6);
         @include shift(0);
+    }
+    transition: .25s ease-out;
+
+    &.pending {
+        opacity: 0.5;
+        pointer-events: none;
+        filter: blur(5px);
     }
 }
 

@@ -17,11 +17,22 @@
         padding: 16px 24px;
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
-        &:hover {
-            background-color: var(--color-green);
-        }
+        
         &.active {
             background-color: var(--color-yellow);
+        }
+    }
+}
+
+.desktop {
+    .page-title-nav {
+        @media screen and (max-width:1366px){
+            transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(4.7deg);
+        }
+        &__item {
+            &:hover {
+                background-color: var(--color-green);
+            }
         }
     }
 }

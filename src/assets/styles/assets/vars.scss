@@ -43,6 +43,14 @@ $gold: #cfa46e;
   --menu-gap: 300px;
 }
 
+@media screen and (max-width:1366px){
+
+  .desktop {
+    --container-v-gap: 100px;
+  }
+}
+
+
 .tablet {
   --page-side-fields: 20px;
   --page-title-skew-h: 44px;
