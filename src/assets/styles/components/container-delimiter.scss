@@ -8,6 +8,10 @@
     transform: rotate(-0.432deg);
     margin-top: 100px;
     margin-bottom: 100px;
+
+    &.reverse {
+        transform: rotate(0.432deg);
+    }
 }
 
 .desktop {

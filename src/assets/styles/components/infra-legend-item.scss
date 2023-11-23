@@ -1,0 +1,36 @@
+.infra-legend-item {
+    display: flex;
+    align-items: center;justify-content: flex-start;
+    cursor:  pointer;
+    &__icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-right: 8px;
+        &--line {
+            width: 16px;
+            height: 2px;
+            border-radius: 0;
+        }
+    }
+    &__text {
+        color: var(--Black, #212721);
+        font-family: Suisse Intl;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.15px;
+        text-transform: uppercase;
+    }
+}
+
+.desktop {
+    .infra-legend-item {
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+            transform: translateX(8px);
+        }
+    }
+}

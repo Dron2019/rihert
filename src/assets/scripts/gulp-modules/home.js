@@ -32,6 +32,7 @@ function init() {
 
 
 const pageContainer = document.querySelector(".scroller-container");
+console.log(pageContainer);
 
 /* SMOOTH SCROLL */
 const scroller = new LocomotiveScroll({

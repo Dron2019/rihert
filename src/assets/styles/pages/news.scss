@@ -1,4 +1,4 @@
-.scroller-container {
+body:not(.home-page) .scroller-container {
     width: 100%;
     min-height: 100vh;
     position: static;

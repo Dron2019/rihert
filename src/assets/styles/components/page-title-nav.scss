@@ -18,6 +18,7 @@
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
         flex-shrink: 0;
+        text-decoration: none;
         &.active {
             background-color: var(--color-yellow);
         }
@@ -66,6 +67,11 @@
     
     .page-title-nav {
         &.mobile-only {
+            display: none;
+        }
+
+        &__scroll-button,
+        &__scroll-button-next {
             display: none;
         }
         @media screen and (max-width:1366px){

@@ -9,6 +9,9 @@
     &.green {
         background-color: var(--color-green)
     }
+    &.blue {
+        background-color: var(--color-blue);
+    }
     &__text {
         @include text-style-1920-h-1;
         @include to(1360px){

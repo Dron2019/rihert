@@ -304,15 +304,18 @@ font-size: 0.83333vw;
 }
 
 .text-style-1920-tiny {
-	font-size: 16px;
-	font-family: "Suisse Intl";
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: lowercase;
+	@include text-style-1920-tiny();
+	@media screen and (max-width:1366px){
+		@include text-style-1366-tiny();
+	}
 }
+
+.mobile {
+	.text-style-1920-tiny {
+		@include text-style-360-tiny();
+	}
+}
+
 .text-style-1366-h-1 {
 	font-size: 90px;
 	font-family: "Suisse Intl";

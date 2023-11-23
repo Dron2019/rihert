@@ -1,0 +1,329 @@
+.infra-first-container {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto 50px auto  auto auto;
+    gap: 50px 50px;
+    column-gap: 50px;
+    grid-auto-flow: row;
+    grid-template-areas: 
+    "title title title title title title title title title title title title"
+    "text1 text1 text1 img-big img-big img-big img-big img-big img-big img1-2 img1-2 img1-2"
+    ". . . img-big img-big img-big img-big img-big img-big img1-2 img1-2 img1-2"
+    ". img1-1 img1-1  img-big img-big img-big img-big img-big img-big . . ."
+    ". img1-1 img1-1 img-big img-big img-big img-big img-big img-big text2 text2 text2"
+    ". img1-1 img1-1 img-big img-big img-big img-big img-big img-big text2 text2 text2";
+
+
+    @include to(1366px){
+        gap: 32px;
+    }
+    
+
+    &__img-big {
+        grid-area: img-big;
+        position: relative;
+        padding-bottom: 113.6363%;
+        img {
+            clip-path: polygon(53% 0, 79% 19%, 80% 30%, 98% 44%, 100% 99%, 3% 100%, 0 2%);
+        }
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__title {
+        grid-area: title;
+    }
+    &__text1 {
+        grid-area: text1;
+    }
+    &__text2 {
+        grid-area: text2;
+    }
+
+    &__small-image {
+        position: relative;
+        padding-top: 145%;
+
+        /* (348 / 240) * 100 */
+        &--clip1 {
+            clip-path: polygon(100% 0, 100% 100%, 12% 100%, 6% 96%, 6% 80%, 1% 71%, 0 0);
+            grid-area: img1-1;
+        }
+
+        &--clip2 {
+            clip-path: polygon(64% 0, 80% 5%, 96% 3%, 100% 8%, 100% 100%, 0 100%, 0 0);
+            grid-area: img1-2;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.tablet {
+    .infra-first-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas: 
+        "title title"
+        "text1 img-big"
+        "text2 img-big";
+        &__img-big {
+            padding-bottom: 85.6363%;
+        }
+        &__small-image {
+            &--clip2,
+            &--clip1 {
+                display: none;
+            }
+        }
+    }
+}
+
+.mobile {
+    .infra-first-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &__title {
+            order: 0;
+        }
+        &__img-big {
+            padding-bottom: 88%;
+            order: 1;
+        }
+        &__text1,
+        &__text2 {
+            order: 2;
+        }
+        &__small-image {
+            &--clip2,
+            &--clip1 {
+                display: none;
+            }
+        }
+    }
+}
+
+.inner-infra-container {
+    @include row-flex();
+    &__title {
+        @include size(12);
+        @include shift(0);
+        margin-bottom: 50px;
+    }
+    &__svg {
+        svg {
+            width: 100%;
+            height: auto
+        }
+        @include size(9);
+        @include shift(0);
+        [data-tooltip] {
+            cursor: pointer;
+        }
+        .active {
+            [fill-opacity] {
+                fill-opacity: 1;
+            }
+            [stroke-opacity] {
+                stroke-opacity: 1;
+            }
+        }
+    }
+    
+    &__legend {
+        @include size(3);
+        @include shift(0);
+        @include shift-padding-left(0.1);
+        &-delimiter {
+            height: 2px;
+            background-color: var(--color-black);
+            margin-top: 24px;
+            margin-bottom: 34px;
+            transform: rotate(0.432deg);
+        }
+    }
+    .infra-legend-item~.infra-legend-item {
+        margin-top: 8px;
+    }
+}
+
+.tablet {
+    .inner-infra-container {
+        &__title {
+            @include size(12);
+            @include shift(0);
+        }
+        &__svg {
+            @include size(12);
+            @include shift(0);
+            height: auto;
+            margin-bottom: 20px;
+        }
+        &__legend {
+            @include size(12);
+            @include shift(0);
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            &-delimiter {
+                width: 100%;
+                margin-bottom: 6px;
+                margin-top: 6px;
+            }
+            .infra-legend-item~.infra-legend-item {
+                margin-top: 0;
+            }
+            .infra-legend-item {
+                width: calc(50% - 20px);
+            }
+        }
+    }
+}
+
+.mobile {
+    .inner-infra-container {
+        &__title {
+            @include size-xs(12);
+            @include shift-xs(0);
+        }
+        &__svg {
+            @include size-xs(12);
+            @include shift-xs(0);
+            overflow-x: auto;
+            height: auto;
+            margin-bottom: 20px;
+            margin-left: 10px !important;
+            margin-right: -20px !important;
+            width: auto !important;
+            svg {
+                height: 70vh;
+                width: calc(70vh / 800 * 1200);
+            }
+        }
+        &__legend {
+            @include size-xs(12);
+            @include shift-xs(0);
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            &-delimiter {
+                width: 100%;
+                margin-bottom: 6px;
+                margin-top: 6px;
+            }
+            .infra-legend-item~.infra-legend-item {
+                margin-top: 0;
+            }
+            .infra-legend-item {
+                width: calc(50% - 20px);
+            }
+        }
+    }
+}
+
+
+.desktop {
+    .block-style-column__info-wrapper {
+        display: none;
+    }
+}
+
+.mobile,
+.tablet {
+    .inner-infra-container {
+        .mobile-text {
+            white-space: nowrap;
+        }
+        input,
+        .block-style-column__mobile-slider {
+            position: absolute;
+            bottom: 20px;
+            width: calc(100% - 20px);
+            left: 10px;
+            height: auto;
+            z-index: 4;
+        }
+        input  {
+            width: calc(100% - 20px);
+            // transform: scaleY(1.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 50px;
+            opacity: 0;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                border: 1px solid #000000;
+                height: 48px;
+                width: 48px;
+                border-radius: 3px;
+                background: #ffffff;
+                cursor: pointer;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+            }
+        }
+        .swipe {
+            // opacity: 0;
+            &>[stroke] {
+                stroke: var(--color-black);
+            }
+            &>[fill] {
+                fill: var(--color-yellow);
+            }
+        }
+        .block-style-column__mobile-slider {
+            pointer-events: none;
+            &>g>[stroke] {
+                stroke: var(--color-black);
+            }
+            &>g>[fill] {
+                fill: var(--color-black);
+            }
+        }
+        .block-style-column__mobile-scroller {
+            height: auto;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            pointer-events: none;
+            height: 100%;
+            &>* {
+                pointer-events: all;
+            }
+        }
+        .block-style-column__info-wrapper {
+            width: calc(100% - 10px);
+            margin-left: 10px;
+            height: auto;
+            height: 50px;
+            position: relative;
+            .block-style-column__mobile-slider {
+                width: 100%;
+                height: auto;
+            }
+            &--mobile {
+                display: block;
+            }
+            &--desktop {
+                display: none;
+            }
+
+        }
+    }
+}

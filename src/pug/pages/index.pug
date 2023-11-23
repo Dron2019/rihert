@@ -1,11 +1,14 @@
 extends ../layout/main
 block variable
+  -
+    var class_page = 'home-page'
 block meta
   title= 'Главная'
   meta(name='description' content='')
 block head
   link(rel='stylesheet' href="./assets/styles/main.min.css")
 block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/index-app.bundle.js')
   script(defer src='./assets/scripts/home.bundle.js')
 block content
