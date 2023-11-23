@@ -327,3 +327,186 @@
         }
     }
 }
+
+
+
+.infra-improvement-block1 {
+    @include row-flex();
+    &__text,
+    .img-wrap {
+        @include size(6);
+        @include shift(0);
+        
+    }
+    
+    &__text {
+        align-self: flex-end
+    }
+
+    .img {
+        @include blockWithImgFixedRatio((795 / 725 * 100));
+        clip-path: polygon(0 2%, 98% 0, 100% 80%, 1% 99%);
+    }
+}
+.infra-improvement-block2 {
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: var(--infra-block-columb-gap);
+    grid-template-areas: 
+        "img . ."
+        "img text1 text2"
+    ;
+    
+    &__text1 {
+        grid-area:text1;
+    }
+    &__text2 {
+        grid-area:text2;
+    }
+    .img-wrap {
+        grid-area: img;
+    }
+    .img {
+        @include blockWithImgFixedRatio((649 / 725 * 100));
+        clip-path: polygon(20% 4%, 100% 0, 100% 96%, 0 100%, 0 64%, 4% 35%, 12% 27%);
+    }
+}
+.infra-improvement-block3 {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: 1fr auto;
+    gap: var(--infra-block-columb-gap);
+    grid-template-areas: 
+        ". . img"
+        "text1 text2 img";
+    
+    &__text1 {
+        grid-area:text1;
+    }
+    &__text2 {
+        grid-area:text2;
+    }
+    .img-wrap {
+        grid-area: img;
+    }
+    .img {
+        @include blockWithImgFixedRatio((455 / 725 * 100));
+        clip-path: polygon(50% 0%, 100% 52%, 68% 100%, 3% 91%, 0 19%);
+    }
+}
+
+
+.infra-improvement-block4 {
+
+    display: grid;
+    grid-template-columns:  2fr 1fr 1fr;
+    grid-template-rows: 0 auto auto;
+    column-gap: var(--infra-block-columb-gap);
+    row-gap: 0;
+    align-items: end;
+    grid-template-areas: 
+        "img . ."
+        "img text1 ."
+        "img . text2";
+    
+    &__text1 {
+        grid-area:text1;
+        align-self: flex-end;
+    }
+    &__text2 {
+        grid-area:text2;
+    }
+    .img-wrap {
+        grid-area: img;
+    }
+    .img {
+        @include blockWithImgFixedRatio((660 / 725 * 100));
+        clip-path: polygon(91% 0, 100% 17%, 100% 96%, 0 100%, 8% 8%);
+    }
+}
+
+.infra-improvement-block5 {
+
+    display: grid;
+    grid-template-columns:  1fr 1fr 2fr;
+    grid-template-rows: auto auto auto;
+    column-gap: var(--infra-block-columb-gap);
+    row-gap: 0;
+    align-items: end;
+    grid-template-areas: 
+        "text1 . img"
+        ". text3 img"
+        "text2 . img";
+    
+    &__text1 {
+        grid-area:text1;
+        align-self: flex-end;
+    }
+    &__text2 {
+        grid-area:text2;
+    }
+    &__text3 {
+        grid-area:text3;
+    }
+    .img-wrap {
+        grid-area: img;
+    }
+    .img {
+        @include blockWithImgFixedRatio((660 / 725 * 100));
+        clip-path: polygon(56% 0, 81% 21%, 81% 34%, 98% 46%, 100% 100%, 0 100%, 0 1%);
+    }
+}
+
+.infra-improvement-block6 {
+
+    display: grid;
+    grid-template-columns:  2fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: var(--infra-block-columb-gap);
+    row-gap: 0;
+    align-items: end;
+    grid-template-areas: 
+        "img text1 ."
+        "img . text2"
+        "img text3 .";
+    
+    &__text1 {
+        grid-area:text1;
+        align-self: flex-end;
+    }
+    &__text2 {
+        grid-area:text2;
+    }
+    &__text3 {
+        grid-area:text3;
+    }
+    .img-wrap {
+        grid-area: img;
+    }
+    .img {
+        @include blockWithImgFixedRatio((660 / 725 * 100));
+        clip-path: polygon(56% 0, 81% 21%, 81% 34%, 98% 46%, 100% 100%, 0 100%, 0 1%);
+    }
+}
+
+.infra-improvement-block7 {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--infra-block-columb-gap);
+    .img-wrap1 {
+        width: calc(50% - var(--infra-block-columb-gap) / 2);
+        .img {
+            clip-path: polygon(91% 0, 100% 18%, 100% 94%, 0 100%, 12% 10%);
+        }
+    }
+    .img-wrap2 {
+        width: calc(50% - var(--infra-block-columb-gap) / 2);
+        .img {
+            clip-path: polygon(4% 0, 100% 0, 99% 100%, 0 83%);
+        }
+    }
+    
+}

@@ -63,3 +63,15 @@ $screen-height: 720;
 	margin-left: calc(#{$offset} / 2);
 	margin-right: calc(#{$offset} / 2);
 }
+
+@mixin blockWithImgFixedRatio($ratio) {
+	position: relative;
+	padding-top: $ratio + 0%;
+	img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
