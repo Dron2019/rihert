@@ -61,16 +61,20 @@
     .page-title {
         
         padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+
         padding-top: 8px;
         --page-title-skew-h: 20px;
         &__text {
             @include text-style-360-h-1;
             padding-bottom: 8px;
+            img {
+                display: none;
+            }
         }
         &__bottom {
             width: calc(var(--page-side-fields) + 100%);
             margin-left:  calc(var(--page-side-fields) * -1);
-        
         }
     }
 }

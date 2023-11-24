@@ -70,3 +70,13 @@
     }
   }
   
+
+.mobile {
+  .vr-popup {
+    background: rgba(33, 39, 33, 0.50);
+  }
+  .vr-popup__content {
+    width: 90vw;
+    height: 45vw;
+  }
+}
