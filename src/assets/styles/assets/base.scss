@@ -33,7 +33,11 @@ body {
 	line-height: 1.5em;
 	font-family: $default-font;
 	font-size: 14px;
+	color: var(--color-black);
 	// background-color: var(--color-black);
+	&.no-scroll {
+		overflow: hidden;
+	}
 }
 .page__inner {
 	width: 100%;

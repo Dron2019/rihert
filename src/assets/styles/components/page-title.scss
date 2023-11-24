@@ -18,6 +18,13 @@
             @include text-style-1366-h-1;
         }
         padding-bottom: 28px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-black);
+        img {
+            width: 170px;
+            height: auto;
+        }
     }
     &__bottom {
         height: var(  --page-title-skew-h);

@@ -1,0 +1,102 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'rihert-factory'
+    var id_page = 'id-page-rihert-factory'
+    var class_page = 'class-page-rihert-factory'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/rihert-factory.bundle.js')
+block content
+  div(class="page-title ")
+    .page-title__text 
+      span Завод
+      +img('rihert-factory/header-img.png')
+      span Ріхертa
+    .page-title__bottom
+  .container.rihert-block1
+    +img('rihert-factory/block1.svg')
+    .text-style-1920-h-3.text1 Це територія колишньої солодовні Михайла Ріхерта. колись тут і цеглу робили, і солод виготовляли.	
+    .text-style-1920-body.text2 а ще деякий час це місце залишалось занедбаним і пустим.
+  .container-delimiter
+  .container.rihert-block2
+    .img-block
+      +img('rihert-factory/block2.jpg')
+    .title.text-style-1920-h-3 Спочатку був цегляний завод
+    .text1.text-style-1920-body Околиці гори Юрковиці мали поклади блакитної глини. Тому в XVII ст. тут виникла цегляна фабрика Кирилівського монастиря. На ній виготовляли вогнетривку цеглу.
+    .text2.text-style-1920-body Ця фабрика довгий час залишалася невеликим підприємством - аж до XIX ст., поки вона не перейшла до нового власника. Ним став купець Михайло Ріхерт. Саме він розширив фабрику та перетворив її на повноцінний завод.
+    .text3.text-style-1920-body  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пізніше цією цеглою будували більшість київських споруд. Наприклад, одна з них - будівля військової комендатури, що на Арсенальній. Колись це місце було закритою режимною територією, а зараз стало відкритим простором А-Station.
+    .brick
+      span цегла зразка 1960 року
+      .brick__img
+        +img('rihert-factory/brick.png')
+  .container-delimiter.reverse
+  .rihert-block3.container
+    .img-block
+      +img('rihert-factory/block3.jpg')
+    .title.text-style-1920-h-3 Потім побудували солодовню
+    .text1.text-style-1920-body Першим пивоваром на цій території був виходець із Латвії О.Геннінг. У 1849 році він придбав сабиду, а через рік отримав дозвіл і відкрив солодовню. З часом вона переходила від одного власника до іншого.
+    .text2.text-style-1920-body Та у 1879 році її викупив Ріхерт. Він вирішив побудувати ще один корпус поряд із цегляним заводом і зробити там броварню.
+    .text3.text-style-1920-body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За проект тоді взявся архітектор Володимир Ніколаєв, який займався всіма виробничими приміщеннями. А за фасад відповідав архітектор Микола Казанський.
+    .text4.text-style-1920-body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;У 1914 році на заводі працювало 100 робітників, які щорічно виготовляли близько 30 тисяч літрів пива трьох сортів: чеського, баварського та мюнхенського.
+    .brick
+      span Пивна пляшка xix ст.
+      .brick__img
+        +img('rihert-factory/bottle.png')
+  .container-delimiter
+  .rihert-block4.container
+    .img1
+      +img('rihert-factory/block4-1.jpg')
+    .img2
+      +img('rihert-factory/block4-2.jpg')
+    .title.text-style-1920-h-3 Зміна заводського профілю
+    .text1.text-style-1920-body Коли почалася Перша світова війна, у країні діяв «сухий закон». Тому Ріхерт вирішив випускати безалкогольні напої. Але це було безуспішно. У 1916 році завод збанкрутував.
+    .text2.text-style-1920-body В радянські часи хоч робота на заводі була, але не на повну потужність. Тут вже виготовляли патоку, солодові продукти для пивоваріння та випічки, лікувально-дієтичне харчування.
+    .text3.text-style-1920-body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За проект тоді взявся архітектор Володимир Ніколаєв, який займався всіма виробничими приміщеннями. А за фасад відповідав архітектор Микола Казанський.
+  .container-delimiter.reverse
+  .container.rihert-block5
+    .img1
+      +img('rihert-factory/block5-1.jpg')
+    .img2
+      +img('rihert-factory/block5-2.jpg')
+    .title.text-style-1920-h-3 Занедбання заводу
+    .text1.text-style-1920-body Поступово підприємство перетворювалось на неефективне, а ще деякий час це місце залишалось занедбаним та пустим.
+    .text2.text-style-1920-body Зараз це місце віднайде свою форму та своїх людей, які будуть наповнювати його новою історією.
+  .container-delimiter
+  .container.rihert-block6    
+    .img1
+      +img('rihert-factory/block6.jpg')
+    .title.text-style-1920-h-3 Ми плануємо вдихнути життя у завод і зробити його проєктом з історією, повністю переосмислити концепцію цього місця.
+    .text1.text-style-1920-body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Тут буде якийсь інший текст, який нам передасть клієнт. Коли почалася Перша світова війна, у країні діяв «сухий закон». Тому Ріхерт вирішив випускати безалкогольні напої.
+  .container-delimiter.reverse
+  .container.rihert-block7
+    .img1(data-href="https://www.youtube.com/embed/FNUUvw6whSg?si=qLK2sk6dV1WNAi-w&t=8m30s")
+      <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="160" height="160" rx="80" fill="#6BC28A"/>
+        <path d="M86.8014 79.176C87.3794 79.5733 87.3794 80.4267 86.8014 80.824L73.5665 89.923C72.903 90.3792 72 89.9041 72 89.099L72 70.901C72 70.0959 72.903 69.6208 73.5665 70.077L86.8014 79.176Z" fill="white"/>
+      </svg>
+      +img('rihert-factory/block7.png')
+    .title.text-style-1920-h-3 Заголовок блоку
+    .text1.text-style-1920-body Тут буде якийсь інший текст, який нам передасть клієнт. Поступово підприємство перетворювалось на неефективне, а ще деякий час це місце залишалось занедбаним та пустим.
+    .text2.text-style-1920-body Зараз це місце віднайде свою форму та своїх людей, які будуть наповнювати його новою історією.
+    a(href="/3d").button.button-bordered Обрати квартиру
+
+
+block footer
+  include ../includes/inner-footer.pug
+
+block header
+  include ../includes/header.pug
