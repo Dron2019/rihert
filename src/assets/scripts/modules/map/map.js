@@ -1,3 +1,4 @@
+import { fetchMarkersData } from "./getMarkers";
 import mapStyle from "./map-style";
 
 
@@ -8,10 +9,10 @@ export default function googleMap() {
 
 async function func() {
   const script = document.createElement('script');
-  let key = '';
-  if (window.location.href.match(/localhost/)) key = '';
+  let key = document.documentElement.dataset.key ? document.documentElement.dataset.key : '';
+  // if (window.location.href.match(/localhost|smarto/)) key = '';
   // const key = '';
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&language=${document.documentElement.getAttribute('lang')}`;
   document.getElementsByTagName('head')[0].appendChild(script);
 }
 // setTimeout(func, 1000);
@@ -43,32 +44,32 @@ function initMap() {
   const gmarkers1 = [];
   //28.4600074, 49.2384203
   const center = {
-    lat: 50.4701428,
-    lng: 30.5010861
+    lat: 50.4701921,
+    lng: 30.5011529,
   };
-
-  
   /** Массив, куда записываются выбраные категории */
   const choosedCategories = new Set();
   choosedCategories.add('main');
   /** Елементы, при клике на который будет происходить фильтрация */
   const filterItems = document.querySelectorAll('[data-marker]');
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 13,
     center,
     scrollwheel: false,
     navigationControl: false,
     mapTypeControl: false,
     scaleControl: false,
     draggable: true,
-    language: 'en',
+    gestureHandling: 'cooperative',
+    language: document.documentElement.getAttribute('lang') || 'en',
     styles: mapStyle()
   });
   window.googleMap = map;
 
+
   const filterMarkers = function (category, categoriesArray) {
     gmarkers1.forEach((el) => {
-      if (categoriesArray.has(el.category) || categoriesArray.size === 1) {
+      if (categoriesArray.has(el.category)) {
         el.setMap(map);
         el.setAnimation(google.maps.Animation.DROP);
       } else {
@@ -82,103 +83,33 @@ function initMap() {
       item.classList.toggle('active');
       if (item.classList.contains('active')) {
         choosedCategories.add(item.dataset.category);
+        if (item.dataset.multicategory) {
+          const innerCategories = item.dataset.multicategory.split('~');
+          innerCategories.forEach(el => choosedCategories.add(el));
+        }
       } else {
         choosedCategories.delete(item.dataset.category);
+        if (item.dataset.multicategory) {
+          const innerCategories = item.dataset.multicategory.split('~');
+          innerCategories.forEach(el => choosedCategories.delete(el));
+        }
       }
       filterMarkers('main', choosedCategories);
     });
   });
 
+
   // var baseFolder = '/wp-content/themes/centower/assets/images/markers/';
-  const baseFolder = window.location.href.match(/localhost/) 
+  const baseFolder = window.location.href.match(/localhost/)
     ? './assets/images/markers/'
     : '/wp-content/themes/central-park/assets/images/markers/';
-  let defaultMarkerSize = new google.maps.Size(40, 53);
-  if (document.documentElement.clientWidth < 950) {
-    // defaultMarkerSize = new google.maps.Size(40, 53);
-  }
-  const buildLogoSize = new google.maps.Size(60,72);
-  const markersAdresses = {
-    main: `${baseFolder}main.svg`,
-    cafe: `${baseFolder}cafe.svg`,
-    kinder: `${baseFolder}kindergarten.svg`,
-    shop: `${baseFolder}shop.svg`,
-    sport: `${baseFolder}sport.svg`,
-    school: `${baseFolder}school.svg`,
-    cafe: `${baseFolder}meal.svg`,
-    medicine: `${baseFolder}medicine.svg`,
-    bank: `${baseFolder}bank.svg`,
-    leisure: `${baseFolder}leisure.svg`,
-  };
-  const markerPopupStyle = `
-          style="
-          background: #ffffff;
-          color:#000000;
-          font-weight: bold;
-          padding:5px 10px;
-          font-size: 16px;
-          line-height: 120%;"
-          `;
 
+  const ajaxMarkers = fetchMarkersData(google);
 
-  // const markersAjaxData = await fetch('')
-  /* beautify preserve:start */
-  async function fetchMarkersData() {
-    const sendData = new FormData();
-    sendData.append('action', 'infrastructure');
-    const url = window.location.href.match(/localhost/)
-      ? 'https://central-park-wp.smarto.com.ua/wp-admin/admin-ajax.php'
-      : '/wp-admin/admin-ajax.php'
-    let markersData = await fetch(url, {
-      method: 'POST',
-      body: sendData,
-    });
-    markersData = await markersData.json();
-    if (!markersData) {
-      console.warn('Wrong data recieved');
-      return;
-    };
-
-    let formatedMarkersDataForMap = markersData.reduce((acc, el) => {
-      if (!el.list) return acc;
-      el.list.forEach(marker => {
-        acc.push({
-          content: `<div ${markerPopupStyle}>${marker.name}</div>`,
-          position: { 
-            lat: marker.coordinations.latitude, 
-            lng: marker.coordinations.elevation 
-          },
-          type: el.code,
-          id: marker.id,
-          zIndex: 1000,
-          icon: { url: markersAdresses[el.code], scaledSize: buildLogoSize }
-        });
-      });
-      return acc;
-    }, []);
-
-
-    console.log(formatedMarkersDataForMap);
-    return formatedMarkersDataForMap;
-  }
-//   const ajaxMarkers = fetchMarkersData();
-
-//   ajaxMarkers.then(result => {
-//     putMarkersOnMap(result, map);
-//   })
-//   console.log(ajaxMarkers);
-  const markersData = [
-    {
-      content: `<div ${markerPopupStyle}>ЖК Rihert & Park</div>`,
-      position: {     lat: 50.4701428, lng: 30.5010861 },
-      type: 'main',
-      id: '1',
-      zIndex: 1000,
-      icon: { url: markersAdresses.main, scaledSize: buildLogoSize },
-    },
-
-  ];
-  putMarkersOnMap(markersData, map);
+  ajaxMarkers.then(result => {
+    putMarkersOnMap(result, map);
+  })
+  console.log(ajaxMarkers);
 
   function putMarkersOnMap(markers, map) {
     const infowindow = new google.maps.InfoWindow({
@@ -188,7 +119,7 @@ function initMap() {
     const initedMarkers = [];
     markers.forEach((marker) => {
       const category = marker.type;
-  
+
       const mapMarker = new google.maps.Marker({
         map,
         category,
@@ -200,7 +131,7 @@ function initMap() {
       });
       mapMarker.dataId = +marker.id;
       initedMarkers.push(mapMarker);
-  
+
       google.maps.event.addListener(mapMarker, 'click', function () {
         infowindow.setContent(marker.content);
         infowindow.open(map, mapMarker);
@@ -210,12 +141,14 @@ function initMap() {
       gmarkers1.push(mapMarker);
     });
     map.initedMarkers = initedMarkers;
+    console.log(map);
+    filterMarkers('main', choosedCategories);
     markersHightlight(google, map, infowindow);
-    markersHandler();
+    // markersHandler();
   }
   /* beautify preserve:end */
-  
-  
+
+
 }
 
 

@@ -280,14 +280,16 @@ font-size: 0.83333vw;
 }
 
 .text-style-1920-h-4 {
-	font-size: 30px;
-	font-family: "Suisse Intl";
-	font-weight: 400;
-	font-style: normal;
-	line-height: 90%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: lowercase;
+	@include text-style-1920-h-4();
+	@media screen and (max-width:1366px){
+		@include text-style-1366-h-4();
+	}
+}
+.mobile {
+	.text-style-1920-h-4 {
+		@include text-style-360-h-4();
+	}
+
 }
 .text-style-1920-body {
 	@include text-style-1920-body();
@@ -435,4 +437,34 @@ font-size: 0.83333vw;
 	letter-spacing: -0.04em;
 	text-decoration: none;
 	text-transform: lowercase;
+}
+
+:root {
+	.text-color-gray-light {
+		color: rgba(227,227,227,1);
+	}
+	.text-color-black {
+		color: rgba(33,39,33,1);
+	}
+	.text-color-yellow {
+		color: rgba(245,255,0,1);
+	}
+	.text-color-gray-black {
+		color: rgba(167,168,170,1);
+	}
+	.text-color-orange {
+		color: rgba(254,202,122,1);
+	}
+	.text-color-brown {
+		color: rgba(211,141,126,1);
+	}
+	.text-color-blue {
+		color: rgba(147,199,232,1);
+	}
+	.text-color-green {
+		color: rgba(107,194,138,1);
+	}
+	.text-color-white {
+		color: rgba(255,255,255,1);
+	}
 }

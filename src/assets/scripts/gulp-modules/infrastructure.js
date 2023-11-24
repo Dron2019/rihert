@@ -2,6 +2,7 @@ import tippy from 'tippy.js';
 import pageTitleNav from '../components/page-title-nav';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import googleMap from '../modules/map/map';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,9 +22,9 @@ const isScrollable = function (ele) {
 
 
 
-function innerInfraMap() {
-    const svg = document.querySelector('[data-inner-infra-svg]');
-    const items = document.querySelectorAll('[data-inner-infra-item]');
+function innerInfraMap(selector) {
+    const svg = document.querySelector(selector);
+    const items = svg.closest('.inner-infra-container').querySelectorAll('[data-inner-infra-item]');
     items.forEach(item => {
         item.addEventListener('mouseenter', function (evt) {
             const id = evt.currentTarget.dataset.innerInfraItem;
@@ -39,7 +40,8 @@ function innerInfraMap() {
 
 }
 
-innerInfraMap();
+innerInfraMap('[data-inner-infra-svg]');
+innerInfraMap('[data-parkings-infra-svg]');
 
 
 tippy('[data-tooltip]', {
@@ -58,8 +60,8 @@ tippy('[data-tooltip]', {
     },
 });
 
+pageTitleNav(gsap);
 if (!document.documentElement.classList.contains('desktop')) { 
-    pageTitleNav(gsap);
 }
 
 
@@ -98,3 +100,13 @@ function handleMobileBlockImageHorizontalScroll(el) {
 }
 
 document.querySelectorAll('.block-style-column__mobile-slider').forEach(handleMobileBlockImageHorizontalScroll);
+
+
+document.body.addEventListener('click', function (evt) {
+    const target = evt.target.closest('.legend-button-js');
+    if (!target) return;
+    target.parentElement.querySelector('.legend-js').classList.toggle('closed');
+});
+
+
+// googleMap();
