@@ -1,0 +1,15 @@
+.menu-button {
+    display: flex;
+    align-items: center;
+    color: var(--color-black);
+    font-family: Suisse Intl;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 14px */
+    letter-spacing: -0.56px;
+    padding: 0;
+    :first-child {
+        margin-right: 8px;
+    }
+}

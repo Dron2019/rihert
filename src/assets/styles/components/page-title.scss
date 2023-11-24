@@ -38,6 +38,15 @@
     
 }
 
+.tablet {
+    .page-title {
+        padding-top: 8px;
+        &__text {
+            padding-bottom: 8px;
+        }
+    }
+}
+
 .mobile {
     .page-title {
         

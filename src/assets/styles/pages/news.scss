@@ -4,6 +4,7 @@ body:not(.home-page) .scroller-container {
     position: static;
     overflow: initial;
     background-color: var(--gray-light);
+    padding-top: var(--header-h);
 }
 .mobile {
     .scroller-container {

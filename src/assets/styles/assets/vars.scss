@@ -19,13 +19,13 @@ $dark: #1a2941;
 $gold: #cfa46e;
 :root {
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
-  --header-h: 144px;
+  --header-h: 0px;
   --logo-w: 79px;
   --logo-w: 190px;
   --logo-h: calc(var(--logo-w) / 79.95 * 16.6);
   --color-white: #ffffff;
   --color-violet: #8886C2;
-  --color-black: #000000;
+  --color-black: #212721;
   --color-red: #C18880;
   --gray-light: #E3E3E3;
   --page-side-fields: 16px;
@@ -48,6 +48,7 @@ $gold: #cfa46e;
 @media screen and (max-width:1366px){
 
   .desktop {
+    --header-h: 0px;
     --container-v-gap: 100px;
     --menu-gap: 250px;
     --infra-block-columb-gap: 66.7px;
@@ -60,17 +61,19 @@ $gold: #cfa46e;
   --page-title-skew-h: 44px;
   --menu-gap: var(--page-side-fields);
   --container-v-gap: 100px;
+  --header-h: 70px;
 }
 
 .mobile {
   --menu-gap: var(--page-side-fields);
   --page-title-skew-h: 20px;
   --container-v-gap: 50px;
+  --infra-block-columb-gap: 20px;
+  --header-h: 60px;
 }
 
 @media (max-width: 1920px) {
   :root {
-    --header-h: 124px;
     --h1-size: 96px;
     --h2-size: 48px;
     --h3-size: 36px;
@@ -89,7 +92,6 @@ $gold: #cfa46e;
     --h6-size: 12px;
 
 
-    --header-h: 100px;
     --sliceFigure-big: 362px;
   }
 }
@@ -126,7 +128,6 @@ $gold: #cfa46e;
     --h5-size: 10px;
     --h6-size: 8px;
 
-    --header-h: 56px;
     --sliceFigure: 100px;
     --sliceFigure-big: 100px;
   }

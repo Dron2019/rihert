@@ -5,6 +5,10 @@
     transform-origin: left;
     transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(3.2deg);
     margin-bottom: -50px;
+    transition: transform 0.3s ease-in-out;
+    &.fixed {
+        transform: none;
+    }
     &__item {
         color: var(--Black, #212721);
         font-family: Suisse Intl;
@@ -54,7 +58,7 @@
     &--scrollable {
         overflow-x: auto;
         position: sticky;
-        top: 0;
+        top: var(--header-h);
         z-index: 2;
         &::-webkit-scrollbar {
             display: none;

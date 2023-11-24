@@ -22,7 +22,12 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: -0.15px;
-        text-transform: uppercase;
+        text-transform: uppercase !important;
+    }
+    &.active {
+        .infra-legend-item__text {
+            font-weight: 600;
+        }
     }
 }
 
