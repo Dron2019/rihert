@@ -68,4 +68,15 @@
             padding-right: 28px;
         }
     }
+
+    .button-bordered[data-mobile-title] {
+        font-size: 0;
+        &:before {
+            margin: auto;
+            display: block;
+            text-align: center;
+            content: attr(data-mobile-title);
+            font-size: 12px;
+        }
+    }
 }

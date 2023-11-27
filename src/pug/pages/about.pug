@@ -154,14 +154,14 @@ block content
       <svg xmlns="http://www.w3.org/2000/svg" width="9" height="13" viewBox="0 0 9 13" fill="none">
         <path d="M2.06616 1.51506L6.83969 6.73171L1.62303 11.5052" stroke="white" stroke-width="2"/>
       </svg>
-  .container.about-container1
+  .container.about-container1#about-first
     .about-container1__left
       +img('about/img1.svg')
       .text-style-1920-body Ще один відкритий простір, доступний для всіх – фестивальна площа. Це громадське місце біля заводу з гранд сходами, які утворюють справжній амфітеатр зі сценою. А біля відреставрованої труби заводу облаштують сухий фонтан (той, який в рівень із землею), щоб в спекотні дні прохолоду дарували не лише тіні дерев.
     .about-container1__right
       +img('about/img2.jpg')
   .container-delimiter
-  .container.about-items-container
+  .container.about-items-container#about-technology
     .text-style-1920-h-3 Технологія будівництва
     each val in items
       .about-item
@@ -171,10 +171,49 @@ block content
           .about-item__title #{val.title}
           .about-item__description #{val.text}
   .container-delimiter.reverse 
-  .container.about-map-container 
+  .container.about-map-container#about-deadline 
     .text-style-1920-h-3.about-map-container__title Введення в експлуатацію
     .about-map-container__svg 
       include ../includes/about/about-map.svg
+    <div class="block-style-column__info-wrapper block-style-column__info-wrapper--mobile">
+      <input type="range" name="aaaa">
+      <svg class="block-style-column__mobile-slider" xmlns="http://www.w3.org/2000/svg" width="604" height="80" fill="none" viewBox="0 0 604 80">
+          <g class="Frame 481984">
+              <path stroke="#fff" stroke-dasharray="1 10" stroke-width=".5" d="M80.25 39.75h443.5v.5H80.25z" class="Rectangle 4074"/>
+              <circle cx="564" cy="40" r="39.5" stroke="#fff" stroke-dasharray="1 10" class="Ellipse 83"/>
+              <g class="swipe">
+                  <circle cx="40" cy="40" r="40" fill="#71A700" class="Ellipse 7"/>
+                  <g class="swipe 1">
+                      <g class="Group">
+                          <g class="Group">
+                              <path fill="#000" d="M54.23 24.979h-9.487a.79.79 0 0 0 0 1.58h9.487a.79.79 0 0 0 0-1.58Z" class="Vector"/>
+                          </g>
+                      </g>
+                      <g class="Group">
+                          <g class="Group">
+                              <path fill="#000" d="m54.79 25.212-3.163-3.162a.791.791 0 0 0-1.117 1.117l2.602 2.603-2.604 2.604a.791.791 0 0 0 1.12 1.118l3.162-3.162a.791.791 0 0 0 0-1.118Z" class="Vector"/>
+                          </g>
+                      </g>
+                      <g class="Group">
+                          <g class="Group">
+                              <path fill="#000" d="M33.675 24.979H24.19a.79.79 0 0 0 0 1.58h9.486a.79.79 0 0 0 0-1.58Z" class="Vector"/>
+                          </g>
+                      </g>
+                      <g class="Group">
+                          <g class="Group">
+                              <path fill="#000" d="m25.307 25.77 2.603-2.603a.791.791 0 0 0-1.118-1.117l-3.162 3.162a.791.791 0 0 0 0 1.118l3.162 3.162a.794.794 0 0 0 1.118-.002.791.791 0 0 0 0-1.117l-2.603-2.603Z" class="Vector"/>
+                          </g>
+                      </g>
+                      <g class="Group">
+                          <g class="Group">
+                              <path fill="#000" d="M53.44 37.628a3.15 3.15 0 0 0-1.758.535 3.17 3.17 0 0 0-2.986-2.116c-.65 0-1.255.198-1.758.534a3.17 3.17 0 0 0-2.985-2.115c-.575 0-1.116.155-1.58.425v-5.168a3.165 3.165 0 0 0-3.163-3.162 3.165 3.165 0 0 0-3.162 3.162v13.439l-2.748-2.06a4.145 4.145 0 0 0-5.39.382 2.373 2.373 0 0 0 0 3.354l11.259 11.26a7.072 7.072 0 0 0 5.033 2.084h3.704c4.794 0 8.696-3.9 8.696-8.696V40.79a3.165 3.165 0 0 0-3.162-3.162Zm1.58 11.858c0 3.923-3.191 7.115-7.114 7.115h-3.704c-1.48 0-2.87-.575-3.915-1.62L29.027 43.72a.79.79 0 0 1 0-1.118 2.55 2.55 0 0 1 1.803-.74 2.53 2.53 0 0 1 1.523.505l4.011 3.008a.792.792 0 0 0 1.265-.632v-15.02c0-.871.708-1.581 1.581-1.581s1.581.71 1.581 1.58v11.859a.79.79 0 0 0 1.581 0v-3.953a1.582 1.582 0 0 1 3.162 0v3.953a.79.79 0 0 0 1.581 0v-2.372a1.582 1.582 0 0 1 3.163 0v2.372a.79.79 0 0 0 1.58 0v-.79a1.583 1.583 0 0 1 3.162 0v8.695Z" class="Vector"/>
+                          </g>
+                      </g>
+                  </g>
+              </g>
+          </g>
+      </svg>
+    </div>
     .about-map-container__legend 
       .text-style-1920-h-4 Функціональне зонування
       .about-map-container__legend-delimiter
