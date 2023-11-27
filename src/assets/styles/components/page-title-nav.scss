@@ -7,7 +7,7 @@
     margin-bottom: -50px;
     transition: transform 0.3s ease-in-out;
     &.fixed {
-        transform: none;
+        transform: none !important;
     }
     &__item {
         color: var(--Black, #212721);
@@ -92,8 +92,14 @@
 .mobile {
     .page-title-nav {
         transform: translateY(calc(var(--page-title-skew-h) * -1)) rotate(3.2deg);
+        height: 44px;
+        &__scroll-button-next,
+        &__scroll-button {
+            height: 44px;
+        }
         &__item {
-            
+            font-size: 10px;
+            height: 44px;
         }
         &.fixed {
             transform: none;

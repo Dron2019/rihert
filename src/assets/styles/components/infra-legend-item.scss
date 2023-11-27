@@ -13,6 +13,21 @@
             height: 2px;
             border-radius: 0;
         }
+        &--circle {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                background-color: var(--gray-light);
+                border-radius: 50%;
+
+            }
+        }
     }
     &__text {
         color: var(--Black, #212721);

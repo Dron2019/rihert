@@ -1,0 +1,207 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'about'
+    var id_page = 'id-page-about'
+    var class_page = 'class-page-about'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ];
+    var aboutMenu = [
+      { title: 'Про комплекс', link: '#about-first'},
+      { title: 'Технологія будівництва', link: '#about-technology'},
+      { title: 'Введення в експлуатацію', link: '#about-deadline'},
+    ];
+    const items =  [
+      {   title: 'Будинки',
+          text: '11 будинків',
+          icon: `<svg width="54" height="39" viewBox="0 0 54 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 38.1665H2.66447M54 38.1665H51.3355M46.8947 38.1665V22.7038H35.5263V38.1665M46.8947 38.1665H35.5263M46.8947 38.1665H51.3355M35.5263 38.1665H30.9079M30.9079 38.1665H23.0921M30.9079 38.1665V7.33317M51.3355 38.1665V1.1665H30.9079V7.33317M23.0921 38.1665H2.66447M23.0921 38.1665V7.33317M2.66447 38.1665V1.1665H23.0921V7.33317M43.5197 28.7784H44.5855V31.8158H43.5197M23.0921 7.33317H30.9079M6.2171 30.7113V34.9911H10.3026V30.7113H6.2171ZM6.2171 26.4314H10.3026V22.0135H6.2171V26.4314ZM6.2171 17.7337H10.3026V13.4538H6.2171V17.7337ZM6.2171 9.17397H10.3026V4.89412H6.2171V9.17397ZM15.2763 9.17397H19.3618V4.89412H15.2763V9.17397ZM15.2763 13.4538H19.3618V17.7337H15.2763V13.4538ZM15.2763 22.0135H19.3618V26.4314H15.2763V22.0135ZM15.2763 30.7113H19.3618V34.9911H15.2763V30.7113ZM35.1711 17.7337H38.7237V13.4538H35.1711V17.7337ZM43.5197 17.7337H46.8947V13.4538H43.5197V17.7337ZM43.5197 9.17397H46.8947V4.89412H43.5197V9.17397ZM38.7237 9.17397V4.89412H35.1711V9.17397H38.7237Z" stroke="#212721"/>
+            </svg>
+          `,
+      },
+
+      {   title: 'Міжквартирні стіни',
+          text: 'Повнотіла керамічна цегла товщиною 250мм',
+          icon: `<svg width="41" height="43" viewBox="0 0 41 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.583984 13.6656L25.7216 0.730589L39.584 8.0793V21.1695L14.443 33.6087L0.583984 26.7516V13.6656Z" stroke="#212721"/>
+            <path d="M14.584 41.6665L40.084 29.1665V24.6665L14.584 37.1665M14.584 41.6665L0.583984 34.6665V30.1665L14.584 37.1665M14.584 41.6665V37.1665" stroke="#212721" stroke-linecap="round"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Опалення',
+          text: 'Індивідуальний тепловий пункт та газова котельня. У квартирах передбачаються радіатори та розведення труб у підлозі.',
+          icon: `<svg width="41" height="45" viewBox="0 0 41 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.2396 1C10.356 3.82179 11.356 5.84364 12.1596 7.4673C12.9105 8.98733 13.4541 10.0855 12.2396 11.9091C11.9596 12.3273 12.0742 12.8909 12.4905 13.1691" stroke="#212721"/>
+            <path d="M19.4095 1C17.5259 3.82179 18.5259 5.84364 19.3295 7.4673C20.0804 8.98733 20.624 10.0855 19.4095 11.9091C19.1296 12.3273 19.2441 12.8909 19.6604 13.1691" stroke="#212721"/>
+            <path d="M26.7377 1C24.8541 3.82179 25.854 5.84364 26.6576 7.4673C27.4086 8.98733 27.9522 10.0855 26.7377 11.9091C26.4577 12.3273 26.5722 12.8909 26.9886 13.1691" stroke="#212721"/>
+            <path d="M4.71145 15.6401H35.6206C37.8515 15.6401 39.666 17.4562 39.666 19.6856V36.0492C39.666 38.2786 37.8516 40.0946 35.6206 40.0946H8.42441H4.71145C2.4805 40.0946 0.666016 38.2786 0.666016 36.0492V19.6856C0.666016 17.4561 2.48042 15.6401 4.71145 15.6401Z" stroke="#212721"/>
+            <path d="M8.50781 40.5669L8.50781 44.2309" stroke="#212721"/>
+            <path d="M31.8242 40.5669L31.8242 44.2309" stroke="#212721"/>
+            <path d="M6.50977 18.8325V36.8197" stroke="#212721"/>
+            <path d="M12.0059 18.8325V36.8197" stroke="#212721"/>
+            <path d="M17.502 18.8325V36.8197" stroke="#212721"/>
+            <path d="M22.832 18.8325V36.8197" stroke="#212721"/>
+            <path d="M28.3281 18.8325V36.8197" stroke="#212721"/>
+            <path d="M33.8242 18.8325V36.8197" stroke="#212721"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Поверховість',
+          text: '7-12 поверхів',
+          icon: `<svg width="42" height="37" viewBox="0 0 42 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 26.0989V22.9579M17 26.0989H2.77778M17 26.0989V14.881M17 14.881H14.7778V11.7399H31.2222M17 14.881V22.9579M17 14.881H31.2222V11.7399M31.2222 11.7399V4.11173M31.2222 4.11173H28.5556V0.970703H41V4.11173M31.2222 4.11173H41M2.77778 26.0989H1V22.9579H17M2.77778 26.0989V29.2399M41 4.11173V7.25275M41 7.25275V17.5733L17.8889 35.9707H2.77778V29.2399M41 7.25275H34.3333M9.44444 29.2399H2.77778" stroke="#212721" stroke-linecap="round"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Висота стелі',
+          text: '2,96 м - 3,45 м',
+          icon: `<svg width="46" height="51" viewBox="0 0 46 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.08594 16.6622L23.0016 27.2161M1.08594 16.6622V38.9426M1.08594 16.6622V12.1392M23.0016 27.2161L45.0859 16.6622M23.0016 27.2161V28.1374M23.0016 27.2161V23.1956M45.0859 16.6622V38.9426M45.0859 16.6622V12.1392M45.0859 38.9426L23.0016 50.1665L1.08594 38.9426M45.0859 38.9426L23.0016 28.1374M1.08594 38.9426L23.0016 28.1374M23.0016 23.1956L15.3644 19.3426M23.0016 23.1956L30.6721 19.3554M45.0859 12.1392L37.4154 8.32804M45.0859 12.1392L38.3426 15.5152M1.08594 12.1392L8.22515 15.7409M1.08594 12.1392L8.71429 8.31983M15.3644 19.3426L37.4154 8.32804M15.3644 19.3426L8.22515 15.7409M37.4154 8.32804L30.2085 4.74727M8.22515 15.7409L30.2085 4.74727M30.2085 4.74727L23.0016 1.1665L16.3426 4.5005M16.3426 4.5005L38.3426 15.5152M16.3426 4.5005L8.71429 8.31983M38.3426 15.5152L30.6721 19.3554M30.6721 19.3554L8.71429 8.31983M30.6721 25.5409V44.2195M30.6721 25.5409L32.948 27.8024M30.6721 25.5409L28.3963 27.8024M30.6721 44.2195L32.948 41.958M30.6721 44.2195L28.3963 41.958" stroke="black"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Кондиціювання',
+          text: 'Для кожної квартири передбачається фіксоване місце для розміщення зовнішніх блоків в корзині',
+          icon: `
+          <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.666016" y="0.5" width="43.2983" height="37.9288" rx="4.86949" stroke="black"/>
+            <circle cx="18.8184" cy="19.5" r="8" stroke="black"/>
+            <circle cx="18.8184" cy="19.5" r="13" stroke="black"/>
+            <circle cx="40.3617" cy="8.87492" r="1.21525" stroke="black"/>
+            <circle cx="40.364" cy="15.2883" r="0.5" stroke="black" stroke-width="0.938983"/>
+            <circle cx="40.364" cy="19.0169" r="0.5" stroke="black" stroke-width="0.938983"/>
+            <circle cx="40.364" cy="22.7454" r="0.5" stroke="black" stroke-width="0.938983"/>
+            <path d="M6.35547 38.7797V44H10.5317L14.1114 38.7051" stroke="black"/>
+            <path d="M38.498 38.7797V44H34.3218L30.7421 38.7051" stroke="black"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3184 6.04053V16.7795H18.3184V6.04053H19.3184Z" fill="black"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3184 22V32.739H18.3184V22H19.3184Z" fill="black"/>
+            <path d="M16.8187 17.4998L9.31836 10.5" stroke="black"/>
+            <path d="M20.8184 17.5L27.8184 10" stroke="black"/>
+            <path d="M28.3184 28.5L20.8184 21.5" stroke="black"/>
+            <path d="M9.31709 28.9999L16.8184 21.5" stroke="black"/>
+            <path d="M16.3184 20H5.31836" stroke="black"/>
+            <path d="M32.3184 20H21.3184" stroke="black"/>
+            <circle cx="18.8184" cy="19.5" r="3" stroke="black"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Фасад',
+          text: 'Комбінація емаліту, клінкерної плитки, «мокрого» фасаду та керамограніту з внутрішньої сторони дому ',
+          icon: `<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38.1831 29.6447V40.8335L1 36.0783V24.8894M38.1831 29.6447L41 24.8894M38.1831 29.6447L1 24.8894M41 24.8894V21.5328L38.1831 21.2531M41 24.8894L38.1831 24.5349M38.1831 21.2531V13.4209M38.1831 21.2531V24.5349M38.1831 13.4209L41 8.66566M38.1831 13.4209L1 8.66566M41 8.66566V5.30902L4.09859 0.833496V3.91042M41 8.66566L4.09859 3.91042M4.09859 3.91042L1 8.66566M1 8.66566V19.8545L4.09859 20.2445M38.1831 24.5349L4.09859 20.2445M4.09859 20.2445L1 24.8894" stroke="#212721" stroke-linecap="round"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Вікна',
+          text: 'Комбінація алюмінієвих та металопластикових профілей',
+          icon: `<svg width="42" height="44" viewBox="0 0 42 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.39844 24.361V41.8692C7.39844 42.6443 8.02679 43.2726 8.80189 43.2726H39.6796C40.4547 43.2726 41.0831 42.6443 41.0831 41.8692V2.56996C41.0831 1.79486 40.4547 1.1665 39.6796 1.1665H8.80189C8.02679 1.1665 7.39844 1.79486 7.39844 2.56996V10.507M10.2053 24.361V27.8336C10.2053 28.2214 10.5196 28.5355 10.9069 28.5355H37.5743C37.9619 28.5355 38.2759 28.2214 38.2759 27.8336V4.67552C38.2759 4.28771 37.9619 3.97341 37.5743 3.97341H10.9069M37.5743 40.4657H10.9069C10.5196 40.4657 10.2053 40.1514 10.2053 39.7636V31.9722C10.2053 31.5846 10.5196 31.2706 10.9069 31.2706H37.5743C37.9619 31.2706 38.2759 31.5846 38.2759 31.9722V39.7636C38.2759 40.1514 37.9619 40.4657 37.5743 40.4657Z" stroke="#212721"/>
+            <path d="M10.207 24.3612V27.8339C10.207 28.2217 10.5213 28.5357 10.9086 28.5357H20.9133M10.9086 3.97363H37.576C37.9636 3.97363 38.2776 4.28794 38.2776 4.67574V17.7509M20.9133 28.5357H37.576C37.9636 28.5357 38.2776 28.2217 38.2776 27.8339V17.7509M20.9133 28.5357L16.7315 24.3538M38.2776 17.7509L34.0957 13.569" stroke="#212721"/>
+            <path d="M28.4524 24.3251H1.78526C1.54394 24.3248 1.31932 24.2007 1.19108 23.9961C1.0631 23.7921 1.04896 23.5361 1.1533 23.3187L10.2764 4.3712C10.3933 4.12834 10.6387 3.97415 10.9078 3.97363H37.5752C37.8165 3.97415 38.0409 4.09802 38.1689 4.30233C38.2971 4.50716 38.3115 4.76261 38.2069 4.98028L29.0838 23.9278C28.9669 24.1704 28.7215 24.3248 28.4524 24.3251Z" stroke="#212721"/>
+            <path d="M26.6882 21.5179H6.25188C6.01056 21.5179 5.7862 21.3935 5.65822 21.1892C5.52998 20.9849 5.51559 20.7289 5.62018 20.5118L12.0407 7.17808C12.1576 6.93522 12.4031 6.78102 12.6721 6.78076H33.1084C33.3497 6.78102 33.5738 6.90515 33.7021 7.10972C33.8306 7.31403 33.8447 7.56974 33.7401 7.78716L27.3196 21.1208C27.2027 21.3635 26.9572 21.5179 26.6882 21.5179Z" stroke="#212721"/>
+            </svg>
+            `,
+      },
+
+      {   title: 'Ліфти',
+          text: 'Пасажирські та грузові. SCHINDLER',
+          icon: `<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.666016" y="0.5" width="39" height="39" stroke="#212721"/>
+            <path d="M7.66602 12C7.66602 11.1716 8.33759 10.5 9.16602 10.5H31.166C31.9944 10.5 32.666 11.1716 32.666 12V39.5H7.66602V12Z" stroke="#212721"/>
+            <line x1="17.666" y1="5.5" x2="23.666" y2="5.5" stroke="#212721" stroke-linecap="round"/>
+            <line x1="20.666" y1="10.5" x2="20.666" y2="39.5" stroke="#212721" stroke-linecap="round"/>
+            </svg>
+            `,
+      }];
+      var mapLegend = [
+        {style: 'background-color: #D38D7E', text: '1-4 черга', key: 'about-map__1-4',},
+        {style: 'background-color: #FECA7A', text: '5-6 черга', key: 'about-map__5-6',},
+        {style: 'background-color: #6BC28A', text: '7 черга', key: 'about-map__7',},
+        {style: 'background-color: #93C7E8', text: '8 черга', key: 'about-map__8',},
+        {style: 'background-color: #8AD2CE', text: '9 черга', key: 'about-map__9', class: 'infra-legend-item__icon--circle'},
+        {style: 'background-color: #F5FF00', text: '10 черга', key: 'about-map__109',},
+    ];
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/about.bundle.js')
+block content
+  +pageTitle('Про комплекс', 'orange ')
+  .page-title-nav.page-title-nav--scrollable
+    .page-title-nav__scroll-button
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="13" viewBox="0 0 9 13" fill="none">
+        <path d="M2.06616 1.51506L6.83969 6.73171L1.62303 11.5052" stroke="white" stroke-width="2"/>
+      </svg>
+    each val in aboutMenu
+      a.page-title-nav__item(href='#' data-developer-nav=val.link) #{val.title}
+    .page-title-nav__scroll-button-next
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="13" viewBox="0 0 9 13" fill="none">
+        <path d="M2.06616 1.51506L6.83969 6.73171L1.62303 11.5052" stroke="white" stroke-width="2"/>
+      </svg>
+  .container.about-container1
+    .about-container1__left
+      +img('about/img1.svg')
+      .text-style-1920-body Ще один відкритий простір, доступний для всіх – фестивальна площа. Це громадське місце біля заводу з гранд сходами, які утворюють справжній амфітеатр зі сценою. А біля відреставрованої труби заводу облаштують сухий фонтан (той, який в рівень із землею), щоб в спекотні дні прохолоду дарували не лише тіні дерев.
+    .about-container1__right
+      +img('about/img2.jpg')
+  .container-delimiter
+  .container.about-items-container
+    .text-style-1920-h-3 Технологія будівництва
+    each val in items
+      .about-item
+        .about-item__icon 
+          .about-item__icon-wrapper !{val.icon}
+        .about-item__text
+          .about-item__title #{val.title}
+          .about-item__description #{val.text}
+  .container-delimiter.reverse 
+  .container.about-map-container 
+    .text-style-1920-h-3.about-map-container__title Введення в експлуатацію
+    .about-map-container__svg 
+      include ../includes/about/about-map.svg
+    .about-map-container__legend 
+      .text-style-1920-h-4 Функціональне зонування
+      .about-map-container__legend-delimiter
+      div.about-map-container__legend-block
+        each val in mapLegend
+          .infra-legend-item(data-inner-infra-item=val.key)
+            .infra-legend-item__icon(style=val.style class=val.class)
+            .infra-legend-item__text.text-style-1920-body #{val.text}
+      div.about-map-container__legend-block
+        .text-style-1920-tiny Побудова комплексу буде складатись з 4 етапів:
+        ul.about-map-container__legend-list.text-style-1920-tiny
+          li 
+            span.text-color-brown 1й етап:&nbsp;
+            | 1-4 черга (завод Ріхерта, фестивальна площа з доступом до озера), 9 черга (благоустрій озера та променаду, громадський дитячий майданчик)
+          li 
+            span.text-color-brown 2й етап:&nbsp;
+            | 5-6 черга
+          li 
+            span.text-color-brown 3й етап:&nbsp;
+            | 7 черга
+          li 
+            span.text-color-brown 4й етап:&nbsp;
+            | 8 черга, 10 черга (наземний паркінг) 
+
+block footer
+  include ../includes/inner-footer.pug
+  include ../includes/footer-developer-block.pug
+
+block header
+  include ../includes/header.pug
