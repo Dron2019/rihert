@@ -1,15 +1,60 @@
 .page404-wrap {
     min-height: 100vh;
-    background-image: url(../images/screen9/mini.jpg);
-    background-color: rgba(193, 136, 128, 0.25);
-    background: linear-gradient(90deg, rgba(193,136,128,0.6) 36%, rgba(193,136,128,0.6) 57%),  url(../images/screen9/mini.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    &>svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .page404 {
+        position: relative;
+        z-index: 2;
+    }
+    .page404__img {
+        width: 50%;
+    }
+}
+
+.tablet {
+    .page404-wrap {
+        min-height: auto;
+        height: 56vh;
+        .page404__img {
+            width: 80%;
+        }
+    }
+}
+
+.mobile {
+    .page404-wrap {
+        min-height: auto;
+        padding-top: 56px;
+        padding-bottom: 150px;
+        .page404__img {
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+        }
+        .link-wrap {
+            width: 100%;
+            flex-wrap: wrap;
+            .button {
+                width: 100%;
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+        }
+    }
 
 }
+
 .page404 {
     display: flex;
     flex-wrap: wrap;

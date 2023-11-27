@@ -6,25 +6,58 @@ block meta
 block head
 		link(rel='stylesheet', href="./assets/styles/main.min.css")
 block scripts
-	script(src='./assets/scripts/index.js')
+	script(src='./assets/scripts/vendors.bundle.js')
 
 block content
 	section(class="page404-wrap")
+		<svg preserveAspectRatio="xMidYMin slice" width="1920" height="970" viewBox="0 0 1920 970" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_337_1326)">
+			<path d="M827.345 392.283L842.985 245.17L886.631 202.323L1054.39 169.163L1093.17 27.9999" stroke="black" stroke-miterlimit="10" stroke-linecap="round"/>
+			</g>
+			<g clip-path="url(#clip1_337_1326)">
+			<path d="M-780 33.2163L3608.74 13.9171" stroke="black" stroke-miterlimit="10"/>
+			</g>
+			<g clip-path="url(#clip2_337_1326)">
+			<path d="M-141.602 950.667L5026.62 912.588" stroke="black" stroke-miterlimit="10"/>
+			</g>
+			<g clip-path="url(#clip3_337_1326)">
+			<path d="M1548.55 4323.97L1645.37 -4106" stroke="black" stroke-miterlimit="10"/>
+			</g>
+			<g clip-path="url(#clip4_337_1326)">
+			<path d="M365.212 5446.49L287.036 -4093.16" stroke="black" stroke-miterlimit="10"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_337_1326">
+			<rect width="274.518" height="364.283" fill="white" transform="translate(823 28)"/>
+			</clipPath>
+			<clipPath id="clip1_337_1326">
+			<rect width="1920" height="11" fill="white" transform="translate(0 20)"/>
+			</clipPath>
+			<clipPath id="clip2_337_1326">
+			<rect width="1920" height="17" fill="white" transform="translate(0 934)"/>
+			</clipPath>
+			<clipPath id="clip3_337_1326">
+			<rect width="14" height="970" fill="white" transform="matrix(-1 0 0 1 1600 0)"/>
+			</clipPath>
+			<clipPath id="clip4_337_1326">
+			<rect width="10" height="970" fill="white" transform="translate(320)"/>
+			</clipPath>
+			</defs>
+			</svg>
 		div(class="page404")
-			h1(class="page404__title") 404 
+			+img('404.png').page404__img
 				//- span(class="page404__title-small") упс...
-			p(class="page404__subtitle") Что-то пошло не так, страница не найдена
+			p(class="page404__subtitle").text-style-1920-h-3 Упс, щось пішло не так...
 			div(class="link-wrap")
-				a(class="button" onclick="window.history.go(-1);")
+				a(class="button button-bordered" onclick="window.history.go(-1);")
 					span Назад
-				a(class="button" href="/")
-					span На главную
+				a(class="button button-bordered" href="/")
+					span На головну
 
 block footer
-	footer.footer
-		include ../includes/footer.pug
+	include ../includes/inner-footer.pug
+	include ../includes/footer-developer-block.pug
 
 block header
-	header.header
-		include ../includes/header.pug
+	include ../includes/header.pug
 
