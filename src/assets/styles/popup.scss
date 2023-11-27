@@ -79,7 +79,7 @@
         display: flex;
         flex-wrap: wrap;
         margin-bottom: auto;
-        padding-bottom: 70px;
+        padding-bottom: 20px;
         margin-bottom: 45px;
         @include to(575px){
             padding-bottom: 30px;
@@ -106,20 +106,18 @@
     }
     .subtitle {
         position: relative;
+        color: var(--Black, #212721);
+        font-family: Suisse Intl;
         font-size: 30px;
-        line-height: 90%;
-        /* or 27px */
-        letter-spacing: -0.04em;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 90%; /* 27px */
+        letter-spacing: -1.2px;
+        padding-right: 10%;
         // max-width: 390px;
         @include customOffsetWidth(30, var(--offset));
         @include to(1024px){
             @include customOffsetWidth(100, var(--offset));
-        }
-        @include from(1920px){
-            font-size: 52px;
-        }
-        @include to(575px){
-            font-size: 24px;
         }
         span {
             display: inline-block;
@@ -132,8 +130,8 @@
     &__close {
         cursor: pointer;
         position: absolute;
-        right: 30px;
-        top: 30px;
+        right: 16px;
+        top: 16px;
         width: 60px;
         height: 60px;
         z-index: 5;
@@ -200,9 +198,6 @@
         /* identical to box height, or 27px */
         letter-spacing: -0.04em;
         color: var(--color-black);
-        @include from(1920px){
-            font-size: 52px;
-        }
         @include to(575px){
             font-size: 24px;
         }
@@ -220,8 +215,8 @@
         @include customOffsetWidth(100, var(--offset));
         text-align: left;
         svg {
-            width: 183px;
-            height: 38px;
+            width: 26.5%;
+            height: auto;
             @include to(575px){
                 width: 90px;
                 height: 19px;
@@ -236,10 +231,13 @@
         position: absolute;
         left: 0;
         bottom: calc(100% + 5px);
-        @include from(1920px){
-            font-size: 24px;
-            bottom: calc(100% + 15px);
-        }
+        font-family: Suisse Intl;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.15px;
+        text-transform: uppercase;
     }
     [data-status="field--error"] .input-placeholder {
         display: none;

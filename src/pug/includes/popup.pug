@@ -25,6 +25,11 @@
                 .input-message(data-input-message)
                 .input-placeholder Ваш телефон
                 .mask-absolute.js-mask-absolute
+            .form-field.disabled.form-field-input(data-field-input data-field-time data-status="field--inactive")
+                input( autocomplete="off" type='text' name="time" placeholder="Зручний час для перегляду:").form-field__input
+                .input-message(data-input-message)
+                .input-placeholder Зручний час для перегляду
+                .mask-absolute.js-mask-absolute
             button.button(type="submit" data-btn-submit) 
                 span(data-btn-submit-text) Записатися на перегляд
         .form-wrapper__logo

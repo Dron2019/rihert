@@ -91,6 +91,7 @@
     "bezier-easing": "^2.1.0",
     "cleave.js": "^1.6.0",
     "current-device": "^0.10.2",
+    "flatpickr": "^4.6.13",
     "gsap": "^3.5.1",
     "hammerjs": "^2.0.8",
     "i18next": "^19.8.4",

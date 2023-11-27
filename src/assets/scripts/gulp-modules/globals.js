@@ -1,5 +1,5 @@
 import 'current-device';
-
+import flatpickr from "flatpickr";
 
 function switchBodyScroll(action) {
     const body = document.body;
@@ -23,4 +23,16 @@ document.body.addEventListener('click', function (evt) {
     if (!target) return;
     document.querySelector('[data-mobile-menu]').classList.remove('open');
     switchBodyScroll('unlock');
+});
+
+
+
+//name="time"
+document.querySelectorAll('[name="time"]').forEach(function (item) {
+    const picker = flatpickr(item, {
+        enableTime: true,
+        minDate: "today",
+        minTime: "09:00",
+        
+    })
 });

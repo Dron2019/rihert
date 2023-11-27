@@ -1,5 +1,6 @@
 @import '../scripts/libs/swiper/swiper';
-
+@import '../../../node_modules/flatpickr/dist/flatpickr.min';
+@import '../../../node_modules/flatpickr/dist/themes/dark';
 @import '../../../node_modules/tippy.js/dist/tippy';
 .tippy-box {
     background-color: var(--color-black);
