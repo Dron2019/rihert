@@ -1,0 +1,42 @@
+.gallery-container {
+    margin-top: 50px;
+
+    .swiper-slide {
+        height: 60vh;
+        width: auto;
+        cursor: pointer;
+    }
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+        svg {
+            cursor: pointer;
+        }
+        svg~svg {
+            margin-left: 8px;
+        }
+        svg:last-child {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.tablet {
+    .gallery-container {
+        .swiper-slide {
+            height: calc(35vh - 50px);
+        }
+    }
+}
+.mobile {
+    .gallery-container {
+        margin-top: 20px;
+        .swiper-slide {
+            height: calc(45vh - 20px);
+        }
+    }
+}
