@@ -1,0 +1,187 @@
+.business-real-estate-container {
+    padding-left: 0;
+    margin-bottom: calc(var(--container-v-gap) * -1);
+    display: grid;
+    --negative-margin: -50px;
+    --padding-t: 32px;
+    --padding-contacts-vertical: 40px;
+    --padding-side: 32px;
+    @include to(1366px){
+        --padding-side: 24px;
+        --padding-t: 32px;
+        --padding-contacts-vertical: 32px;
+    }
+
+    grid-template-columns: var(--menu-gap) 1fr 0.75fr;
+    grid-template-areas: 
+        ". text contact1"
+        ". text contact2"
+    ;
+    border-top: 1px solid var(--color-gray-black);
+
+
+    .business-real-estate-item {
+        grid-area: text;
+        border-right: 1px solid var(--color-gray-black);
+
+        margin-top: var(--negative-margin);
+        padding-top: calc((var(--negative-margin) * -1) + var(--padding-t));
+        @include to(1366px){
+            --negative-margin: -32px;
+        }
+    }
+
+    .business-real-estate-container-contact1 {
+        grid-area: contact1;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: calc(100% - #{$offset_one_side} * 2);
+            height: 1px;
+            background-color: var(--color-gray-black);
+        }
+        padding-top: var(--padding-contacts-vertical);
+        padding-bottom: var(--padding-contacts-vertical);
+        &:before {
+            content: '';
+            display: block;
+            width: var(--padding-side);
+        }
+    }
+
+    .business-real-estate-container-contact2 {
+        grid-area: contact2;
+        padding-top: var(--padding-contacts-vertical);
+        padding-bottom: var(--padding-contacts-vertical);
+        &:before {
+            content: '';
+            display: block;
+            width: var(--padding-side);
+        }
+    }
+}
+
+
+.desktop {
+    @include to(1120px){
+        .business-real-estate-container {
+            grid-template-columns: var(--menu-gap) 1fr 1fr;
+            grid-template-areas: 
+            ". text text"
+            ". contact1 contact2"
+        }
+        .business-real-estate-item {
+            border: none;
+        }
+        .contact-with-avatar{
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+.tablet {
+    .business-real-estate-container {
+        @include to(1120px){
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: 
+            "text contact1"
+            "text contact2"
+            ;
+        }
+    }
+}
+
+.mobile {
+    .business-real-estate-container {
+        padding-left: var(--page-side-fields);
+        display: flex;
+        flex-direction: column;
+        border: none;
+        --padding-side: 0px;
+        --padding-contacts-vertical: 32px;
+
+        .business-real-estate-item  {
+            border: none;
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: var(--color-gray-black);;
+                width: 100%;
+                margin-top: var(--padding-contacts-vertical);
+                @include size-xs(12);
+                @include shift-xs(0);
+            }
+        }
+
+        .business-real-estate-container-contact1 {
+            &:after {
+                width: 100%;
+            }
+        }
+        .business-real-estate-container-contact2 {
+            &:before {
+                width: 100%;
+            }
+        }
+        
+    }
+}
+
+.business-real-estate-item {
+    @include row-flex();
+    &__img {
+        @include size(5);
+        @include shift(0);
+        @include size-lg(5);
+        @include shift-lg(0);
+    }
+    &__text {
+        @include size(7);
+        @include shift(0);
+        @include size-lg(7);
+        @include shift-lg(0);
+        &>*~* {
+            margin-top: 24px;
+            @include to(1366px){
+                margin-top: 16px;
+            }
+        }
+    }
+}
+
+.tablet {
+    .business-real-estate-item {
+        &__img  {
+            @include size(8);
+            @include shift(0);
+        }
+        &__text {
+            @include size(12);
+            @include shift(0);
+        }
+    }
+}
+
+.mobile {
+    .business-real-estate-item {
+        &__img {
+            @include size-xs(4);
+            @include shift-xs(0);
+        }
+        &__text {
+            @include size-xs(8);
+            @include shift-xs(0);
+        }
+        .button {
+            font-size: 15px;
+        }
+    }
+}

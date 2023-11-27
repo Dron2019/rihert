@@ -1,0 +1,62 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'business-real-estate'
+    var id_page = 'id-page-business-real-estate'
+    var class_page = 'class-page-business-real-estate'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/libs.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/header.js')
+  script(defer src='./assets/scripts/business-real-estate.js')
+block content
+  +pageTitle('Нерухомість для бізнесу', 'green ')
+  .container.business-real-estate-container
+    .business-real-estate-item
+      .business-real-estate-item__img
+        +img('business-real-estate/img1.jpg')
+      .business-real-estate-item__text
+        .text-style-1920-h-3 Великий вибір планувань
+        .text-style-1920-body Комерційні приміщення у Ріхерт&Парк можна придбати або орендувати. Великий вибір планувань та площ різних розмірів. Фасадні, дворівневі та звичайні. Для різного виду бізнесу: магазини, клініки, школи, спортклуби, коворкінги, ресторани, кафе та багато іншого. Залишай заявку на консультацію.
+        a.button.button-bordered Обрати на 3D моделі
+    .contact-with-avatar.business-real-estate-container-contact1
+      .contact-with-avatar__avatar
+        .contact-with-avatar__wrap
+          +img('business-real-estate/nataliia.jpg')
+      .contact-with-avatar__contact
+        .contact-with-avatar__title Коваленко Наталія
+        .contact-with-avatar__badge (відділ продажів)
+        a(href='tel:+3800663396953').text-style-1920-body +380 (066) 339-69-53
+        a(href='mailto:n.kovalenko@adev.in.ua').text-style-1920-body n.kovalenko@adev.in.ua
+        button.button.button-bordered замовити консультацію
+    .contact-with-avatar.business-real-estate-container-contact2
+      .contact-with-avatar__avatar
+        .contact-with-avatar__wrap
+          +img('business-real-estate/maxim.jpg')
+      .contact-with-avatar__contact
+        .contact-with-avatar__title Прокопчук Максим:
+        .contact-with-avatar__badge (відділ оренди)
+        a(href='tel:+3800663396953').text-style-1920-body +380 (066) 339-69-53
+        a(href='mailto:n.kovalenko@adev.in.ua').text-style-1920-body p.max@adev.in.ua
+        button.button.button-bordered замовити консультацію
+block footer
+  include ../includes/inner-footer.pug
+  include ../includes/footer-developer-block.pug
+
+block header
+  include ../includes/header.pug

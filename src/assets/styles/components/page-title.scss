@@ -67,6 +67,7 @@
         --page-title-skew-h: 20px;
         &__text {
             @include text-style-360-h-1;
+            line-height: 130%;
             padding-bottom: 8px;
             img {
                 display: none;

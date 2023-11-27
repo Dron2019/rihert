@@ -13,7 +13,8 @@ var settings = {
     },
     breakPoints: {
         lg: {
-            width: '1200px', /* -> @media (max-width: 1100px) */
+            width: '1366px', /* -> @media (max-width: 1100px) */
+            offset: '24px',
         },
         md: {
             width: '992px',
