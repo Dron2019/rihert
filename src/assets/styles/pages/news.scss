@@ -1,17 +1,4 @@
-body:not(.home-page) .scroller-container {
-    width: 100%;
-    min-height: 100vh;
-    position: static;
-    overflow: initial;
-    background-color: var(--gray-light);
-    padding-top: var(--header-h);
-}
-.mobile {
-    .scroller-container {
-        width: 100vw;
-        
-    }
-}
+
 .news-more-container {
     display: flex;
     align-items: center;

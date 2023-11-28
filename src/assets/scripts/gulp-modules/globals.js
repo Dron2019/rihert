@@ -36,3 +36,16 @@ document.querySelectorAll('[name="time"]').forEach(function (item) {
         
     })
 });
+
+function detectTabletByScreenOrientation() {
+    if (window.innerWidth > 767 && (window.innerWidth < window.innerHeight) && (window.innerWidth / window.innerHeight) > 0.5) {
+        document.documentElement.classList.add('tablet');
+        document.documentElement.classList.remove('desktop');
+
+        return;
+    } else {
+        return false;
+    }
+}
+
+detectTabletByScreenOrientation();

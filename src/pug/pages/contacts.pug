@@ -1,0 +1,31 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'contacts'
+    var id_page = 'id-page-contacts'
+    var class_page = 'class-page-contacts'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/contacts.bundle.js')
+block content
+  +pageTitle('Контакти')
+  include ./home/screen11.pug
+block footer
+  include ../includes/inner-footer.pug
+  include ../includes/footer-developer-block.pug
+
+block header
+  include ../includes/header.pug
