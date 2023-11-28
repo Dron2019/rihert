@@ -1,6 +1,7 @@
 import 'current-device';
 import gsap from 'gsap/all';
 import flatpickr from "flatpickr";
+import '../modules/formsHandler';
 
 function switchBodyScroll(action) {
     const body = document.body;
@@ -34,6 +35,7 @@ document.querySelectorAll('[name="time"]').forEach(function (item) {
         enableTime: true,
         minDate: "today",
         minTime: "09:00",
+        disableMobile: false,
 
     })
 });
@@ -85,14 +87,14 @@ function mobilePopupShowHandler() {
 mobilePopupShowHandler();
 
 
-function callbackFormOpenHandler() {
-    const formWrapper = document.querySelector('[data-form-wrapper]');
-    const formWrapperCall = document.querySelectorAll('[data-form-wrapper-call]');
+function reviewFormOpenHandler(dataAttr, callDataAttr) {
+    const formWrapper = document.querySelector(dataAttr);
+    const formWrapperCall = document.querySelectorAll(callDataAttr);
     formWrapperCall.forEach(el => el.addEventListener('click', function (evt) {
         gsap.timeline({
         })
             .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
-            .fromTo('.form-wrapper__curtains div', {
+            .fromTo(`${dataAttr} .form-wrapper__curtains div`, {
                 scaleY: 0
             }, {
                 scaleY: 1,
@@ -101,7 +103,7 @@ function callbackFormOpenHandler() {
                 transformOrigin: '50% 100%',
                 ease: 'power4.out'
             }, '<+0.5')
-            .fromTo('.form-wrapper__layout [data-splited-line]', {
+            .fromTo(`${dataAttr} .form-wrapper__layout [data-splited-line]`, {
                 // autoAlpha: 0,
                 yPercent: 100
             }, {
@@ -109,7 +111,7 @@ function callbackFormOpenHandler() {
                 yPercent: 0,
                 ease: 'power3.out'
             }, '>-55%')
-            .fromTo('.form-wrapper .display-mobile-only, .form-wrapper .subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+            .fromTo(`${dataAttr}.form-wrapper .display-mobile-only,${dataAttr}.form-wrapper .subtitle,${dataAttr}  .form-wrapper__logo,${dataAttr}  .border,${dataAttr}  [data-form],${dataAttr}  .form-wrapper__close`, {
                 autoAlpha: 0,
             }, {
                 // autoAlpha: 1,
@@ -117,21 +119,21 @@ function callbackFormOpenHandler() {
                 ease: 'power3.out',
                 stagger: 0.15
             }, '<')
-            .set('.form-wrapper__layout', { backgroundColor: 'var(--color-red)' })
+            .set(`${dataAttr} .form-wrapper__layout`, { backgroundColor: 'var(--color-red)' })
     }));
 
     function closeForm() {
         gsap.timeline({
         })
-            .fromTo('.form-wrapper .display-mobile-only, .form-wrapper .subtitle, .form-wrapper__logo, .border, [data-form], .form-wrapper__close', {
+            .fromTo(`${dataAttr} .form-wrapper .display-mobile-only, ${dataAttr} .form-wrapper .subtitle, ${dataAttr} .form-wrapper__logo, ${dataAttr} .border,  ${dataAttr} [data-form], ${dataAttr} .form-wrapper__close`, {
                 autoAlpha: 1,
             }, {
                 autoAlpha: 0,
                 ease: 'power3.out',
                 stagger: 0.15
             }, '<')
-            .set('.form-wrapper__layout', { backgroundColor: '' }, ' <')
-            .fromTo('.form-wrapper__layout [data-splited-line]', {
+            .set(`${dataAttr} .form-wrapper__layout`, { backgroundColor: '' }, ' <')
+            .fromTo(`${dataAttr} .form-wrapper__layout [data-splited-line]`, {
                 // autoAlpha: 0,
                 yPercent: 0
             }, {
@@ -139,7 +141,7 @@ function callbackFormOpenHandler() {
                 yPercent: 100,
                 ease: 'power3.out'
             }, '>-55%')
-            .fromTo('.form-wrapper__curtains div', {
+            .fromTo(`${dataAttr} .form-wrapper__curtains div`, {
                 scaleY: 1
             }, {
                 scaleY: 0,
@@ -169,4 +171,21 @@ function callbackFormOpenHandler() {
 }
 
 
-callbackFormOpenHandler();
+reviewFormOpenHandler('[data-form-wrapper]', '[data-form-wrapper-call]');
+reviewFormOpenHandler('[data-callback-form-wrapper]', '[data-callback-form-wrapper-call]');
+
+
+function agreementPopupHandler() {
+    const popup = document.querySelector('[data-agreement-popup]');
+    const popupClose = document.querySelector('[data-agreement-popup-close]');
+    const popupCall = document.querySelector('[data-agreement-popup-call]');
+
+    popupCall.addEventListener('click', function (evt) {
+        popup.classList.add('active');
+    });
+    popupClose.addEventListener('click', function (evt) {
+        popup.classList.remove('active');
+    });
+}
+
+agreementPopupHandler();

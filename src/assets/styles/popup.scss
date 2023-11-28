@@ -30,6 +30,7 @@
         height: 100vh;
         display: flex;
         perspective: 500px;
+        pointer-events: none;
         div {
             position: relative;
             z-index: -1;
@@ -60,7 +61,7 @@
         }
     }
     form>*:nth-child(n+2) {
-        margin-top: 50px;
+        margin-top: 36px;
         @include from(2100px){
             margin-top: 100px;
         }
@@ -72,14 +73,14 @@
         position: relative;
         @include customOffsetWidth(100, var(--offset));
         font-size: 174.753px;
-        font-size: 10vw;
+        font-size: 18vh;
         line-height: 90%;
         text-transform: uppercase;
         letter-spacing: -0.04em;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: auto;
-        padding-bottom: 20px;
+        padding-bottom: 0;
         margin-bottom: 45px;
         @include to(575px){
             padding-bottom: 30px;
@@ -113,15 +114,16 @@
         font-weight: 400;
         line-height: 90%; /* 27px */
         letter-spacing: -1.2px;
-        padding-right: 10%;
+        padding-right: 25%;
+        padding-left: 50px;
         // max-width: 390px;
-        @include customOffsetWidth(30, var(--offset));
+        @include customOffsetWidth(50, var(--offset));
         @include to(1024px){
             @include customOffsetWidth(100, var(--offset));
         }
         span {
             display: inline-block;
-            padding-right: 5ch;
+            padding-right: 3ch;
         }
     }
     path[stroke] {
@@ -155,7 +157,7 @@
         }
     }
     form {
-        @include customOffsetWidth(70, var(--offset));
+        @include customOffsetWidth(50, var(--offset));
         padding-right: 70px;
         padding-top: 45px;
         @include to(1024px){
@@ -163,7 +165,7 @@
             @include customOffsetWidth(100, var(--offset));
         }
     }
-    button {
+    button:not(.link) {
         width: 400px;
         height: 60px;
         font-size: 24px;
@@ -172,15 +174,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: sticky;
+        bottom: 30px;
         @include from(2100px){
             width: 800px;   
             height: 94px;
             font-size: 42px;
-        }
-        @include to(575px){
-            font-size: 13px;
-            width: max-content;
-            height: auto;
         }
         @media (min-width: 1025px) and (max-height: 730px){
             font-size: 18px;
@@ -206,9 +205,34 @@
         }
     }
     .form-field {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         border-bottom: 2px solid var(--color-black);
         position: relative;
+        &--checkbox {
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 90%; /* 27px */
+            letter-spacing: -1.2px;
+            border-bottom: none;
+            button {
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 90%; /* 27px */
+                letter-spacing: -1.2px;
+                color: var(--color-black);
+                text-transform: none;
+            }
+            display: flex;
+            align-items: center;
+            .checkbox {
+                margin-right: 20px;
+            }
+        }
+    }
+    label {
+        cursor: pointer;
     }
     &__logo {
         position: absolute;
@@ -216,6 +240,7 @@
     left: 0;
         @include customOffsetWidth(100, var(--offset));
         text-align: left;
+        pointer-events: none;
         svg {
             width: 26.5%;
             height: auto;
@@ -240,6 +265,20 @@
         line-height: normal;
         letter-spacing: -0.15px;
         text-transform: uppercase;
+        &--plain {
+            top: auto;
+        }
+    }
+    [data-status="field--error"] {
+        .form-field__input {
+            color: #8D301B;
+            &::placeholder {
+                color: #8D301B;
+
+            }
+        }
+        border-bottom-color: #8D301B;
+        color: #8D301B;
     }
     [data-status="field--error"] .input-placeholder {
         display: none;
@@ -248,7 +287,47 @@
 } 
 
 
+.tablet {
+    .form-wrapper {
+        .display-mobile-only {
+            display: initial;
+            position: relative;
+            z-index: 2;
+            padding-left: var(--page-side-fields);
+            width: 360px;
+            height: auto;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+        .h1 {
+            font-size: 90px;
+        }
+        &__layout {
+            align-content: flex-start;
+        }
+        .subtitle {
+            padding-left: 0;
+        }
+        &__logo {
+            display: none;
+        }
+        button:not(.link) {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.15px;
+            text-transform: uppercase;
+            width: auto;
+        }
+    }
+}
 .mobile {
+    .form-wrapper[data-callback-form-wrapper] {
+        .h1 {
+            text-align: center;
+        }
+    }
     .form-wrapper {
         .display-mobile-only {
             position: relative;
@@ -263,6 +342,7 @@
             margin-right: var(--page-side-fields);
             margin-bottom: 18px;
             padding-bottom: 14px;
+            font-size: 40px;
         }
         &__layout {
             align-items: flex-start;
@@ -279,12 +359,37 @@
             @include text-style-360-h-4;
             text-align: center;
             padding-right: 0;
+            padding-left: 0;
+
             span {
                 display: none;
             }
         }
+        .link,
+        .form-field--checkbox {
+            font-size: 16px;
+        }
         form {
             padding-top: 32px;
+        }
+        .input-message,
+        .input-placeholder {
+            font-size: 12px;
+        }
+        input::placeholder,
+        input {
+            font-size: 16px;
+        }
+        .border {
+            transform: matrix(-1, 0.02, 0.01, -1, 0, 0);
+        }
+        button:not(.link) {
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 19px;
+            padding-bottom: 19px;
+            font-size: 15px;
+            width: auto;
         }
     }
 }
