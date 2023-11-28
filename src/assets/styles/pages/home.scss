@@ -4,7 +4,7 @@
     // will-change: transform;
     max-width: 100vw;
   }
-  position: fixed;
+  // position: fixed;
   @include to(1024px){
     max-width: 100vw;
   }

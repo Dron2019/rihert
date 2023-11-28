@@ -2,7 +2,7 @@ import {gsap, ScrollTrigger} from 'gsap/all';
 import { param } from 'jquery';
 // import ScrollTrigger from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
-
+import '../modules/scroll/lenis';
 import screen9Handler from './home/screen9';
 import headerHandle from './home/header';
 import { fromPathToArray, isFullHd, debounce } from '../modules/helpers/helpers';
@@ -27,44 +27,50 @@ gsap.defaults({
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 function init() {
-  headerHandle();
+  // headerHandle();
 
 
-const pageContainer = document.querySelector(".scroller-container");
+// const pageContainer = document.querySelector(".scroller-container");
+const pageContainer = document.body;
+const scroller = {
+  update: () => {},
+};
 console.log(pageContainer);
 
 /* SMOOTH SCROLL */
-const scroller = new LocomotiveScroll({
-  el: pageContainer,
-  smooth: true,
-  smoothMobile: true,
-  smartphone: {
-    smooth: true
-  },
-  // inertia: 1.1,
-  multiplier: isMobile() ? 1 : 0.5,
-  lerp: 0.05,
-});
-window.scroller = scroller;
-scroller.on("scroll", ScrollTrigger.update);
+// const scroller = new LocomotiveScroll({
+//   el: pageContainer,
+//   smooth: true,
+//   smoothMobile: true,
+//   smartphone: {
+//     smooth: true
+//   },
+//   // inertia: 1.1,
+//   multiplier: isMobile() ? 1 : 0.5,
+//   lerp: 0.05,
+// });
+// window.scroller = scroller;
+// scroller.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy(pageContainer, {
-  scrollTop(value) {
-    return arguments.length
-      ? scroller.scrollTo(value, 0, 0)
-      : scroller.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return {
-      left: 0,
-      top: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-  },
-  pinType: document.querySelector('[data-scroll-section]').style.transform ? "transform" : "fixed"
-});
+// ScrollTrigger.scrollerProxy(pageContainer, {
+//   scrollTop(value) {
+//     return arguments.length
+//       ? scroller.scrollTo(value, 0, 0)
+//       : scroller.scroll.instance.scroll.y;
+//   },
+//   getBoundingClientRect() {
+//     return {
+//       left: 0,
+//       top: 0,
+//       width: window.innerWidth,
+//       height: window.innerHeight
+//     };
+//   },
+//   pinType: document.querySelector('[data-scroll-section]').style.transform ? "transform" : "fixed"
+// });
 
 
 window.ttl1 = !isTablet() && gsap.timeline({
@@ -445,6 +451,7 @@ window.addEventListener('resize',function(evt){
 
   document.querySelectorAll('.nav__link').forEach(el => {
     // if (isTablet()) return;
+    return;
     el.addEventListener('click',function(evt){
       evt.preventDefault();
       gsap.timeline()

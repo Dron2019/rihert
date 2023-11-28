@@ -125,7 +125,7 @@ function reviewFormOpenHandler(dataAttr, callDataAttr) {
     function closeForm() {
         gsap.timeline({
         })
-            .fromTo(`${dataAttr} .form-wrapper .display-mobile-only, ${dataAttr} .form-wrapper .subtitle, ${dataAttr} .form-wrapper__logo, ${dataAttr} .border,  ${dataAttr} [data-form], ${dataAttr} .form-wrapper__close`, {
+            .fromTo(`${dataAttr}.form-wrapper .display-mobile-only, ${dataAttr} .form-wrapper .subtitle, ${dataAttr} .form-wrapper__logo, ${dataAttr} .border,  ${dataAttr} [data-form], ${dataAttr} .form-wrapper__close`, {
                 autoAlpha: 1,
             }, {
                 autoAlpha: 0,

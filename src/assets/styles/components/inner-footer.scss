@@ -77,6 +77,46 @@
     }
 }
 
+.desktop {
+    .inner-footer {
+        &__lang-link {
+            position: relative;
+            overflow: hidden;
+            color: transparent;
+            &::before {
+                content: attr(data-text);
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                color: #989898; 
+                transition: .3s;
+            }
+            &::after {
+                content: attr(data-text);
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                color: var(--color-black);
+                transform: translateY(100%);
+                transition: .3s;
+            }
+            &:hover {
+                &::before {
+                    transform: translateY(-100%);
+                }
+                &::after {
+                    transform: translateY(0);
+                }
+            
+            }
+        }
+    }
+}
+
 .tablet {
     .inner-footer {
         &__group {

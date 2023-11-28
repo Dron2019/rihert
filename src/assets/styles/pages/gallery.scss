@@ -25,6 +25,43 @@
     }
 }
 
+.desktop {
+    .gallery-popup__button {
+        svg {
+            [stroke],
+            [fill] {
+                transition: .25s ease-out;
+            }
+        }
+        svg:hover {
+            [stroke] {
+                stroke: var(--color-black);
+            }
+            [fill] {
+                fill: var(--color-yellow);
+            }
+        }
+    }
+    .gallery-container {
+        &__nav {
+            svg {
+                [stroke],
+                [fill] {
+                    transition: .25s ease-out;
+                }
+            }
+            svg:hover {
+                [stroke] {
+                    stroke: var(--color-black);
+                }
+                [fill] {
+                    fill: var(--color-yellow);
+                }
+            }
+        }
+    }
+}
+
 .tablet {
     .gallery-container {
         .swiper-slide {

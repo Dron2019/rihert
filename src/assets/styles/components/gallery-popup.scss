@@ -130,6 +130,25 @@
     }
 }
 
+.desktop {
+    .gallery-popup {
+        &__close {
+            [fill],
+            [stroke] {
+                transition: .3s;
+            }
+            &:hover {
+                [fill] {
+                    fill: var(--color-yellow);
+                }
+                [stroke] {
+                    stroke: var(--color-black);
+                }
+            }
+        }
+    }
+}
+
 @keyframes fadeFromDown {
     from {
         opacity: 0;

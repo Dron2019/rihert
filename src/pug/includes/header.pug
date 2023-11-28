@@ -1,24 +1,35 @@
 -
     var links = [
-        ['ІНФО','#info'],
-        ['ІСТОРІЯ','#history'],
-        ['ФІЧІ','#features'],
-        ['ЛОКАЦІЯ','#location'],
-        ['ЗАБУДОВНИКА','#developer'],
-        ['КОНТАКТИ','#contacts'],
+        //- ['ІНФО','#info'],
+        //- ['ІСТОРІЯ','#history'],
+        //- ['ФІЧІ','#features'],
+        //- ['ЛОКАЦІЯ','#location'],
+        //- ['ЗАБУДОВНИКА','#developer'],
+        //- ['КОНТАКТИ','#contacts'],
+        ['Головна', "/"],
+        ['Обрати квартиру', "/3d"],
+        ['Нерухомість для бізнесу', "/business-real-estate"],
+        ['Про комплекс', "/about"],
+        ['Інфраструктура', "/infrastructure"],
+        ['Завод Ріхерта', "/rihert-factory"],
+        ['Галерея', "/gallery"],
+        ['Панорама', "/panorama"],
+        ['Девелопер', "/developer"],
+        ['Новини', "/news"],
+        ['Контакти', "/contacts"],
     ];
     var mobileLinks = [
-        {title: 'Головна', link: '#'},
-        {title: 'Обрати квартиру', link: '#'},
-        {title: 'Нерухомість для бізнесу', link: '#'},
+        {title: 'Головна', link: '/'},
+        {title: 'Обрати квартиру', link: '/3d'},
+        {title: 'Нерухомість для бізнесу', link: '/business-real-estate'},
         {title: 'Про комплекс', link: '/about'},
         {title: 'Інфраструктура', link: '/infrastructure'},
         {title: 'Завод Ріхерта', link: '/rihert-factory'},
-        {title: 'Галерея', link: '#'},
-        {title: 'Панорама', link: '#'},
+        {title: 'Галерея', link: '/gallery'},
+        {title: 'Панорама', link: '/panorama'},
         {title: 'Девелопер', link: '/developer'},
         {title: 'Новини', link: '/news'},
-        {title: 'Контакти', link: '#'},
+        {title: 'Контакти', link: '/contacts'},
     ]
 .header-mobile
     button(data-open-menu).menu-button
@@ -62,14 +73,12 @@ nav.nav
     +svg('logo').nav__logo
     each val in links 
         a.nav__link(href=val[1]) #{val[0]}
-    button(type="button" data-form-wrapper-call).nav__button 
-        span Записатися на перегляд
+    a(href="tel:+38 (096) 995-63-64").text-style-1920-body.text-color-black.curtain-hover(data-text="+38 (096) 995-63-64") +38 (096) 995-63-64
+    button(type="button" data-form-wrapper-call).button.button-bordered  Записатися на перегляд
     .nav__group.df
-        .nav__menu-toggle-mob(data-mob-toggle) ...
-        .nav__lang ua
-            .nav__lang-else 
-                a(href="#ru") ru
-                a(href="#en") en
+        a(href="#ua").nav__lang.active ua 
+        a(href="#ru").nav__lang ru
+        a(href="#en").nav__lang en
 
 <div class="mobile-callback-popup" data-mobile-callback-popup> 
     <a class="mobile-callback-popup__tel" href="tel:+380969956364">Виклик +38 (096) 995-63-64</a>

@@ -1,80 +1,97 @@
 .vr-popup {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: rgba(33, 39, 33, 0.50);
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeInPopup 0.3s ease-in-out;
-  }
-  .vr-popup .vr-popup__btn {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1;
-    background: white;
-    border-radius: 5px;
-    padding: 10px 16px;
-    color: black;
-  }
-  .vr-popup__content {
-    width: 80%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .vr-popup__content iframe {
-    width: 100%;
-    height: 100%;
-  }
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 39, 33, 0.50);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInPopup 0.3s ease-in-out;
+}
+
+.vr-popup .vr-popup__btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1;
+  background: white;
+  border-radius: 5px;
+  padding: 10px 16px;
+  color: black;
+}
+
+.vr-popup__content {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vr-popup__content iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.vr-popup__content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
   .vr-popup__content img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
   }
-  @media screen and (max-width: 1024px) {
-    .vr-popup__content img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
+}
+
+.vr-popup__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.vr-popup__close circle {
+  fill: white;
+  transition: 0.3s ease-in-out;
+}
+
+.vr-popup__close path {
+  stroke: #000;
+  transition: 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 1023px) {
+  .vr-popup__close:hover circle {
+    fill: var(--color-yellow);
+  }
+
+  .vr-popup__close:hover {
+    [stroke] {
+      stroke: var(--color-black);
+    }
+    [fill] {
+      fill: var(--color-yellow);
     }
   }
-  .vr-popup__close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
-  .vr-popup__close circle {
-    fill: white;
-    transition: 0.3s ease-in-out;
-  }
-  .vr-popup__close path {
-    stroke: #000;
-    transition: 0.3s ease-in-out;
-  }
-  @media screen and (min-width: 1023px) {
-    .vr-popup__close:hover circle {
-      fill: white;
-    }
-    .vr-popup__close:hover path {
-      stroke: black;
-    }
-  }
-  
+}
+
+
 
 .mobile {
   .vr-popup {
     background: rgba(33, 39, 33, 0.50);
   }
+
   .vr-popup__content {
     width: 90vw;
     height: 45vw;

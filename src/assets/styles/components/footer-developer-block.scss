@@ -16,6 +16,17 @@
         color: currentColor;
     }
 }
+.desktop {
+    .footer-developer-block {
+        a {
+            transition: .25s ease-in-out;
+        }
+        a:hover {
+            color: var(--color-black);
+        }
+    }
+
+}
 
 .tablet {
     .footer-developer-block {
