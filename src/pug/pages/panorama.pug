@@ -1,0 +1,31 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'panorama'
+    var id_page = 'id-page-panorama'
+    var class_page = 'class-page-panorama'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/panorama.bundle.js')
+block content
+  +pageTitle('Панорама', 'blue')
+  .container.panorama-container
+    iframe(src="https://sobhaone.sobha.cloud/wp-content/themes/3d/assets/pannelum/pannellum.htm?panorama=true&panorama=../panorama/sky_cam_03.jpg&autoLoad=true")
+block footer
+  include ../includes/inner-footer.pug
+  include ../includes/footer-developer-block.pug
+block header
+  include ../includes/header.pug
