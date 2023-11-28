@@ -30,7 +30,7 @@
         span Меню
     include ../../assets/svg-sprite/logo.svg
     button.button-bordered.button Записатися на перегляд
-    .header-mobile__call
+    .header-mobile__call(data-mobile-callback-popup-call)
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.81061 5.08328L4.98844 3.72326C5.16351 3.52145 5.17479 3.23399 5.01685 3.01839L3.33973 0.732472C3.19642 0.536512 2.95742 0.455454 2.72428 0.523977C1.05259 1.01409 -0.00909394 2.47564 0.749248 4.55181C2.13515 8.34733 5.65194 11.8646 9.44825 13.2509C11.5248 14.0089 12.9859 12.9476 13.476 11.2759C13.5445 11.0427 13.4635 10.8037 13.2675 10.6604L10.9816 8.98326C10.766 8.82532 10.4786 8.8366 10.2768 9.01167L8.91678 10.1895C6.96013 9.38604 4.61449 7.04037 3.81103 5.0837L3.81061 5.08328Z" fill="#212721"/>
         </svg>
@@ -70,3 +70,14 @@ nav.nav
             .nav__lang-else 
                 a(href="#ru") ru
                 a(href="#en") en
+
+<div class="mobile-callback-popup" data-mobile-callback-popup> 
+    <a class="mobile-callback-popup__tel" href="tel:+380969956364">Виклик +38 (096) 995-63-64</a>
+    <div class="mobile-callback-popup__callback" data-form-wrapper-call>Зворотній дзвінок</div>
+    <div class="mobile-callback-popup__close" data-mobile-callback-close>
+        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.5 17L1.5 1M1.5 17L17.5 1L1.5 17Z" stroke="#111111" stroke-width="2"/>
+        </svg>
+        | Відмінити
+    </div>
+</div>

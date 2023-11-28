@@ -127,3 +127,43 @@ body:not(.home-page) {
         
     }
 }
+
+
+.mobile {
+    body:not(.home-page) {
+        .screen11 {
+            margin-top: 10px;
+            height: auto;
+            margin-bottom: -230px;
+            &__title {
+                padding-left: 0;
+                padding-right: 20%;
+                text-align: left;
+                @include text-style-360-h-4;
+                height: 43px;
+                padding-bottom: 230px;
+            }
+            &__links {
+                position: absolute;
+                top: calc(43px + 20px);
+                height: auto;
+            }
+            .map-title,
+            &__title-small {
+                text-align: left;
+                margin-left: 0;
+                padding-left: 0;
+            }
+            &__title-small {
+                font-size: 12px;
+            }
+            .map-title {
+                @include text-style-360-body;
+            }
+            .button {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
+}

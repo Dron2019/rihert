@@ -114,9 +114,11 @@
             @include customOffsetWidth(50, 20px);
             &--mobile-wide {
                 @include customOffsetWidth(100, 20px);
+                align-items: center;
                 .inner-footer__subtitle {
                     width: auto;
                     margin-right: auto;
+                    margin-bottom: 0;
                 }
             }
             .button-bordered {

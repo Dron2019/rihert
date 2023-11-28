@@ -325,3 +325,13 @@ body:not(.home-page) .scroller-container {
         
     }
 }
+
+
+.display-mobile-only {
+	display: none;
+}
+.mobile {
+	.display-mobile-only {
+		display: initial;
+	}
+}
