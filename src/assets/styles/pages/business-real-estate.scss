@@ -87,6 +87,7 @@
 
 .tablet {
     .business-real-estate-container {
+        padding-left: 20px;
         @include to(1120px){
             grid-template-columns: 1fr 1fr;
             grid-template-areas: 

@@ -13,7 +13,12 @@
         @include shift(0);
     }
 }
-
+.tablet {
+    .about-container1 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
 .mobile {
     .about-container1 {
         &__left {
@@ -50,6 +55,20 @@
         margin-bottom: 30px;
         @include to(1366px){
             margin-bottom: 0px;
+        }
+    }
+}
+
+.tablet {
+    .about-items-container {
+        row-gap: 0;
+        margin-left: 0;
+        margin-right: 0;
+        &>:nth-child(n+5) {
+            margin-top: 20px;
+        }
+        .text-style-1920-h-3 {
+            margin-bottom: 20px;
         }
     }
 }
@@ -139,6 +158,8 @@
 
 .tablet {
     .about-map-container {
+        margin-left: 0;
+        margin-right: 0;
         &__svg,
         &__title,
         &__legend {
@@ -213,6 +234,8 @@
         }
     }
 }
+
+
 
 .mobile {
     .about-map-container {

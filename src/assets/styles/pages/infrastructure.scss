@@ -196,6 +196,9 @@
 
 .tablet {
     .inner-infra-container {
+        margin-left: 0;
+        margin-right: 0;
+        overflow: hidden;
         &__title {
             @include size(12);
             @include shift(0);
@@ -902,4 +905,11 @@
     z-index: 5;
     transition: opacity .5s ease-in;
     padding: 4px 16px;
+}
+
+.scroller-container {
+    // .container:nth-child(7) {
+
+    //     display: none;
+    // }
 }

@@ -89,6 +89,12 @@
     }
 }
 
+.tablet.landscape {
+    .page-title-nav {
+        transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(2.4deg);
+    }
+}
+
 .mobile {
     .page-title-nav {
         transform: translateY(calc(var(--page-title-skew-h) * -1)) rotate(3.2deg);

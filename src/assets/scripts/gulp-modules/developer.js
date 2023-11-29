@@ -49,7 +49,7 @@ const swiper2 = new Swiper(container2, {
 #developer-objects-ready
 #developer-objects-in-development
 */
-if (document.documentElement.classList.contains('mobile')) {
+if (!document.documentElement.classList.contains('desktop')) {
     pageTitleNav(gsap);
     document.querySelectorAll('[data-developer-nav]').forEach((el) => {
         el.addEventListener('click', (e) => {
