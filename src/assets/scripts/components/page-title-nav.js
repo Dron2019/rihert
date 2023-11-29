@@ -4,8 +4,8 @@ export default function pageTitleNav(gsap) {
     gsap.timeline({
         scrollTrigger: {
             trigger: container,
-            start: '100% top',
-            end: '120% top',
+            start: '40% top',
+            end: '50% top',
             scrub: false,
             onLeave: () => {
                 container.classList.add('fixed');

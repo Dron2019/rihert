@@ -40,7 +40,7 @@
             margin-bottom: 13px;
         }
         @include from(2100px){
-            font-size: 26px;
+            // font-size: 26px;
         }
     }
     a[href*="tel"] {

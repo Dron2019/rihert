@@ -4,7 +4,7 @@
     background-color: var(--color-white);
     transform-origin: left;
     // transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(3.2deg);
-    transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(var(--page-title-radian-rotation));
+    transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(var(--page-title-radian-rotation, 3.2deg));
     margin-bottom: -50px;
     transition: transform 0.2s ease-in-out;
     &.fixed {
@@ -80,7 +80,6 @@
             display: none;
         }
         @media screen and (max-width:1366px){
-            transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(4.7deg);
         }
         &__item {
             &:hover {
@@ -92,13 +91,11 @@
 
 .tablet.landscape {
     .page-title-nav {
-        transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(2.4deg);
     }
 }
 
 .mobile {
     .page-title-nav {
-        transform: translateY(calc(var(--page-title-skew-h) * -1)) rotate(3.2deg);
         height: 44px;
         &__scroll-button-next,
         &__scroll-button {
