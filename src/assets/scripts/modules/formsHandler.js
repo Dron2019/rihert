@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import FormMonster from "../../../pug/components/form/form";
 import SexyInput from "../../../pug/components/input/input";
 
-const formsWithTel = ['[data-form]', '[data-form-callback]'];
+const formsWithTel = ['[data-form]', '[data-form-callback]', '[data-form-wrapper-consultation] [data-form]'];
 
 formsWithTel.forEach(form => {
     const $form = document.querySelector(form);

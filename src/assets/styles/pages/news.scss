@@ -26,7 +26,12 @@
 
 .tablet {
     .news-container {
-        row-gap: 60px;
+        // row-gap: 60px;
+        margin-left: 0;
+        margin-right: 0;
+        .news-card:nth-child(n+3) {
+            margin-top: 60px;
+        }
         .news-card {
             @include size-sm(6);
             @include shift-sm(0);

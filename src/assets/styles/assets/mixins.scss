@@ -67,6 +67,8 @@ $screen-height: 720;
 @mixin blockWithImgFixedRatio($ratio) {
 	position: relative;
 	padding-top: $ratio + 0%;
+	.paralax-screen-wrapper-transform,
+	.paralax-screen-wrapper-scale,
 	img {
 		position: absolute;
 		left: 0;

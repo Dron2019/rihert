@@ -89,6 +89,7 @@ mobilePopupShowHandler();
 
 function reviewFormOpenHandler(dataAttr, callDataAttr) {
     const formWrapper = document.querySelector(dataAttr);
+    if (!formWrapper) return;
     const formWrapperCall = document.querySelectorAll(callDataAttr);
     formWrapperCall.forEach(el => el.addEventListener('click', function (evt) {
         gsap.timeline({
@@ -158,16 +159,20 @@ function reviewFormOpenHandler(dataAttr, callDataAttr) {
 
 reviewFormOpenHandler('[data-form-wrapper]', '[data-form-wrapper-call]');
 reviewFormOpenHandler('[data-callback-form-wrapper]', '[data-callback-form-wrapper-call]');
+reviewFormOpenHandler('[data-form-wrapper-consultation]', '[data-form-wrapper-consultation-call]');
 
 
 function agreementPopupHandler() {
     const popup = document.querySelector( '[data-agreement-popup]');
     const popupClose = document.querySelector('[data-agreement-popup-close]');
-    const popupCall = document.querySelector('[data-agreement-popup-call]');
+    const popupCall = document.querySelectorAll('[data-agreement-popup-call]');
 
-    popupCall.addEventListener('click', function (evt) {
-        popup.classList.add('active');
+    popupCall.forEach(el =>  { 
+        el.addEventListener('click', function (evt) { 
+            popup.classList.add('active');
+        });
     });
+
     popupClose.addEventListener('click', function (evt) {
         popup.classList.remove('active');
     });

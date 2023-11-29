@@ -344,3 +344,8 @@ body:not(.home-page) .scroller-container {
 .overflow-hidden {
 	overflow: hidden;
 }
+
+
+:root {
+	-webkit-tap-highlight-color: rgba($color-brown, 0.2);
+}

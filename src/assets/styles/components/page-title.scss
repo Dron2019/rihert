@@ -27,6 +27,7 @@
         img {
             width: 170px;
             height: auto;
+            object-fit: contain;
             @include to(1366px){    
                 width: 88px;
             }

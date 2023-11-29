@@ -69,6 +69,8 @@
     .single-news-container {
         padding-left: 82px;
         --between-margin: 40px;
+        margin-left: 0;
+        margin-right: 0;
         &__title {
             padding-right: 5%;
         }
@@ -125,6 +127,8 @@
 
 .tablet {
     .other-news-container {
+        margin-left: 0;
+        margin-right: 0;
         .news-card {
             @include size-sm(6);
             @include shift-sm(0);
@@ -137,6 +141,8 @@
 
 .mobile {
     .other-news-container {
+        margin-left: 0;
+        margin-right: 0;
         &__title {
             margin-bottom: 40px;
         }

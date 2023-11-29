@@ -3,6 +3,7 @@ import gsap from "gsap/all";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import splitToLinesAndFadeUp from "../modules/effects/splitLinesAndFadeUp";
 import '../modules/scroll/lenis';
+import { paralaxesScreens } from "../modules/effects/paralax";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,3 +19,4 @@ document.body.addEventListener('click', function (evt) {
 
 
 splitToLinesAndFadeUp('.text-style-1920-h-2, .text-style-1920-body, .text-style-1920-h-3', gsap);
+paralaxesScreens('desktop', gsap);

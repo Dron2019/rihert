@@ -4,10 +4,12 @@ import pageTitleNav from '../components/page-title-nav';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import googleMap from '../modules/map/map';
+import { paralaxesScreens } from '../modules/effects/paralax';
 
 gsap.registerPlugin(ScrollTrigger);
 
 
+paralaxesScreens('desktop', gsap);
 
 function innerInfraMap(selector) {
     const svg = document.querySelector(selector);

@@ -3,10 +3,10 @@ const transformationValues = (type) => {
         case 'tablet':
             return {
                 from: {
-                    y: -100,
+                    y: -10,
                 }, 
                 to: {
-                    y: 100,
+                    y: 0,
                 }
             }
         case 'mobile':
@@ -28,7 +28,16 @@ const transformationValues = (type) => {
 }
 
 
-export function paralaxesScreens(deviceType = 'desktop', gsap) {
+export function paralaxesScreens(deviceType1 = 'desktop', gsap) {
+
+    let deviceType = deviceType1;
+    if (document.documentElement.classList.contains('tablet')) {
+        deviceType = 'tablet';
+    }
+    if (document.documentElement.classList.contains('mobile')) {
+        deviceType = 'mobile';
+    }
+
 
     document.querySelectorAll('.paralax-screen').forEach(el => {
 
