@@ -93,54 +93,39 @@ function reviewFormOpenHandler(dataAttr, callDataAttr) {
     formWrapperCall.forEach(el => el.addEventListener('click', function (evt) {
         gsap.timeline({
         })
+            .timeScale(1.5)
             .to(formWrapper, { autoAlpha: 1, duration: 0.25 })
             .fromTo(`${dataAttr} .form-wrapper__curtains div`, {
                 scaleY: 0
             }, {
                 scaleY: 1,
                 stagger: 0.15,
-                duration: 1.75,
+                duration: 1.25,
                 transformOrigin: '50% 100%',
                 ease: 'power4.out'
             }, '<+0.5')
-            .fromTo(`${dataAttr} .form-wrapper__layout [data-splited-line]`, {
-                // autoAlpha: 0,
-                yPercent: 100
-            }, {
-                // autoAlpha: 1,
-                yPercent: 0,
-                ease: 'power3.out'
-            }, '>-55%')
-            .fromTo(`${dataAttr}.form-wrapper .display-mobile-only,${dataAttr}.form-wrapper .subtitle,${dataAttr}  .form-wrapper__logo,${dataAttr}  .border,${dataAttr}  [data-form],${dataAttr}  .form-wrapper__close`, {
+            .fromTo(`${dataAttr} .form-wrapper__layout`, {
                 autoAlpha: 0,
+                // yPercent: 100
             }, {
-                // autoAlpha: 1,
                 autoAlpha: 1,
-                ease: 'power3.out',
-                stagger: 0.15
-            }, '<')
-            .set(`${dataAttr} .form-wrapper__layout`, { backgroundColor: 'var(--color-red)' })
+                // yPercent: 0,
+                ease: 'power3.out'
+            }, '>-35%')
     }));
 
     function closeForm() {
         gsap.timeline({
-        })
-            .fromTo(`${dataAttr}.form-wrapper .display-mobile-only, ${dataAttr} .form-wrapper .subtitle, ${dataAttr} .form-wrapper__logo, ${dataAttr} .border,  ${dataAttr} [data-form], ${dataAttr} .form-wrapper__close`, {
+        })  
+            .timeScale(2)
+            .fromTo(`${dataAttr} .form-wrapper__layout`, {
                 autoAlpha: 1,
+                // yPercent: 0
             }, {
                 autoAlpha: 0,
-                ease: 'power3.out',
-                stagger: 0.15
-            }, '<')
-            .set(`${dataAttr} .form-wrapper__layout`, { backgroundColor: '' }, ' <')
-            .fromTo(`${dataAttr} .form-wrapper__layout [data-splited-line]`, {
-                // autoAlpha: 0,
-                yPercent: 0
-            }, {
-                // autoAlpha: 1,
-                yPercent: 100,
+                // yPercent: 100,
                 ease: 'power3.out'
-            }, '>-55%')
+            })
             .fromTo(`${dataAttr} .form-wrapper__curtains div`, {
                 scaleY: 1
             }, {

@@ -192,7 +192,10 @@ export default class FormMonster {
           this.watchedState.status = 'loading';
           const formData = new FormData(this.elements.$form);
           formData.append('action', 'app');
-
+          if (document.documentElement.dataset.status === 'local') {
+            this.watchedState.status = 'successSand';
+            return true;
+          }
           /* eslint-disable-next-line */
           const { error, code_error } = await sendForm(formData);
           console.log(error);

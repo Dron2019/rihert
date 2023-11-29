@@ -6,9 +6,7 @@ import * as yup from 'yup';
 import FormMonster from "../../../pug/components/form/form";
 import SexyInput from "../../../pug/components/input/input";
 
-
-
-const formsWithTel = ['[data-form]'];
+const formsWithTel = ['[data-form]', '[data-form-callback]'];
 
 formsWithTel.forEach(form => {
     const $form = document.querySelector(form);
@@ -20,7 +18,15 @@ formsWithTel.forEach(form => {
             elements: {
                 $form,
                 showSuccessMessage: false,
-                successAction: 'toster',
+                successAction: (e) => {
+                    console.log(e);
+                    const popup = document.querySelector('[data-popup-success-message]');
+                    popup.classList.add('active');
+                    popup.querySelector('.popup-success-message__close').addEventListener('click', () => {
+                        popup.classList.remove('active');
+                    }, { once: true});
+                    $form.closest('.form-wrapper').querySelector('.form-wrapper__close').dispatchEvent(new Event('click'));
+                },
                 $btnSubmit: $form.querySelector('[data-btn-submit]'),
                 fields: {
                     name: {
