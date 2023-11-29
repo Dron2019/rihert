@@ -3,7 +3,8 @@
     height: 50px;
     background-color: var(--color-white);
     transform-origin: left;
-    transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(3.2deg);
+    // transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(3.2deg);
+    transform: translateY(calc(var(--page-title-skew-h) * -1 + 2px)) rotate(var(--page-title-radian-rotation));
     margin-bottom: -50px;
     transition: transform 0.2s ease-in-out;
     &.fixed {

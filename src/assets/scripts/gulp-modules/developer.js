@@ -1,8 +1,11 @@
 import Swiper from 'swiper';
 import {Navigation} from 'swiper/modules';
 import pageTitleNav from '../components/page-title-nav';
+import '../modules/scroll/lenis';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import splitToLinesAndFadeUp from '../modules/effects/splitLinesAndFadeUp';
+import { paralaxesScreens } from '../modules/effects/paralax';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,3 +106,22 @@ if (!document.documentElement.classList.contains('desktop')) {
     });
 }
 
+
+splitToLinesAndFadeUp('.text-style-1920-h-2, .text-style-1920-body, .text-style-1920-h-3', gsap)
+
+
+//clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+document.querySelectorAll('.developer-object').forEach((el) => {
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: el,
+            once: true,
+            start: 'top 80%',
+        }
+    })
+        .fromTo(el, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' }, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', duration: 1.75, ease: 'power4.out' })
+})
+
+
+paralaxesScreens('desktop', gsap);

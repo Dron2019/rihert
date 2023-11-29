@@ -11,6 +11,8 @@
         position: relative;
         padding-bottom: 144%;
         grid-area: img;
+        .paralax-screen-wrapper-transform,
+        .paralax-screen-wrapper-scale,
         img {
             position: absolute;
             left: 0;

@@ -174,3 +174,15 @@ function agreementPopupHandler() {
 }
 
 agreementPopupHandler();
+
+function calculatePageTitleRotation() {
+    const currentSkeH = parseInt(this.getComputedStyle(document.documentElement).getPropertyValue('--page-title-skew-h'));
+    const width = window.innerWidth;
+
+        document.documentElement.style.setProperty('--page-title-radian-rotation', Math.atan(currentSkeH/width)+'rad');
+        return;
+    console.log(currentSkeH);
+}
+
+window.addEventListener('load', calculatePageTitleRotation);
+window.addEventListener('resize', calculatePageTitleRotation);

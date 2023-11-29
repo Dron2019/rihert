@@ -7,6 +7,9 @@
     &__img {
         position: relative;
         padding-bottom: 38.5%;
+        .paralax-screen-wrapper-transform,
+        .paralax-screen-wrapper-scale,
+        &>*,
         img {
             position: absolute;
             left: 0;

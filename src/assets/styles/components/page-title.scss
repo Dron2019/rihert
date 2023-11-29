@@ -5,7 +5,7 @@
 
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(  --page-title-skew-h)));
     position: relative;
-    z-index: 2;
+    z-index: 4;
     &.green {
         background-color: var(--color-green)
     }
@@ -82,3 +82,17 @@
         }
     }
 }
+
+
+
+/*
+
+
+    tg alpha = skew-h / 100vw
+
+    alpha = atan(100vw / skew-h) //radians
+
+
+    degree = alpha * (180/Math.PI)
+    alpha = 
+*/
