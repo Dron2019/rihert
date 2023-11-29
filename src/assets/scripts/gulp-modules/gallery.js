@@ -1,4 +1,5 @@
 import Swiper from 'swiper';
+import Hammer from 'hammerjs';
 import {Navigation} from 'swiper/modules';
 
 const galleryContainer = document.querySelector('.gallery-container .swiper-container');
@@ -47,16 +48,24 @@ function galleryPopupSliderHandler(mainSlider) {
         if (!target) return;
         console.log(target);
         gallertPopup.classList.add('active');
+        document.body.classList.add('overflow-hidden');
         galleryPopupSlider.slideTo(target.dataset.index);
     });
-
+    
     // galleryContainer.addEventListener('click', function (e) {
-
-    // });
-    document.body.addEventListener('click', function (e) {
-        const target = e.target.closest('.gallery-popup__close');
-        if (!target) return;
+        
+        // });
+        document.body.addEventListener('click', function (e) {
+            const target = e.target.closest('.gallery-popup__close');
+            if (!target) return;
             gallertPopup.classList.remove('active');
+            document.body.classList.remove('overflow-hidden');
+        });
+        const hammer = new Hammer(gallertPopup);
+        hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+        hammer.on('swipedown', function(event) {
+            gallertPopup.classList.remove('active');
+            document.body.classList.remove('overflow-hidden');
     });
 }
 

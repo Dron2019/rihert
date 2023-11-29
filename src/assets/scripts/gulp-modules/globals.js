@@ -161,7 +161,7 @@ reviewFormOpenHandler('[data-callback-form-wrapper]', '[data-callback-form-wrapp
 
 
 function agreementPopupHandler() {
-    const popup = document.querySelector('[data-agreement-popup]');
+    const popup = document.querySelector( '[data-agreement-popup]');
     const popupClose = document.querySelector('[data-agreement-popup-close]');
     const popupCall = document.querySelector('[data-agreement-popup-call]');
 
