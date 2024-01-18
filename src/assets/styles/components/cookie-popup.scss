@@ -1,0 +1,62 @@
+.cookie-popup {
+    --padding: 60px;
+    padding: var(--padding);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray-light);
+    width: Min(100%, 720px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 100;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    @include to(600px){
+        --padding: 20px;
+    }
+    &__title {
+        @include text-style-1920-h-3;
+        @include to(600px){
+            @include text-style-360-h-3;
+        }
+        margin-bottom: calc(var(--padding) * 0.33);
+    }
+    &__text{
+        @include text-style-1920-body;
+        margin-bottom: calc(var(--padding) * 0.33);
+        @include to(600px){
+            @include text-style-360-body;
+        }
+    }
+    &__button {
+        border-radius: 6px;
+        border: 3px solid var(--Yellow, #F5FF00);
+        display: flex;
+        height: 56px;
+        padding: 8px 16px;
+        justify-content: center;
+        align-items: center;
+        width: max-content;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: .25s ease-out;
+        &:hover {
+            background-color: var(--color-yellow);
+        }
+    }
+    img {
+        width: calc(var(--padding) * 1.15);
+        height: calc(var(--padding) * 1.15);
+        position: absolute;
+        right: var(--padding);
+        bottom: var(--padding);
+    }
+}
+    

@@ -1,7 +1,7 @@
 const proxy = "rihert-landing";
 let webPackSetting = true;
 let typeScriptSetting = false;
-
+var prettyHtml = require('gulp-pretty-html');
 
 var fs = require('fs');
 const gulp = require('gulp');
@@ -180,6 +180,9 @@ function clean() {
 function templates() {
 	return gulp.src(paths.templates.pages)
 	.pipe(pug({ pretty: true }))
+	.pipe(prettyHtml({
+		unformatted: ['fieldset']
+	}))
 	.pipe(gulp.dest(paths.root));
 }
 

@@ -191,3 +191,35 @@ function calculatePageTitleRotation() {
 
 window.addEventListener('load', calculatePageTitleRotation);
 window.addEventListener('resize', calculatePageTitleRotation);
+
+
+
+function languagePopupHandler() {
+    const lang = document.documentElement.getAttribute('lang');
+
+    // data-language-popup
+    if (lang !== 'ru') return;
+    if (sessionStorage.getItem('languagePopupShown')) return;
+    const popup = document.querySelector('[data-language-popup]');
+    popup.classList.add('active');
+    sessionStorage.setItem('languagePopupShown', true);
+}
+
+languagePopupHandler();
+
+
+function cookiePopupHandler() {
+    const popup = document.querySelector('[data-cookie-popup]');
+
+    popup.querySelector('.cookie-popup__button').addEventListener('click', function (evt) {
+        popup.classList.remove('active');
+    }, { once: true});
+    
+
+    if (sessionStorage.getItem('cookiePopupShown')) return;
+    popup.classList.add('active');
+    sessionStorage.setItem('cookiePopupShown', true);
+
+}
+
+cookiePopupHandler();

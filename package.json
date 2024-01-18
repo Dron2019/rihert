@@ -93,6 +93,7 @@
     "current-device": "^0.10.2",
     "flatpickr": "^4.6.13",
     "gsap": "^3.5.1",
+    "gulp-pretty-html": "^2.0.10",
     "hammerjs": "^2.0.8",
     "i18next": "^19.8.4",
     "intl-tel-input": "^17.0.12",
