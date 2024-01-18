@@ -44,21 +44,21 @@ formsWithTel.forEach(form => {
                         error: [],
                     },
 
-                    agreement: {
-                        inputWrapper: new SexyInput({
-                            animation: 'none',
-                            $field: $form.querySelector('[data-field-agreement]'),
-                            typeInput: 'checkbox',
-                        }),
-                        rule: yup
-                            .bool()
-                            .nullable()
-                            .oneOf([true], i18next.t('required')),
+                    // agreement: {
+                    //     inputWrapper: new SexyInput({
+                    //         animation: 'none',
+                    //         $field: $form.querySelector('[data-field-agreement]'),
+                    //         typeInput: 'checkbox',
+                    //     }),
+                    //     rule: yup
+                    //         .bool()
+                    //         .nullable()
+                    //         .oneOf([true], i18next.t('required')),
 
-                        defaultMessage: i18next.t('phone'),
-                        valid: false,
-                        error: [],
-                    },
+                    //     defaultMessage: i18next.t('phone'),
+                    //     valid: false,
+                    //     error: [],
+                    // },
                 },
             },
         });
