@@ -400,7 +400,7 @@ function _styles() {
 			cascade: false
 		}))
 		.pipe(cleanCSS())
-		.pipe(gulp.dest(pathsProd.style.dest))
+		.pipe(gulp.dest(paths.styles.dest))
 }
 
 // FONTS
