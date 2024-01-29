@@ -23,7 +23,7 @@ useStateEffect((state) => {
     console.log(state);
     document.querySelector('[data-news-list]').innerHTML = state.data.dates.reduce((acc, item) => {
         return acc + `
-            <a href="${item.href}" class="news-card">
+            <a href="${item.post.url}" class="news-card">
                 <div class="news-card__date">${item.data.d}</div>
                 <div class="news-card__img">
                     <img src="${item.data.img}" alt="">
