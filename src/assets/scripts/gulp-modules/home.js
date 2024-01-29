@@ -92,10 +92,10 @@ window.ttl1 = !isTablet() && gsap.timeline({
 
 
 
-const screen9 = document.querySelector('.screen9 .screen9__inner');
-// 0.28
-const mapRatio = innerWidth / document.querySelector('.map').getBoundingClientRect().width;
-!isTablet() && gsap.set(screen9, { scale: mapRatio, transformOrigin: 'top left' })
+// const screen9 = document.querySelector('.screen9 .screen9__inner');
+// // 0.28
+// const mapRatio = innerWidth / document.querySelector('.map').getBoundingClientRect().width;
+// !isTablet() && gsap.set(screen9, { scale: mapRatio, transformOrigin: 'top left' })
 
 ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
 ScrollTrigger.refresh();
@@ -287,8 +287,8 @@ window.ttl8 = gsap.timeline( {
     },
   }
 })
-.fromTo('.screen5__inner', 
-{scale: 1},
+.to('.screen5__inner', 
+// {scale: 1},
 { 
   // x: innerHeight / -1,
   scale: 0.5,
