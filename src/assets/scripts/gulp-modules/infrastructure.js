@@ -92,6 +92,7 @@ document.body.addEventListener('click', function (evt) {
     const target = evt.target.closest('.legend-button-js');
     if (!target) return;
     target.parentElement.querySelector('.legend-js').classList.toggle('closed');
+    target.classList.toggle('closed');
 });
 
 

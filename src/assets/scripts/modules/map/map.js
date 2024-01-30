@@ -4,7 +4,8 @@ import mapStyle from "./map-style";
 
 
 export default function googleMap() {
-  global.initMap = initMap
+  global.initMap = initMap;
+  window.initMap = initMap;
 }
 
 async function func() {
@@ -12,7 +13,9 @@ async function func() {
   let key = document.documentElement.dataset.key ? document.documentElement.dataset.key : '';
   // if (window.location.href.match(/localhost|smarto/)) key = '';
   // const key = '';
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap&language=${document.documentElement.getAttribute('lang')}`;
+  const keyAttr = key ? `&key=${key}` : '';
+  window.initMap = initMap;
+  script.src = `https://maps.googleapis.com/maps/api/js?${keyAttr}&v=3&callback=initMap&language=${document.documentElement.getAttribute('lang')}`;
   document.getElementsByTagName('head')[0].appendChild(script);
 }
 // setTimeout(func, 1000);
@@ -50,10 +53,11 @@ function initMap() {
   /** Массив, куда записываются выбраные категории */
   const choosedCategories = new Set();
   choosedCategories.add('main');
+  window.choosedCategories = choosedCategories;
   /** Елементы, при клике на который будет происходить фильтрация */
   const filterItems = document.querySelectorAll('[data-marker]');
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 15,
     center,
     scrollwheel: false,
     navigationControl: false,
@@ -69,6 +73,11 @@ function initMap() {
 
   const filterMarkers = function (category, categoriesArray) {
     gmarkers1.forEach((el) => {
+      if (categoriesArray.size <= 1) {
+        el.setMap(map);
+        el.setAnimation(google.maps.Animation.DROP);
+        return;
+      }
       if (categoriesArray.has(el.category)) {
         el.setMap(map);
         el.setAnimation(google.maps.Animation.DROP);
@@ -109,7 +118,7 @@ function initMap() {
   ajaxMarkers.then(result => {
     putMarkersOnMap(result, map);
   })
-  console.log(ajaxMarkers);
+
 
   function putMarkersOnMap(markers, map) {
     const infowindow = new google.maps.InfoWindow({
@@ -137,6 +146,11 @@ function initMap() {
         infowindow.open(map, mapMarker);
         map.panTo(this.getPosition());
       });
+
+      if (category === 'main') {
+        map.setCenter(new google.maps.LatLng(marker.position.lat, marker.position.lng));
+      }
+
       mapMarker.name = marker.type;
       gmarkers1.push(mapMarker);
     });
