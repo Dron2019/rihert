@@ -46,7 +46,10 @@ block meta
   meta(name='description', content='')
 block head
     link(rel='stylesheet', href="./assets/styles/main.min.css")
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-default/dist/leaflet-default.css" />
 block scripts
+  <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/infrastructure.bundle.js')
 block content

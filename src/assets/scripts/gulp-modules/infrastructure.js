@@ -3,8 +3,9 @@ import '../modules/scroll/lenis';
 import pageTitleNav from '../components/page-title-nav';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import googleMap from '../modules/map/map';
+
 import { paralaxesScreens } from '../modules/effects/paralax';
+import osm from '../modules/map/osm/osm';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -161,3 +162,30 @@ infraNavigation();
 /*
     AUTO NAVIGATION end
 */
+
+
+
+/* map launch */
+
+function mapLaunch() {
+    const map = document.querySelector('#map');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                observer.disconnect();
+                osm(map);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    });
+
+    observer.observe(map);
+}
+
+mapLaunch();
+
+/* map launch END */

@@ -4,29 +4,31 @@
         <rect width="24" height="24" transform="translate(0 0.808594)" fill="#6BC28A"/>
         <path d="M8 10.8086L11.2929 14.1015C11.6834 14.492 12.3166 14.492 12.7071 14.1015L16 10.8086" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-
     ul.legend.opened.legend-js
-        li 
-            +img('infrastructure/markers/main.png').legend-icon
-            span.text Рiхерт&Пark
-        li 
-            +img('infrastructure/markers/metro.svg').legend-icon
-            span.text Метро
-        li 
-            +img('infrastructure/markers/kinder.svg').legend-icon
-            span.text Дитсадки
-        li 
-            +img('infrastructure/markers/schools.svg').legend-icon
-            span.text Школи
-        li 
-            +img('infrastructure/markers/university.svg').legend-icon
-            span.text Університети
-        li 
-            +img('infrastructure/markers/green-zones.svg').legend-icon
-            span.text Зелені зони
-        li 
-            +img('infrastructure/markers/markets.svg').legend-icon
-            span.text Ринок
-        li 
-            +img('infrastructure/markers/cinema.svg').legend-icon
-            span.text Кінотеатр
+        li(data-marker='' data-category='main')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/main.png' title='foto' alt='foto')
+            span.text &Rcy;&iukcy;&khcy;&iecy;&rcy;&tcy;&amp;&Pcy;&acy;&rcy;&kcy;
+        li(data-marker='' data-category='metro')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/metro.svg' title='foto' alt='foto')
+            span.text &Mcy;&iecy;&tcy;&rcy;&ocy;
+        li(data-marker='' data-category='education')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/university.svg' title='foto' alt='foto')
+            span.text &Ocy;&scy;&vcy;&iukcy;&tcy;&ncy;&iukcy; &zcy;&acy;&kcy;&lcy;&acy;&dcy;&icy;
+        li(data-marker='' data-category='schools')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/schools.svg' title='foto' alt='foto')
+            span.text &SHcy;&kcy;&ocy;&lcy;&icy;
+        li(data-marker='' data-category='park')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/park.svg' title='foto' alt='foto')
+            span.text &Zcy;&iecy;&lcy;&iecy;&ncy;&iukcy; &zcy;&ocy;&ncy;&icy;
+        li(data-marker='' data-category='shop')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/markets.svg' title='foto' alt='foto')
+            span.text &Scy;&ucy;&pcy;&iecy;&rcy;&mcy;&acy;&rcy;&kcy;&iecy;&tcy;&icy;
+        li(data-marker='' data-category='medicine')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/medicine.svg' title='foto' alt='foto')
+            span.text &Mcy;&iecy;&dcy;&icy;&tscy;&icy;&ncy;&acy;
+        li(data-marker='' data-category='sport')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/sport.svg' title='foto' alt='foto')
+            span.text &Rcy;&ocy;&zcy;&vcy;&acy;&gcy;&icy; &tcy;&acy; &dcy;&ocy;&zcy;&vcy;&iukcy;&lcy;&lcy;&yacy;
+        li(data-marker='' data-category='meal')
+            img.legend-icon(loading='lazy' src='./assets/images/infrastructure/markers/meal.svg' title='foto' alt='foto')
+            span.text &Kcy;&acy;&fcy;&iecy; &tcy;&acy; &rcy;&iecy;&scy;&tcy;&ocy;&rcy;&acy;&ncy;&icy;

@@ -29,7 +29,7 @@ line-height: 120%;"
 export async function fetchMarkersData(google) {
 
 
-    const buildLogoSize = new google.maps.Size(33, 40.5);
+    const buildLogoSize = google ? new google.maps.Size(33, 40.5) : 0;
     const sendData = new FormData();
     sendData.append('action', 'infrastructure');
     const url = window.location.href.match(/localhost/)
@@ -47,7 +47,7 @@ export async function fetchMarkersData(google) {
       return;
     };
 
-    console.log(markersData);
+    // console.log(markersData);
     let formatedMarkersDataForMap = markersData.reduce((acc, el) => {
       // if (!el.list) return acc;
       acc.push({
