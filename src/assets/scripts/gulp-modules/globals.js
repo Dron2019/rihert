@@ -30,11 +30,132 @@ document.body.addEventListener('click', function (evt) {
 
 
 //name="time"
+
+var UkraineCalendarLocale = {
+    weekdays: {
+        shorthand: ['Пон','Вт.','Ср.','Чт.','Пт.','Сб.','Нд.'],
+        longhand: [
+            "Неділя",
+            "Понеділок",
+            "Вівторок",
+            "Середа",
+            "Четвер",
+            "П'ятниця",
+            "Субота",
+        ],
+    },
+    months: {
+        shorthand: [
+            "Січ",
+            "Лют",
+            "Бер",
+            "Квіт",
+            "Трав",
+            "Черв",
+            "Лип",
+            "Сер",
+            "Вер",
+            "Жовт",
+            "Лист",
+            "Груд",
+        ],
+        longhand: [
+            "Січень",
+            "Лютий",
+            "Березень",
+            "Квітень",
+            "Травень",
+            "Червень",
+            "Липень",
+            "Серпень",
+            "Вересень",
+            "Жовтень",
+            "Листопад",
+            "Грудень",
+        ],
+    },
+    firstDayOfWeek: 1,
+    ordinal: function () {
+        return "";
+    },
+    rangeSeparator: " — ",
+    weekAbbreviation: "Sun.",
+    scrollTitle: "Прокрутити для збільшення",
+    toggleTitle: "Клацніть для перемикання",
+    amPM: ["AM", "PM"],
+    yearAriaLabel: "Рік",
+    time_24hr: true,
+};
+var EngCalendarLocale = {
+    weekdays: {
+        shorthand: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+        longhand: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wendesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ],
+    },
+    months: {
+        shorthand: [
+            "Jan",
+            "Feb",
+            "March",
+            "Apr",
+            "May",
+            "June",
+            "July",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
+        longhand: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ],
+    },
+    firstDayOfWeek: 1,
+    ordinal: function () {
+        return "";
+    },
+    rangeSeparator: " — ",
+    weekAbbreviation: "Sun.",
+    scrollTitle: "Scroll to increase",
+    toggleTitle: "Click for switching",
+    amPM: ["AM", "PM"],
+    yearAriaLabel: "Year",
+    time_24hr: true,
+};
+
+const localeForCalendar = document.documentElement.getAttribute('lang') === 'ua' ? UkraineCalendarLocale : EngCalendarLocale;
+
 document.querySelectorAll('[name="time"]').forEach(function (item) {
     const picker = flatpickr(item, {
         enableTime: true,
+        locale: localeForCalendar,
         minDate: "today",
         minTime: "09:00",
+        onOpen: function (selectedDates, dateStr, instance) {
+            console.log(selectedDates, dateStr, instance);
+            document.querySelectorAll('.flatpickr-calendar').forEach(function (el) {
+                el.setAttribute('data-lenis-prevent', '');
+            });
+        },
         disableMobile: false,
 
     })
@@ -113,6 +234,9 @@ function reviewFormOpenHandler(dataAttr, callDataAttr) {
                 // yPercent: 0,
                 ease: 'power3.out'
             }, '>-35%')
+            .add(() => {
+                document.body.style.overflow = 'hidden';
+            })
     }));
 
     function closeForm() {
@@ -139,7 +263,10 @@ function reviewFormOpenHandler(dataAttr, callDataAttr) {
             }, '<')
 
 
-            .to(formWrapper, { autoAlpha: 0, duration: 0.25 }).timeScale(2);
+            .to(formWrapper, { autoAlpha: 0, duration: 0.25 }).timeScale(2)
+            .add(() => {
+                document.body.style.overflow = '';
+            });
 
     }
     formWrapper.querySelector('[class*="close"]').addEventListener('click', closeForm);
