@@ -37,7 +37,11 @@ formsWithTel.forEach(form => {
                         error: [],
                     },
                     phone: {
-                        inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-phone]') }),
+                        inputWrapper: new SexyInput({ 
+                            typeInput: 'phone',
+                            animation: 'none', 
+                            $field: $form.querySelector('[data-field-phone]') }),
+                        typeInput: 'phone',
                         rule: yup.string()
                             .required(i18next.t('required'))
                             .min(10, i18next.t('field_too_short', { cnt: 19 - 9 })),

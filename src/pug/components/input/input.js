@@ -109,7 +109,7 @@ export default class SexyInput {
 
   listeners(input) {
     const self = this;
-
+    
     if (this.typeInput === 'phone') {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
