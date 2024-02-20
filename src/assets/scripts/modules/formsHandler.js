@@ -44,7 +44,7 @@ formsWithTel.forEach(form => {
                         typeInput: 'phone',
                         rule: yup.string()
                             .required(i18next.t('required'))
-                            .min(10, i18next.t('field_too_short', { cnt: 19 - 9 })),
+                            .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
                         defaultMessage: i18next.t('name'),
                         valid: false,
                         error: [],
