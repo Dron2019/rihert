@@ -104,6 +104,28 @@ if (!document.documentElement.classList.contains('desktop')) {
     pageNav.querySelector('.page-title-nav__scroll-button').addEventListener('click', () => {      
         gsap.to(pageNav, { scrollLeft: pageNav.scrollLeft - 50, duration: 0.5 });
     });
+
+
+    /**hide nav buttons on scroll edges */
+    if (pageNav.scrollLeft === 0) {
+        pageNav.querySelector('.page-title-nav__scroll-button').style.display = 'none';
+    } else {
+        pageNav.querySelector('.page-title-nav__scroll-button').style.display = '';
+    }
+
+    pageNav.addEventListener('scroll', () => {
+        console.log(pageNav.scrollLeft, pageNav.scrollWidth - pageNav.clientWidth);
+        if (pageNav.scrollLeft === 0) {
+            pageNav.querySelector('.page-title-nav__scroll-button').style.display = 'none';
+        } else {
+            pageNav.querySelector('.page-title-nav__scroll-button').style.display = '';
+        }
+        if (pageNav.scrollLeft === pageNav.scrollWidth - pageNav.clientWidth) {
+            pageNav.querySelector('.page-title-nav__scroll-button-next').style.display = 'none';
+        } else {
+            pageNav.querySelector('.page-title-nav__scroll-button-next').style.display = '';
+        }
+    });
 }
 
 
