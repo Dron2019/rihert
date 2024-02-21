@@ -133,6 +133,7 @@ function infraNavigation() {
             start: 'top 0',
             end: el.dataset.endTrigger ? '-10% 100%' : 'bottom 100%',
             onEnter: () => {
+                // if (index === 0) return;
                 document.querySelectorAll('.active[data-developer-nav]').forEach((el) => {
                     el.classList.remove('active');
                 })

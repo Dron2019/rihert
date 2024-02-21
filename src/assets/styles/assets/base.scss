@@ -318,7 +318,16 @@ body:not(.index-page) .scroller-container {
     overflow: initial;
     background-color: var(--gray-light);
     padding-top: var(--header-h);
+	
 }
+
+.mobile {
+	overscroll-behavior: none;
+	body {
+		overscroll-behavior: none;
+	}
+}
+
 .mobile {
     .scroller-container {
         width: 100vw;

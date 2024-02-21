@@ -148,8 +148,11 @@ block content
       <svg xmlns="http://www.w3.org/2000/svg" width="9" height="13" viewBox="0 0 9 13" fill="none">
         <path d="M2.06616 1.51506L6.83969 6.73171L1.62303 11.5052" stroke="white" stroke-width="2"/>
       </svg>
-    each val in aboutMenu
-      a.page-title-nav__item(href='#' data-developer-nav=val.link) #{val.title}
+    each val, index in aboutMenu
+      if index === 0
+        .page-title-nav__item.active(href=val.link data-developer-nav=val.link) #{val.title}
+      else
+        .page-title-nav__item(href=val.link data-developer-nav=val.link) #{val.title}
     .page-title-nav__scroll-button-next
       <svg xmlns="http://www.w3.org/2000/svg" width="9" height="13" viewBox="0 0 9 13" fill="none">
         <path d="M2.06616 1.51506L6.83969 6.73171L1.62303 11.5052" stroke="white" stroke-width="2"/>

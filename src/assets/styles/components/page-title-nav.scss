@@ -60,7 +60,7 @@
         overflow-x: auto;
         position: sticky;
         top: var(--header-h);
-        z-index: 2;
+        z-index: 5;
         &::-webkit-scrollbar {
             display: none;
         }
