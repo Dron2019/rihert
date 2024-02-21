@@ -38,6 +38,7 @@
             "img text1 text1"
             "img text2 text2"
             "img . .";
+        column-gap: 20px;
         
     }
 }
@@ -237,6 +238,10 @@
             'img text2 .'
             'text3 text4 text4'
         ;
+        column-gap: 20px;
+        .img-block {
+            clip-path: polygon(0 0, 24% 0, 23.8% 0%, 98% 0, 100% 91%, 1% 100%);
+        }
     }
 }
 
@@ -315,6 +320,7 @@
         grid-template-columns: 3fr 1fr 1fr 97px;
         grid-template-rows: repeat(5, auto);
         row-gap: 20px;
+        column-gap: 20px;
         grid-template-areas: 
         'title title title .'
         'img1 text1 text1 img2'
@@ -402,6 +408,7 @@
         'img1 text1 text1 img2'
         'img1 text2 text2 img2'
         '. text2 text2 img2';
+        column-gap: 20px;
     }
 }
 
@@ -446,6 +453,7 @@
         'title title'
         'img1 text1'
         'img1 .';
+        column-gap: 20px;
     }
 }
 
@@ -521,6 +529,7 @@
         'text2 img1 img1'
         'button img1 img1'
         '. img1 img1';
+        column-gap: 20px;
         .title {
             padding-bottom: 0;
         }

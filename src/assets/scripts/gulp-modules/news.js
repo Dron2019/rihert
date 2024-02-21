@@ -87,3 +87,5 @@ useFilterEffect((filter) => {
 
 
 pageTitleNav(gsap);
+
+document.querySelector('.page-title-nav__item.active').click();
