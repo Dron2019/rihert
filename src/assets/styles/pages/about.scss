@@ -17,6 +17,13 @@
     .about-container1 {
         margin-left: 0;
         margin-right: 0;
+
+        &__right,
+        &__left {
+            width: calc(50% - 20px);
+            margin-left: calc(0% + 10px);
+            margin-right: calc(0% + 10px);
+        }
     }
 }
 .mobile {

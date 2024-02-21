@@ -87,14 +87,29 @@ if (!document.documentElement.classList.contains('desktop')) {
                     el.classList.remove('active');
                 })
                 target.classList.add('active');
-                gsap.to(pageNav, { scrollLeft: el.getBoundingClientRect().width * index + 1 - el.getBoundingClientRect().width, duration: 0.5 });
+                const sumOfWidth = Array.from(pageNav.children).reduce((acc, el, i) => {
+                    if (i < index) {
+                        acc += el.getBoundingClientRect().width;
+                    }
+                    return acc;
+                }, 0);
+
+                gsap.to(pageNav, { scrollLeft: sumOfWidth, duration: 0.5 });
             },
             onEnterBack: () => {
                 document.querySelectorAll('.active[data-developer-nav]').forEach((el) => {
                     el.classList.remove('active');
                 })
                 target.classList.add('active');
-                gsap.to(pageNav, { scrollLeft: el.getBoundingClientRect().width * index + 1 - el.getBoundingClientRect().width, duration: 0.5 });
+                const sumOfWidth = Array.from(pageNav.children).reduce((acc, el, i) => {
+                    console.log('el.getBoundingClientRect().width', el.getBoundingClientRect().width);
+                    if (i < index) {
+                        acc += el.getBoundingClientRect().width;
+                    }
+                    return acc;
+                }, 0);
+
+                gsap.to(pageNav, { scrollLeft: sumOfWidth, duration: 0.5 });
             }
         });
     });

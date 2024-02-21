@@ -138,14 +138,31 @@ function infraNavigation() {
                     el.classList.remove('active');
                 })
                 target.classList.add('active');
-                gsap.to(pageNav, { scrollLeft: el.getBoundingClientRect().width * index + 1 - el.getBoundingClientRect().width, duration: 0.5 });
+
+                const sumOfWidth = Array.from(pageNav.children).reduce((acc, el, i) => {
+                    console.log('el.getBoundingClientRect().width', el.getBoundingClientRect().width);
+                    if (i < index) {
+                        acc += el.getBoundingClientRect().width;
+                    }
+                    return acc;
+                }, 0);
+
+                gsap.to(pageNav, { scrollLeft: sumOfWidth, duration: 0.5 });
             },
             onEnterBack: () => {
                 document.querySelectorAll('.active[data-developer-nav]').forEach((el) => {
                     el.classList.remove('active');
                 })
                 target.classList.add('active');
-                gsap.to(pageNav, { scrollLeft: el.getBoundingClientRect().width * index + 1 - el.getBoundingClientRect().width, duration: 0.5 });
+                const sumOfWidth = Array.from(pageNav.children).reduce((acc, el, i) => {
+                    console.log('el.getBoundingClientRect().width', el.getBoundingClientRect().width);
+                    if (i < index) {
+                        acc += el.getBoundingClientRect().width;
+                    }
+                    return acc;
+                }, 0);
+
+                gsap.to(pageNav, { scrollLeft: sumOfWidth, duration: 0.5 });
             }
         });
     });
@@ -166,7 +183,7 @@ function infraNavigation() {
     }
 
     pageNav.addEventListener('scroll', () => {
-        console.log(pageNav.scrollLeft, pageNav.scrollWidth - pageNav.clientWidth);
+        // console.log(pageNav.scrollLeft, pageNav.scrollWidth - pageNav.clientWidth);
         if (pageNav.scrollLeft === 0) {
             pageNav.querySelector('.page-title-nav__scroll-button').style.display = 'none';
         } else {
