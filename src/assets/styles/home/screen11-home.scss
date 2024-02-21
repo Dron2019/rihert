@@ -221,3 +221,14 @@
 .i4ewOd-pzNkMb-haAclf {
     display: none !important;
 }
+
+.tablet {
+    .screen11 {
+        &__links {
+            // screen11__links
+            .text-style-1920-h-2 {
+                font-size: 6vw;
+            }
+        }
+    }
+}
