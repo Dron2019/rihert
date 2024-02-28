@@ -1,4 +1,5 @@
 -
+    
     var links = [
         //- ['ІНФО','#info'],
         //- ['ІСТОРІЯ','#history'],
@@ -9,11 +10,13 @@
         ['Головна', "/"],
         ['Обрати квартиру', "/3d"],
         ['Нерухомість для бізнесу', "/business-real-estate"],
-        ['Про комплекс', "/about"],
-        ['Інфраструктура', "/infrastructure"],
-        ['Завод Ріхерта', "/rihert-factory"],
-        ['Галерея', "/gallery"],
-        ['Панорама', "/panorama"],
+        ['Про комплекс', "/about", [
+            ['Про комплекс', "/about"],
+            ['Інфраструктура', "/infrastructure"],
+            ['Завод Ріхерта', "/rihert-factory"],
+            ['Галерея', "/gallery"],
+            ['Панорама', "/panorama"],
+        ]],
         ['Девелопер', "/developer"],
         ['Новини', "/news"],
         ['Контакти', "/contacts"],
@@ -70,15 +73,33 @@
 
 
 nav.nav 
-    +svg('logo').nav__logo
-    each val in links 
-        a.nav__link(href=val[1]) #{val[0]}
-    a(href="tel:+38 (096) 995-63-64" data-text="+38 (096) 995-63-64").text-style-1920-body.text-color-black.curtain-hover +38 (096) 995-63-64
-    button(type="button" data-form-wrapper-call).button.button-bordered  Записатися на перегляд
-    .nav__group.df
+    .nav__group.nav__group--lang.df
         a(href="#ua").nav__lang.active ua 
         a(href="#ru").nav__lang ru
         a(href="#en").nav__lang en
+    +svg('logo').nav__logo
+    each val in links
+        if Array.isArray(val[2])
+            div.nav__link.nav__link--dropdown 
+                span #{val[0]}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.46967 6.46967C4.76256 6.17678 5.23744 6.17678 5.53033 6.46967L8 8.93934L10.4697 6.46967C10.7626 6.17678 11.2374 6.17678 11.5303 6.46967C11.8232 6.76256 11.8232 7.23744 11.5303 7.53033L8.53033 10.5303L8 11.0607L7.46967 10.5303L4.46967 7.53033C4.17678 7.23744 4.17678 6.76256 4.46967 6.46967Z" fill="#212721"/>
+                </svg>
+
+                .nav__dropdown
+                    a.nav__link
+                    .nav__dropdown-content
+                        each inner in val[2]
+                            a(href=inner[1]) #{inner[0]}
+                    <svg width="172" height="11" viewBox="0 0 172 11" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax slice">
+                        <path d="M1 0.21875H171V9.78125L1 2.43229V0.21875Z" fill="white"/>
+                        <path d="M171 9.78125L0.957114 2.43229" stroke="#212721"/>
+                    </svg>
+
+        else 
+            a.nav__link(href=val[1]) #{val[0]}
+    a(href="tel:+38 (096) 995-63-64" data-text="+38 (096) 995-63-64").text-style-1920-body.text-color-black.curtain-hover +38 (096) 995-63-64
+    button(type="button" data-form-wrapper-call).button.button-bordered  Записатися на перегляд
 
 <div class="mobile-callback-popup" data-mobile-callback-popup> 
     <a class="mobile-callback-popup__tel" href="tel:+380969956364">Виклик +38 (096) 995-63-64</a>
