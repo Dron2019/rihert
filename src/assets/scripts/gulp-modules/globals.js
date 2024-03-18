@@ -148,6 +148,7 @@ document.querySelectorAll('[name="time"]').forEach(function (item) {
     const picker = flatpickr(item, {
         enableTime: true,
         locale: localeForCalendar,
+        dateFormat: "d-m-Y H:i",
         minDate: "today",
         minTime: "09:00",
         onOpen: function (selectedDates, dateStr, instance) {
@@ -338,6 +339,9 @@ languagePopupHandler();
 function cookiePopupHandler() {
     const popup = document.querySelector('[data-cookie-popup]');
 
+    popup.querySelector('.cookie-popup__close').addEventListener('click', function (evt) {
+        popup.classList.remove('active');
+    }, { once: true});
     popup.querySelector('.cookie-popup__button').addEventListener('click', function (evt) {
         popup.classList.remove('active');
     }, { once: true});

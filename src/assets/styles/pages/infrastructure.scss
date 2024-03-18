@@ -14,6 +14,10 @@
     ". img1-1 img1-1 img-big img-big img-big img-big img-big img-big text2 text2 text2"
     ". img1-1 img1-1 img-big img-big img-big img-big img-big img-big text2 text2 text2";
 
+    @at-root .desktop & {
+        margin-top: 0;
+        padding-top: 70px;
+    }
 
     @include to(1366px){
         gap: 32px;

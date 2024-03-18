@@ -22,8 +22,10 @@ formsWithTel.forEach(form => {
                     console.log(e);
                     const popup = document.querySelector('[data-popup-success-message]');
                     popup.classList.add('active');
+                    popup.dataset.formName = form;
                     popup.querySelector('.popup-success-message__close').addEventListener('click', () => {
                         popup.classList.remove('active');
+                        popup.removeAttribute('data-form-name');
                     }, { once: true});
                     $form.closest('.form-wrapper').querySelector('.form-wrapper__close').dispatchEvent(new Event('click'));
                 },

@@ -42,6 +42,13 @@
         pointer-events: all;
     }
 
+    &__close {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        cursor: pointer;
+    }
+
     @include to(600px){
         --padding: 20px;
     }
