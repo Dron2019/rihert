@@ -74,6 +74,7 @@
         margin-top: 20px;
         .swiper-slide {
             height: calc(45vh - 20px);
+            object-fit: contain;
         }
     }
 }
