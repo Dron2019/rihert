@@ -26,7 +26,8 @@
             margin-left: 4px;
         }
     }
-    &:hover {
+    &.active
+    /*&:hover*/ {
         overflow: visible;
         .lang-block__else {
             animation: fadeIn 0.3s ease-in-out;
@@ -80,6 +81,14 @@
             &>:nth-child(n+2) {
                 margin-left: 8px;
             }
+        }
+    }
+}
+
+.mobile {
+    .lang-block {
+        &__else {
+            top: calc(100% + 1px);
         }
     }
 }

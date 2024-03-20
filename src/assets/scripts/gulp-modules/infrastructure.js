@@ -105,7 +105,7 @@ document.body.addEventListener('click', function (evt) {
 
 function infraNavigation() {
     const scrollClickDistance = 75;
-    document.querySelectorAll('[data-developer-nav]').forEach((el) => {
+    document.querySelectorAll('[data-developer-nav]').forEach((el, index) => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
             const target = document.querySelector(el.dataset.developerNav);
@@ -116,7 +116,7 @@ function infraNavigation() {
             })
             el.classList.add('active');
             window.scrollTo({
-                top: target.getBoundingClientRect().top + window.scrollY - 100,
+                top: index === 0 ? 0 : target.getBoundingClientRect().top + window.scrollY - 100,
                 behavior: 'smooth'
             });
         })

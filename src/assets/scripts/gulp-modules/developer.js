@@ -54,7 +54,7 @@ const swiper2 = new Swiper(container2, {
 */
 if (!document.documentElement.classList.contains('desktop')) {
     pageTitleNav(gsap);
-    document.querySelectorAll('[data-developer-nav]').forEach((el) => {
+    document.querySelectorAll('[data-developer-nav]').forEach((el, index) => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
             const target = document.querySelector(el.dataset.developerNav);
@@ -65,7 +65,7 @@ if (!document.documentElement.classList.contains('desktop')) {
             })
             el.classList.add('active');
             window.scrollTo({
-                top: target.getBoundingClientRect().top + window.scrollY - 100,
+                top: index === 0 ? 0 : target.getBoundingClientRect().top + window.scrollY - 100,
                 behavior: 'smooth'
             });
         })

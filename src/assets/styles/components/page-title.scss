@@ -68,7 +68,7 @@
         padding-right: var(--page-side-fields);
 
         padding-top: 8px;
-        --page-title-skew-h: 20px;
+        --page-title-skew-h: 18px;
         &__text {
             @include text-style-360-h-1;
             line-height: 130%;
@@ -78,7 +78,9 @@
             }
         }
         &__bottom {
-            width: calc(var(--page-side-fields) + 100%);
+            // width: calc(var(--page-side-fields) + 100%);
+            width: calc(var(--page-side-fields) * 2.6 + 100%);
+            
             margin-left:  calc(var(--page-side-fields) * -1);
         }
     }

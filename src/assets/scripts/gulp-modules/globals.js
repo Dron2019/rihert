@@ -339,6 +339,8 @@ languagePopupHandler();
 function cookiePopupHandler() {
     const popup = document.querySelector('[data-cookie-popup]');
 
+    if (!popup || !popup.querySelector('.cookie-popup__close')) return;
+
     popup.querySelector('.cookie-popup__close').addEventListener('click', function (evt) {
         popup.classList.remove('active');
     }, { once: true});
@@ -366,3 +368,16 @@ function vhCounter() {
 }
 
 vhCounter();
+
+
+function mobileLangBlockHandler() {
+    document.body.addEventListener('click', function (evt) {
+        const target = evt.target.closest('.lang-block');
+        if (!target) {
+            document.querySelectorAll('.lang-block.active').forEach(el => el.classList.remove('active'));
+        }
+
+    });
+}
+
+mobileLangBlockHandler();
