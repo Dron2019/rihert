@@ -136,7 +136,7 @@ if (!document.documentElement.classList.contains('desktop')) {
         } else {
             pageNav.querySelector('.page-title-nav__scroll-button').style.display = '';
         }
-        if (pageNav.scrollLeft === pageNav.scrollWidth - pageNav.clientWidth) {
+        if (pageNav.scrollLeft > (pageNav.scrollWidth - pageNav.clientWidth - 40)) {
             pageNav.querySelector('.page-title-nav__scroll-button-next').style.display = 'none';
         } else {
             pageNav.querySelector('.page-title-nav__scroll-button-next').style.display = '';
