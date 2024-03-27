@@ -130,8 +130,10 @@ function infraNavigation() {
         const trigger = ScrollTrigger.create({
             trigger: el,
             endTrigger: el.dataset.endTrigger ? el.dataset.endTrigger : el,
-            start: 'top 0',
-            end: el.dataset.endTrigger ? '-10% 100%' : 'bottom 100%',
+            // start: document.documentElement.classList.contains('desktop') ? 'top 50%' : 'top 101px',
+            start: 'top 50%',
+            end: el.dataset.endTrigger ? 'bottom 50%' : 'bottom 50%',
+            // markers: true,
             onEnter: () => {
                 // if (index === 0) return;
                 document.querySelectorAll('.active[data-developer-nav]').forEach((el) => {
